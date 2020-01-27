@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-27T03:58:58.486Z</updated>
+  <updated>2020-01-27T05:31:41.640Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,23 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Kobe</title>
+    <title>Kobe Bryant</title>
     <link href="http://yoursite.com/2020/01/27/Kobe/"/>
     <id>http://yoursite.com/2020/01/27/Kobe/</id>
     <published>2020-01-27T02:57:14.000Z</published>
-    <updated>2020-01-27T03:58:58.486Z</updated>
+    <updated>2020-01-27T05:31:41.640Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;昨晚给一位研究生小朋友辅导Latex相关的操作到很晚，直到凌晨2点才睡。一觉醒来，在朋友圈的第一条是下面这张图片![Kobe](maxresdefault.jpg = 100x)。在脑中的第一个感觉是”what 什么情况？”。说实话，虽然知道黑白的配图是什么意思，但还是立马
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
       
     
     </summary>
     
     
-      <category term="/instant_note/" scheme="http://yoursite.com/categories/instant-note/"/>
+      <category term="instant_note" scheme="http://yoursite.com/categories/instant-note/"/>
     
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
@@ -45,13 +45,13 @@
     <link href="http://yoursite.com/2020/01/26/Zotero/"/>
     <id>http://yoursite.com/2020/01/26/Zotero/</id>
     <published>2020-01-26T00:13:19.000Z</published>
-    <updated>2020-01-27T02:26:26.852Z</updated>
+    <updated>2020-01-27T04:25:56.733Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;titl
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
       
     
     </summary>
@@ -59,10 +59,6 @@
     
       <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="hexo-asset-image" scheme="http://yoursite.com/tags/hexo-asset-image/"/>
     
   </entry>
   
