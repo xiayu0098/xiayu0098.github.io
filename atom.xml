@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-27T02:26:26.852Z</updated>
+  <updated>2020-01-27T03:58:58.486Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kobe</title>
+    <link href="http://yoursite.com/2020/01/27/Kobe/"/>
+    <id>http://yoursite.com/2020/01/27/Kobe/</id>
+    <published>2020-01-27T02:57:14.000Z</published>
+    <updated>2020-01-27T03:58:58.486Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;昨晚给一位研究生小朋友辅导Latex相关的操作到很晚，直到凌晨2点才睡。一觉醒来，在朋友圈的第一条是下面这张图片![Kobe](maxresdefault.jpg = 100x)。在脑中的第一个感觉是”what 什么情况？”。说实话，虽然知道黑白的配图是什么意思，但还是立马
+      
+    
+    </summary>
+    
+    
+      <category term="/instant_note/" scheme="http://yoursite.com/categories/instant-note/"/>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>Research Assistant - Zotero</title>
