@@ -36,6 +36,25 @@
   </entry>
   
   <entry>
+    <title>Research Assistant - Zotero</title>
+    <link href="http://yoursite.com/2020/02/14/Zotero/"/>
+    <id>http://yoursite.com/2020/02/14/Zotero/</id>
+    <published>2020-02-14T00:13:19.000Z</published>
+    <updated>2020-02-14T00:13:19.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Kobe Bryant</title>
     <link href="http://yoursite.com/2020/01/27/Kobe/"/>
     <id>http://yoursite.com/2020/01/27/Kobe/</id>
@@ -57,25 +76,6 @@
     
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Research Assistant - Zotero</title>
-    <link href="http://yoursite.com/2020/01/26/Zotero/"/>
-    <id>http://yoursite.com/2020/01/26/Zotero/</id>
-    <published>2020-01-26T00:13:19.000Z</published>
-    <updated>2020-02-04T07:18:57.642Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
     
   </entry>
   

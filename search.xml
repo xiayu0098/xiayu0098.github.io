@@ -15,18 +15,53 @@
   <img src="/2020/02/14/Git-notes/git-sequence-transparent1.png" style="width:400px; text-align:center" alt="commits on the master branch" title="title">
   <figcaption><p style="text-align:center">example of a sequence of commits</p></figcaption>
 </figure>
+git checkout b
 <figure>
-  <img src="/2020/02/14/Git-notes/git-sequence-transparent2.png" style="width:400px; text-align:center" alt="git checkout b" title="title">
-  <figcaption><p style="text-align:center">after "git checkout b"</p></figcaption>
+  <img src="/2020/02/14/Git-notes/git-checkout-transparent2.png" style="width:400px; text-align:center" alt="git checkout b" title="title2">
 </figure>
+git reset b
 <figure>
-  <img src="/2020/02/14/Git-notes/git-sequence-transparent3.png" style="width:400px; text-align:center" alt="git reset b" title="title">
-  <figcaption><p style="text-align:center">after "git reset b"</p></figcaption>
+  <img src="/2020/02/14/Git-notes/git-checkout-transparent3.png" style="width:300px; text-align:center" alt="git reset b" title="title3">
 </figure>
 
 </li>
 </ul>
+<h3 id="Main-options"><a href="#Main-options" class="headerlink" title="Main options"></a>Main options</h3><h4 id="–hard"><a href="#–hard" class="headerlink" title="–hard"></a>–hard</h4><p>the most direct, <em>DANGEROUS</em>, and frequently used option</p>
+<h4 id="–mixed"><a href="#–mixed" class="headerlink" title="–mixed"></a>–mixed</h4><p>the stagin index is reset to the state of the specified commit</p>
+<h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><p>head in the commit History can change</p>
+<figure>
+    <img src="/2020/02/14/Git-notes/option.png" style="width:400px; text-align:center" alt="git reset b" title="title3">
+</figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Research Assistant - Zotero</title>
+    <url>/2020/02/14/Zotero/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用<strong>author</strong>,<strong>year</strong>,<strong>title</strong>的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。</p>
+ <a id="more"></a> 
+
+<p>这样的方式固然方便，但同时文件名中所含的信息太少，当论文过多时，在搜索时极易引起混乱，因此不利于管理。</p>
+<p><img src="/2020/02/14/Zotero/Annotation.png" alt="Annotation"></p>
+<p>如今，各类文献管理软件的兴起，如<a href="https://www-mendeley-com.ezp.lib.unimelb.edu.au/?interaction_required=true" target="_blank" rel="noopener">Mendeley</a>，<a href="https://endnote.com/" target="_blank" rel="noopener">Endnote</a>，<a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a> 以及国产软件<a href="http://www.inoteexpress.com/index.htm" target="_blank" rel="noopener">NoteExpress</a>等，使得论文管理有了一个比较好的提升。笔者目前使用较多是<strong>Zotero</strong>，这里着重介绍这一软件的入门使用，其中包括笔者文章引用过程中的一些小技巧以及如何结合<strong>Latex</strong>快速生成论文的参考文献。</p>
+<p><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a> 安装完成后，推荐注册，方便在云端同步文献库。通过<strong>Edit</strong>&gt;&gt;<strong>Preferences</strong>&gt;&gt;<strong>Sync</strong> 确认是否登录。考虑到软件仅免费提供约100MB的空间，所以建议取消<em>Sync full-text context</em>选项， 这样不会同步全文，节省空间。完成这一步后，如果使用firefox 浏览器，可以安装相应的插件便于以后的文献插入。</p>
+<p>Zotero的文献导入途径很多，经过笔者多年的测试，推荐使用以下方法。简单来说是<em>google scholar</em> + <em>firefox</em>结合。</p>
+<p>通过google scholar等途径可获取文献网址数据库(如springer, Elsevier等)后，可进入下载页面，如下图所示。</p>
+<figure>
+    <img src="/2020/02/14/Zotero/paper_title.png" style="width:500px; text-align:center" alt="git reset b" title="title">
+</figure>
+点击 **download** 可进入下载页面，此时会发现zotero在firefox上的对应插件已经点亮，点击后，即发现参考文献已经导入Zotero软件中。 如果没有下载权限，也可点击**Export**，选择对应的文献管理软件即可。这里需要说明的是 Endnote 和 Mendeley 使用人数较多，所以很多数据库通常会默认选择这两个软件所支持的参考文献格式如Ref, Ris 等。但Zotero几乎支持上述所有的格式，所以任意选择一个即可。浏览器插件会自动检测是否需要导入参考文献。
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>research</category>
+      </categories>
   </entry>
   <entry>
     <title>Kobe Bryant</title>
@@ -58,20 +93,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       <tags>
         <tag>随笔</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Research Assistant - Zotero</title>
-    <url>/2020/01/26/Zotero/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用<strong>author</strong>,<strong>year</strong>,<strong>title</strong>的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。</p>
- <a id="more"></a> 
-
-<p>这样的方式固然方便，但同时文件名中所含的信息太少，当论文过多时，在搜索时极易引起混乱，因此不利于管理。</p>
-<p><img src="/2020/01/26/Zotero/Annotation.png" alt="Annotation"></p>
-<p>如今，各类文献管理软件的兴起，如<a href="https://www-mendeley-com.ezp.lib.unimelb.edu.au/?interaction_required=true" target="_blank" rel="noopener">Mendeley</a>，<a href="https://endnote.com/" target="_blank" rel="noopener">Endnote</a>，<a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a> 以及国产软件<a href="http://www.inoteexpress.com/index.htm" target="_blank" rel="noopener">NoteExpress</a>等，使得论文管理有了一个比较好的提升。笔者目前使用较多是<strong>Zotero</strong>，这里着重介绍这一软件的入门使用，其中包括笔者文章引用过程中的一些小技巧以及如何结合<strong>Latex</strong>快速生成论文的参考文献。</p>
-]]></content>
-      <categories>
-        <category>research</category>
-      </categories>
   </entry>
   <entry>
     <title>Matlab Tips</title>
