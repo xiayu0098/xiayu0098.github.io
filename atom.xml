@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-04T07:17:31.405Z</updated>
+  <updated>2020-02-14T06:04:27.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git notes</title>
+    <link href="http://yoursite.com/2020/02/14/Git-notes/"/>
+    <id>http://yoursite.com/2020/02/14/Git-notes/</id>
+    <published>2020-02-14T06:04:27.000Z</published>
+    <updated>2020-02-14T06:04:27.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;Fatal: refusing to merge unrelated histories&lt;/p&gt;
+&lt;p&gt;using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Kobe Bryant</title>
@@ -82,25 +101,6 @@
     
     
       <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git notes</title>
-    <link href="http://yoursite.com/2020/01/20/Git-notes/"/>
-    <id>http://yoursite.com/2020/01/20/Git-notes/</id>
-    <published>2020-01-19T23:39:30.000Z</published>
-    <updated>2020-02-04T07:19:49.176Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;Fatal: refusing to merge unrelated histories&lt;/p&gt;
-&lt;p&gt;using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
     
   </entry>
   
