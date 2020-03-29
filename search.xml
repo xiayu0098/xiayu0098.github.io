@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Latex Tips</title>
+    <url>/2020/03/29/Tips/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Using-braces-to-label-parts-of-an-equation"><a href="#Using-braces-to-label-parts-of-an-equation" class="headerlink" title="Using braces to label parts of an equation"></a>Using braces to label parts of an equation</h3><p><code>[\Theta^+ = \underbrace{\int_0^{z_{crit}^+}\frac{dz^+}{1/Pr +\alpha_t/\nu}}_{\Romannum{1}} + \underbrace{\int_{z_{crit}^+}^{z^+}\frac{dz^+}{1/Pr +\alpha_t/\nu}}_{\Romannum{2}}\]</code></p>
+<figure>
+    <img src="/2020/03/29/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
+</figure>
+
+<h3 id="Get-Roman-numerals-in-text"><a href="#Get-Roman-numerals-in-text" class="headerlink" title="Get Roman numerals in text"></a>Get Roman numerals in text</h3><ol>
+<li><p>install the package of “romannum”</p>
+</li>
+<li><p>type <code>\usepackage{romannum}</code> in the text</p>
+</li>
+<li><p><code>\romannum{1}</code> for Lowercase roman numbers or <code>\Romannum{1}</code> for Uppercase roman numbers</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Git notes</title>
     <url>/2020/02/14/Git-notes/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
