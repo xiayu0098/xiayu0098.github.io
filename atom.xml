@@ -25,10 +25,11 @@
     
     <summary type="html">
     
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
+      &lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ &amp;#x3D; \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1&amp;#x2F;Pr +\alpha_t&amp;#x2F;\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1&amp;#x2F;Pr +\alpha_t&amp;#x2F;\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;/2020/03/29/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
+&lt;/figure&gt;
     
     </summary>
     
