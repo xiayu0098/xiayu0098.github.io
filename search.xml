@@ -26,12 +26,13 @@
 
 <h3 id="Two-statements-using-curly-brace-in-an-equation"><a href="#Two-statements-using-curly-brace-in-an-equation" class="headerlink" title="Two statements using curly brace in an equation"></a>Two statements using curly brace in an equation</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;equation&#125;</span><br><span class="line">  f(x)&#x3D;\begin&#123;cases&#125;</span><br><span class="line">    1, &amp; \text&#123;if $x&lt;0$&#125;.\\</span><br><span class="line">    0, &amp; \text&#123;otherwise&#125;.</span><br><span class="line">  \end&#123;cases&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2020/03/29/Tips/eqn1.png" style="width:200px; text-align:center" alt="equation format" title="title">
+    <img src="/2020/03/29/Tips/eqn1.png" style="width:300px; text-align:center" alt="equation format" title="title">
 </figure>
+
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">This is your only binary choices</span><br><span class="line">\begin&#123;math&#125;</span><br><span class="line">  \left\&#123;</span><br><span class="line">    \begin&#123;array&#125;&#123;l&#125;</span><br><span class="line">      0\\</span><br><span class="line">      1</span><br><span class="line">    \end&#123;array&#125;</span><br><span class="line">  \right.</span><br><span class="line">\end&#123;math&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2020/03/29/Tips/eqn2.png" style="width:200px; text-align:center" alt="equation format 2" title="title">
+    <img src="/2020/03/29/Tips/eqn2.png" style="width:300px; text-align:center" alt="equation format 2" title="title">
 </figure>]]></content>
   </entry>
   <entry>
@@ -219,7 +220,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   <entry>
     <title>仅用于测试</title>
     <url>/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<p>大家好，这是我的第一篇blog.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>大家好，这是我的第一篇blog.</p>
 ]]></content>
   </entry>
 </search>
