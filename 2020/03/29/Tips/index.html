@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">254字</span>
+            <span class="post-count">355字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -119,7 +119,14 @@
 <p>It is suggested to set the key binding as follows to make it handy.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;keys&quot;: [&quot;ctrl+shift+alt+z&quot;],</span><br><span class="line">       &quot;command&quot;: &quot;ltx_fill_anywhere&quot;,</span><br><span class="line">       &quot;context&quot;: [</span><br><span class="line">           &#123;&quot;key&quot;: &quot;selection_empty&quot;, &quot;match_all&quot;: true, &quot;operand&quot;: true, &quot;operator&quot;: &quot;equal&quot;&#125;,</span><br><span class="line">           &#123;&quot;key&quot;: &quot;selector&quot;, &quot;operand&quot;: &quot;text.tex.latex&quot;, &quot;operator&quot;: &quot;equal&quot;&#125;</span><br><span class="line">       ]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-
+<h3 id="Two-statements-using-curly-brace-in-an-equation"><a href="#Two-statements-using-curly-brace-in-an-equation" class="headerlink" title="Two statements using curly brace in an equation"></a>Two statements using curly brace in an equation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;equation&#125;</span><br><span class="line">  f(x)&#x3D;\begin&#123;cases&#125;</span><br><span class="line">    1, &amp; \text&#123;if $x&lt;0$&#125;.\\</span><br><span class="line">    0, &amp; \text&#123;otherwise&#125;.</span><br><span class="line">  \end&#123;cases&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+    <img src="/2020/03/29/Tips/eqn1.png" style="width:400px; text-align:center" alt="equation format" title="title">
+</figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">This is your only binary choices</span><br><span class="line">\begin&#123;math&#125;</span><br><span class="line">  \left\&#123;</span><br><span class="line">    \begin&#123;array&#125;&#123;l&#125;</span><br><span class="line">      0\\</span><br><span class="line">      1</span><br><span class="line">    \end&#123;array&#125;</span><br><span class="line">  \right.</span><br><span class="line">\end&#123;math&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+    <img src="/2020/03/29/Tips/eqn2.png" style="width:400px; text-align:center" alt="equation format 2" title="title">
+</figure>
       
       <!-- 打赏 -->
       
