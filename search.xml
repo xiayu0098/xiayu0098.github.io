@@ -52,9 +52,8 @@
 
 <h3 id="Get-information-of-LaTex-template-through-command"><a href="#Get-information-of-LaTex-template-through-command" class="headerlink" title="Get information of LaTex template through command"></a>Get information of LaTex template through command</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\makeatletter</span><br><span class="line">\newcommand\thefont&#123;\expandafter\string\the\font&#125;</span><br><span class="line">\makeatother</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\thefont % check all attributes of font</span><br><span class="line">\the\columnwidth % check column width</span><br><span class="line">\the\textwidth   % check text width</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
+<h3 id="Create-a-shortcut-to-the-snippet-palette-in-Sublime-Text-3"><a href="#Create-a-shortcut-to-the-snippet-palette-in-Sublime-Text-3" class="headerlink" title="Create a shortcut to the snippet palette in Sublime Text 3"></a>Create a shortcut to the snippet palette in Sublime Text 3</h3><p>add following snippet code in <em>Preferences:Key Bindings - User</em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; </span><br><span class="line">        <span class="string">"keys"</span>: [<span class="string">"ctrl+y"</span>], </span><br><span class="line">        <span class="string">"command"</span>: <span class="string">"show_overlay"</span>, </span><br><span class="line">        <span class="string">"args"</span>: &#123;</span><br><span class="line">            <span class="string">"overlay"</span>: <span class="string">"command_palette"</span>, </span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"Snippet: "</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 
 
