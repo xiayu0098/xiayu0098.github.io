@@ -43,7 +43,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ &amp;#x3D; \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1&amp;#x2F;Pr +\alpha_t&amp;#x2F;\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1&amp;#x2F;Pr +\alpha_t&amp;#x2F;\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;figure&gt;
     &lt;img src=&quot;/2020/03/29/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
@@ -89,6 +89,23 @@
     
     
       <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/02/04/hello-world/"/>
+    <id>http://yoursite.com/2020/02/04/hello-world/</id>
+    <published>2020-02-04T07:19:25.000Z</published>
+    <updated>2020-02-04T07:19:25.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
     
     
   </entry>
@@ -144,23 +161,6 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2020/01/20/hello-world/"/>
-    <id>http://yoursite.com/2020/01/20/hello-world/</id>
-    <published>2020-01-19T23:26:56.655Z</published>
-    <updated>2020-01-19T23:26:56.655Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Inkscape Tricks</title>
     <link href="http://yoursite.com/2020/01/20/Inkscape-Tricks/"/>
     <id>http://yoursite.com/2020/01/20/Inkscape-Tricks/</id>
@@ -188,7 +188,8 @@
     
       
       
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+        &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
+
       
     
     </summary>
