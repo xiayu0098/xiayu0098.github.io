@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="description" content="personal blogs" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Latex Tips |  Florian&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Florian's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="&#39;LaTex-Tips" class="article article-type-&#39;LaTex" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Latex Tips
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/29/Tips/" class="article-date">
+  <time datetime="2020-03-29T02:27:08.000Z" itemprop="datePublished">2020-03-29</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">649字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Using-braces-to-label-parts-of-an-equation"><a href="#Using-braces-to-label-parts-of-an-equation" class="headerlink" title="Using braces to label parts of an equation"></a>Using braces to label parts of an equation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\[\Theta^+ &#x3D; \underbrace&#123;\int_0^&#123;z_&#123;crit&#125;^+&#125;\frac&#123;dz^+&#125;&#123;1&#x2F;Pr +\alpha_t&#x2F;\nu&#125;&#125;_&#123;\Romannum&#123;1&#125;&#125; + \underbrace&#123;\int_&#123;z_&#123;crit&#125;^+&#125;^&#123;z^+&#125;\frac&#123;dz^+&#125;&#123;1&#x2F;Pr +\alpha_t&#x2F;\nu&#125;&#125;_&#123;\Romannum&#123;2&#125;&#125;\]</span><br></pre></td></tr></table></figure>
+
+<figure>
+    <img src="/2020/03/29/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
+</figure>
+
+
+<a id="more"></a> 
+
+
+<h3 id="Get-Roman-numerals-in-text"><a href="#Get-Roman-numerals-in-text" class="headerlink" title="Get Roman numerals in text"></a>Get Roman numerals in text</h3><ol>
+<li><p>install the package of “romannum”</p>
+</li>
+<li><p>type <code>\usepackage{romannum}</code>in the text</p>
+</li>
+<li><p><code>\romannum{1}</code> for Lowercase roman numbers or <code>\Romannum{1}</code> for Uppercase roman numbers</p>
+</li>
+</ol>
+<h3 id="Setting-‘Fill-Anywhere’-command-in-Latexing-package-in-Sublime"><a href="#Setting-‘Fill-Anywhere’-command-in-Latexing-package-in-Sublime" class="headerlink" title="Setting  ‘Fill Anywhere’  command in Latexing package  in Sublime"></a>Setting  ‘Fill Anywhere’  command in Latexing package  in Sublime</h3><p>The fill anywhere command is providing the <strong>filling</strong> that a drop down menu will let you choose what you would like to do at the current selection. For example it could be required to fill a image path somewhere else then just the normal <code>\includegraphics</code> command. The fill anywhere command is available for <code>\include</code>, <code>\input</code>, <code>\subfile</code>. <code>\includegraphics</code>, <code>\ref</code>, <code>\cite</code>, and <code>\ac</code> commands and there mutations like usual.</p>
+<p>It is suggested to set the key binding as follows to make it handy.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;keys&quot;: [&quot;ctrl+shift+alt+z&quot;],</span><br><span class="line">       &quot;command&quot;: &quot;ltx_fill_anywhere&quot;,</span><br><span class="line">       &quot;context&quot;: [</span><br><span class="line">           &#123;&quot;key&quot;: &quot;selection_empty&quot;, &quot;match_all&quot;: true, &quot;operand&quot;: true, &quot;operator&quot;: &quot;equal&quot;&#125;,</span><br><span class="line">           &#123;&quot;key&quot;: &quot;selector&quot;, &quot;operand&quot;: &quot;text.tex.latex&quot;, &quot;operator&quot;: &quot;equal&quot;&#125;</span><br><span class="line">       ]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Two-statements-using-curly-brace-in-an-equation"><a href="#Two-statements-using-curly-brace-in-an-equation" class="headerlink" title="Two statements using curly brace in an equation"></a>Two statements using curly brace in an equation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;equation&#125;</span><br><span class="line">  f(x)&#x3D;\begin&#123;cases&#125;</span><br><span class="line">    1, &amp; \text&#123;if $x&lt;0$&#125;.\\</span><br><span class="line">    0, &amp; \text&#123;otherwise&#125;.</span><br><span class="line">  \end&#123;cases&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+    <img src="/2020/03/29/Tips/eqn1.png" style="width:400px; text-align:center" alt="equation format" title="title">
+</figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">This is your only binary choices</span><br><span class="line">\begin&#123;math&#125;</span><br><span class="line">  \left\&#123;</span><br><span class="line">    \begin&#123;array&#125;&#123;l&#125;</span><br><span class="line">      0\\</span><br><span class="line">      1</span><br><span class="line">    \end&#123;array&#125;</span><br><span class="line">  \right.</span><br><span class="line">\end&#123;math&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+    <img src="/2020/03/29/Tips/eqn2.png" style="width:400px; text-align:center" alt="equation format 2" title="title">
+</figure>
+
+<h3 id="Get-information-of-LaTex-template-through-command"><a href="#Get-information-of-LaTex-template-through-command" class="headerlink" title="Get information of LaTex template through command"></a>Get information of LaTex template through command</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\makeatletter</span><br><span class="line">\newcommand\thefont&#123;\expandafter\string\the\font&#125;</span><br><span class="line">\makeatother</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\thefont % check all attributes of font</span><br><span class="line">\the\columnwidth % check column width</span><br><span class="line">\the\textwidth   % check text width</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Create-a-shortcut-to-the-snippet-palette-in-Sublime-Text-3"><a href="#Create-a-shortcut-to-the-snippet-palette-in-Sublime-Text-3" class="headerlink" title="Create a shortcut to the snippet palette in Sublime Text 3"></a>Create a shortcut to the snippet palette in Sublime Text 3</h3><p>add following snippet code in <em>Preferences:Key Bindings - User</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; </span><br><span class="line">        <span class="string">"keys"</span>: [<span class="string">"ctrl+y"</span>], </span><br><span class="line">        <span class="string">"command"</span>: <span class="string">"show_overlay"</span>, </span><br><span class="line">        <span class="string">"args"</span>: &#123;</span><br><span class="line">            <span class="string">"overlay"</span>: <span class="string">"command_palette"</span>, </span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"Snippet: "</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="Sublime-Text-3-LaTexTools-configuration-under-Windows"><a href="#Sublime-Text-3-LaTexTools-configuration-under-Windows" class="headerlink" title="Sublime Text 3 LaTexTools configuration under Windows"></a>Sublime Text 3 LaTexTools configuration under Windows</h3><p>The path must include `ghostscript’ to execute <strong>epstopdf</strong>. Here the path is<br>  <em>C:\texlive\2020\tlpkg\tlgs\bin</em>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"windows"</span>: &#123;</span><br><span class="line">        <span class="comment">// Path used when invoking tex &amp; friends; "" is fine for MiKTeX</span></span><br><span class="line">        <span class="comment">// For TeXlive 2011 (or other years) use</span></span><br><span class="line">         <span class="string">"texpath"</span> : <span class="string">"C:\\texlive\\2020\\bin\\win32;C:\\texlive\\2020\\tlpkg\\tlgs\\bin;$PATH"</span>,</span><br><span class="line">         <span class="comment">// C:\\texlive\\2020\\tlpkg\\tlgs\\bin offer ghostgraphics path</span></span><br><span class="line">        <span class="comment">// "texpath" : "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64;PATH",</span></span><br><span class="line">        <span class="comment">// TeX distro: "miktex" or "texlive"</span></span><br><span class="line">        <span class="comment">//"distro" : "miktex",</span></span><br><span class="line">        <span class="string">"distro"</span> : <span class="string">"texlive"</span>,</span><br><span class="line">        <span class="comment">// Command to invoke Sumatra. If blank, "SumatraPDF.exe" is used (it has to be on your PATH)</span></span><br><span class="line">        <span class="string">"sumatra"</span>: <span class="string">"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe"</span>, </span><br><span class="line">        <span class="comment">// Command to invoke Sublime Text. Used if the keep_focus toggle is true.</span></span><br><span class="line">        <span class="comment">// If blank, "subl.exe" or "sublime_text.exe" will be used.</span></span><br><span class="line">        <span class="string">"sublime_executable"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="comment">// how long (in seconds) to wait after the jump_to_pdf command completes</span></span><br><span class="line">        <span class="comment">// before switching focus back to Sublime Text. This may need to be</span></span><br><span class="line">        <span class="comment">// adjusted depending on your machine and configuration.</span></span><br><span class="line">        <span class="string">"keep_focus_delay"</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="Striketrhough-in-LaTex"><a href="#Striketrhough-in-LaTex" class="headerlink" title="Striketrhough in LaTex"></a>Striketrhough in LaTex</h3><p><em>\usepackage[normalem]{ulem}</em> in the preamble </p>
+<ol>
+<li>\sout{text to be striked out} for a horizontal line through text to be striked out </li>
+<li>\xout{text to be crossed out} for many short diagonal lines crossing out the letters of the text to be crossed out</li>
+</ol>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/Tips/" data-id="ck9yzln6j0007d8mv8l05f76m"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/01/Powerpoint/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            PowerPoint
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/02/14/Git-notes/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Git notes</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2021
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Florian&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">相册</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
