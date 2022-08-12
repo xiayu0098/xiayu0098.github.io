@@ -3,7 +3,7 @@
   <title>Florian&#39;s Blog</title>
   <icon>http://yoursite.com/icon.png</icon>
   <subtitle>流动的水没有形状  漂流的风找不到踪迹</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
   <updated>2020-05-31T22:49:36.000Z</updated>
@@ -23,12 +23,10 @@
     <published>2020-05-31T22:49:36.000Z</published>
     <updated>2020-05-31T22:49:36.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.&lt;/p&gt;
-&lt;p&gt; It is annoying to do this work from your storage if have a large number of pictures added. Here, we introduce a good way to establish connection between PowerPoint and Matlab  to help us import images quickly.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.&lt;/p&gt;
+&lt;p&gt; It is annoying to do this work from your storage if have a large number of pictures added. Here, we introduce a good way to establish connection between PowerPoint and Matlab  to help us import images quickly.&lt;/p&gt;</summary>
     
-    </summary>
     
     
     
@@ -41,15 +39,13 @@
     <published>2020-03-29T02:27:08.000Z</published>
     <updated>2020-03-29T02:27:08.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;figure&gt;
     &lt;img src=&quot;/2020/03/29/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
-&lt;/figure&gt;
+&lt;/figure&gt;</summary>
     
-    </summary>
     
     
     
@@ -62,13 +58,11 @@
     <published>2020-02-14T06:04:27.000Z</published>
     <updated>2020-02-14T06:04:27.000Z</updated>
     
-    <summary type="html">
     
-      &lt;ul&gt;
+    <summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;Fatal: refusing to merge unrelated histories&lt;/p&gt;
-&lt;p&gt;using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
     
-    </summary>
     
     
     
@@ -81,14 +75,12 @@
     <published>2020-02-14T00:13:19.000Z</published>
     <updated>2020-02-14T00:13:19.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;</summary>
     
     
-      <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
     
   </entry>
@@ -100,11 +92,9 @@
     <published>2020-02-04T07:19:25.000Z</published>
     <updated>2020-02-04T07:19:25.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
     
-    </summary>
     
     
     
@@ -117,21 +107,19 @@
     <published>2020-01-27T02:57:14.000Z</published>
     <updated>2020-01-27T02:57:14.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;  昨晚给一位研究生小朋友辅导Latex相关的操作到很晚，直到凌晨2点才睡。一觉醒来，在朋友圈的第一条动态为&lt;/p&gt;
+    <summary type="html">&lt;p&gt;  昨晚给一位研究生小朋友辅导Latex相关的操作到很晚，直到凌晨2点才睡。一觉醒来，在朋友圈的第一条动态为&lt;/p&gt;
 &lt;img src=&quot;/2020/01/27/Kobe/maxresdefault.jpg&quot; style=&quot;width:500px&quot;&gt;
 
 &lt;p&gt;在脑中的第一个感觉是”what 什么情况？”。&lt;/p&gt;
-&lt;div style=&quot;text-align:center&quot;&gt;&lt;/div&gt;
-    
-    </summary>
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;/div&gt;</summary>
     
     
-      <category term="instant_note" scheme="http://yoursite.com/categories/instant-note/"/>
+    
+    <category term="instant_note" scheme="http://yoursite.com/categories/instant-note/"/>
     
     
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -142,21 +130,19 @@
     <published>2020-01-25T21:47:41.000Z</published>
     <updated>2020-01-25T21:47:41.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
+    <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Compute the running time of a function all&lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;p&gt;Create a function that take optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;
-    
-    </summary>
+&lt;li&gt;&lt;p&gt;Create a function that take optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
     
     
     
-      <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
+    
+    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
     
   </entry>
   
@@ -167,11 +153,9 @@
     <published>2020-01-19T22:39:36.000Z</published>
     <updated>2020-01-19T22:39:36.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;Some tricks are listed in the following to help get speed up with this software.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Some tricks are listed in the following to help get speed up with this software.&lt;/p&gt;</summary>
     
-    </summary>
     
     
     
@@ -184,15 +168,13 @@
     <published>2020-01-19T02:00:11.000Z</published>
     <updated>2020-01-19T02:00:11.000Z</updated>
     
-    <summary type="html">
     
       
       
-        &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
-
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
+</summary>
       
     
-    </summary>
     
     
     
