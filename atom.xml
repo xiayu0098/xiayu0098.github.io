@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-31T22:49:36.000Z</updated>
+  <updated>2022-08-10T14:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Matlab Tips</title>
+    <link href="http://yoursite.com/2022/08/15/Matlab-Tips/"/>
+    <id>http://yoursite.com/2022/08/15/Matlab-Tips/</id>
+    <published>2022-08-14T22:47:41.000Z</published>
+    <updated>2022-08-10T14:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Compute the running time of a function all&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;p&gt;Create a function that take optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
+    
+    
+    
+    
+    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
+    
+  </entry>
   
   <entry>
     <title>PowerPoint</title>
@@ -97,29 +120,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Matlab Tips</title>
-    <link href="http://yoursite.com/2020/01/26/Matlab-Tips/"/>
-    <id>http://yoursite.com/2020/01/26/Matlab-Tips/</id>
-    <published>2020-01-25T21:47:41.000Z</published>
-    <updated>2022-08-10T14:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Compute the running time of a function all&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;p&gt;Create a function that take optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
-    
-    
-    
-    
-    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
     
   </entry>
   
