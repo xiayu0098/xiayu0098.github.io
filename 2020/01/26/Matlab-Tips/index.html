@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">487字</span>
+            <span class="post-count">489字</span>
         </span>
     </span>
 
@@ -99,23 +99,22 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
+      <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
 <li>Compute the running time of a function all</li>
 </ol>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tic; fft(<span class="built_in">rand</span>(<span class="number">500</span>)); <span class="built_in">disp</span>( [’it takes ’ num2str(toc) ’s.’] );</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li><p>Create a function that take optional arguments in a struct</p>
- <span id="more"></span> 
+ <span id="more"></span></li>
+</ol>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">y</span> = <span class="title">f</span><span class="params">(x,options)</span></span></span><br><span class="line"><span class="comment">% parse the struct</span></span><br><span class="line"><span class="keyword">if</span> nargin&lt;<span class="number">2</span></span><br><span class="line">options.null = <span class="number">0</span>; <span class="comment">% force creation of options</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span> isfield(options, ’a’)</span><br><span class="line">options.a = <span class="number">1</span>; <span class="comment">% default value</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">a = options.a;</span><br><span class="line"><span class="keyword">if</span> isfield(options, ’b’)</span><br><span class="line">options.b = <span class="number">1</span>; <span class="comment">% default value</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">b = options.b;</span><br><span class="line"><span class="comment">% Here the body of the function ...</span></span><br></pre></td></tr></table></figure>
 <p>note: nargin returns the number of function input arguments given in the call to the currently executing function. </p>
-</li>
+<ol start="3">
 <li><p>Use <strong>varargin</strong>  in function e.g. as following. A single function to generate two-dimensional (2D) line graphs, avoiding a long list of code for the generation of each graphic.</p>
 <p><strong>PlotSet</strong> generates 2D plots, including multiple plots on a page. This code processes <strong>varargin</strong> as<br>parameter pairs to set options. This makes it easy to expand the options. You can look for more information in the following book.</p>
 <p>Paluszek, M., and S. Thomas. <em>MATLAB Machine Learning</em>. Apress, 2016. <a target="_blank" rel="noopener" href="https://books.google.com.au/books?id=jy75vQAACAAJ">https://books.google.com.au/books?id=jy75vQAACAAJ</a>.</p>
 </li>
-</ol>
-<ol start="4">
 <li><p>Write a function fun(a,b,c) that can take an arbitrary number of arguments</p>
  <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(args)</span></span></span><br><span class="line">default_values = &#123;<span class="number">0.1246</span>,<span class="number">1.2346</span>,<span class="number">8.7643</span>&#125;;</span><br><span class="line">args_present = <span class="built_in">cellfun</span>(@<span class="built_in">isempty</span>,args);</span><br><span class="line">default_values(args_present) = args(args_present);</span><br><span class="line">[a b c] = deal(default_values);</span><br></pre></td></tr></table></figure>
 </li>
@@ -123,17 +122,14 @@
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[M,I]         = <span class="built_in">min</span>(objMatrice); <span class="comment">% &#x27;objMatrice&#x27; is the objective matrix</span></span><br><span class="line">[Irow,Icol]   = <span class="built_in">ind2sub</span>(<span class="built_in">size</span>(objMatrice),I);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Sort ascending filenames based on number</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sFile = dir([dir1 <span class="string">&#x27;temp*.mat&#x27;</span>]);</span><br><span class="line"><span class="comment">%%% sort ascending filenames based on Number</span></span><br><span class="line">[~, reindex] = ...</span><br><span class="line">       <span class="built_in">sort</span>(str2double(regexp( &#123;sFile.name&#125;, <span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;match&#x27;</span>, <span class="string">&#x27;once&#x27;</span> )));</span><br><span class="line">sFile        = sFile(reindex) ;</span><br></pre></td></tr></table></figure>
-
-
-</li>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sFile = dir([dir1 <span class="string">&#x27;temp*.mat&#x27;</span>]);</span><br><span class="line"><span class="comment">%%% sort ascending filenames based on Number</span></span><br><span class="line">[~, reindex] = ...</span><br><span class="line">       <span class="built_in">sort</span>(str2double(regexp( &#123;sFile.name&#125;, <span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;match&#x27;</span>, <span class="string">&#x27;once&#x27;</span> )));</span><br><span class="line">sFile        = sFile(reindex) ;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="Input-Output-tips"><a href="#Input-Output-tips" class="headerlink" title="Input/Output tips"></a>Input/Output tips</h2><ol>
+<h2 id="Input-x2F-Output-tips"><a href="#Input-x2F-Output-tips" class="headerlink" title="Input&#x2F;Output tips"></a>Input&#x2F;Output tips</h2><ol>
 <li>Create a graphical waitbar</li>
 </ol>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">100</span>;</span><br><span class="line">h = waitbar(<span class="number">0</span>,’Waiting ...’);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">waitbar(<span class="built_in">i</span>/n);</span><br><span class="line"><span class="comment">% here perform some stuff</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">close(h);</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>Writing/Reading to a text file a list of 3-uplets.</li>
+<li>Writing&#x2F;Reading to a text file a list of 3-uplets.</li>
 </ol>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% A is a matrix with 3 rows.</span></span><br><span class="line">fid = fopen(filename,’wt’);</span><br><span class="line">fprintf(fid, ’<span class="comment">%f %f %f\n’, A);</span></span><br><span class="line">fclose(fid); <span class="comment">% Retrieving the values back from file to matrix B.</span></span><br><span class="line">fid = fopen(filename,’r’);</span><br><span class="line">[B,cnt] = fscanf(fid,’<span class="comment">%f %f %f’);</span></span><br></pre></td></tr></table></figure>
 <h2 id="Mathematical-Tips"><a href="#Mathematical-Tips" class="headerlink" title="Mathematical Tips"></a>Mathematical Tips</h2><ol>
