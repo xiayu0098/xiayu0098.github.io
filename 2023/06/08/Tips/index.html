@@ -53,8 +53,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/29/Tips/" class="article-date">
-  <time datetime="2020-03-29T02:27:08.000Z" itemprop="datePublished">2020-03-29</time>
+      <a href="/2023/06/08/Tips/" class="article-date">
+  <time datetime="2023-06-08T03:27:08.000Z" itemprop="datePublished">2023-06-08</time>
 </a>
       
       
@@ -102,7 +102,7 @@
       <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h3 id="Using-braces-to-label-parts-of-an-equation"><a href="#Using-braces-to-label-parts-of-an-equation" class="headerlink" title="Using braces to label parts of an equation"></a>Using braces to label parts of an equation</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\[\Theta^+ = \underbrace&#123;\int_0^&#123;z_&#123;crit&#125;^+&#125;\frac&#123;dz^+&#125;&#123;1/Pr +\alpha_t/\nu&#125;&#125;_&#123;\Romannum&#123;1&#125;&#125; + \underbrace&#123;\int_&#123;z_&#123;crit&#125;^+&#125;^&#123;z^+&#125;\frac&#123;dz^+&#125;&#123;1/Pr +\alpha_t/\nu&#125;&#125;_&#123;\Romannum&#123;2&#125;&#125;\]</span><br></pre></td></tr></table></figure>
 
 <figure>
-    <img src="/2020/03/29/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
+    <img src="/2023/06/08/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
 </figure>
 
 
@@ -123,14 +123,14 @@
 
 <h3 id="Two-statements-using-curly-brace-in-an-equation"><a href="#Two-statements-using-curly-brace-in-an-equation" class="headerlink" title="Two statements using curly brace in an equation"></a>Two statements using curly brace in an equation</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;equation&#125;</span><br><span class="line">  f(x)=\begin&#123;cases&#125;</span><br><span class="line">    1, &amp; \text&#123;if $x&lt;0$&#125;.\\</span><br><span class="line">    0, &amp; \text&#123;otherwise&#125;.</span><br><span class="line">  \end&#123;cases&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2020/03/29/Tips/eqn1.png" style="width:400px; text-align:center" alt="equation format" title="title">
+    <img src="/2023/06/08/Tips/eqn1.png" style="width:400px; text-align:center" alt="equation format" title="title">
 </figure>
 
 
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">This is your only binary choices</span><br><span class="line">\begin&#123;math&#125;</span><br><span class="line">  \left\&#123;</span><br><span class="line">    \begin&#123;array&#125;&#123;l&#125;</span><br><span class="line">      0\\</span><br><span class="line">      1</span><br><span class="line">    \end&#123;array&#125;</span><br><span class="line">  \right.</span><br><span class="line">\end&#123;math&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2020/03/29/Tips/eqn2.png" style="width:400px; text-align:center" alt="equation format 2" title="title">
+    <img src="/2023/06/08/Tips/eqn2.png" style="width:400px; text-align:center" alt="equation format 2" title="title">
 </figure>
 
 <h3 id="Get-information-of-LaTex-template-through-command"><a href="#Get-information-of-LaTex-template-through-command" class="headerlink" title="Get information of LaTex template through command"></a>Get information of LaTex template through command</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\makeatletter</span><br><span class="line">\newcommand\thefont&#123;\expandafter\string\the\font&#125;</span><br><span class="line">\makeatother</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\thefont % check all attributes of font</span><br><span class="line">\the\columnwidth % check column width</span><br><span class="line">\the\textwidth   % check text width</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
@@ -156,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/29/Tips/" data-id="climr5iw5000cp00bf2x9066f"
+      <a data-url="http://yoursite.com/2023/06/08/Tips/" data-id="climr5iw5000cp00bf2x9066f"
         class="article-share-link">share</a>
       
     </footer>
@@ -167,19 +167,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/06/01/Powerpoint/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            PowerPoint
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/14/Git-notes/" class="article-nav-link">
+      <a href="/2022/08/15/Matlab-Tips/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Git notes</div>
+        <div class="article-nav-title">Matlab Tips</div>
       </a>
     
   </nav>
