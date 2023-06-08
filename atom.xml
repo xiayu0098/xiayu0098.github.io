@@ -83,7 +83,8 @@
     
     
     <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt; &lt;p&gt;Fatal: refusing to merge unrelated histories&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;input disabled type=&quot;checkbox&quot;&gt; 
+Fatal: refusing to merge unrelated histories&lt;/p&gt;
 &lt;p&gt;using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
     
     
@@ -148,7 +149,7 @@
     
       
       
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
+    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
 </summary>
       
     
