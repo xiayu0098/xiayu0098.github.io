@@ -24,10 +24,13 @@
     <updated>2023-07-23T14:00:00.000Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a hre</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Compute the running time of a function all&lt;/p&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Locate the indice of minimum value in a matrice&lt;/p&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[M,I]         = &lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(objMatrice(:)); &lt;span class=&quot;comment&quot;&gt;% &amp;#x27;objMatrice&amp;#x27; is the objective matrix&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Irow,Icol]   = &lt;span class=&quot;built_in&quot;&gt;ind2sub&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;size&lt;/span&gt;(objMatrice),I);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
