@@ -18,16 +18,16 @@
   
   <entry>
     <title>Latex Tips</title>
-    <link href="http://yoursite.com/2023/06/08/Tips/"/>
-    <id>http://yoursite.com/2023/06/08/Tips/</id>
-    <published>2023-06-08T03:27:08.000Z</published>
+    <link href="http://yoursite.com/2023/06/09/Tips/"/>
+    <id>http://yoursite.com/2023/06/09/Tips/</id>
+    <published>2023-06-09T03:27:08.000Z</published>
     <updated>2023-06-07T14:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;figure&gt;
-    &lt;img src=&quot;/2023/06/08/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
+    &lt;img src=&quot;/2023/06/09/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
 &lt;/figure&gt;</summary>
     
     
@@ -36,11 +36,11 @@
   </entry>
   
   <entry>
-    <title>Matlab Tips</title>
+    <title>MATLAB Tips</title>
     <link href="http://yoursite.com/2022/08/15/Matlab-Tips/"/>
     <id>http://yoursite.com/2022/08/15/Matlab-Tips/</id>
     <published>2022-08-14T22:47:41.000Z</published>
-    <updated>2022-12-28T13:00:00.000Z</updated>
+    <updated>2023-07-23T14:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
@@ -49,7 +49,29 @@
 &lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;p&gt;Create a function that take optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
+&lt;li&gt;&lt;p&gt;Locate the indice of minimum value in a matrice&lt;/p&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[M,I]         = &lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(objMatrice(:)); &lt;span class=&quot;comment&quot;&gt;% &amp;#x27;objMatrice&amp;#x27; is the objective matrix&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Irow,Icol]   = &lt;span class=&quot;built_in&quot;&gt;ind2sub&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;size&lt;/span&gt;(objMatrice),I);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sort ascending filenames based on number&lt;/p&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sFile = dir([dir1 &lt;span class=&quot;string&quot;&gt;&amp;#x27;temp*.mat&amp;#x27;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;%%% sort ascending filenames based on Number&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[~, reindex] = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;built_in&quot;&gt;sort&lt;/span&gt;(str2double(regexp( &amp;#123;sFile.name&amp;#125;, &lt;span class=&quot;string&quot;&gt;&amp;#x27;\d+&amp;#x27;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;#x27;match&amp;#x27;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;#x27;once&amp;#x27;&lt;/span&gt; )));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sFile        = sFile(reindex) ;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Writing&amp;#x2F;Reading to a text file a list of 3-uplets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;% A is a matrix with 3 rows.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fid = fopen(filename,’wt’);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fprintf(fid, ’&lt;span class=&quot;comment&quot;&gt;%f %f %f\n’, A);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fclose(fid); &lt;span class=&quot;comment&quot;&gt;% Retrieving the values back from file to matrix B.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fid = fopen(filename,’r’);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[B,cnt] = fscanf(fid,’&lt;span class=&quot;comment&quot;&gt;%f %f %f’);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Create a graphical waitbar&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;n = &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;h = waitbar(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,’Waiting ...’);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;i&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;waitbar(&lt;span class=&quot;built_in&quot;&gt;i&lt;/span&gt;/n);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;% here perform some stuff&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;close(h);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Loading issue &lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    load(&lt;span class=&quot;string&quot;&gt;&amp;#x27;xxx.mat&amp;#x27;&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;% x&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    datatemp = matfile(&lt;span class=&quot;string&quot;&gt;&amp;#x27;xxx.mat&amp;#x27;&lt;/span&gt;);  &lt;span class=&quot;comment&quot;&gt;% x&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    data     = datatemp.x;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;Sub-function-Tricks&quot;&gt;&lt;a href=&quot;#Sub-function-Tricks&quot; class=&quot;headerlink&quot; title=&quot;Sub-function Tricks&quot;&gt;&lt;/a&gt;Sub-function Tricks&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create a sub-function that takes optional arguments in a struct&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
     
     
     

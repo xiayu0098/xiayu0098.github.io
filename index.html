@@ -70,7 +70,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2023/06/08/Tips/"
+  <a class="article-title" href="/2023/06/09/Tips/"
     >Latex Tips</a
   >
 </h2>
@@ -81,8 +81,8 @@
 
     
     <div class="article-meta">
-      <a href="/2023/06/08/Tips/" class="article-date">
-  <time datetime="2023-06-08T03:27:08.000Z" itemprop="datePublished">2023-06-08</time>
+      <a href="/2023/06/09/Tips/" class="article-date">
+  <time datetime="2023-06-09T03:27:08.000Z" itemprop="datePublished">2023-06-09</time>
 </a>
       
       
@@ -103,17 +103,17 @@
       <h3 id="Using-braces-to-label-parts-of-an-equation"><a href="#Using-braces-to-label-parts-of-an-equation" class="headerlink" title="Using braces to label parts of an equation"></a>Using braces to label parts of an equation</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\[\Theta^+ = \underbrace&#123;\int_0^&#123;z_&#123;crit&#125;^+&#125;\frac&#123;dz^+&#125;&#123;1/Pr +\alpha_t/\nu&#125;&#125;_&#123;\Romannum&#123;1&#125;&#125; + \underbrace&#123;\int_&#123;z_&#123;crit&#125;^+&#125;^&#123;z^+&#125;\frac&#123;dz^+&#125;&#123;1/Pr +\alpha_t/\nu&#125;&#125;_&#123;\Romannum&#123;2&#125;&#125;\]</span><br></pre></td></tr></table></figure>
 
 <figure>
-    <img src="/2023/06/08/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
+    <img src="/2023/06/09/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
 </figure>
       
-      <a class="article-more-link" href="/2023/06/08/Tips/">read more...</a>
+      <a class="article-more-link" href="/2023/06/09/Tips/">read more...</a>
       
       
       <!-- 打赏 -->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2023/06/08/Tips/" data-id="climr5iw5000cp00bf2x9066f"
+      <a data-url="http://yoursite.com/2023/06/09/Tips/" data-id="clkg59g38000crt0bd0077ygf"
         class="article-share-link">share</a>
       
     </footer>
@@ -139,7 +139,7 @@
        
 <h2 itemprop="name">
   <a class="article-title" href="/2022/08/15/Matlab-Tips/"
-    >Matlab Tips</a
+    >MATLAB Tips</a
   >
 </h2>
   
@@ -174,7 +174,29 @@
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tic; fft(<span class="built_in">rand</span>(<span class="number">500</span>)); <span class="built_in">disp</span>( [’it takes ’ num2str(toc) ’s.’] );</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
-<li><p>Create a function that take optional arguments in a struct</p></li></ol>
+<li><p>Locate the indice of minimum value in a matrice</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[M,I]         = <span class="built_in">min</span>(objMatrice(:)); <span class="comment">% &#x27;objMatrice&#x27; is the objective matrix</span></span><br><span class="line">[Irow,Icol]   = <span class="built_in">ind2sub</span>(<span class="built_in">size</span>(objMatrice),I);</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>Sort ascending filenames based on number</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sFile = dir([dir1 <span class="string">&#x27;temp*.mat&#x27;</span>]);</span><br><span class="line"><span class="comment">%%% sort ascending filenames based on Number</span></span><br><span class="line">[~, reindex] = ...</span><br><span class="line">       <span class="built_in">sort</span>(str2double(regexp( &#123;sFile.name&#125;, <span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;match&#x27;</span>, <span class="string">&#x27;once&#x27;</span> )));</span><br><span class="line">sFile        = sFile(reindex) ;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>Writing&#x2F;Reading to a text file a list of 3-uplets.</p>
+</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% A is a matrix with 3 rows.</span></span><br><span class="line">fid = fopen(filename,’wt’);</span><br><span class="line">fprintf(fid, ’<span class="comment">%f %f %f\n’, A);</span></span><br><span class="line">fclose(fid); <span class="comment">% Retrieving the values back from file to matrix B.</span></span><br><span class="line">fid = fopen(filename,’r’);</span><br><span class="line">[B,cnt] = fscanf(fid,’<span class="comment">%f %f %f’);</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Create a graphical waitbar</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">100</span>;</span><br><span class="line">h = waitbar(<span class="number">0</span>,’Waiting ...’);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">waitbar(<span class="built_in">i</span>/n);</span><br><span class="line"><span class="comment">% here perform some stuff</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">close(h);</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>Loading issue <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">    load(<span class="string">&#x27;xxx.mat&#x27;</span>) <span class="comment">% x</span></span><br><span class="line"><span class="keyword">catch</span> </span><br><span class="line">    datatemp = matfile(<span class="string">&#x27;xxx.mat&#x27;</span>);  <span class="comment">% x</span></span><br><span class="line">    data     = datatemp.x;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Sub-function-Tricks"><a href="#Sub-function-Tricks" class="headerlink" title="Sub-function Tricks"></a>Sub-function Tricks</h2><ol>
+<li><p>Create a sub-function that takes optional arguments in a struct</p></li></ol>
       
       <a class="article-more-link" href="/2022/08/15/Matlab-Tips/">read more...</a>
       
@@ -183,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2022/08/15/Matlab-Tips/" data-id="climr5ivz0005p00b18a24ecn"
+      <a data-url="http://yoursite.com/2022/08/15/Matlab-Tips/" data-id="clkg59g350007rt0b8tfrhwjf"
         class="article-share-link">share</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matlab-graphics/" rel="tag">Matlab graphics</a></li></ul>
@@ -250,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/Powerpoint/" data-id="climr5iw4000ap00b3mniegtg"
+      <a data-url="http://yoursite.com/2020/06/01/Powerpoint/" data-id="clkg59g37000brt0bfzg4fwu6"
         class="article-share-link">share</a>
       
     </footer>
@@ -317,7 +339,7 @@ Fatal: refusing to merge unrelated histories</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/14/Git-notes/" data-id="climr5ivu0001p00b3h5n6ce6"
+      <a data-url="http://yoursite.com/2020/02/14/Git-notes/" data-id="clkg59g300001rt0bby7j5ake"
         class="article-share-link">share</a>
       
     </footer>
@@ -385,7 +407,7 @@ Fatal: refusing to merge unrelated histories</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/14/Zotero/" data-id="climr5iw6000dp00b1bd57fh2"
+      <a data-url="http://yoursite.com/2020/02/14/Zotero/" data-id="clkg59g38000drt0b9hdtexxo"
         class="article-share-link">share</a>
       
     </footer>
@@ -449,7 +471,7 @@ Fatal: refusing to merge unrelated histories</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/04/hello-world/" data-id="climr5iw7000ip00bhw5q85bg"
+      <a data-url="http://yoursite.com/2020/02/04/hello-world/" data-id="clkg59g39000grt0bc28e0vz5"
         class="article-share-link">share</a>
       
     </footer>
@@ -513,7 +535,7 @@ Fatal: refusing to merge unrelated histories</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/20/Inkscape-Tricks/" data-id="climr5ivx0003p00b6tdq1twc"
+      <a data-url="http://yoursite.com/2020/01/20/Inkscape-Tricks/" data-id="clkg59g330003rt0balbpe7mr"
         class="article-share-link">share</a>
       
     </footer>
@@ -575,7 +597,7 @@ Fatal: refusing to merge unrelated histories</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/" data-id="climr5iw7000gp00b0si93bhw"
+      <a data-url="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/" data-id="clkg59g3a000irt0b1bdp86ep"
         class="article-share-link">share</a>
       
     </footer>
