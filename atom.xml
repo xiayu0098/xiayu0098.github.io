@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2023-07-23T14:00:00.000Z</updated>
+  <updated>2023-06-07T14:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Latex Tips</title>
+    <link href="http://yoursite.com/2023/08/08/Tips/"/>
+    <id>http://yoursite.com/2023/08/08/Tips/</id>
+    <published>2023-08-08T03:27:08.000Z</published>
+    <updated>2023-06-07T14:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;/2023/08/08/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>MATLAB Tips</title>
@@ -36,25 +55,6 @@
     
     
     <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Latex Tips</title>
-    <link href="http://yoursite.com/2023/06/09/Tips/"/>
-    <id>http://yoursite.com/2023/06/09/Tips/</id>
-    <published>2023-06-09T03:27:08.000Z</published>
-    <updated>2023-06-07T14:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;figure&gt;
-    &lt;img src=&quot;/2023/06/09/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
-&lt;/figure&gt;</summary>
-    
-    
-    
     
   </entry>
   
