@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-01-26T14:00:00.000Z</updated>
+  <updated>2024-01-26T13:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <title>Calculator created by MATLAB</title>
     <link href="http://yoursite.com/2024/01/27/calculatorMATLABGUI/"/>
     <id>http://yoursite.com/2024/01/27/calculatorMATLABGUI/</id>
-    <published>2024-01-26T22:47:41.000Z</published>
-    <updated>2024-01-26T14:00:00.000Z</updated>
+    <published>2024-01-26T21:47:41.000Z</published>
+    <updated>2024-01-26T13:00:00.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;This is a MATLAB GUI code for a simple calculator.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;This is a MATLAB GUI code for an advanced calculator with multiple functions.&lt;/p&gt;</summary>
     
     
     
