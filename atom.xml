@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-01-26T13:00:00.000Z</updated>
+  <updated>2024-04-11T23:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flow Visualisation</title>
+    <link href="http://yoursite.com/2024/04/12/flowVisualisation/"/>
+    <id>http://yoursite.com/2024/04/12/flowVisualisation/</id>
+    <published>2024-04-11T23:00:00.000Z</published>
+    <updated>2024-04-11T23:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;img src=&quot;/2024/04/12/flowVisualisation/noActivation.png&quot; alt=&quot;Offset attaching jet flo</summary>
+      
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Calculator created by MATLAB</title>
@@ -41,7 +61,7 @@
     <updated>2023-06-07T14:00:00.000Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\[\Theta^+ = \underbrace&amp;#123;\int_0^&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;1&amp;#125;&amp;#125; + \underbrace&amp;#123;\int_&amp;#123;z_&amp;#123;crit&amp;#125;^+&amp;#125;^&amp;#123;z^+&amp;#125;\frac&amp;#123;dz^+&amp;#125;&amp;#123;1/Pr +\alpha_t/\nu&amp;#125;&amp;#125;_&amp;#123;\Romannum&amp;#123;2&amp;#125;&amp;#125;\]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight latex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;&#92;[&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;&#92;Theta&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+ = &lt;span class=&quot;keyword&quot;&gt;&#92;underbrace&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;int&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;0&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;crit&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;frac&lt;/span&gt;&amp;#123;dz&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&amp;#123;1/Pr +&lt;span class=&quot;keyword&quot;&gt;&#92;alpha&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;t/&lt;span class=&quot;keyword&quot;&gt;&#92;nu&lt;/span&gt;&amp;#125;&amp;#125;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;Romannum&lt;/span&gt;&amp;#123;1&amp;#125;&amp;#125; + &lt;span class=&quot;keyword&quot;&gt;&#92;underbrace&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;int&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;crit&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;frac&lt;/span&gt;&amp;#123;dz&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&amp;#123;1/Pr +&lt;span class=&quot;keyword&quot;&gt;&#92;alpha&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;t/&lt;span class=&quot;keyword&quot;&gt;&#92;nu&lt;/span&gt;&amp;#125;&amp;#125;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;Romannum&lt;/span&gt;&amp;#123;2&amp;#125;&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;figure&gt;
     &lt;img src=&quot;/2023/08/08/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
@@ -166,7 +186,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     
       
       
-    <summary type="html">&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
 </summary>
       
     
