@@ -55,7 +55,7 @@
   </entry>
   
   <entry>
-    <title>Guideline</title>
+    <title>Guideline &amp; Technical Document</title>
     <link href="http://yoursite.com/2024/04/20/pdfAchive/"/>
     <id>http://yoursite.com/2024/04/20/pdfAchive/</id>
     <published>2024-04-19T14:00:00.000Z</published>
@@ -64,13 +64,15 @@
     
       
       
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;a href=&quot;Stepper%20Motor_Encoder%20Controller%20Quick%20Start%20Guide.pdf&quot;&gt;Stepper Moto</summary>
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;a href=&quot;StepperMotorEncoderControllerQuickStartGuide.pdf&quot;&gt;Stepper Motor and Encoder Wi</summary>
       
     
     
     
+    <category term="Research" scheme="http://yoursite.com/categories/Research/"/>
     
-    <category term="Device guideline, technical document" scheme="http://yoursite.com/tags/Device-guideline-technical-document/"/>
+    
+    <category term="Device guideline" scheme="http://yoursite.com/tags/Device-guideline/"/>
     
   </entry>
   
