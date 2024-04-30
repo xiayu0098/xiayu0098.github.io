@@ -31,6 +31,8 @@
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
     
+    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    
   </entry>
   
   <entry>
@@ -47,6 +49,8 @@
     
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
+    
+    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
     
   </entry>
   

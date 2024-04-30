@@ -11,6 +11,9 @@
       <categories>
         <category>research</category>
       </categories>
+      <tags>
+        <tag>Arduino Code</tag>
+      </tags>
   </entry>
   <entry>
     <title>Motor/Encoder Control Code</title>
@@ -23,6 +26,9 @@
       <categories>
         <category>research</category>
       </categories>
+      <tags>
+        <tag>Arduino Code</tag>
+      </tags>
   </entry>
   <entry>
     <title>Flow Visualisation</title>
