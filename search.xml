@@ -3,7 +3,11 @@
   <entry>
     <title>Flow Visualisation</title>
     <url>/2024/04/12/flowVisualisation/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="/2024/04/12/flowVisualisation/noActivation.png" alt="Offset attaching jet flow without activation"><br><img src="/2024/04/12/flowVisualisation/upActivation40Hz.png" alt="Offset attaching jet flow with upper activation of 40 Hz"><br><img src="/2024/04/12/flowVisualisation/upActivation60Hz.png" alt="Offset attaching jet flow with upper activation of 60 Hz"></p>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="/2024/04/12/flowVisualisation/noActivation.png" alt="Offset attaching jet flow without activation"></p>
+<span id="more"></span> 
+<p><img src="/2024/04/12/flowVisualisation/upActivation40Hz.png" alt="Offset attaching jet flow with upper activation of 40 Hz"><br><img src="/2024/04/12/flowVisualisation/upActivation60Hz.png" alt="Offset attaching jet flow with upper activation of 60 Hz"></p>
+<p><img src="/2024/04/12/flowVisualisation/offsetAttachingJetWallNormalVelocityNoActivation.jpg" alt="The streamwise velocity for the offset attaching jet flow"></p>
+<p><img src="/2024/04/12/flowVisualisation/offsetAttachingJetStreamWiseVelocityNoActivation.jpg" alt="The wall-normal velocity for the offset attaching jet flow"></p>
 ]]></content>
       <categories>
         <category>research</category>
