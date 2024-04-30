@@ -53,156 +53,82 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script>#include <PWMaa.h>  //download https://code.google.com/archive/p/arduino-pwm-frequency-library/downloads
-// edit ATimerDefs.h and add '(0,0,0,0,0), // TIMER1C'  after Line 107
-// if applied to Arduino Mega 2560
-#include <PZEM004Tv30.h>  // Power meter library
-#include <math.h>
-/*
-  This code runs on mega and uno.
-*/
-PZEM004Tv30 pzemOT1(68, 69);  // power meter
+      <script src="/assets/js/APlayer.min.js"> </script><p>#include &lt;PWMaa.h&gt;  &#x2F;&#x2F;download <a target="_blank" rel="noopener" href="https://code.google.com/archive/p/arduino-pwm-frequency-library/downloads">https://code.google.com/archive/p/arduino-pwm-frequency-library/downloads</a><br>&#x2F;&#x2F; edit ATimerDefs.h and add ‘(0,0,0,0,0), &#x2F;&#x2F; TIMER1C’  after Line 107<br>&#x2F;&#x2F; if applied to Arduino Mega 2560<br>#include &lt;PZEM004Tv30.h&gt;  &#x2F;&#x2F; Power meter library<br>#include &lt;math.h&gt;<br>&#x2F;*<br>  This code runs on mega and uno.<br>*&#x2F;<br>PZEM004Tv30 pzemOT1(68, 69);  &#x2F;&#x2F; power meter </p>
+<p>float power1;<br>float voltage1;<br>float current1;<br>float factor1;</p>
+<p>float powerx;<br>int relayPin &#x3D; 8;</p>
+<p>&#x2F;&#x2F; initializ the SSRs<br>&#x2F;&#x2F;use pin 11 on the Mega instead, otherwise there is a frequency cap at 31 Hz<br>&#x2F;&#x2F;  ledTimer0  Pins 13, 4  might influence the internal clock<br>int ledTimer1 &#x3D; 5;      &#x2F;&#x2F; Pins 11, 12 16-bits timer<br>int32_t frequency &#x3D; 1;  &#x2F;&#x2F;PWM frequency (in Hz)</p>
+<p>int mark &#x3D; 0;<br>&#x2F;&#x2F; String comdata &#x3D; “”;       &#x2F;&#x2F; initialize input string<br>int numdata[2] &#x3D; { 0 };<br>float DutyCircle;<br>const byte numChars &#x3D; 32;<br>char comdata[numChars];</p>
+<p>boolean newData &#x3D; false;</p>
+<p>void setup() {<br>  &#x2F;&#x2F;initialize all timers except for 0, to save time keeping functions<br>  InitTimersSafe();<br>  digitalWrite(relayPin, LOW);<br>  &#x2F;&#x2F;sets the frequency for the specified pin<br>  bool success1 &#x3D; SetPinFrequencySafe(ledTimer1, frequency);<br>  Serial.begin(115200);  &#x2F;&#x2F; set up communication<br>  Serial.println(“Power box”);<br>}</p>
+<p>void loop() {<br>  int j &#x3D; 0;<br>  while (!Serial) {<br>    ;  &#x2F;&#x2F; wait for serial port to connect. Needed for native USB<br>  }<br>  recvWithStartEndMarkers();<br>  if (newData &#x3D;&#x3D; true) {<br>    if (comdata[0] &#x3D;&#x3D; ‘F’) {<br>      pwmWrite(ledTimer1, 0);  &#x2F;&#x2F; change the duty circle<br>      &#x2F;&#x2F; digitalWrite(relayPin,LOW);<br>      delay(10);<br>      mark &#x3D; 0;<br>      &#x2F;&#x2F; comdata &#x3D; String(“”);<br>    }<br>    if (comdata[0] &#x3D;&#x3D; ‘P’ &amp;&amp; comdata[1] &#x3D;&#x3D; ‘W’) {<br>      Serial.println(“power reading”);<br>      powerx &#x3D; pzemOT1.power();<br>      &#x2F;&#x2F;    voltage1 &#x3D; pzemOT1.voltage();<br>      &#x2F;&#x2F;    current1 &#x3D; pzemOT1.current();<br>      &#x2F;&#x2F;    power1 &#x3D; voltage1 * current1;<br>      power1 &#x3D; pzemOT1.power();<br>      &#x2F;&#x2F;    factor1 &#x3D; pzemOT1.powerfactor();<br>      if (!isnan(power1)) {<br>        &#x2F;&#x2F;        Serial.print(“1: “);<br>        Serial.print(power1);<br>        Serial.println();<br>      } else {</p>
+<pre><code>    Serial.println(&quot;1: OFF&quot;);
+    // Serial.print(voltage1); Serial.println();
+    // Serial.print(current1); Serial.println();
+  &#125;
+  mark = 0;
+&#125;
 
-float power1;
-float voltage1;
-float current1;
-float factor1;
+if (mark == 1) &#123;
+  int condit = strlen(comdata);  //.length() - 1;
+  // convert input characters
+  for (int i = 0; i &lt; condit; i++) &#123;
+    if (comdata[i] == &#39;,&#39;) &#123;
+      j++;
+    &#125; else &#123;
+      numdata[j] = numdata[j] * 10 + (int(comdata[i]) - &#39;0&#39;);
+    &#125;
+  &#125;
+  pwmWrite(numdata[0], numdata[1]);  // change the duty circle
+  DutyCircle = float(numdata[1]) / 255 * 100;
+  //Serial.println(DutyCircle);
+  //Serial.println(numdata[1]);
+  for (int i = 0; i &lt; 2; i++) &#123;
+    // Serial.println(numdata[i], DEC);
+    numdata[i] = 0;
+  &#125;
+  // Serial.println(DutyCircle,DEC);
+  //     comdata = String(&quot;&quot;);
+  mark = 0;
+&#125;
 
-float powerx;
-int relayPin = 8;
+if (comdata[0] == &#39;S&#39; &amp;&amp; comdata[1] == &#39;O&#39;) &#123;
+  Serial.println(&quot;Relay On&quot;);
+  digitalWrite(relayPin, HIGH);
+  mark = 0;
+&#125;
 
-// initializ the SSRs
-//use pin 11 on the Mega instead, otherwise there is a frequency cap at 31 Hz
-//  ledTimer0  Pins 13, 4  might influence the internal clock
-int ledTimer1 = 5;      // Pins 11, 12 16-bits timer
-int32_t frequency = 1;  //PWM frequency (in Hz)
-
-int mark = 0;
-// String comdata = "";       // initialize input string
-int numdata[2] = { 0 };
-float DutyCircle;
-const byte numChars = 32;
-char comdata[numChars];
-
-boolean newData = false;
-
-void setup() {
-  //initialize all timers except for 0, to save time keeping functions
-  InitTimersSafe();
+if (comdata[0] == &#39;S&#39; &amp;&amp; comdata[1] == &#39;F&#39;) &#123;
+  Serial.println(&quot;Relay Off&quot;);
   digitalWrite(relayPin, LOW);
-  //sets the frequency for the specified pin
-  bool success1 = SetPinFrequencySafe(ledTimer1, frequency);
-  Serial.begin(115200);  // set up communication
-  Serial.println("Power box");
-}
+  mark = 0;
+&#125;
+newData = false;
+</code></pre>
+<p>  }<br>}</p>
+<p>void recvWithStartEndMarkers() {<br>  static boolean recvInProgress &#x3D; false;<br>  static byte ndx &#x3D; 0;<br>  char startMarker &#x3D; ‘&lt;’;<br>  char endMarker &#x3D; ‘&gt;’;<br>  char rc;</p>
+<p>  &#x2F;&#x2F; if (Serial.available() &gt; 0) {<br>  while (Serial.available() &gt; 0 &amp;&amp; newData &#x3D;&#x3D; false) {<br>    rc &#x3D; Serial.read();<br>    delay(2);</p>
+<pre><code>if (recvInProgress == true) &#123;
+  if (rc != endMarker) &#123;
+    comdata[ndx] = rc;
+    ndx++;
+    if (ndx &gt;= numChars) &#123;
+      ndx = numChars - 1;
+    &#125;
+  &#125; else &#123;
+    comdata[ndx] = &#39;\0&#39;;  // terminate the string
+    recvInProgress = false;
+    ndx = 0;
+    newData = true;
+  &#125;
+&#125;
 
-void loop() {
-  int j = 0;
-  while (!Serial) {
-    ;  // wait for serial port to connect. Needed for native USB
-  }
-  recvWithStartEndMarkers();
-  if (newData == true) {
-    if (comdata[0] == 'F') {
-      pwmWrite(ledTimer1, 0);  // change the duty circle
-      // digitalWrite(relayPin,LOW);
-      delay(10);
-      mark = 0;
-      // comdata = String("");
-    }
-    if (comdata[0] == 'P' && comdata[1] == 'W') {
-      Serial.println("power reading");
-      powerx = pzemOT1.power();
-      //    voltage1 = pzemOT1.voltage();
-      //    current1 = pzemOT1.current();
-      //    power1 = voltage1 * current1;
-      power1 = pzemOT1.power();
-      //    factor1 = pzemOT1.powerfactor();
-      if (!isnan(power1)) {
-        //        Serial.print("1: ");
-        Serial.print(power1);
-        Serial.println();
-      } else {
+else if (rc == startMarker) &#123;
+  recvInProgress = true;
+&#125;
+</code></pre>
+<p>  }<br>  mark &#x3D; 1;<br>}</p>
+<p>&#x2F;&#x2F;</p>
 
-        Serial.println("1: OFF");
-        // Serial.print(voltage1); Serial.println();
-        // Serial.print(current1); Serial.println();
-      }
-      mark = 0;
-    }
-
-    if (mark == 1) {
-      int condit = strlen(comdata);  //.length() - 1;
-      // convert input characters
-      for (int i = 0; i < condit; i++) {
-        if (comdata[i] == ',') {
-          j++;
-        } else {
-          numdata[j] = numdata[j] * 10 + (int(comdata[i]) - '0');
-        }
-      }
-      pwmWrite(numdata[0], numdata[1]);  // change the duty circle
-      DutyCircle = float(numdata[1]) / 255 * 100;
-      //Serial.println(DutyCircle);
-      //Serial.println(numdata[1]);
-      for (int i = 0; i < 2; i++) {
-        // Serial.println(numdata[i], DEC);
-        numdata[i] = 0;
-      }
-      // Serial.println(DutyCircle,DEC);
-      //     comdata = String("");
-      mark = 0;
-    }
-
-    if (comdata[0] == 'S' && comdata[1] == 'O') {
-      Serial.println("Relay On");
-      digitalWrite(relayPin, HIGH);
-      mark = 0;
-    }
-
-    if (comdata[0] == 'S' && comdata[1] == 'F') {
-      Serial.println("Relay Off");
-      digitalWrite(relayPin, LOW);
-      mark = 0;
-    }
-    newData = false;
-  }
-}
-
-
-
-void recvWithStartEndMarkers() {
-  static boolean recvInProgress = false;
-  static byte ndx = 0;
-  char startMarker = '<'; char endmarker=">" ; rc; if (serial.available()> 0) {
-  while (Serial.available() > 0 && newData == false) {
-    rc = Serial.read();
-    delay(2);
-
-    if (recvInProgress == true) {
-      if (rc != endMarker) {
-        comdata[ndx] = rc;
-        ndx++;
-        if (ndx >= numChars) {
-          ndx = numChars - 1;
-        }
-      } else {
-        comdata[ndx] = '\0';  // terminate the string
-        recvInProgress = false;
-        ndx = 0;
-        newData = true;
-      }
-    }
-
-    else if (rc == startMarker) {
-      recvInProgress = true;
-    }
-  }
-  mark = 1;
-}
-
-//
-</';></math.h></PZEM004Tv30.h></PWMaa.h>
       
       <!-- 打赏 -->
       
@@ -212,7 +138,7 @@ void recvWithStartEndMarkers() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/powerBoxControl20240430.html" data-id="clvma1j5p00007o0bapio6mr7"
+      <a data-url="http://yoursite.com/powerBoxControl20240430.ino.html" data-id="clvmag3c00000i60bdf992r9x"
         class="article-share-link">share</a>
       
     </footer>
