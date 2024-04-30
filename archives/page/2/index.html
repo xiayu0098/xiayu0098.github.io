@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     Florian&#39;s Blog
+    Archives |  Florian&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,177 +36,56 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="page-" class="article article-type-page" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
+  <article class="articles">
     
-
     
-
+    <h1 class="page-type-title">Archives</h1>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <script src="/assets/js/APlayer.min.js"> </script><p>#include &lt;PWMaa.h&gt;  &#x2F;&#x2F;download <a target="_blank" rel="noopener" href="https://code.google.com/archive/p/arduino-pwm-frequency-library/downloads">https://code.google.com/archive/p/arduino-pwm-frequency-library/downloads</a><br>&#x2F;&#x2F; edit ATimerDefs.h and add ‘(0,0,0,0,0), &#x2F;&#x2F; TIMER1C’  after Line 107<br>&#x2F;&#x2F; if applied to Arduino Mega 2560<br>#include &lt;PZEM004Tv30.h&gt;  &#x2F;&#x2F; Power meter library<br>#include &lt;math.h&gt;<br>&#x2F;*<br>  This code runs on mega and uno.<br>*&#x2F;<br>PZEM004Tv30 pzemOT1(68, 69);  &#x2F;&#x2F; power meter </p>
-<p>float power1;<br>float voltage1;<br>float current1;<br>float factor1;</p>
-<p>float powerx;<br>int relayPin &#x3D; 8;</p>
-<p>&#x2F;&#x2F; initializ the SSRs<br>&#x2F;&#x2F;use pin 11 on the Mega instead, otherwise there is a frequency cap at 31 Hz<br>&#x2F;&#x2F;  ledTimer0  Pins 13, 4  might influence the internal clock<br>int ledTimer1 &#x3D; 5;      &#x2F;&#x2F; Pins 11, 12 16-bits timer<br>int32_t frequency &#x3D; 1;  &#x2F;&#x2F;PWM frequency (in Hz)</p>
-<p>int mark &#x3D; 0;<br>&#x2F;&#x2F; String comdata &#x3D; “”;       &#x2F;&#x2F; initialize input string<br>int numdata[2] &#x3D; { 0 };<br>float DutyCircle;<br>const byte numChars &#x3D; 32;<br>char comdata[numChars];</p>
-<p>boolean newData &#x3D; false;</p>
-<p>void setup() {<br>  &#x2F;&#x2F;initialize all timers except for 0, to save time keeping functions<br>  InitTimersSafe();<br>  digitalWrite(relayPin, LOW);<br>  &#x2F;&#x2F;sets the frequency for the specified pin<br>  bool success1 &#x3D; SetPinFrequencySafe(ledTimer1, frequency);<br>  Serial.begin(115200);  &#x2F;&#x2F; set up communication<br>  Serial.println(“Power box”);<br>}</p>
-<p>void loop() {<br>  int j &#x3D; 0;<br>  while (!Serial) {<br>    ;  &#x2F;&#x2F; wait for serial port to connect. Needed for native USB<br>  }<br>  recvWithStartEndMarkers();<br>  if (newData &#x3D;&#x3D; true) {<br>    if (comdata[0] &#x3D;&#x3D; ‘F’) {<br>      pwmWrite(ledTimer1, 0);  &#x2F;&#x2F; change the duty circle<br>      &#x2F;&#x2F; digitalWrite(relayPin,LOW);<br>      delay(10);<br>      mark &#x3D; 0;<br>      &#x2F;&#x2F; comdata &#x3D; String(“”);<br>    }<br>    if (comdata[0] &#x3D;&#x3D; ‘P’ &amp;&amp; comdata[1] &#x3D;&#x3D; ‘W’) {<br>      Serial.println(“power reading”);<br>      powerx &#x3D; pzemOT1.power();<br>      &#x2F;&#x2F;    voltage1 &#x3D; pzemOT1.voltage();<br>      &#x2F;&#x2F;    current1 &#x3D; pzemOT1.current();<br>      &#x2F;&#x2F;    power1 &#x3D; voltage1 * current1;<br>      power1 &#x3D; pzemOT1.power();<br>      &#x2F;&#x2F;    factor1 &#x3D; pzemOT1.powerfactor();<br>      if (!isnan(power1)) {<br>        &#x2F;&#x2F;        Serial.print(“1: “);<br>        Serial.print(power1);<br>        Serial.println();<br>      } else {</p>
-<pre><code>    Serial.println(&quot;1: OFF&quot;);
-    // Serial.print(voltage1); Serial.println();
-    // Serial.print(current1); Serial.println();
-  &#125;
-  mark = 0;
-&#125;
-
-if (mark == 1) &#123;
-  int condit = strlen(comdata);  //.length() - 1;
-  // convert input characters
-  for (int i = 0; i &lt; condit; i++) &#123;
-    if (comdata[i] == &#39;,&#39;) &#123;
-      j++;
-    &#125; else &#123;
-      numdata[j] = numdata[j] * 10 + (int(comdata[i]) - &#39;0&#39;);
-    &#125;
-  &#125;
-  pwmWrite(numdata[0], numdata[1]);  // change the duty circle
-  DutyCircle = float(numdata[1]) / 255 * 100;
-  //Serial.println(DutyCircle);
-  //Serial.println(numdata[1]);
-  for (int i = 0; i &lt; 2; i++) &#123;
-    // Serial.println(numdata[i], DEC);
-    numdata[i] = 0;
-  &#125;
-  // Serial.println(DutyCircle,DEC);
-  //     comdata = String(&quot;&quot;);
-  mark = 0;
-&#125;
-
-if (comdata[0] == &#39;S&#39; &amp;&amp; comdata[1] == &#39;O&#39;) &#123;
-  Serial.println(&quot;Relay On&quot;);
-  digitalWrite(relayPin, HIGH);
-  mark = 0;
-&#125;
-
-if (comdata[0] == &#39;S&#39; &amp;&amp; comdata[1] == &#39;F&#39;) &#123;
-  Serial.println(&quot;Relay Off&quot;);
-  digitalWrite(relayPin, LOW);
-  mark = 0;
-&#125;
-newData = false;
-</code></pre>
-<p>  }<br>}</p>
-<p>void recvWithStartEndMarkers() {<br>  static boolean recvInProgress &#x3D; false;<br>  static byte ndx &#x3D; 0;<br>  char startMarker &#x3D; ‘&lt;’;<br>  char endMarker &#x3D; ‘&gt;’;<br>  char rc;</p>
-<p>  &#x2F;&#x2F; if (Serial.available() &gt; 0) {<br>  while (Serial.available() &gt; 0 &amp;&amp; newData &#x3D;&#x3D; false) {<br>    rc &#x3D; Serial.read();<br>    delay(2);</p>
-<pre><code>if (recvInProgress == true) &#123;
-  if (rc != endMarker) &#123;
-    comdata[ndx] = rc;
-    ndx++;
-    if (ndx &gt;= numChars) &#123;
-      ndx = numChars - 1;
-    &#125;
-  &#125; else &#123;
-    comdata[ndx] = &#39;\0&#39;;  // terminate the string
-    recvInProgress = false;
-    ndx = 0;
-    newData = true;
-  &#125;
-&#125;
-
-else if (rc == startMarker) &#123;
-  recvInProgress = true;
-&#125;
-</code></pre>
-<p>  }<br>  mark &#x3D; 1;<br>}</p>
-<p>&#x2F;&#x2F;</p>
-
-      
-      <!-- 打赏 -->
-      
-      <div id="reward-btn">
-        打赏
-      </div>
-      
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2020" class="archive-year">2020</a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/powerBoxControl20240430.ino.html" data-id="clvmag3c00000i60bdf992r9x"
-        class="article-share-link">share</a>
+    <div class="archives">
       
-    </footer>
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/" class="archive-article-date">
+  <time datetime="2020-01-19T02:00:11.000Z" itemprop="datePublished">01/19</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"
+    >仅用于测试</a
+  >
+</h2>
+  
 
+    </header>
+    
+    
   </div>
-
-  
-  
-
-  
-
-  
-  
-<!-- valine评论 -->
-<div id="vcomments-box">
-    <div id="vcomments">
-    </div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        notify: false,
-        verify: '',
-        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
-        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
-        path: window.location.pathname,
-        avatar: 'mp',
-        placeholder: '给我的文章加点评论吧~',
-        recordIP: true
-    });
-    const infoEle = document.querySelector('#vcomments .info');
-    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-        infoEle.childNodes.forEach(function (item) {
-            item.parentNode.removeChild(item);
-        });
-    }
-</script>
-<style>
-    #vcomments-box {
-        padding: 5px 30px;
-    }
-
-    @media screen and (max-width: 800px) {
-        #vcomments-box {
-            padding: 5px 0px;
-        }
-    }
-
-    #vcomments-box #vcomments {
-        background-color: #fff;
-    }
-
-    .v .vlist .vcard .vh {
-        padding-right: 20px;
-    }
-
-    .v .vlist .vcard {
-        padding-left: 10px;
-    }
-</style>
-
-  
-
-  
-
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+  </nav>
+  
 </section>
       <footer class="footer">
   <div class="outer">
