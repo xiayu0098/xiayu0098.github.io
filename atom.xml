@@ -26,9 +26,31 @@
     
       
       
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;!---more---&gt;
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt; 
 
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span clas</summary>
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre</summary>
+      
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Motor/Encoder Control Code</title>
+    <link href="http://yoursite.com/2024/04/25/motorEncoderController202404/"/>
+    <id>http://yoursite.com/2024/04/25/motorEncoderController202404/</id>
+    <published>2024-04-25T00:00:00.000Z</published>
+    <updated>2024-04-25T00:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt; 
+
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre</summary>
       
     
     
