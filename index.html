@@ -104,8 +104,8 @@
       
 
       
-      <p>OVERVIEW<br>The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and<br>powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.</p>
-<p>Supported by PC based <a target="_blank" rel="noopener" href="https://www.joulefusion.com/protura4.htm">GUI Demonstration software</a> and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net.</p>
+      <p>The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.</p>
+<p>Supported by PC based <a target="_blank" rel="noopener" href="https://www.joulefusion.com/protura4.htm">GUI Demonstration software</a> and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.</p>
 <p>More details can be referred to <a href="dataSheetP201.pdf">the data sheet of P201 interface</a>.</p>
       
       <a class="article-more-link" href="/2024/07/30/P201EncoderInterface/">read more...</a>
@@ -546,78 +546,6 @@
 
 </article>
     
-    <article id="post-Matlab-Tips" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/07/24/Matlab-Tips/"
-    >MATLAB Tips</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2023/07/24/Matlab-Tips/" class="article-date">
-  <time datetime="2023-07-23T22:47:41.000Z" itemprop="datePublished">2023-07-24</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
-<li><p>Compute the running time of a function all</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tic; fft(<span class="built_in">rand</span>(<span class="number">500</span>)); <span class="built_in">disp</span>( [’it takes ’ num2str(toc) ’s.’] );</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Locate the indice of minimum value in a matrice</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[M,I]         = <span class="built_in">min</span>(objMatrice(:)); <span class="comment">% &#x27;objMatrice&#x27; is the objective matrix</span></span><br><span class="line">[Irow,Icol]   = <span class="built_in">ind2sub</span>(<span class="built_in">size</span>(objMatrice),I);</span><br></pre></td></tr></table></figure></li>
-</ol>
-      
-      <a class="article-more-link" href="/2023/07/24/Matlab-Tips/">read more...</a>
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2023/07/24/Matlab-Tips/" data-id="clytdk7hg0007j70b111zfn1k"
-        class="article-share-link">share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matlab-graphics/" rel="tag">Matlab graphics</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="communication-Powerpoint" class="article article-type-communication" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -734,6 +662,74 @@ Fatal: refusing to merge unrelated histories</p>
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2020/02/14/Git-notes/" data-id="clytdk7hc0001j70b7es15h4t"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Zotero" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/14/Zotero/"
+    >Research Assistant - Zotero</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/14/Zotero/" class="article-date">
+  <time datetime="2020-02-14T00:13:19.000Z" itemprop="datePublished">2020-02-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用<strong>author</strong>,<strong>year</strong>,<strong>title</strong>的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。</p>
+      
+      <a class="article-more-link" href="/2020/02/14/Zotero/">read more...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/14/Zotero/" data-id="clytdk7hj000dj70b3b095il1"
         class="article-share-link">share</a>
       
     </footer>

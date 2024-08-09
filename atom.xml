@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-07-31T01:58:44.988Z</updated>
+  <updated>2024-07-31T02:02:45.812Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2024/07/30/P201EncoderInterface/"/>
     <id>http://yoursite.com/2024/07/30/P201EncoderInterface/</id>
     <published>2024-07-29T14:00:00.000Z</published>
-    <updated>2024-07-31T01:58:44.988Z</updated>
+    <updated>2024-07-31T02:02:45.812Z</updated>
     
     
-    <summary type="html">&lt;p&gt;OVERVIEW&lt;br&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and&lt;br&gt;powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
-&lt;p&gt;Supported by PC based &lt;a href=&quot;https://www.joulefusion.com/protura4.htm&quot;&gt;GUI Demonstration software&lt;/a&gt; and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
+&lt;p&gt;Supported by PC based &lt;a href=&quot;https://www.joulefusion.com/protura4.htm&quot;&gt;GUI Demonstration software&lt;/a&gt; and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.&lt;/p&gt;
 &lt;p&gt;More details can be referred to &lt;a href=&quot;dataSheetP201.pdf&quot;&gt;the data sheet of P201 interface&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
@@ -151,29 +151,6 @@
   </entry>
   
   <entry>
-    <title>MATLAB Tips</title>
-    <link href="http://yoursite.com/2023/07/24/Matlab-Tips/"/>
-    <id>http://yoursite.com/2023/07/24/Matlab-Tips/</id>
-    <published>2023-07-23T22:47:41.000Z</published>
-    <updated>2023-07-23T14:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Compute the running time of a function all&lt;/p&gt;
-&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tic; fft(&lt;span class=&quot;built_in&quot;&gt;rand&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;)); &lt;span class=&quot;built_in&quot;&gt;disp&lt;/span&gt;( [’it takes ’ num2str(toc) ’s.’] );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Locate the indice of minimum value in a matrice&lt;/p&gt;
-&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[M,I]         = &lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(objMatrice(:)); &lt;span class=&quot;comment&quot;&gt;% &amp;#x27;objMatrice&amp;#x27; is the objective matrix&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Irow,Icol]   = &lt;span class=&quot;built_in&quot;&gt;ind2sub&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;size&lt;/span&gt;(objMatrice),I);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary>
-    
-    
-    
-    
-    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PowerPoint</title>
     <link href="http://yoursite.com/2020/06/01/Powerpoint/"/>
     <id>http://yoursite.com/2020/06/01/Powerpoint/</id>
@@ -233,6 +210,32 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     
     
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2020/02/04/Matlab-Tips/"/>
+    <id>http://yoursite.com/2020/02/04/Matlab-Tips/</id>
+    <published>2020-02-04T07:19:15.000Z</published>
+    <updated>2024-08-09T00:11:09.722Z</updated>
+    
+    
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true&quot;&gt;&lt;a href=&quot;#title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true&quot; class=&quot;headerlink&quot; title=&quot;title: MATLAB Tipsdate: 2023-07-24 08:47:41tags: Matlab graphicsupdated: 2023-07-24mathjax: true&quot;&gt;&lt;/a&gt;title: MATLAB Tips&lt;br&gt;date: 2023-07-24 08:47:41&lt;br&gt;tags: Matlab graphics&lt;br&gt;updated: 2023-07-24&lt;br&gt;mathjax: true&lt;/h2&gt;&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Compute the running time of a function all&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&quot;matlab&quot;&gt;tic; fft(rand(500)); disp( [’it takes ’ num2str(toc) ’s.’] );
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Locate the indice of minimum value in a matrice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&quot;matlab&quot;&gt;[M,I]         = min(objMatrice(:)); % &amp;#39;objMatrice&amp;#39; is the objective matrix
+[Irow,Icol]   = ind2sub(size(objMatrice),I);
+&lt;/code&gt;&lt;/pre&gt;</summary>
     
     
     

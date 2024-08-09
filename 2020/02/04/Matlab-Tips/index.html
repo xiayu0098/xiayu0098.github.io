@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="description" content="personal blogs" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Matlab-Tips" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/04/Matlab-Tips/" class="article-date">
+  <time datetime="2020-02-04T07:19:15.000Z" itemprop="datePublished">2020-02-04</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><hr>
+<h2 id="title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true"><a href="#title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true" class="headerlink" title="title: MATLAB Tipsdate: 2023-07-24 08:47:41tags: Matlab graphicsupdated: 2023-07-24mathjax: true"></a>title: MATLAB Tips<br>date: 2023-07-24 08:47:41<br>tags: Matlab graphics<br>updated: 2023-07-24<br>mathjax: true</h2><h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
+<li>Compute the running time of a function all</li>
+</ol>
+<pre><code class="matlab">tic; fft(rand(500)); disp( [’it takes ’ num2str(toc) ’s.’] );
+</code></pre>
+<ol start="2">
+<li>Locate the indice of minimum value in a matrice</li>
+</ol>
+<pre><code class="matlab">[M,I]         = min(objMatrice(:)); % &#39;objMatrice&#39; is the objective matrix
+[Irow,Icol]   = ind2sub(size(objMatrice),I);
+</code></pre>
+<span id="more"></span> 
+<ol start="3">
+<li>Sort ascending filenames based on number</li>
+</ol>
+<pre><code class="matlab"> sFile = dir([dir1 &#39;temp*.mat&#39;]);
+ %%% sort ascending filenames based on Number
+ [~, reindex] = ...
+        sort(str2double(regexp( &#123;sFile.name&#125;, &#39;\d+&#39;, &#39;match&#39;, &#39;once&#39; )));
+ sFile        = sFile(reindex) ;
+</code></pre>
+<ol start="4">
+<li>Writing&#x2F;Reading to a text file a list of 3-uplets.</li>
+</ol>
+<pre><code class="matlab">% A is a matrix with 3 rows.
+fid = fopen(filename,’wt’);
+fprintf(fid, ’%f %f %f\n’, A);
+fclose(fid); % Retrieving the values back from file to matrix B.
+fid = fopen(filename,’r’);
+[B,cnt] = fscanf(fid,’%f %f %f’);
+</code></pre>
+<ol start="5">
+<li>Create a graphical waitbar</li>
+</ol>
+<pre><code class="matlab">n = 100;
+h = waitbar(0,’Waiting ...’);
+for i=1:n
+waitbar(i/n);
+% here perform some stuff
+end
+close(h);
+</code></pre>
+<ol start="6">
+<li>Loading issue</li>
+</ol>
+<pre><code class="matlab">            try
+                load(&#39;xxx.mat&#39;) % x
+            catch 
+                datatemp = matfile(&#39;xxx.mat&#39;);  % x
+                data     = datatemp.x;
+            end
+</code></pre>
+<h2 id="Sub-function-Tricks"><a href="#Sub-function-Tricks" class="headerlink" title="Sub-function Tricks"></a>Sub-function Tricks</h2><ol>
+<li>Create a sub-function that takes optional arguments in a struct</li>
+</ol>
+<pre><code class="matlab">function y = f(x,options)
+% parse the struct
+if nargin&lt;2
+options.null = 0; % force creation of options
+end
+if isfield(options, ’a’)
+options.a = 1; % default value
+end
+a = options.a;
+if isfield(options, ’b’)
+options.b = 1; % default value
+end
+b = options.b;
+% Here the body of the function ...
+</code></pre>
+<p>note: nargin returns the number of function input arguments given in the call to the currently executing function. </p>
+<ol start="2">
+<li><p>Use <strong>varargin</strong>  in function e.g. as following. A single function to generate two-dimensional (2D) line graphs, avoiding a long list of code for the generation of each graphic.</p>
+<p><strong>PlotSet</strong> generates 2D plots, including multiple plots on a page. This code processes <strong>varargin</strong> as<br>parameter pairs to set options. This makes it easy to expand the options. You can look for more information in the following book.</p>
+<p>Paluszek, M., and S. Thomas. <em>MATLAB Machine Learning</em>. Apress, 2016. <a target="_blank" rel="noopener" href="https://books.google.com.au/books?id=jy75vQAACAAJ">https://books.google.com.au/books?id=jy75vQAACAAJ</a>.</p>
+</li>
+<li><p>Write a function fun(a,b,c) that can take an arbitrary number of arguments</p>
+<pre><code class="matlab">function fun(args)
+default_values = &#123;0.1246,1.2346,8.7643&#125;;
+args_present = cellfun(@isempty,args);
+default_values(args_present) = args(args_present);
+[a b c] = deal(default_values);
+</code></pre>
+</li>
+<li><p>Load a variable from a .mat file and then place that variable inside a structure with the same name</p>
+<pre><code>% Load the variable
+loadedData = load(&#39;myData.mat&#39;);  % This loads the data into a structure
+
+% Extract field names from the loaded data
+fieldNames = fieldnames(loadedData);
+
+% Loop through each variable and assign it to a new structure with the same name
+for k = 1:length(fieldNames)
+    varName = fieldNames&#123;k&#125;;
+    dataStruct.(varName) = loadedData.(varName);
+end
+% Now dataStruct has fields corresponding to the variables loaded from the .mat file
+</code></pre>
+</li>
+</ol>
+<h2 id="Mathematical-Tips"><a href="#Mathematical-Tips" class="headerlink" title="Mathematical Tips"></a>Mathematical Tips</h2><ol>
+<li>Generate n points x sampled uniformly at random on a sphere.</li>
+</ol>
+<pre><code class="matlab">% tensor product gaussian is isotropic
+x = randn(3,n);
+d = sqrt( x(1,:).ˆ2+x(2,:).ˆ2+x(2,:).ˆ2 );
+x(1,:) = x(1,:)./d;
+x(2,:) = x(2,:)./d;
+x(3,:) = x(3,:)./d;
+</code></pre>
+<ol start="2">
+<li>Keep only the n biggest coefficients of a signal x (set the others to 0).</li>
+</ol>
+<pre><code class="matlab">[tmp,I] = sort(abs(x(:))); x( I(1:end-n) ) = 0;
+</code></pre>
+<h2 id="Plotting"><a href="#Plotting" class="headerlink" title="Plotting"></a>Plotting</h2><ol>
+<li>Draw a 3D sphere.</li>
+</ol>
+<pre><code class="matlab">p = 20; % precision
+t = 0:1/(p-1):1;
+[th,ph] = meshgrid( t*pi,t*2*pi );
+x = cos(th);
+y = sin(th).*cos(ph);
+z = sin(th).*sin(ph);
+surf(x,y,z, z.*0);
+% some pretty rendering options
+shading interp; lighting gouraud;
+camlight infinite; axis square; axis off;
+</code></pre>
+<ol start="2">
+<li>Edit legend</li>
+</ol>
+<pre><code class="matlab">[hhLeg,labelhandles] = legend(ax(1),htext,&#39;location&#39;,&#39;NorthEast&#39;...
+    ,&#39;box&#39;,&#39;off&#39;,&#39;Interpreter&#39;,&#39;LaTex&#39;,&#39;FontSize&#39;,fS);
+% hhLeg.ItemTokenSize =[20 18];
+labelhandles(5).LineStyle = &#39;-&#39;;
+labelhandles(4).XData = [0.24 0.37];
+labelhandles(5).XData = labelhandles(4).XData;
+labelhandles(4).YData = labelhandles(4).YData + 0.07;
+labelhandles(5).YData = labelhandles(4).YData - 0.14;
+labelhandles(5).Color = col2(1,:);
+</code></pre>
+<ol start="3">
+<li>Copy all properties for Axes</li>
+</ol>
+<pre><code class="matlab">ax(2) = axes(&#39;Position&#39;,ax(1).Position ...
+                       ,&#39;OuterPosition&#39;,ax(1).OuterPosition ...
+                       ,&#39;InnerPosition&#39;,ax(1).InnerPosition ...
+                       ,&#39;ActivePositionProperty&#39;,ax(1).ActivePositionProperty...
+                       ,&#39;ALim&#39;,ax(1).ALim...
+                       ,&#39;ALimMode&#39;,ax(1).ALimMode...
+                       ,&#39;color&#39;,&#39;none&#39;...
+                       ,&#39;xtick&#39;,[],&#39;ytick&#39;,[],&#39;ztick&#39;,[]...
+                       ,&#39;xcolor&#39;,&#39;none&#39;,&#39;ycolor&#39;,&#39;none&#39;,&#39;zcolor&#39;,&#39;none&#39;...
+                       ,&#39;Projection&#39;,&#39;perspective&#39;...
+                       ,&#39;CameraPosition&#39;,ax(1).CameraPosition ...
+                       ,&#39;CameraPositionMode&#39;,ax(1).CameraPositionMode...
+                       ,&#39;CameraTarget&#39;,ax(1).CameraTarget...
+                       ,&#39;CameraTargetMode&#39;,ax(1).CameraTargetMode...
+                       ,&#39;CameraUpVector&#39;,ax(1).CameraUpVector...
+                       ,&#39;CameraUpVectorMode&#39;,ax(1).CameraUpVectorMode...
+                       ,&#39;CameraViewAngle&#39;,ax(1).CameraViewAngle...
+                       ,&#39;CameraViewAngleMode&#39;,ax(1).CameraViewAngleMode...
+                       ,&#39;DataAspectRatio&#39;,ax(1).DataAspectRatio...
+                       ,&#39;DataAspectRatioMode&#39;,ax(1).DataAspectRatioMode...
+                       );
+                   
+%      copyaxes(ax(1),ax(2))
+</code></pre>
+<ol start="4">
+<li>set handle in a figure invisible</li>
+</ol>
+<pre><code class="matlab">set(findall(hFig,&#39;Type&#39;,&#39;arrow&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;textbox&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;axes&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;surf&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;patch&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;Line&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;contour&#39;),&#39;visible&#39;,&#39;off&#39;)
+</code></pre>
+<ol start="5">
+<li>plot at a specific plane</li>
+</ol>
+<pre><code class="matlab">tt = hgtransform(ax(2)); % establish plane 
+% X-axis rotation matrix and Z-axis translation matrix
+Rz = makehgtform(&#39;translate&#39;,[0 y(end) 0],&#39;xrotate&#39;,1/2*pi,&#39;yrotate&#39;,-1/2*pi);
+set(tt,&#39;Matrix&#39;,Rz);  
+</code></pre>
+<ol start="6">
+<li>Two axes in one figure</li>
+</ol>
+<pre><code class="matlab">ax(1) = axes(&#39;box&#39;,&#39;on&#39;);hold(ax(1),&#39;on&#39;)
+ax(2) = axes(&#39;Position&#39;,ax(1).Position ...
+              ,&#39;color&#39;,&#39;none&#39;...
+              ,&#39;yAxisLocation&#39;,&#39;right&#39;...
+              ,&#39;box&#39;,&#39;off&#39;...
+              ,&#39;xTick&#39;,[]...
+              ...,&#39;ytickLabel&#39;,[]...
+              ,&#39;ycolor&#39;,[0.5 0.5 0.5]...
+              );
+hold(ax(2),&#39;on&#39;)          
+</code></pre>
+<ol start="7">
+<li>Iso-contours</li>
+</ol>
+<pre><code class="matlab">  [cContourMap,hContourMap] = contourf(gca,XXAB&#39;,YYAB&#39;,ZZAB&#39;);
+  set(hContourMap,&#39;linestyle&#39;,&#39;none&#39;)
+  yclimColorbar = [0 1];
+  ytickColorbar = 0:0.2:1;
+  colLevelist   = 0:0.1:1;
+  hContourMap.LevelList = colLevelist;
+  set(gca,&#39;clim&#39;,yclimColorbar)
+  hColorbar    = colorbar(gca);
+  titleindex    = &#39;title&#39;;
+  set(get(hColorbar1,&#39;title&#39;),&#39;string&#39;...
+         ,titleindex...
+         ,&#39;FontSize&#39;,11 ...
+         ,&#39;interpreter&#39;,&#39;LaTex&#39;...
+         ,&#39;FontName&#39;,&#39;Times New Roman&#39; ...
+         )
+  set(hColorbar1...
+         ,&#39;ylim&#39;,yclimColorbar...
+         ...,&#39;ylim&#39;,[0 4]...
+         ,&#39;ytick&#39;,ytickColorbar...
+         ,&#39;Location&#39;,&#39;southoutside&#39;...
+         ... ,&#39;AxisLocation&#39;,&#39;out&#39;...
+         ,&#39;Units&#39;,&#39;Normalized&#39;...
+         ...,&#39;Position&#39;,[0.1 0.2 0.6 0.03] ...
+         ,&#39;FontSize&#39;,11 ...
+         ,&#39;FontName&#39;,&#39;Times New Roman&#39; ...
+         )
+</code></pre>
+<ol start="8">
+<li>Circular legend for contour lines</li>
+</ol>
+<pre><code class="matlab">  hFigPos = hFig.Position;
+  xCentre = 0.47;
+  yCentre = 0.18;
+  coll1 = flipud(coll1);
+  radius = 0.07;
+  radii = linspace(0.01,radius,round(size(coll1,1)/2));
+  for iR = 1:length(radii)
+      annotation(hFig,&#39;ellipse&#39;, [xCentre - radii(iR)/2, yCentre - radii(iR)*hFigPos(3)/hFigPos(4)/2 ...
+                               , radii(iR), radii(iR)*hFigPos(3)/hFigPos(4)], ...
+          &#39;Color&#39;, coll1(iR,:), &#39;LineWidth&#39;, 1);
+  end
+</code></pre>
+<ol start="9">
+<li>Generate gif</li>
+</ol>
+<pre><code class="matlab">% Video to GIF Synchronization Script
+% Created by: Yu Xia
+% Location: Melbourne, Australia
+% Date: 2024.08.09
+
+% Initialize video file and reader
+videoFile = &#39;videoName.mp4&#39;;
+videoObj = VideoReader(videoFile);
+
+% Set output filename
+outputFilename = &#39;synchronized_animation.gif&#39;;
+
+% Get total number of frames
+numFrames = videoObj.NumFrames;
+
+% Create figure and axes
+hFig = figure(&#39;Color&#39;, &#39;white&#39;, &#39;Units&#39;, &#39;normalized&#39;, &#39;Position&#39;, [0.1 0.1 0.8 0.8]);
+ax(1) = axes(&#39;Parent&#39;, hFig, &#39;Position&#39;, [0.05 0.1 0.4 0.4], &#39;Box&#39;, &#39;on&#39;, &#39;Color&#39;, &#39;white&#39;);
+ax(2) = axes(&#39;Parent&#39;, hFig, &#39;Position&#39;, [0.5 0.1 0.4 0.4], &#39;Box&#39;, &#39;on&#39;, &#39;Color&#39;, &#39;white&#39;);
+
+% Hold axes for plotting
+hold(ax(1), &#39;on&#39;);
+hold(ax(2), &#39;on&#39;);
+
+% Configure second axes
+set(ax(2), &#39;XLim&#39;, [-60 60], &#39;YLim&#39;, [-9 -4], &#39;TickLength&#39;, [0.02 0.02], ...
+    &#39;XTick&#39;, -60:20:60, &#39;YTick&#39;, -9:1:-4, &#39;Box&#39;, &#39;on&#39;, &#39;XTickLabelRotation&#39;, 0);
+
+% Set labels for second axes
+xlabel(ax(2), &#39;$\alpha$ ($^\circ$)&#39;, &#39;Interpreter&#39;, &#39;LaTeX&#39;, &#39;FontSize&#39;, 12);
+ylabel(ax(2), &#39;$E$ (V)&#39;, &#39;Interpreter&#39;, &#39;LaTeX&#39;, &#39;FontSize&#39;, 12);
+
+% Process video frames
+for iAlpha = 1:numFrames
+    % Read video frame
+    videoFrame = read(videoObj, iAlpha);
+    currentTime = videoObj.CurrentTime;
+    
+    % Display video frame
+    imshow(videoFrame, &#39;Parent&#39;, ax(1));
+    
+    % Plot data on second axes (replace &#39;xx&#39; with actual data)
+    plot(ax(2), xx, xx, &#39;k&#39;, &#39;MarkerSize&#39;, 4, &#39;Color&#39;, col2, &#39;LineWidth&#39;, 1.3, &#39;LineStyle&#39;, &#39;-&#39;);
+    
+    % Capture frame and convert to image
+    frame = getframe(hFig);
+    im = frame2im(frame);
+    
+    % Write frame to GIF
+    if iAlpha == 1
+        [imind, cm] = rgb2ind(im, 256, &#39;nodither&#39;);
+        imwrite(imind, cm, outputFilename, &#39;gif&#39;, &#39;LoopCount&#39;, inf, &#39;DelayTime&#39;, 0.1);
+    else
+        imind = rgb2ind(im, cm, &#39;nodither&#39;);
+        imwrite(imind, cm, outputFilename, &#39;gif&#39;, &#39;WriteMode&#39;, &#39;append&#39;, &#39;DelayTime&#39;, 0.1);
+    end
+end
+
+% Close figure
+close(hFig);
+
+disp(&#39;GIF creation complete.&#39;);
+</code></pre>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/04/Matlab-Tips/" data-id="clytdk7hg0007j70b111zfn1k"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/02/04/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Hello World
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/01/20/Inkscape_Tricks/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Inkscape Tricks</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2024
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">相册</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

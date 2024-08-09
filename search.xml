@@ -3,8 +3,8 @@
   <entry>
     <title>P201 Encoder Interface</title>
     <url>/2024/07/30/P201EncoderInterface/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>OVERVIEW<br>The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and<br>powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.</p>
-<p>Supported by PC based <a href="https://www.joulefusion.com/protura4.htm">GUI Demonstration software</a> and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net.</p>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.</p>
+<p>Supported by PC based <a href="https://www.joulefusion.com/protura4.htm">GUI Demonstration software</a> and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.</p>
 <p>More details can be referred to <a href="dataSheetP201.pdf">the data sheet of P201 interface</a>.</p>
 <span id="more"></span> 
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% Function: encoderP201Read</span></span><br><span class="line"><span class="comment">% Author: Yu Xia</span></span><br><span class="line"><span class="comment">% Date: 2024.7.1</span></span><br><span class="line"><span class="comment">% Institution: University of Melbourne</span></span><br><span class="line"><span class="comment">% Email: xiayudlut@icloud.com</span></span><br><span class="line"><span class="comment">% Description: This function communicates with an encoder via a serial port</span></span><br><span class="line"><span class="comment">% to read the encoder count, detect reference index, or clear/set the reference.</span></span><br><span class="line"><span class="comment">% The function returns three numbers: the encoder count, the count value at the </span></span><br><span class="line"><span class="comment">% z-channel rising edge (reference index), and the status indicating if the reference </span></span><br><span class="line"><span class="comment">% is detected.</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">numbers</span> = <span class="title">encoderP201Read</span><span class="params">(port, command)</span></span></span><br><span class="line">    <span class="comment">% Input:</span></span><br><span class="line">    <span class="comment">% port - Serial port identifier (e.g., &#x27;COM5&#x27;)</span></span><br><span class="line">    <span class="comment">% command - Command to send to the encoder (&#x27;?&#x27; for read, &#x27;c&#x27; for clear reference, &#x27;z&#x27; for set to zero)</span></span><br><span class="line">    <span class="comment">% Output:</span></span><br><span class="line">    <span class="comment">% numbers - A vector containing:</span></span><br><span class="line">    <span class="comment">%           [encoder count, count value at z-channel, reference status]</span></span><br><span class="line">    <span class="comment">%           or an empty array if the command is &#x27;c&#x27; or &#x27;z&#x27;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">% Set up serial port connection</span></span><br><span class="line">    baudRate = <span class="number">9600</span>; <span class="comment">% Baud rate for serial communication</span></span><br><span class="line">    sEncoder = serialport(port, baudRate); <span class="comment">% Initialize serial port</span></span><br><span class="line">    sEncoder.Timeout = <span class="number">2</span>; <span class="comment">% Set timeout for serial communication</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">% Flush the serial buffer</span></span><br><span class="line">    writeline(sEncoder, <span class="string">&#x27;v&#x27;</span>);</span><br><span class="line">    pause(<span class="number">0.1</span>);</span><br><span class="line">    read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">% Execute command based on the input</span></span><br><span class="line">    <span class="keyword">switch</span> command</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;?&#x27;</span> <span class="comment">% Read encoder data</span></span><br><span class="line">            writeline(sEncoder, <span class="string">&#x27;?&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.1</span>);</span><br><span class="line">            encoderStr = read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line">            pattern = <span class="string">&#x27;\d+&#x27;</span>; <span class="comment">% Regular expression to extract numbers</span></span><br><span class="line">            numbers = regexp(encoderStr, pattern, <span class="string">&#x27;match&#x27;</span>);</span><br><span class="line">            numbers = str2double(numbers); <span class="comment">% Convert string array to double array</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span> <span class="comment">% Clear reference status</span></span><br><span class="line">            writeline(sEncoder, <span class="string">&#x27;c&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.1</span>);</span><br><span class="line">            fprintf(<span class="string">&#x27;\n Clear reference status \n&#x27;</span>);</span><br><span class="line">            numbers = [];</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;z&#x27;</span> <span class="comment">% Set current count value to zero</span></span><br><span class="line">            writeline(sEncoder, <span class="string">&#x27;z&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.1</span>);</span><br><span class="line">            fprintf(<span class="string">&#x27;\n Set current count value to zero \n&#x27;</span>);</span><br><span class="line">            numbers = [];</span><br><span class="line">        <span class="keyword">otherwise</span> <span class="comment">% Invalid command</span></span><br><span class="line">            error(<span class="string">&#x27;Invalid command. Use &#x27;&#x27;?&#x27;&#x27;, &#x27;&#x27;c&#x27;&#x27;, or &#x27;&#x27;z&#x27;&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">% Close serial port connection</span></span><br><span class="line">    delete(sEncoder);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">% Example Usage:</span></span><br><span class="line"><span class="comment">% 1. To calibrate the encoder and set the zero position:</span></span><br><span class="line"><span class="comment">%    encoderP201Read(&#x27;COM5&#x27;, &#x27;z&#x27;);</span></span><br><span class="line"><span class="comment">% 2. To read the encoder count, reference index, and status:</span></span><br><span class="line"><span class="comment">%    data = encoderP201Read(&#x27;COM5&#x27;, &#x27;?&#x27;);</span></span><br><span class="line"><span class="comment">%    encoderCount = data(1); % Use this for further calculations</span></span><br><span class="line"><span class="comment">%    referenceIndex = data(2); % Reference index count value</span></span><br><span class="line"><span class="comment">%    referenceStatus = data(3); % Status if the reference is detected</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% After calibration, you can subtract the encoderCount from the initial </span></span><br><span class="line"><span class="comment">% zero position count to get the current position relative to the zero angle.</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -157,83 +157,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MATLAB Tips</title>
-    <url>/2023/07/24/Matlab-Tips/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
-<li><p>Compute the running time of a function all</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">tic; fft(<span class="built_in">rand</span>(<span class="number">500</span>)); <span class="built_in">disp</span>( [’it takes ’ num2str(toc) ’s.’] );</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Locate the indice of minimum value in a matrice</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[M,I]         = <span class="built_in">min</span>(objMatrice(:)); <span class="comment">% &#x27;objMatrice&#x27; is the objective matrix</span></span><br><span class="line">[Irow,Icol]   = <span class="built_in">ind2sub</span>(<span class="built_in">size</span>(objMatrice),I);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<span id="more"></span> 
-<ol start="3">
-<li><p>Sort ascending filenames based on number</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">sFile = dir([dir1 <span class="string">&#x27;temp*.mat&#x27;</span>]);</span><br><span class="line"><span class="comment">%%% sort ascending filenames based on Number</span></span><br><span class="line">[~, reindex] = ...</span><br><span class="line">       <span class="built_in">sort</span>(str2double(regexp( &#123;sFile.name&#125;, <span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;match&#x27;</span>, <span class="string">&#x27;once&#x27;</span> )));</span><br><span class="line">sFile        = sFile(reindex) ;</span><br></pre></td></tr></table></figure>
-
-</li>
-<li><p>Writing&#x2F;Reading to a text file a list of 3-uplets.</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% A is a matrix with 3 rows.</span></span><br><span class="line">fid = fopen(filename,’wt’);</span><br><span class="line">fprintf(fid, ’<span class="comment">%f %f %f\n’, A);</span></span><br><span class="line">fclose(fid); <span class="comment">% Retrieving the values back from file to matrix B.</span></span><br><span class="line">fid = fopen(filename,’r’);</span><br><span class="line">[B,cnt] = fscanf(fid,’<span class="comment">%f %f %f’);</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Create a graphical waitbar</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">n = <span class="number">100</span>;</span><br><span class="line">h = waitbar(<span class="number">0</span>,’Waiting ...’);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">waitbar(<span class="built_in">i</span>/n);</span><br><span class="line"><span class="comment">% here perform some stuff</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">close(h);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Loading issue </p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">    load(<span class="string">&#x27;xxx.mat&#x27;</span>) <span class="comment">% x</span></span><br><span class="line"><span class="keyword">catch</span> </span><br><span class="line">    datatemp = matfile(<span class="string">&#x27;xxx.mat&#x27;</span>);  <span class="comment">% x</span></span><br><span class="line">    data     = datatemp.x;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Sub-function-Tricks"><a href="#Sub-function-Tricks" class="headerlink" title="Sub-function Tricks"></a>Sub-function Tricks</h2><ol>
-<li><p>Create a sub-function that takes optional arguments in a struct</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">y</span> = <span class="title">f</span><span class="params">(x,options)</span></span></span><br><span class="line"><span class="comment">% parse the struct</span></span><br><span class="line"><span class="keyword">if</span> nargin&lt;<span class="number">2</span></span><br><span class="line">options.null = <span class="number">0</span>; <span class="comment">% force creation of options</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span> isfield(options, ’a’)</span><br><span class="line">options.a = <span class="number">1</span>; <span class="comment">% default value</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">a = options.a;</span><br><span class="line"><span class="keyword">if</span> isfield(options, ’b’)</span><br><span class="line">options.b = <span class="number">1</span>; <span class="comment">% default value</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">b = options.b;</span><br><span class="line"><span class="comment">% Here the body of the function ...</span></span><br></pre></td></tr></table></figure>
-<p>note: nargin returns the number of function input arguments given in the call to the currently executing function. </p>
-</li>
-<li><p>Use <strong>varargin</strong>  in function e.g. as following. A single function to generate two-dimensional (2D) line graphs, avoiding a long list of code for the generation of each graphic.</p>
-<p><strong>PlotSet</strong> generates 2D plots, including multiple plots on a page. This code processes <strong>varargin</strong> as<br>parameter pairs to set options. This makes it easy to expand the options. You can look for more information in the following book.</p>
-<p>Paluszek, M., and S. Thomas. <em>MATLAB Machine Learning</em>. Apress, 2016. <a href="https://books.google.com.au/books?id=jy75vQAACAAJ">https://books.google.com.au/books?id=jy75vQAACAAJ</a>.</p>
-</li>
-<li><p>Write a function fun(a,b,c) that can take an arbitrary number of arguments</p>
- <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(args)</span></span></span><br><span class="line">default_values = &#123;<span class="number">0.1246</span>,<span class="number">1.2346</span>,<span class="number">8.7643</span>&#125;;</span><br><span class="line">args_present = <span class="built_in">cellfun</span>(@<span class="built_in">isempty</span>,args);</span><br><span class="line">default_values(args_present) = args(args_present);</span><br><span class="line">[a b c] = deal(default_values);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Load a variable from a .mat file and then place that variable inside a structure with the same name</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">% Load the variable</span><br><span class="line">loadedData = load(&#x27;myData.mat&#x27;);  % This loads the data into a structure</span><br><span class="line"></span><br><span class="line">% Extract field names from the loaded data</span><br><span class="line">fieldNames = fieldnames(loadedData);</span><br><span class="line"></span><br><span class="line">% Loop through each variable and assign it to a new structure with the same name</span><br><span class="line">for k = 1:length(fieldNames)</span><br><span class="line">    varName = fieldNames&#123;k&#125;;</span><br><span class="line">    dataStruct.(varName) = loadedData.(varName);</span><br><span class="line">end</span><br><span class="line">% Now dataStruct has fields corresponding to the variables loaded from the .mat file</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Mathematical-Tips"><a href="#Mathematical-Tips" class="headerlink" title="Mathematical Tips"></a>Mathematical Tips</h2><ol>
-<li><p>Generate n points x sampled uniformly at random on a sphere.</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% tensor product gaussian is isotropic</span></span><br><span class="line">x = <span class="built_in">randn</span>(<span class="number">3</span>,n);</span><br><span class="line">d = <span class="built_in">sqrt</span>( x(<span class="number">1</span>,:).ˆ<span class="number">2</span>+x(<span class="number">2</span>,:).ˆ<span class="number">2</span>+x(<span class="number">2</span>,:).ˆ<span class="number">2</span> );</span><br><span class="line">x(<span class="number">1</span>,:) = x(<span class="number">1</span>,:)./d;</span><br><span class="line">x(<span class="number">2</span>,:) = x(<span class="number">2</span>,:)./d;</span><br><span class="line">x(<span class="number">3</span>,:) = x(<span class="number">3</span>,:)./d;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Keep only the n biggest coefficients of a signal x (set the others to 0).</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[tmp,I] = <span class="built_in">sort</span>(<span class="built_in">abs</span>(x(:))); x( I(<span class="number">1</span>:<span class="keyword">end</span>-n) ) = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Plotting"><a href="#Plotting" class="headerlink" title="Plotting"></a>Plotting</h2><ol>
-<li><p>Draw a 3D sphere.</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">p = <span class="number">20</span>; <span class="comment">% precision</span></span><br><span class="line">t = <span class="number">0</span>:<span class="number">1</span>/(p<span class="number">-1</span>):<span class="number">1</span>;</span><br><span class="line">[th,ph] = <span class="built_in">meshgrid</span>( t*<span class="built_in">pi</span>,t*<span class="number">2</span>*<span class="built_in">pi</span> );</span><br><span class="line">x = <span class="built_in">cos</span>(th);</span><br><span class="line">y = <span class="built_in">sin</span>(th).*<span class="built_in">cos</span>(ph);</span><br><span class="line">z = <span class="built_in">sin</span>(th).*<span class="built_in">sin</span>(ph);</span><br><span class="line">surf(x,y,z, z.*<span class="number">0</span>);</span><br><span class="line"><span class="comment">% some pretty rendering options</span></span><br><span class="line">shading interp; lighting gouraud;</span><br><span class="line">camlight infinite; axis square; axis off;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Edit legend</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[hhLeg,labelhandles] = <span class="built_in">legend</span>(ax(<span class="number">1</span>),htext,<span class="string">&#x27;location&#x27;</span>,<span class="string">&#x27;NorthEast&#x27;</span>...</span><br><span class="line">    ,<span class="string">&#x27;box&#x27;</span>,<span class="string">&#x27;off&#x27;</span>,<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;LaTex&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,fS);</span><br><span class="line"><span class="comment">% hhLeg.ItemTokenSize =[20 18];</span></span><br><span class="line">labelhandles(<span class="number">5</span>).LineStyle = <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">labelhandles(<span class="number">4</span>).XData = [<span class="number">0.24</span> <span class="number">0.37</span>];</span><br><span class="line">labelhandles(<span class="number">5</span>).XData = labelhandles(<span class="number">4</span>).XData;</span><br><span class="line">labelhandles(<span class="number">4</span>).YData = labelhandles(<span class="number">4</span>).YData + <span class="number">0.07</span>;</span><br><span class="line">labelhandles(<span class="number">5</span>).YData = labelhandles(<span class="number">4</span>).YData - <span class="number">0.14</span>;</span><br><span class="line">labelhandles(<span class="number">5</span>).Color = col2(<span class="number">1</span>,:);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Copy all properties for Axes</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">ax(<span class="number">2</span>) = axes(<span class="string">&#x27;Position&#x27;</span>,ax(<span class="number">1</span>).Position ...</span><br><span class="line">                       ,<span class="string">&#x27;OuterPosition&#x27;</span>,ax(<span class="number">1</span>).OuterPosition ...</span><br><span class="line">                       ,<span class="string">&#x27;InnerPosition&#x27;</span>,ax(<span class="number">1</span>).InnerPosition ...</span><br><span class="line">                       ,<span class="string">&#x27;ActivePositionProperty&#x27;</span>,ax(<span class="number">1</span>).ActivePositionProperty...</span><br><span class="line">                       ,<span class="string">&#x27;ALim&#x27;</span>,ax(<span class="number">1</span>).ALim...</span><br><span class="line">                       ,<span class="string">&#x27;ALimMode&#x27;</span>,ax(<span class="number">1</span>).ALimMode...</span><br><span class="line">                       ,<span class="string">&#x27;color&#x27;</span>,<span class="string">&#x27;none&#x27;</span>...</span><br><span class="line">                       ,<span class="string">&#x27;xtick&#x27;</span>,[],<span class="string">&#x27;ytick&#x27;</span>,[],<span class="string">&#x27;ztick&#x27;</span>,[]...</span><br><span class="line">                       ,<span class="string">&#x27;xcolor&#x27;</span>,<span class="string">&#x27;none&#x27;</span>,<span class="string">&#x27;ycolor&#x27;</span>,<span class="string">&#x27;none&#x27;</span>,<span class="string">&#x27;zcolor&#x27;</span>,<span class="string">&#x27;none&#x27;</span>...</span><br><span class="line">                       ,<span class="string">&#x27;Projection&#x27;</span>,<span class="string">&#x27;perspective&#x27;</span>...</span><br><span class="line">                       ,<span class="string">&#x27;CameraPosition&#x27;</span>,ax(<span class="number">1</span>).CameraPosition ...</span><br><span class="line">                       ,<span class="string">&#x27;CameraPositionMode&#x27;</span>,ax(<span class="number">1</span>).CameraPositionMode...</span><br><span class="line">                       ,<span class="string">&#x27;CameraTarget&#x27;</span>,ax(<span class="number">1</span>).CameraTarget...</span><br><span class="line">                       ,<span class="string">&#x27;CameraTargetMode&#x27;</span>,ax(<span class="number">1</span>).CameraTargetMode...</span><br><span class="line">                       ,<span class="string">&#x27;CameraUpVector&#x27;</span>,ax(<span class="number">1</span>).CameraUpVector...</span><br><span class="line">                       ,<span class="string">&#x27;CameraUpVectorMode&#x27;</span>,ax(<span class="number">1</span>).CameraUpVectorMode...</span><br><span class="line">                       ,<span class="string">&#x27;CameraViewAngle&#x27;</span>,ax(<span class="number">1</span>).CameraViewAngle...</span><br><span class="line">                       ,<span class="string">&#x27;CameraViewAngleMode&#x27;</span>,ax(<span class="number">1</span>).CameraViewAngleMode...</span><br><span class="line">                       ,<span class="string">&#x27;DataAspectRatio&#x27;</span>,ax(<span class="number">1</span>).DataAspectRatio...</span><br><span class="line">                       ,<span class="string">&#x27;DataAspectRatioMode&#x27;</span>,ax(<span class="number">1</span>).DataAspectRatioMode...</span><br><span class="line">                       );</span><br><span class="line">                   </span><br><span class="line"><span class="comment">%      copyaxes(ax(1),ax(2))</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>set handle in a figure invisible </p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;arrow&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;textbox&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;axes&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;surf&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;patch&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;Line&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">set(findall(hFig,<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;contour&#x27;</span>),<span class="string">&#x27;visible&#x27;</span>,<span class="string">&#x27;off&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>plot at a specific plane </p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">tt = hgtransform(ax(<span class="number">2</span>)); <span class="comment">% establish plane </span></span><br><span class="line"><span class="comment">% X-axis rotation matrix and Z-axis translation matrix</span></span><br><span class="line">Rz = makehgtform(<span class="string">&#x27;translate&#x27;</span>,[<span class="number">0</span> y(<span class="keyword">end</span>) <span class="number">0</span>],<span class="string">&#x27;xrotate&#x27;</span>,<span class="number">1</span>/<span class="number">2</span>*<span class="built_in">pi</span>,<span class="string">&#x27;yrotate&#x27;</span>,<span class="number">-1</span>/<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line">set(tt,<span class="string">&#x27;Matrix&#x27;</span>,Rz);  </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Two axes in one figure</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">ax(<span class="number">1</span>) = axes(<span class="string">&#x27;box&#x27;</span>,<span class="string">&#x27;on&#x27;</span>);<span class="built_in">hold</span>(ax(<span class="number">1</span>),<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line">ax(<span class="number">2</span>) = axes(<span class="string">&#x27;Position&#x27;</span>,ax(<span class="number">1</span>).Position ...</span><br><span class="line">              ,<span class="string">&#x27;color&#x27;</span>,<span class="string">&#x27;none&#x27;</span>...</span><br><span class="line">              ,<span class="string">&#x27;yAxisLocation&#x27;</span>,<span class="string">&#x27;right&#x27;</span>...</span><br><span class="line">              ,<span class="string">&#x27;box&#x27;</span>,<span class="string">&#x27;off&#x27;</span>...</span><br><span class="line">              ,<span class="string">&#x27;xTick&#x27;</span>,[]...</span><br><span class="line">              ...,<span class="string">&#x27;ytickLabel&#x27;</span>,[]...</span><br><span class="line">              ,<span class="string">&#x27;ycolor&#x27;</span>,[<span class="number">0.5</span> <span class="number">0.5</span> <span class="number">0.5</span>]...</span><br><span class="line">              );</span><br><span class="line"><span class="built_in">hold</span>(ax(<span class="number">2</span>),<span class="string">&#x27;on&#x27;</span>)          </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Iso-contours </p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[cContourMap,hContourMap] = contourf(gca,XXAB&#x27;,YYAB&#x27;,ZZAB&#x27;);</span><br><span class="line">set(hContourMap,<span class="string">&#x27;linestyle&#x27;</span>,<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">yclimColorbar = [<span class="number">0</span> <span class="number">1</span>];</span><br><span class="line">ytickColorbar = <span class="number">0</span>:<span class="number">0.2</span>:<span class="number">1</span>;</span><br><span class="line">colLevelist   = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">1</span>;</span><br><span class="line">hContourMap.LevelList = colLevelist;</span><br><span class="line">set(gca,<span class="string">&#x27;clim&#x27;</span>,yclimColorbar)</span><br><span class="line">hColorbar    = colorbar(gca);</span><br><span class="line">titleindex    = <span class="string">&#x27;title&#x27;</span>;</span><br><span class="line">set(get(hColorbar1,<span class="string">&#x27;title&#x27;</span>),<span class="string">&#x27;string&#x27;</span>...</span><br><span class="line">       ,titleindex...</span><br><span class="line">       ,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">11</span> ...</span><br><span class="line">       ,<span class="string">&#x27;interpreter&#x27;</span>,<span class="string">&#x27;LaTex&#x27;</span>...</span><br><span class="line">       ,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times New Roman&#x27;</span> ...</span><br><span class="line">       )</span><br><span class="line">set(hColorbar1...</span><br><span class="line">       ,<span class="string">&#x27;ylim&#x27;</span>,yclimColorbar...</span><br><span class="line">       ...,<span class="string">&#x27;ylim&#x27;</span>,[<span class="number">0</span> <span class="number">4</span>]...</span><br><span class="line">       ,<span class="string">&#x27;ytick&#x27;</span>,ytickColorbar...</span><br><span class="line">       ,<span class="string">&#x27;Location&#x27;</span>,<span class="string">&#x27;southoutside&#x27;</span>...</span><br><span class="line">       ... ,<span class="string">&#x27;AxisLocation&#x27;</span>,<span class="string">&#x27;out&#x27;</span>...</span><br><span class="line">       ,<span class="string">&#x27;Units&#x27;</span>,<span class="string">&#x27;Normalized&#x27;</span>...</span><br><span class="line">       ...,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">0.1</span> <span class="number">0.2</span> <span class="number">0.6</span> <span class="number">0.03</span>] ...</span><br><span class="line">       ,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">11</span> ...</span><br><span class="line">       ,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times New Roman&#x27;</span> ...</span><br><span class="line">       )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Circular legend for contour lines</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">hFigPos = hFig.Position;</span><br><span class="line">xCentre = <span class="number">0.47</span>;</span><br><span class="line">yCentre = <span class="number">0.18</span>;</span><br><span class="line">coll1 = <span class="built_in">flipud</span>(coll1);</span><br><span class="line">radius = <span class="number">0.07</span>;</span><br><span class="line">radii = <span class="built_in">linspace</span>(<span class="number">0.01</span>,radius,<span class="built_in">round</span>(<span class="built_in">size</span>(coll1,<span class="number">1</span>)/<span class="number">2</span>));</span><br><span class="line"><span class="keyword">for</span> iR = <span class="number">1</span>:<span class="built_in">length</span>(radii)</span><br><span class="line">    annotation(hFig,<span class="string">&#x27;ellipse&#x27;</span>, [xCentre - radii(iR)/<span class="number">2</span>, yCentre - radii(iR)*hFigPos(<span class="number">3</span>)/hFigPos(<span class="number">4</span>)/<span class="number">2</span> ...</span><br><span class="line">                             , radii(iR), radii(iR)*hFigPos(<span class="number">3</span>)/hFigPos(<span class="number">4</span>)], ...</span><br><span class="line">        <span class="string">&#x27;Color&#x27;</span>, coll1(iR,:), <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Matlab graphics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PowerPoint</title>
     <url>/2020/06/01/Powerpoint/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.</p>
@@ -330,6 +253,325 @@ git reset b
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/02/04/Matlab-Tips/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><hr>
+<h2 id="title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true"><a href="#title-MATLAB-Tipsdate-2023-07-24-08-47-41tags-Matlab-graphicsupdated-2023-07-24mathjax-true" class="headerlink" title="title: MATLAB Tipsdate: 2023-07-24 08:47:41tags: Matlab graphicsupdated: 2023-07-24mathjax: true"></a>title: MATLAB Tips<br>date: 2023-07-24 08:47:41<br>tags: Matlab graphics<br>updated: 2023-07-24<br>mathjax: true</h2><h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
+<li>Compute the running time of a function all</li>
+</ol>
+<pre><code class="matlab">tic; fft(rand(500)); disp( [’it takes ’ num2str(toc) ’s.’] );
+</code></pre>
+<ol start="2">
+<li>Locate the indice of minimum value in a matrice</li>
+</ol>
+<pre><code class="matlab">[M,I]         = min(objMatrice(:)); % &#39;objMatrice&#39; is the objective matrix
+[Irow,Icol]   = ind2sub(size(objMatrice),I);
+</code></pre>
+<span id="more"></span> 
+<ol start="3">
+<li>Sort ascending filenames based on number</li>
+</ol>
+<pre><code class="matlab"> sFile = dir([dir1 &#39;temp*.mat&#39;]);
+ %%% sort ascending filenames based on Number
+ [~, reindex] = ...
+        sort(str2double(regexp( &#123;sFile.name&#125;, &#39;\d+&#39;, &#39;match&#39;, &#39;once&#39; )));
+ sFile        = sFile(reindex) ;
+</code></pre>
+<ol start="4">
+<li>Writing&#x2F;Reading to a text file a list of 3-uplets.</li>
+</ol>
+<pre><code class="matlab">% A is a matrix with 3 rows.
+fid = fopen(filename,’wt’);
+fprintf(fid, ’%f %f %f\n’, A);
+fclose(fid); % Retrieving the values back from file to matrix B.
+fid = fopen(filename,’r’);
+[B,cnt] = fscanf(fid,’%f %f %f’);
+</code></pre>
+<ol start="5">
+<li>Create a graphical waitbar</li>
+</ol>
+<pre><code class="matlab">n = 100;
+h = waitbar(0,’Waiting ...’);
+for i=1:n
+waitbar(i/n);
+% here perform some stuff
+end
+close(h);
+</code></pre>
+<ol start="6">
+<li>Loading issue</li>
+</ol>
+<pre><code class="matlab">            try
+                load(&#39;xxx.mat&#39;) % x
+            catch 
+                datatemp = matfile(&#39;xxx.mat&#39;);  % x
+                data     = datatemp.x;
+            end
+</code></pre>
+<h2 id="Sub-function-Tricks"><a href="#Sub-function-Tricks" class="headerlink" title="Sub-function Tricks"></a>Sub-function Tricks</h2><ol>
+<li>Create a sub-function that takes optional arguments in a struct</li>
+</ol>
+<pre><code class="matlab">function y = f(x,options)
+% parse the struct
+if nargin&lt;2
+options.null = 0; % force creation of options
+end
+if isfield(options, ’a’)
+options.a = 1; % default value
+end
+a = options.a;
+if isfield(options, ’b’)
+options.b = 1; % default value
+end
+b = options.b;
+% Here the body of the function ...
+</code></pre>
+<p>note: nargin returns the number of function input arguments given in the call to the currently executing function. </p>
+<ol start="2">
+<li><p>Use <strong>varargin</strong>  in function e.g. as following. A single function to generate two-dimensional (2D) line graphs, avoiding a long list of code for the generation of each graphic.</p>
+<p><strong>PlotSet</strong> generates 2D plots, including multiple plots on a page. This code processes <strong>varargin</strong> as<br>parameter pairs to set options. This makes it easy to expand the options. You can look for more information in the following book.</p>
+<p>Paluszek, M., and S. Thomas. <em>MATLAB Machine Learning</em>. Apress, 2016. <a href="https://books.google.com.au/books?id=jy75vQAACAAJ">https://books.google.com.au/books?id=jy75vQAACAAJ</a>.</p>
+</li>
+<li><p>Write a function fun(a,b,c) that can take an arbitrary number of arguments</p>
+<pre><code class="matlab">function fun(args)
+default_values = &#123;0.1246,1.2346,8.7643&#125;;
+args_present = cellfun(@isempty,args);
+default_values(args_present) = args(args_present);
+[a b c] = deal(default_values);
+</code></pre>
+</li>
+<li><p>Load a variable from a .mat file and then place that variable inside a structure with the same name</p>
+<pre><code>% Load the variable
+loadedData = load(&#39;myData.mat&#39;);  % This loads the data into a structure
+
+% Extract field names from the loaded data
+fieldNames = fieldnames(loadedData);
+
+% Loop through each variable and assign it to a new structure with the same name
+for k = 1:length(fieldNames)
+    varName = fieldNames&#123;k&#125;;
+    dataStruct.(varName) = loadedData.(varName);
+end
+% Now dataStruct has fields corresponding to the variables loaded from the .mat file
+</code></pre>
+</li>
+</ol>
+<h2 id="Mathematical-Tips"><a href="#Mathematical-Tips" class="headerlink" title="Mathematical Tips"></a>Mathematical Tips</h2><ol>
+<li>Generate n points x sampled uniformly at random on a sphere.</li>
+</ol>
+<pre><code class="matlab">% tensor product gaussian is isotropic
+x = randn(3,n);
+d = sqrt( x(1,:).ˆ2+x(2,:).ˆ2+x(2,:).ˆ2 );
+x(1,:) = x(1,:)./d;
+x(2,:) = x(2,:)./d;
+x(3,:) = x(3,:)./d;
+</code></pre>
+<ol start="2">
+<li>Keep only the n biggest coefficients of a signal x (set the others to 0).</li>
+</ol>
+<pre><code class="matlab">[tmp,I] = sort(abs(x(:))); x( I(1:end-n) ) = 0;
+</code></pre>
+<h2 id="Plotting"><a href="#Plotting" class="headerlink" title="Plotting"></a>Plotting</h2><ol>
+<li>Draw a 3D sphere.</li>
+</ol>
+<pre><code class="matlab">p = 20; % precision
+t = 0:1/(p-1):1;
+[th,ph] = meshgrid( t*pi,t*2*pi );
+x = cos(th);
+y = sin(th).*cos(ph);
+z = sin(th).*sin(ph);
+surf(x,y,z, z.*0);
+% some pretty rendering options
+shading interp; lighting gouraud;
+camlight infinite; axis square; axis off;
+</code></pre>
+<ol start="2">
+<li>Edit legend</li>
+</ol>
+<pre><code class="matlab">[hhLeg,labelhandles] = legend(ax(1),htext,&#39;location&#39;,&#39;NorthEast&#39;...
+    ,&#39;box&#39;,&#39;off&#39;,&#39;Interpreter&#39;,&#39;LaTex&#39;,&#39;FontSize&#39;,fS);
+% hhLeg.ItemTokenSize =[20 18];
+labelhandles(5).LineStyle = &#39;-&#39;;
+labelhandles(4).XData = [0.24 0.37];
+labelhandles(5).XData = labelhandles(4).XData;
+labelhandles(4).YData = labelhandles(4).YData + 0.07;
+labelhandles(5).YData = labelhandles(4).YData - 0.14;
+labelhandles(5).Color = col2(1,:);
+</code></pre>
+<ol start="3">
+<li>Copy all properties for Axes</li>
+</ol>
+<pre><code class="matlab">ax(2) = axes(&#39;Position&#39;,ax(1).Position ...
+                       ,&#39;OuterPosition&#39;,ax(1).OuterPosition ...
+                       ,&#39;InnerPosition&#39;,ax(1).InnerPosition ...
+                       ,&#39;ActivePositionProperty&#39;,ax(1).ActivePositionProperty...
+                       ,&#39;ALim&#39;,ax(1).ALim...
+                       ,&#39;ALimMode&#39;,ax(1).ALimMode...
+                       ,&#39;color&#39;,&#39;none&#39;...
+                       ,&#39;xtick&#39;,[],&#39;ytick&#39;,[],&#39;ztick&#39;,[]...
+                       ,&#39;xcolor&#39;,&#39;none&#39;,&#39;ycolor&#39;,&#39;none&#39;,&#39;zcolor&#39;,&#39;none&#39;...
+                       ,&#39;Projection&#39;,&#39;perspective&#39;...
+                       ,&#39;CameraPosition&#39;,ax(1).CameraPosition ...
+                       ,&#39;CameraPositionMode&#39;,ax(1).CameraPositionMode...
+                       ,&#39;CameraTarget&#39;,ax(1).CameraTarget...
+                       ,&#39;CameraTargetMode&#39;,ax(1).CameraTargetMode...
+                       ,&#39;CameraUpVector&#39;,ax(1).CameraUpVector...
+                       ,&#39;CameraUpVectorMode&#39;,ax(1).CameraUpVectorMode...
+                       ,&#39;CameraViewAngle&#39;,ax(1).CameraViewAngle...
+                       ,&#39;CameraViewAngleMode&#39;,ax(1).CameraViewAngleMode...
+                       ,&#39;DataAspectRatio&#39;,ax(1).DataAspectRatio...
+                       ,&#39;DataAspectRatioMode&#39;,ax(1).DataAspectRatioMode...
+                       );
+                   
+%      copyaxes(ax(1),ax(2))
+</code></pre>
+<ol start="4">
+<li>set handle in a figure invisible</li>
+</ol>
+<pre><code class="matlab">set(findall(hFig,&#39;Type&#39;,&#39;arrow&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;textbox&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;axes&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;surf&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;patch&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;Line&#39;),&#39;visible&#39;,&#39;off&#39;)
+set(findall(hFig,&#39;Type&#39;,&#39;contour&#39;),&#39;visible&#39;,&#39;off&#39;)
+</code></pre>
+<ol start="5">
+<li>plot at a specific plane</li>
+</ol>
+<pre><code class="matlab">tt = hgtransform(ax(2)); % establish plane 
+% X-axis rotation matrix and Z-axis translation matrix
+Rz = makehgtform(&#39;translate&#39;,[0 y(end) 0],&#39;xrotate&#39;,1/2*pi,&#39;yrotate&#39;,-1/2*pi);
+set(tt,&#39;Matrix&#39;,Rz);  
+</code></pre>
+<ol start="6">
+<li>Two axes in one figure</li>
+</ol>
+<pre><code class="matlab">ax(1) = axes(&#39;box&#39;,&#39;on&#39;);hold(ax(1),&#39;on&#39;)
+ax(2) = axes(&#39;Position&#39;,ax(1).Position ...
+              ,&#39;color&#39;,&#39;none&#39;...
+              ,&#39;yAxisLocation&#39;,&#39;right&#39;...
+              ,&#39;box&#39;,&#39;off&#39;...
+              ,&#39;xTick&#39;,[]...
+              ...,&#39;ytickLabel&#39;,[]...
+              ,&#39;ycolor&#39;,[0.5 0.5 0.5]...
+              );
+hold(ax(2),&#39;on&#39;)          
+</code></pre>
+<ol start="7">
+<li>Iso-contours</li>
+</ol>
+<pre><code class="matlab">  [cContourMap,hContourMap] = contourf(gca,XXAB&#39;,YYAB&#39;,ZZAB&#39;);
+  set(hContourMap,&#39;linestyle&#39;,&#39;none&#39;)
+  yclimColorbar = [0 1];
+  ytickColorbar = 0:0.2:1;
+  colLevelist   = 0:0.1:1;
+  hContourMap.LevelList = colLevelist;
+  set(gca,&#39;clim&#39;,yclimColorbar)
+  hColorbar    = colorbar(gca);
+  titleindex    = &#39;title&#39;;
+  set(get(hColorbar1,&#39;title&#39;),&#39;string&#39;...
+         ,titleindex...
+         ,&#39;FontSize&#39;,11 ...
+         ,&#39;interpreter&#39;,&#39;LaTex&#39;...
+         ,&#39;FontName&#39;,&#39;Times New Roman&#39; ...
+         )
+  set(hColorbar1...
+         ,&#39;ylim&#39;,yclimColorbar...
+         ...,&#39;ylim&#39;,[0 4]...
+         ,&#39;ytick&#39;,ytickColorbar...
+         ,&#39;Location&#39;,&#39;southoutside&#39;...
+         ... ,&#39;AxisLocation&#39;,&#39;out&#39;...
+         ,&#39;Units&#39;,&#39;Normalized&#39;...
+         ...,&#39;Position&#39;,[0.1 0.2 0.6 0.03] ...
+         ,&#39;FontSize&#39;,11 ...
+         ,&#39;FontName&#39;,&#39;Times New Roman&#39; ...
+         )
+</code></pre>
+<ol start="8">
+<li>Circular legend for contour lines</li>
+</ol>
+<pre><code class="matlab">  hFigPos = hFig.Position;
+  xCentre = 0.47;
+  yCentre = 0.18;
+  coll1 = flipud(coll1);
+  radius = 0.07;
+  radii = linspace(0.01,radius,round(size(coll1,1)/2));
+  for iR = 1:length(radii)
+      annotation(hFig,&#39;ellipse&#39;, [xCentre - radii(iR)/2, yCentre - radii(iR)*hFigPos(3)/hFigPos(4)/2 ...
+                               , radii(iR), radii(iR)*hFigPos(3)/hFigPos(4)], ...
+          &#39;Color&#39;, coll1(iR,:), &#39;LineWidth&#39;, 1);
+  end
+</code></pre>
+<ol start="9">
+<li>Generate gif</li>
+</ol>
+<pre><code class="matlab">% Video to GIF Synchronization Script
+% Created by: Yu Xia
+% Location: Melbourne, Australia
+% Date: 2024.08.09
+
+% Initialize video file and reader
+videoFile = &#39;videoName.mp4&#39;;
+videoObj = VideoReader(videoFile);
+
+% Set output filename
+outputFilename = &#39;synchronized_animation.gif&#39;;
+
+% Get total number of frames
+numFrames = videoObj.NumFrames;
+
+% Create figure and axes
+hFig = figure(&#39;Color&#39;, &#39;white&#39;, &#39;Units&#39;, &#39;normalized&#39;, &#39;Position&#39;, [0.1 0.1 0.8 0.8]);
+ax(1) = axes(&#39;Parent&#39;, hFig, &#39;Position&#39;, [0.05 0.1 0.4 0.4], &#39;Box&#39;, &#39;on&#39;, &#39;Color&#39;, &#39;white&#39;);
+ax(2) = axes(&#39;Parent&#39;, hFig, &#39;Position&#39;, [0.5 0.1 0.4 0.4], &#39;Box&#39;, &#39;on&#39;, &#39;Color&#39;, &#39;white&#39;);
+
+% Hold axes for plotting
+hold(ax(1), &#39;on&#39;);
+hold(ax(2), &#39;on&#39;);
+
+% Configure second axes
+set(ax(2), &#39;XLim&#39;, [-60 60], &#39;YLim&#39;, [-9 -4], &#39;TickLength&#39;, [0.02 0.02], ...
+    &#39;XTick&#39;, -60:20:60, &#39;YTick&#39;, -9:1:-4, &#39;Box&#39;, &#39;on&#39;, &#39;XTickLabelRotation&#39;, 0);
+
+% Set labels for second axes
+xlabel(ax(2), &#39;$\alpha$ ($^\circ$)&#39;, &#39;Interpreter&#39;, &#39;LaTeX&#39;, &#39;FontSize&#39;, 12);
+ylabel(ax(2), &#39;$E$ (V)&#39;, &#39;Interpreter&#39;, &#39;LaTeX&#39;, &#39;FontSize&#39;, 12);
+
+% Process video frames
+for iAlpha = 1:numFrames
+    % Read video frame
+    videoFrame = read(videoObj, iAlpha);
+    currentTime = videoObj.CurrentTime;
+    
+    % Display video frame
+    imshow(videoFrame, &#39;Parent&#39;, ax(1));
+    
+    % Plot data on second axes (replace &#39;xx&#39; with actual data)
+    plot(ax(2), xx, xx, &#39;k&#39;, &#39;MarkerSize&#39;, 4, &#39;Color&#39;, col2, &#39;LineWidth&#39;, 1.3, &#39;LineStyle&#39;, &#39;-&#39;);
+    
+    % Capture frame and convert to image
+    frame = getframe(hFig);
+    im = frame2im(frame);
+    
+    % Write frame to GIF
+    if iAlpha == 1
+        [imind, cm] = rgb2ind(im, 256, &#39;nodither&#39;);
+        imwrite(imind, cm, outputFilename, &#39;gif&#39;, &#39;LoopCount&#39;, inf, &#39;DelayTime&#39;, 0.1);
+    else
+        imind = rgb2ind(im, cm, &#39;nodither&#39;);
+        imwrite(imind, cm, outputFilename, &#39;gif&#39;, &#39;WriteMode&#39;, &#39;append&#39;, &#39;DelayTime&#39;, 0.1);
+    end
+end
+
+% Close figure
+close(hFig);
+
+disp(&#39;GIF creation complete.&#39;);
+</code></pre>
 ]]></content>
   </entry>
   <entry>
