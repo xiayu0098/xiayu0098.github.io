@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>X. Blog</title>
-  <icon>http://yoursite.com/icon.png</icon>
+  <icon>https://yxblog.github.io/icon.png</icon>
   <subtitle>流动的水没有形状  漂流的风找不到踪迹</subtitle>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="https://yxblog.github.io/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://yxblog.github.io/"/>
   <updated>2024-08-09T04:02:06.131Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://yxblog.github.io/</id>
   
   <author>
     <name>Yu Xia</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>MATLAB Tips</title>
-    <link href="http://yoursite.com/2024/08/09/matlabCodeSearch/"/>
-    <id>http://yoursite.com/2024/08/09/matlabCodeSearch/</id>
+    <link href="https://yxblog.github.io/2024/08/09/matlabCodeSearch/"/>
+    <id>https://yxblog.github.io/2024/08/09/matlabCodeSearch/</id>
     <published>2024-08-08T14:00:00.000Z</published>
     <updated>2024-08-09T04:02:06.131Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    <category term="MatLab Code" scheme="https://yxblog.github.io/tags/MatLab-Code/"/>
     
   </entry>
   
   <entry>
     <title>P201 Encoder Interface</title>
-    <link href="http://yoursite.com/2024/07/30/P201EncoderInterface/"/>
-    <id>http://yoursite.com/2024/07/30/P201EncoderInterface/</id>
+    <link href="https://yxblog.github.io/2024/07/30/P201EncoderInterface/"/>
+    <id>https://yxblog.github.io/2024/07/30/P201EncoderInterface/</id>
     <published>2024-07-29T14:00:00.000Z</published>
     <updated>2024-08-09T03:50:43.834Z</updated>
     
@@ -55,17 +55,17 @@
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    <category term="MatLab Code" scheme="https://yxblog.github.io/tags/MatLab-Code/"/>
     
   </entry>
   
   <entry>
     <title>Power Box Controller Arduino Code</title>
-    <link href="http://yoursite.com/2024/04/30/powerBoxControl20240430/"/>
-    <id>http://yoursite.com/2024/04/30/powerBoxControl20240430/</id>
+    <link href="https://yxblog.github.io/2024/04/30/powerBoxControl20240430/"/>
+    <id>https://yxblog.github.io/2024/04/30/powerBoxControl20240430/</id>
     <published>2024-04-30T10:00:00.000Z</published>
     <updated>2024-04-30T10:00:00.000Z</updated>
     
@@ -74,17 +74,17 @@
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
-    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    <category term="Arduino Code" scheme="https://yxblog.github.io/tags/Arduino-Code/"/>
     
   </entry>
   
   <entry>
     <title>Motor/Encoder Control Code</title>
-    <link href="http://yoursite.com/2024/04/25/motorEncoderController202404/"/>
-    <id>http://yoursite.com/2024/04/25/motorEncoderController202404/</id>
+    <link href="https://yxblog.github.io/2024/04/25/motorEncoderController202404/"/>
+    <id>https://yxblog.github.io/2024/04/25/motorEncoderController202404/</id>
     <published>2024-04-25T00:00:00.000Z</published>
     <updated>2024-04-25T00:00:00.000Z</updated>
     
@@ -93,17 +93,17 @@
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
-    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    <category term="Arduino Code" scheme="https://yxblog.github.io/tags/Arduino-Code/"/>
     
   </entry>
   
   <entry>
     <title>Guideline &amp; Technical Document</title>
-    <link href="http://yoursite.com/2024/04/20/pdfAchive/"/>
-    <id>http://yoursite.com/2024/04/20/pdfAchive/</id>
+    <link href="https://yxblog.github.io/2024/04/20/pdfAchive/"/>
+    <id>https://yxblog.github.io/2024/04/20/pdfAchive/</id>
     <published>2024-04-19T14:00:00.000Z</published>
     <updated>2024-04-19T14:00:00.000Z</updated>
     
@@ -115,17 +115,17 @@
     
     
     
-    <category term="Research" scheme="http://yoursite.com/categories/Research/"/>
+    <category term="Research" scheme="https://yxblog.github.io/categories/Research/"/>
     
     
-    <category term="Device guideline" scheme="http://yoursite.com/tags/Device-guideline/"/>
+    <category term="Device guideline" scheme="https://yxblog.github.io/tags/Device-guideline/"/>
     
   </entry>
   
   <entry>
     <title>Flow Visualisation</title>
-    <link href="http://yoursite.com/2024/04/12/flowVisualisation/"/>
-    <id>http://yoursite.com/2024/04/12/flowVisualisation/</id>
+    <link href="https://yxblog.github.io/2024/04/12/flowVisualisation/"/>
+    <id>https://yxblog.github.io/2024/04/12/flowVisualisation/</id>
     <published>2024-04-11T23:00:00.000Z</published>
     <updated>2024-04-11T23:00:00.000Z</updated>
     
@@ -134,15 +134,15 @@
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
   </entry>
   
   <entry>
     <title>Calculator created by MATLAB</title>
-    <link href="http://yoursite.com/2024/01/27/calculatorMATLABGUI/"/>
-    <id>http://yoursite.com/2024/01/27/calculatorMATLABGUI/</id>
+    <link href="https://yxblog.github.io/2024/01/27/calculatorMATLABGUI/"/>
+    <id>https://yxblog.github.io/2024/01/27/calculatorMATLABGUI/</id>
     <published>2024-01-26T21:47:41.000Z</published>
     <updated>2024-01-26T13:00:00.000Z</updated>
     
@@ -152,14 +152,14 @@
     
     
     
-    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
+    <category term="Matlab graphics" scheme="https://yxblog.github.io/tags/Matlab-graphics/"/>
     
   </entry>
   
   <entry>
     <title>Latex Tips</title>
-    <link href="http://yoursite.com/2023/08/08/Tips/"/>
-    <id>http://yoursite.com/2023/08/08/Tips/</id>
+    <link href="https://yxblog.github.io/2023/08/08/Tips/"/>
+    <id>https://yxblog.github.io/2023/08/08/Tips/</id>
     <published>2023-08-08T03:27:08.000Z</published>
     <updated>2023-06-07T14:00:00.000Z</updated>
     
@@ -177,8 +177,8 @@
   
   <entry>
     <title>PowerPoint</title>
-    <link href="http://yoursite.com/2020/06/01/Powerpoint/"/>
-    <id>http://yoursite.com/2020/06/01/Powerpoint/</id>
+    <link href="https://yxblog.github.io/2020/06/01/Powerpoint/"/>
+    <id>https://yxblog.github.io/2020/06/01/Powerpoint/</id>
     <published>2020-05-31T22:49:36.000Z</published>
     <updated>2020-05-31T22:49:36.000Z</updated>
     
@@ -193,8 +193,8 @@
   
   <entry>
     <title>Git notes</title>
-    <link href="http://yoursite.com/2020/02/14/Git-notes/"/>
-    <id>http://yoursite.com/2020/02/14/Git-notes/</id>
+    <link href="https://yxblog.github.io/2020/02/14/Git-notes/"/>
+    <id>https://yxblog.github.io/2020/02/14/Git-notes/</id>
     <published>2020-02-14T06:04:27.000Z</published>
     <updated>2020-02-14T06:04:27.000Z</updated>
     
@@ -211,8 +211,8 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
   
   <entry>
     <title>Research Assistant - Zotero</title>
-    <link href="http://yoursite.com/2020/02/14/Zotero/"/>
-    <id>http://yoursite.com/2020/02/14/Zotero/</id>
+    <link href="https://yxblog.github.io/2020/02/14/Zotero/"/>
+    <id>https://yxblog.github.io/2020/02/14/Zotero/</id>
     <published>2020-02-14T00:13:19.000Z</published>
     <updated>2020-02-14T00:13:19.000Z</updated>
     
@@ -221,15 +221,15 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     
     
     
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    <category term="research" scheme="https://yxblog.github.io/categories/research/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/02/04/hello-world/"/>
-    <id>http://yoursite.com/2020/02/04/hello-world/</id>
+    <link href="https://yxblog.github.io/2020/02/04/hello-world/"/>
+    <id>https://yxblog.github.io/2020/02/04/hello-world/</id>
     <published>2020-02-04T07:19:25.000Z</published>
     <updated>2020-02-04T07:19:25.000Z</updated>
     
@@ -243,8 +243,8 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
   
   <entry>
     <title>Inkscape Tricks</title>
-    <link href="http://yoursite.com/2020/01/20/Inkscape_Tricks/"/>
-    <id>http://yoursite.com/2020/01/20/Inkscape_Tricks/</id>
+    <link href="https://yxblog.github.io/2020/01/20/Inkscape_Tricks/"/>
+    <id>https://yxblog.github.io/2020/01/20/Inkscape_Tricks/</id>
     <published>2020-01-19T22:39:36.000Z</published>
     <updated>2020-01-19T22:39:36.000Z</updated>
     
@@ -258,8 +258,8 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
   
   <entry>
     <title>仅用于测试</title>
-    <link href="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</id>
+    <link href="https://yxblog.github.io/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
+    <id>https://yxblog.github.io/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</id>
     <published>2020-01-19T02:00:11.000Z</published>
     <updated>2020-01-19T02:00:11.000Z</updated>
     
