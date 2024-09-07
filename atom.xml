@@ -46,7 +46,7 @@
     <link href="http://yoursite.com/2024/07/30/P201EncoderInterface/"/>
     <id>http://yoursite.com/2024/07/30/P201EncoderInterface/</id>
     <published>2024-07-29T14:00:00.000Z</published>
-    <updated>2024-08-09T03:50:43.834Z</updated>
+    <updated>2024-09-07T23:15:26.535Z</updated>
     
     
     <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
@@ -67,7 +67,7 @@
     <link href="http://yoursite.com/2024/04/30/powerBoxControl20240430/"/>
     <id>http://yoursite.com/2024/04/30/powerBoxControl20240430/</id>
     <published>2024-04-30T10:00:00.000Z</published>
-    <updated>2024-04-30T10:00:00.000Z</updated>
+    <updated>2024-09-07T23:15:26.539Z</updated>
     
     
     <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
@@ -86,7 +86,7 @@
     <link href="http://yoursite.com/2024/04/25/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/04/25/motorEncoderController202404/</id>
     <published>2024-04-25T00:00:00.000Z</published>
-    <updated>2024-04-25T00:00:00.000Z</updated>
+    <updated>2024-09-07T23:15:26.538Z</updated>
     
     
     <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
@@ -105,7 +105,7 @@
     <link href="http://yoursite.com/2024/04/20/pdfAchive/"/>
     <id>http://yoursite.com/2024/04/20/pdfAchive/</id>
     <published>2024-04-19T14:00:00.000Z</published>
-    <updated>2024-04-19T14:00:00.000Z</updated>
+    <updated>2024-09-07T23:15:26.539Z</updated>
     
     
       
@@ -127,7 +127,7 @@
     <link href="http://yoursite.com/2024/04/12/flowVisualisation/"/>
     <id>http://yoursite.com/2024/04/12/flowVisualisation/</id>
     <published>2024-04-11T23:00:00.000Z</published>
-    <updated>2024-04-11T23:00:00.000Z</updated>
+    <updated>2024-09-07T23:15:26.536Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/04/12/flowVisualisation/noActivation.png&quot; alt=&quot;Offset attaching jet flow without activation&quot;&gt;&lt;/p&gt;</summary>
@@ -180,7 +180,7 @@
     <link href="http://yoursite.com/2020/06/01/Powerpoint/"/>
     <id>http://yoursite.com/2020/06/01/Powerpoint/</id>
     <published>2020-05-31T22:49:36.000Z</published>
-    <updated>2020-05-31T22:49:36.000Z</updated>
+    <updated>2020-06-01T01:45:54.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.&lt;/p&gt;
@@ -196,7 +196,7 @@
     <link href="http://yoursite.com/2020/02/14/Git-notes/"/>
     <id>http://yoursite.com/2020/02/14/Git-notes/</id>
     <published>2020-02-14T06:04:27.000Z</published>
-    <updated>2020-02-14T06:04:27.000Z</updated>
+    <updated>2024-09-07T23:15:26.533Z</updated>
     
     
     <summary type="html">&lt;ul&gt;
@@ -214,7 +214,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/02/14/Zotero/"/>
     <id>http://yoursite.com/2020/02/14/Zotero/</id>
     <published>2020-02-14T00:13:19.000Z</published>
-    <updated>2020-02-14T00:13:19.000Z</updated>
+    <updated>2024-09-07T23:15:26.536Z</updated>
     
     
     <summary type="html">&lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;</summary>
@@ -231,7 +231,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/02/04/hello-world/"/>
     <id>http://yoursite.com/2020/02/04/hello-world/</id>
     <published>2020-02-04T07:19:25.000Z</published>
-    <updated>2020-02-04T07:19:25.000Z</updated>
+    <updated>2024-09-07T23:15:26.536Z</updated>
     
     
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
@@ -246,7 +246,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/01/20/Inkscape_Tricks/"/>
     <id>http://yoursite.com/2020/01/20/Inkscape_Tricks/</id>
     <published>2020-01-19T22:39:36.000Z</published>
-    <updated>2020-01-19T22:39:36.000Z</updated>
+    <updated>2024-09-07T23:15:26.534Z</updated>
     
     
     <summary type="html">&lt;p&gt;Some tricks are listed in the following to help get speed up with this software.&lt;/p&gt;</summary>
@@ -261,7 +261,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</id>
     <published>2020-01-19T02:00:11.000Z</published>
-    <updated>2020-01-19T02:00:11.000Z</updated>
+    <updated>2024-09-07T23:15:26.539Z</updated>
     
     
       
