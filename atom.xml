@@ -63,30 +63,30 @@
   </entry>
   
   <entry>
-    <title>Power Box Controller Arduino Code</title>
-    <link href="http://yoursite.com/2024/04/30/powerBoxControl20240430/"/>
-    <id>http://yoursite.com/2024/04/30/powerBoxControl20240430/</id>
-    <published>2024-04-30T10:00:00.000Z</published>
-    <updated>2024-09-07T23:15:26.539Z</updated>
+    <title>Motor/Encoder Control Code</title>
+    <link href="http://yoursite.com/2024/07/25/motorEncoderController202404/"/>
+    <id>http://yoursite.com/2024/07/25/motorEncoderController202404/</id>
+    <published>2024-07-25T00:00:00.000Z</published>
+    <updated>2024-09-15T22:30:51.286Z</updated>
     
     
-    <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;The following Arduino should be compatible with the MATLAB motor control code for serial communication.&lt;/p&gt;</summary>
     
     
     
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
     
-    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    <category term="Arduino Code, MatLab Code" scheme="http://yoursite.com/tags/Arduino-Code-MatLab-Code/"/>
     
   </entry>
   
   <entry>
-    <title>Motor/Encoder Control Code</title>
-    <link href="http://yoursite.com/2024/04/25/motorEncoderController202404/"/>
-    <id>http://yoursite.com/2024/04/25/motorEncoderController202404/</id>
-    <published>2024-04-25T00:00:00.000Z</published>
-    <updated>2024-09-07T23:15:26.538Z</updated>
+    <title>Power Box Controller Arduino Code</title>
+    <link href="http://yoursite.com/2024/04/30/powerBoxControl20240430/"/>
+    <id>http://yoursite.com/2024/04/30/powerBoxControl20240430/</id>
+    <published>2024-04-30T10:00:00.000Z</published>
+    <updated>2024-09-07T23:15:26.539Z</updated>
     
     
     <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
