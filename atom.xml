@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-09-06T01:29:14.155Z</updated>
+  <updated>2024-09-27T04:00:02.985Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Power Box Controller Arduino Code</title>
+    <link href="http://yoursite.com/2024/09/27/powerBoxControl20240430/"/>
+    <id>http://yoursite.com/2024/09/27/powerBoxControl20240430/</id>
+    <published>2024-09-27T10:00:00.000Z</published>
+    <updated>2024-09-27T04:00:02.985Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>MATLAB Tips</title>
@@ -67,7 +86,7 @@
     <link href="http://yoursite.com/2024/07/25/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/07/25/motorEncoderController202404/</id>
     <published>2024-07-25T00:00:00.000Z</published>
-    <updated>2024-09-15T22:30:51.286Z</updated>
+    <updated>2024-09-16T21:33:49.675Z</updated>
     
     
     <summary type="html">&lt;p&gt;The following Arduino should be compatible with the MATLAB motor control code for serial communication.&lt;/p&gt;</summary>
@@ -78,25 +97,6 @@
     
     
     <category term="Arduino Code, MatLab Code" scheme="http://yoursite.com/tags/Arduino-Code-MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Power Box Controller Arduino Code</title>
-    <link href="http://yoursite.com/2024/04/30/powerBoxControl20240430/"/>
-    <id>http://yoursite.com/2024/04/30/powerBoxControl20240430/</id>
-    <published>2024-04-30T10:00:00.000Z</published>
-    <updated>2024-09-07T23:15:26.539Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
     
   </entry>
   
