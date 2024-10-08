@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Stepper Motor and Lead Screw Slides</title>
+    <url>/2024/10/08/summaryMicroStepMotor/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Table-for-stepper-motor-and-lead-screw"><a href="#Table-for-stepper-motor-and-lead-screw" class="headerlink" title="Table for stepper motor and lead screw"></a>Table for stepper motor and lead screw</h1><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Formula</th>
+<th>Example Values</th>
+<th>Calculation&#x2F;Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pitch of the Lead Screw</td>
+<td>N&#x2F;A</td>
+<td>2 mm</td>
+<td>The distance the nut moves per one screw revolution.</td>
+</tr>
+<tr>
+<td>Steps Per Revolution (SPR)</td>
+<td>N&#x2F;A</td>
+<td>200</td>
+<td>Full steps required for the motor to turn one revolution.</td>
+</tr>
+<tr>
+<td>Full Step Advance</td>
+<td>Pitch &#x2F; SPR</td>
+<td>2 mm &#x2F; 200</td>
+<td>0.01 mm per full step.</td>
+</tr>
+<tr>
+<td>Microstepping Factor (MfeS)</td>
+<td>Set on the motor driver</td>
+<td>64</td>
+<td>64 microsteps per full step.</td>
+</tr>
+<tr>
+<td>Advance Per Microstep</td>
+<td>Full Step Advance &#x2F; MfeS</td>
+<td>0.01 mm &#x2F; 64</td>
+<td>Approximately 0.00015625 mm per microstep.</td>
+</tr>
+<tr>
+<td>Pulses Per Revolution (PPR)</td>
+<td>SPR * MfeS</td>
+<td>200 * 64</td>
+<td>12800 pulses for 64x microstepping.</td>
+</tr>
+</tbody></table>
+<h3 id="Speed-and-Microstepping-Table"><a href="#Speed-and-Microstepping-Table" class="headerlink" title="Speed and Microstepping Table:"></a>Speed and Microstepping Table:</h3><table>
+<thead>
+<tr>
+<th>SPR (200)</th>
+<th>PPR (Pulses Per Revolution)</th>
+<th>MfeS (Microsteps for Each Step)</th>
+<th>PPS (Pulses Per Second, max 200 kHz)</th>
+<th>RPS (Revolutions Per Second)</th>
+<th>RPM (Revolutions Per Minute)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>200 (1x microstepping)</td>
+<td>1</td>
+<td>200,000</td>
+<td>1,000</td>
+<td>60,000</td>
+</tr>
+<tr>
+<td>200</td>
+<td>800 (4x microstepping)</td>
+<td>4</td>
+<td>200,000</td>
+<td>250</td>
+<td>15,000</td>
+</tr>
+<tr>
+<td>200</td>
+<td>1,600 (8x microstepping)</td>
+<td>8</td>
+<td>200,000</td>
+<td>125</td>
+<td>7,500</td>
+</tr>
+<tr>
+<td>200</td>
+<td>3,200 (16x microstepping)</td>
+<td>16</td>
+<td>200,000</td>
+<td>62.5</td>
+<td>3,750</td>
+</tr>
+<tr>
+<td>200</td>
+<td>6,400 (32x microstepping)</td>
+<td>32</td>
+<td>200,000</td>
+<td>31.25</td>
+<td>1,875</td>
+</tr>
+<tr>
+<td>200</td>
+<td>12,800 (64x microstepping)</td>
+<td>64</td>
+<td>200,000</td>
+<td>15.625</td>
+<td>937.5</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p><strong>Note</strong>: The RPM values are calculated by multiplying the RPS by 60 since there are 60 seconds in a minute.</p>
+<p>High-resolution microstepping reduces the effective torque of the motor. This happens because the current control to the motor’s windings is proportionally distributed across steps in a sinusoidal pattern, which does not produce the full holding torque available at each microstep. As MfeS increases, the incremental torque produced at each step decreases, which can result in less overall motor torque. This reduced torque can affect the motor’s ability to start or stop quickly and its capacity to hold its position against an external force.</p>
+<p>In real-world applications, while high microstepping settings improve positional resolution and can lead to smoother motion, they can also result in a quieter operation. However, this comes at the cost of reduced torque, which must be considered, especially for applications that require high torque or where the motor must overcome significant resistance or load.</p>
+]]></content>
+      <categories>
+        <category>research</category>
+      </categories>
+      <tags>
+        <tag>MatLab Code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Power Box Controller Arduino Code</title>
     <url>/2024/09/27/powerBoxControl20240430/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>The Arduino code is in the following.</p>
@@ -111,7 +239,7 @@
 <p>Supported by PC based <a href="https://www.joulefusion.com/protura4.htm">GUI Demonstration software</a> and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.</p>
 <p>More details can be referred to <a href="dataSheetP201.pdf">the data sheet of P201 interface</a>.</p>
 <span id="more"></span> 
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% Function: encoderP201Read</span></span><br><span class="line"><span class="comment">% Author: Yu Xia</span></span><br><span class="line"><span class="comment">% Date: 2024.7.1 modified in 2024.10.8</span></span><br><span class="line"><span class="comment">% Institution: University of Melbourne</span></span><br><span class="line"><span class="comment">% Email: xiayudlut@icloud.com</span></span><br><span class="line"><span class="comment">% Description: This function communicates with an encoder via a serial port</span></span><br><span class="line"><span class="comment">% to read the encoder count, detect reference index, or clear/set the reference.</span></span><br><span class="line"><span class="comment">% It incorporates error handling to manage serial communication issues.</span></span><br><span class="line"><span class="comment">% The function returns three numbers: the encoder count, the count value at the </span></span><br><span class="line"><span class="comment">% z-channel rising edge (reference index), and the status indicating if the reference </span></span><br><span class="line"><span class="comment">% is detected.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">numbers</span> = <span class="title">encoderP201Read</span><span class="params">(port, command)</span></span></span><br><span class="line">    <span class="comment">% Input:</span></span><br><span class="line">    <span class="comment">% port - Serial port identifier (e.g., &#x27;COM5&#x27;)</span></span><br><span class="line">    <span class="comment">% command - Command to send to the encoder (&#x27;?&#x27; for read, &#x27;c&#x27; for clear reference, &#x27;z&#x27; for set to zero)</span></span><br><span class="line">    <span class="comment">% Output:</span></span><br><span class="line">    <span class="comment">% numbers - A vector containing:</span></span><br><span class="line">    <span class="comment">%           [encoder count, count value at z-channel, reference status]</span></span><br><span class="line">    <span class="comment">%           or an empty array if the command is &#x27;c&#x27; or &#x27;z&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% Set up parameters</span></span><br><span class="line">    baudRate = <span class="number">9600</span>; <span class="comment">% Baud rate for serial communication</span></span><br><span class="line">    maxRetries = <span class="number">3</span>; <span class="comment">% Maximum number of retries</span></span><br><span class="line">    retryDelay = <span class="number">0.5</span>; <span class="comment">% Delay between retries in seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% Attempt to communicate with the encoder</span></span><br><span class="line">    attempt = <span class="number">0</span>;</span><br><span class="line">    success = <span class="built_in">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ~success &amp;&amp; attempt &lt; maxRetries</span><br><span class="line">        attempt = attempt + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">            <span class="comment">% Initialize serial port</span></span><br><span class="line">            sEncoder = serialport(port, baudRate);</span><br><span class="line">            sEncoder.Timeout = <span class="number">2</span>; <span class="comment">% Set timeout for serial communication</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">% Flush the serial buffer</span></span><br><span class="line">            writeline(sEncoder, <span class="string">&#x27;v&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.1</span>);</span><br><span class="line">            read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">% Execute command based on the input</span></span><br><span class="line">            <span class="keyword">switch</span> command</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;?&#x27;</span> <span class="comment">% Read encoder data</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;?&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    encoderStr = read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line">                    pattern = <span class="string">&#x27;\d+&#x27;</span>; <span class="comment">% Regular expression to extract numbers</span></span><br><span class="line">                    numbers = regexp(encoderStr, pattern, <span class="string">&#x27;match&#x27;</span>);</span><br><span class="line">                    numbers = str2double(numbers); <span class="comment">% Convert string array to double array</span></span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span> <span class="comment">% Clear reference status</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;c&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    fprintf(<span class="string">&#x27;\n Clear reference status \n&#x27;</span>);</span><br><span class="line">                    numbers = [];</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;z&#x27;</span> <span class="comment">% Set current count value to zero</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;z&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    fprintf(<span class="string">&#x27;\n Set current count value to zero \n&#x27;</span>);</span><br><span class="line">                    numbers = [];</span><br><span class="line">                <span class="keyword">otherwise</span> <span class="comment">% Invalid command</span></span><br><span class="line">                    error(<span class="string">&#x27;Invalid command. Use &#x27;&#x27;?&#x27;&#x27;, &#x27;&#x27;c&#x27;&#x27;, or &#x27;&#x27;z&#x27;&#x27;.&#x27;</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">% If everything went well, mark as success</span></span><br><span class="line">            success = <span class="built_in">true</span>;</span><br><span class="line">        <span class="keyword">catch</span> ME</span><br><span class="line">            <span class="comment">% Handle communication error and retry</span></span><br><span class="line">            fprintf(<span class="string">&#x27;Error: %s. Retrying...\n&#x27;</span>, ME.message);</span><br><span class="line">            pause(retryDelay);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Close serial port connection</span></span><br><span class="line">        <span class="keyword">if</span> exist(<span class="string">&#x27;sEncoder&#x27;</span>, <span class="string">&#x27;var&#x27;</span>)</span><br><span class="line">            delete(sEncoder);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">% Check if communication was successful</span></span><br><span class="line">    <span class="keyword">if</span> ~success</span><br><span class="line">        error(<span class="string">&#x27;Failed to communicate with the encoder after %d attempts.&#x27;</span>, maxRetries);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Example Usage:</span></span><br><span class="line"><span class="comment">% 1. To calibrate the encoder and set the zero position:</span></span><br><span class="line"><span class="comment">%    encoderP201Read(&#x27;COM5&#x27;, &#x27;z&#x27;);</span></span><br><span class="line"><span class="comment">% 2. To read the encoder count, reference index, and status:</span></span><br><span class="line"><span class="comment">%    data = encoderP201Read(&#x27;COM5&#x27;, &#x27;?&#x27;);</span></span><br><span class="line"><span class="comment">%    encoderCount = data(1); % Use this for further calculations</span></span><br><span class="line"><span class="comment">%    referenceIndex = data(2); % Reference index count value</span></span><br><span class="line"><span class="comment">%    referenceStatus = data(3); % Status if the reference is detected</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% After calibration, you can subtract the encoderCount from the initial </span></span><br><span class="line"><span class="comment">% zero position count to get the current position relative to the zero angle.</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% Function: encoderP201Read</span></span><br><span class="line"><span class="comment">% Author: Yu Xia</span></span><br><span class="line"><span class="comment">% Date: 2024.7.1 modified in 2024.10.8</span></span><br><span class="line"><span class="comment">% Institution: University of Melbourne</span></span><br><span class="line"><span class="comment">% Email: xiayudlut@icloud.com</span></span><br><span class="line"><span class="comment">% Description: This function communicates with an encoder via a serial port</span></span><br><span class="line"><span class="comment">% to read the encoder count, detect reference index, or clear/set the reference.</span></span><br><span class="line"><span class="comment">% It incorporates error handling to manage serial communication issues.</span></span><br><span class="line"><span class="comment">% The function returns three numbers: the encoder count, the count value at the </span></span><br><span class="line"><span class="comment">% z-channel rising edge (reference index), and the status indicating if the reference </span></span><br><span class="line"><span class="comment">% is detected.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">numbers</span> = <span class="title">encoderP201Read</span><span class="params">(port, command)</span></span></span><br><span class="line">    <span class="comment">% Input:</span></span><br><span class="line">    <span class="comment">% port - Serial port identifier (e.g., &#x27;COM5&#x27;)</span></span><br><span class="line">    <span class="comment">% command - Command to send to the encoder (&#x27;?&#x27; for read, &#x27;c&#x27; for clear reference, &#x27;z&#x27; for set to zero)</span></span><br><span class="line">    <span class="comment">% Output:</span></span><br><span class="line">    <span class="comment">% numbers - A vector containing:</span></span><br><span class="line">    <span class="comment">%           [encoder count, count value at z-channel, reference status]</span></span><br><span class="line">    <span class="comment">%           or an empty array if the command is &#x27;c&#x27; or &#x27;z&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% Set up parameters</span></span><br><span class="line">    baudRate = <span class="number">9600</span>; <span class="comment">% Baud rate for serial communication</span></span><br><span class="line">    maxRetries = <span class="number">3</span>; <span class="comment">% Maximum number of retries</span></span><br><span class="line">    retryDelay = <span class="number">0.5</span>; <span class="comment">% Delay between retries in seconds</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% Attempt to communicate with the encoder</span></span><br><span class="line">    attempt = <span class="number">0</span>;</span><br><span class="line">    success = <span class="built_in">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ~success &amp;&amp; attempt &lt; maxRetries</span><br><span class="line">        attempt = attempt + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">            <span class="comment">% Initialize serial port</span></span><br><span class="line">            sEncoder = serialport(port, baudRate);</span><br><span class="line">            sEncoder.Timeout = <span class="number">2</span>; <span class="comment">% Set timeout for serial communication</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">% Flush the serial buffer</span></span><br><span class="line">            writeline(sEncoder, <span class="string">&#x27;v&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.1</span>);</span><br><span class="line">            read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">% Execute command based on the input</span></span><br><span class="line">            <span class="keyword">switch</span> command</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;?&#x27;</span> <span class="comment">% Read encoder data</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;?&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    encoderStr = read(sEncoder, sEncoder.NumBytesAvailable, <span class="string">&#x27;char&#x27;</span>);</span><br><span class="line">                    pattern = <span class="string">&#x27;\d+&#x27;</span>; <span class="comment">% Regular expression to extract numbers</span></span><br><span class="line">                    numbers = regexp(encoderStr, pattern, <span class="string">&#x27;match&#x27;</span>);</span><br><span class="line">                    numbers = str2double(numbers); <span class="comment">% Convert string array to double array</span></span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;c&#x27;</span> <span class="comment">% Clear reference status</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;c&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    fprintf(<span class="string">&#x27;\n Clear reference status \n&#x27;</span>);</span><br><span class="line">                    numbers = [];</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;z&#x27;</span> <span class="comment">% Set current count value to zero</span></span><br><span class="line">                    writeline(sEncoder, <span class="string">&#x27;z&#x27;</span>);</span><br><span class="line">                    pause(<span class="number">0.1</span>);</span><br><span class="line">                    fprintf(<span class="string">&#x27;\n Set current count value to zero \n&#x27;</span>);</span><br><span class="line">                    numbers = [];</span><br><span class="line">                <span class="keyword">otherwise</span> <span class="comment">% Invalid command</span></span><br><span class="line">                    error(<span class="string">&#x27;Invalid command. Use &#x27;&#x27;?&#x27;&#x27;, &#x27;&#x27;c&#x27;&#x27;, or &#x27;&#x27;z&#x27;&#x27;.&#x27;</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">% If everything went well, mark as success</span></span><br><span class="line">            success = <span class="built_in">true</span>;</span><br><span class="line">        <span class="keyword">catch</span> ME</span><br><span class="line">            <span class="comment">% Handle communication error and retry</span></span><br><span class="line">            fprintf(<span class="string">&#x27;Error: %s. Retrying...\n&#x27;</span>, ME.message);</span><br><span class="line">            pause(retryDelay);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">% Close serial port connection</span></span><br><span class="line">        <span class="keyword">if</span> exist(<span class="string">&#x27;sEncoder&#x27;</span>, <span class="string">&#x27;var&#x27;</span>)</span><br><span class="line">            delete(sEncoder);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">% Check if communication was successful</span></span><br><span class="line">    <span class="keyword">if</span> ~success</span><br><span class="line">        error(<span class="string">&#x27;Failed to communicate with the encoder after %d attempts.&#x27;</span>, maxRetries);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Example Usage:</span></span><br><span class="line"><span class="comment">% 1. To calibrate the encoder and set the zero position:</span></span><br><span class="line"><span class="comment">%    encoderP201Read(&#x27;COM5&#x27;, &#x27;z&#x27;);</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% 2. To read the encoder count, reference index, and status:</span></span><br><span class="line"><span class="comment">%    data = encoderP201Read(&#x27;COM5&#x27;, &#x27;?&#x27;);</span></span><br><span class="line"><span class="comment">%    encoderCount = data(1); % Number of pulses read by the encoder</span></span><br><span class="line"><span class="comment">%    referenceIndex = data(2); % Count value at the reference index</span></span><br><span class="line"><span class="comment">%    referenceStatus = data(3); % Indicates if the reference is detected</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% The difference between two encoderCount readings determines the </span></span><br><span class="line"><span class="comment">% rotation angle, based on the encoder&#x27;s resolution. For example, </span></span><br><span class="line"><span class="comment">% with a resolution of 4000 PPR (pulses per revolution), 360 degrees </span></span><br><span class="line"><span class="comment">% equals 4000 pulses. Therefore, 1.8 degrees corresponds to 20 pulses.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% After calibration, subtract the initial zero position count from </span></span><br><span class="line"><span class="comment">% the current encoderCount to find the position relative to zero.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
