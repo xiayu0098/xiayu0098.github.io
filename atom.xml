@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-08T04:42:03.228Z</updated>
+  <updated>2024-10-08T04:42:32.476Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2024/10/08/P201EncoderInterface/"/>
     <id>http://yoursite.com/2024/10/08/P201EncoderInterface/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:42:03.228Z</updated>
+    <updated>2024-10-08T04:42:32.476Z</updated>
     
     
     <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
