@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-08T06:06:08.275Z</updated>
+  <updated>2024-10-08T09:15:26.243Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2024/10/08/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/10/08/motorEncoderController202404/</id>
     <published>2024-10-07T23:00:00.000Z</published>
-    <updated>2024-10-08T06:06:08.275Z</updated>
+    <updated>2024-10-08T09:15:26.243Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;StepperMotorEncoderControllerQuickStartGuide.pdf&quot;&gt;A quick start for the Pololu based stepper motor controller.&lt;/a&gt;&lt;/p&gt;
