@@ -176,7 +176,7 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><h1 id="Table-for-stepper-motor-and-lead-screw"><a href="#Table-for-stepper-motor-and-lead-screw" class="headerlink" title="Table for stepper motor and lead screw"></a>Table for stepper motor and lead screw</h1><table>
+      <h1 id="Table-for-stepper-motor-and-lead-screw"><a href="#Table-for-stepper-motor-and-lead-screw" class="headerlink" title="Table for stepper motor and lead screw"></a>Table for stepper motor and lead screw</h1><table>
 <thead>
 <tr>
 <th>Item</th>
@@ -222,78 +222,9 @@
 <td>12800 pulses for 64x microstepping.</td>
 </tr>
 </tbody></table>
-<h3 id="Speed-and-Microstepping-Table"><a href="#Speed-and-Microstepping-Table" class="headerlink" title="Speed and Microstepping Table:"></a>Speed and Microstepping Table:</h3><table>
-<thead>
-<tr>
-<th>SPR (200)</th>
-<th>PPR (Pulses Per Revolution)</th>
-<th>MfeS (Microsteps for Each Step)</th>
-<th>PPS (Pulses Per Second, max 200 kHz)</th>
-<th>RPS (Revolutions Per Second)</th>
-<th>RPM (Revolutions Per Minute)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>200</td>
-<td>200 (1x microstepping)</td>
-<td>1</td>
-<td>200,000</td>
-<td>1,000</td>
-<td>60,000</td>
-</tr>
-<tr>
-<td>200</td>
-<td>800 (4x microstepping)</td>
-<td>4</td>
-<td>200,000</td>
-<td>250</td>
-<td>15,000</td>
-</tr>
-<tr>
-<td>200</td>
-<td>1,600 (8x microstepping)</td>
-<td>8</td>
-<td>200,000</td>
-<td>125</td>
-<td>7,500</td>
-</tr>
-<tr>
-<td>200</td>
-<td>3,200 (16x microstepping)</td>
-<td>16</td>
-<td>200,000</td>
-<td>62.5</td>
-<td>3,750</td>
-</tr>
-<tr>
-<td>200</td>
-<td>6,400 (32x microstepping)</td>
-<td>32</td>
-<td>200,000</td>
-<td>31.25</td>
-<td>1,875</td>
-</tr>
-<tr>
-<td>200</td>
-<td>12,800 (64x microstepping)</td>
-<td>64</td>
-<td>200,000</td>
-<td>15.625</td>
-<td>937.5</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody></table>
-<p><strong>Note</strong>: The RPM values are calculated by multiplying the RPS by 60 since there are 60 seconds in a minute.</p>
-<p>High-resolution microstepping reduces the effective torque of the motor. This happens because the current control to the motor’s windings is proportionally distributed across steps in a sinusoidal pattern, which does not produce the full holding torque available at each microstep. As MfeS increases, the incremental torque produced at each step decreases, which can result in less overall motor torque. This reduced torque can affect the motor’s ability to start or stop quickly and its capacity to hold its position against an external force.</p>
-<p>In real-world applications, while high microstepping settings improve positional resolution and can lead to smoother motion, they can also result in a quieter operation. However, this comes at the cost of reduced torque, which must be considered, especially for applications that require high torque or where the motor must overcome significant resistance or load.</p>
-
+      
+      <a class="article-more-link" href="/2024/10/08/summaryMicroStepMotor/">read more...</a>
+      
       
       <!-- 打赏 -->
       
@@ -302,7 +233,7 @@
       <a data-url="http://yoursite.com/2024/10/08/summaryMicroStepMotor/" data-id="cm1zyejuw000035js2lkfh266"
         class="article-share-link">share</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MatLab-Code/" rel="tag">MatLab Code</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/research/" rel="tag">research</a></li></ul>
 
     </footer>
 

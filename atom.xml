@@ -42,20 +42,62 @@
     <link href="http://yoursite.com/2024/10/08/summaryMicroStepMotor/"/>
     <id>http://yoursite.com/2024/10/08/summaryMicroStepMotor/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:41:34.489Z</updated>
+    <updated>2024-10-08T04:44:23.186Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;Table-for-stepper-motor-and-lead-screw&quot;&gt;&lt;a href=&quot;#Table-for-stepper-motor-and-lead</summary>
-      
+    <summary type="html">&lt;h1 id=&quot;Table-for-stepper-motor-and-lead-screw&quot;&gt;&lt;a href=&quot;#Table-for-stepper-motor-and-lead-screw&quot; class=&quot;headerlink&quot; title=&quot;Table for stepper motor and lead screw&quot;&gt;&lt;/a&gt;Table for stepper motor and lead screw&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Item&lt;/th&gt;
+&lt;th&gt;Formula&lt;/th&gt;
+&lt;th&gt;Example Values&lt;/th&gt;
+&lt;th&gt;Calculation&amp;#x2F;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Pitch of the Lead Screw&lt;/td&gt;
+&lt;td&gt;N&amp;#x2F;A&lt;/td&gt;
+&lt;td&gt;2 mm&lt;/td&gt;
+&lt;td&gt;The distance the nut moves per one screw revolution.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Steps Per Revolution (SPR)&lt;/td&gt;
+&lt;td&gt;N&amp;#x2F;A&lt;/td&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;td&gt;Full steps required for the motor to turn one revolution.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Full Step Advance&lt;/td&gt;
+&lt;td&gt;Pitch &amp;#x2F; SPR&lt;/td&gt;
+&lt;td&gt;2 mm &amp;#x2F; 200&lt;/td&gt;
+&lt;td&gt;0.01 mm per full step.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Microstepping Factor (MfeS)&lt;/td&gt;
+&lt;td&gt;Set on the motor driver&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;64 microsteps per full step.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Advance Per Microstep&lt;/td&gt;
+&lt;td&gt;Full Step Advance &amp;#x2F; MfeS&lt;/td&gt;
+&lt;td&gt;0.01 mm &amp;#x2F; 64&lt;/td&gt;
+&lt;td&gt;Approximately 0.00015625 mm per microstep.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pulses Per Revolution (PPR)&lt;/td&gt;
+&lt;td&gt;SPR * MfeS&lt;/td&gt;
+&lt;td&gt;200 * 64&lt;/td&gt;
+&lt;td&gt;12800 pulses for 64x microstepping.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
     
     
     
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
     
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    <category term="research" scheme="http://yoursite.com/tags/research/"/>
     
   </entry>
   

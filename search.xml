@@ -66,6 +66,8 @@
 <td>12800 pulses for 64x microstepping.</td>
 </tr>
 </tbody></table>
+<span id="more"></span> 
+
 <h3 id="Speed-and-Microstepping-Table"><a href="#Speed-and-Microstepping-Table" class="headerlink" title="Speed and Microstepping Table:"></a>Speed and Microstepping Table:</h3><table>
 <thead>
 <tr>
@@ -142,7 +144,7 @@
         <category>research</category>
       </categories>
       <tags>
-        <tag>MatLab Code</tag>
+        <tag>research</tag>
       </tags>
   </entry>
   <entry>
