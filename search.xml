@@ -3,7 +3,7 @@
   <entry>
     <title>Motor/Encoder Control Code</title>
     <url>/2024/10/08/motorEncoderController202404/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><a href="StepperMotorEncoderControllerQuickStartGuide.pdf">Stepper Motor and Encoder Wiring</a></p>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><a href="StepperMotorEncoderControllerQuickStartGuide.pdf">A quick start for the Pololu based stepper motor controller.</a></p>
 <p>The following Arduino should be compatible with the MATLAB motor control code for serial communication.</p>
 <span id="more"></span> 
 
@@ -276,7 +276,7 @@
   <entry>
     <title>Guideline &amp; Technical Document</title>
     <url>/2024/04/20/pdfAchive/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><a href="StepperMotorEncoderControllerQuickStartGuide">Stepper Motor and Encoder Wiring</a></p>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><a href="StepperMotorEncoderControllerQuickStartGuide.pdf">Stepper Motor and Encoder Wiring</a></p>
 <p><a href="kalman%20filtering.pdf">Kalman Filter</a></p>
 <p><a href="ANSYSFiniteElement.pdf">有限元机翼动力学分析</a></p>
 ]]></content>
