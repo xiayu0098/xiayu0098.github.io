@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-08T04:41:27.467Z</updated>
+  <updated>2024-10-08T04:42:03.228Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>P201 Encoder Interface</title>
+    <link href="http://yoursite.com/2024/10/08/P201EncoderInterface/"/>
+    <id>http://yoursite.com/2024/10/08/P201EncoderInterface/</id>
+    <published>2024-10-07T13:00:00.000Z</published>
+    <updated>2024-10-08T04:42:03.228Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
+&lt;p&gt;Supported by PC based &lt;a href=&quot;https://www.joulefusion.com/protura4.htm&quot;&gt;GUI Demonstration software&lt;/a&gt; and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.&lt;/p&gt;
+&lt;p&gt;More details can be referred to &lt;a href=&quot;dataSheetP201.pdf&quot;&gt;the data sheet of P201 interface&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Stepper Motor and Lead Screw Slides</title>
     <link href="http://yoursite.com/2024/10/08/summaryMicroStepMotor/"/>
     <id>http://yoursite.com/2024/10/08/summaryMicroStepMotor/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:41:27.467Z</updated>
+    <updated>2024-10-08T04:41:34.489Z</updated>
     
     
       
@@ -72,27 +93,6 @@
 &lt;li&gt;&lt;p&gt;Locate the indice of minimum value in a matrice&lt;/p&gt;
 &lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[M,I]         = &lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(objMatrice(:)); &lt;span class=&quot;comment&quot;&gt;% &amp;#x27;objMatrice&amp;#x27; is the objective matrix&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Irow,Icol]   = &lt;span class=&quot;built_in&quot;&gt;ind2sub&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;size&lt;/span&gt;(objMatrice),I);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ol&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>P201 Encoder Interface</title>
-    <link href="http://yoursite.com/2024/07/30/P201EncoderInterface/"/>
-    <id>http://yoursite.com/2024/07/30/P201EncoderInterface/</id>
-    <published>2024-07-29T14:00:00.000Z</published>
-    <updated>2024-10-08T04:39:17.345Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
-&lt;p&gt;Supported by PC based &lt;a href=&quot;https://www.joulefusion.com/protura4.htm&quot;&gt;GUI Demonstration software&lt;/a&gt; and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.&lt;/p&gt;
-&lt;p&gt;More details can be referred to &lt;a href=&quot;dataSheetP201.pdf&quot;&gt;the data sheet of P201 interface&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
     
