@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    DT series board for DT9828 signal collection |  X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-DT9828CalibCode" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  DT series board for DT9828 signal collection
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2024/10/09/DT9828CalibCode/" class="article-date">
+  <time datetime="2024-10-08T13:00:00.000Z" itemprop="datePublished">2024-10-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">716字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>The following MATLAB code is specifically used for DT9828 boards.</p>
+<span id="more"></span> 
+
+
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line">clear; close all;</span><br><span class="line">daqreset;</span><br><span class="line">daqlist;</span><br><span class="line"></span><br><span class="line"><span class="keyword">global</span> data1 timestamps1 data2 timestamps2 data3 timestamps3 data4 timestamps4</span><br><span class="line"></span><br><span class="line"><span class="comment">% Create a new folder for this calibration session</span></span><br><span class="line">nameFolder = createNewFolder();</span><br><span class="line"></span><br><span class="line"><span class="comment">%% Device Setup</span></span><br><span class="line">deviceNames = &#123;<span class="string">&#x27;DT9828(00)&#x27;</span>, <span class="string">&#x27;DT9828(01)&#x27;</span>&#125;;</span><br><span class="line">samplingRate = <span class="number">25</span>;</span><br><span class="line">ch = setupDevices(deviceNames, samplingRate, nameFolder);</span><br><span class="line"></span><br><span class="line">nCaliTmp = <span class="number">7</span>; <span class="comment">% </span></span><br><span class="line">samplingTime = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> iCali = <span class="number">1</span>:nCaliTmp</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> iDevice = <span class="number">1</span>:<span class="built_in">length</span>(deviceNames)</span><br><span class="line">        devID = getDeviceID(deviceNames&#123;iDevice&#125;);</span><br><span class="line">        fName = [devID, <span class="string">&#x27;tcData&#x27;</span>, num2str(iCali)];</span><br><span class="line">        fComplete = fullfile(nameFolder, fName);</span><br><span class="line">        <span class="keyword">if</span> isfile([fComplete <span class="string">&#x27;.dat&#x27;</span>])</span><br><span class="line">            delete([fComplete <span class="string">&#x27;.dat&#x27;</span>]); <span class="comment">% Delete old file if it exists</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        ai.(devID).ScansAvailableFcn = @(src, evt) logData(src, evt, fComplete);</span><br><span class="line">        start(ai.(devID), <span class="string">&#x27;Duration&#x27;</span>, seconds(samplingTime));</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% Wait for data collection and plot real-time data</span></span><br><span class="line">    waitForCompletion(ai, deviceNames, samplingTime);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% Plot results</span></span><br><span class="line">    plotResults(nameFolder, deviceNames, iCali);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Save results</span></span><br><span class="line">save(fullfile(nameFolder, <span class="string">&#x27;meanTHTC.mat&#x27;</span>), <span class="string">&#x27;-mat&#x27;</span>, <span class="string">&#x27;tmpTC&#x27;</span>, <span class="string">&#x27;tmpTH&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%% Helper Functions</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nameFolder</span> = <span class="title">createNewFolder</span><span class="params">()</span></span></span><br><span class="line">    nFolder = clock;</span><br><span class="line">    nameFolder = strcat(num2str(nFolder(<span class="number">2</span>)), num2str(nFolder(<span class="number">3</span>)));</span><br><span class="line">    <span class="keyword">if</span> ~isfolder(nameFolder)</span><br><span class="line">        mkdir(nameFolder);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ch</span> = <span class="title">setupDevices</span><span class="params">(deviceNames, samplingRate, nameFolder)</span></span></span><br><span class="line">    jChan = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> iDevice = <span class="number">1</span>:<span class="built_in">length</span>(deviceNames)</span><br><span class="line">        devID = getDeviceID(deviceNames&#123;iDevice&#125;);</span><br><span class="line">        ai.(devID) = daq(<span class="string">&#x27;dt&#x27;</span>);</span><br><span class="line">        <span class="keyword">for</span> iChan = <span class="number">0</span>:<span class="number">7</span></span><br><span class="line">            ch(jChan) = addinput(ai.(devID), deviceNames&#123;iDevice&#125;, num2str(iChan), <span class="string">&#x27;Voltage&#x27;</span>);</span><br><span class="line">            pause(<span class="number">0.2</span>);</span><br><span class="line">            <span class="keyword">if</span> strcmp(deviceNames&#123;iDevice&#125;, <span class="string">&#x27;DT9806(00)&#x27;</span>) &amp;&amp; iChan == <span class="number">0</span></span><br><span class="line">                ch(jChan).Range = [<span class="number">-1</span>, <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ch(jChan).Range = [<span class="number">-0.02</span>, <span class="number">0.02</span>];</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            jChan = jChan + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        ai.(devID).Rate = samplingRate;</span><br><span class="line">        deviceInfo = <span class="built_in">table</span>(string(deviceNames&#123;iDevice&#125;), string(pName&#123;iDevice&#125;), string(cName&#123;iDevice&#125;), string(ppName&#123;iDevice&#125;), ...</span><br><span class="line">            <span class="string">&#x27;VariableNames&#x27;</span>, &#123;<span class="string">&#x27;Device Name&#x27;</span>, <span class="string">&#x27;DAQ Board&#x27;</span>, <span class="string">&#x27;Channel No.&#x27;</span>, <span class="string">&#x27;Thermocouple Label&#x27;</span>&#125;);</span><br><span class="line">        <span class="built_in">writetable</span>(deviceInfo, fullfile(nameFolder, [deviceNames&#123;iDevice&#125; <span class="string">&#x27;.txt&#x27;</span>]), <span class="string">&#x27;Delimiter&#x27;</span>, <span class="string">&#x27;\t&#x27;</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">devID</span> = <span class="title">getDeviceID</span><span class="params">(deviceName)</span></span></span><br><span class="line">    devID = [deviceName(<span class="number">1</span>:<span class="number">6</span>), deviceName(<span class="number">8</span>:<span class="number">9</span>)];</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waitForCompletion</span><span class="params">(ai, deviceNames, samplingTime)</span></span></span><br><span class="line">    kk = <span class="number">0</span>; </span><br><span class="line">    col = distinguishable_colors(<span class="number">10</span>);</span><br><span class="line">    sym = <span class="string">&#x27;sov^h&#x27;</span>;</span><br><span class="line">    hFig = <span class="built_in">figure</span>; ax(<span class="number">1</span>) = axes(<span class="string">&#x27;box&#x27;</span>, <span class="string">&#x27;on&#x27;</span>); <span class="built_in">hold</span>(ax(<span class="number">1</span>), <span class="string">&#x27;on&#x27;</span>);</span><br><span class="line">    set(ax, <span class="string">&#x27;ylim&#x27;</span>, [<span class="number">0</span> <span class="number">50</span>]);</span><br><span class="line">    xlabel(ax, <span class="string">&#x27;$t$ (s)&#x27;</span>, <span class="string">&#x27;Interpreter&#x27;</span>, <span class="string">&#x27;LaTex&#x27;</span>);</span><br><span class="line">    ylabel(ax, <span class="string">&#x27;$T$ (C)&#x27;</span>, <span class="string">&#x27;Interpreter&#x27;</span>, <span class="string">&#x27;LaTex&#x27;</span>);</span><br><span class="line">    <span class="keyword">while</span> any(<span class="built_in">cellfun</span>(@(name) ai.(getDeviceID(name)).Running, deviceNames))</span><br><span class="line">        fprintf(<span class="string">&#x27;\n Running %d s \n&#x27;</span>, kk);</span><br><span class="line">        plotRealTimeData(col, sym);</span><br><span class="line">        pause(<span class="number">1</span>);</span><br><span class="line">        drawnow;</span><br><span class="line">        kk = kk + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">plotRealTimeData</span><span class="params">(col, sym)</span></span></span><br><span class="line">    <span class="keyword">global</span> data1 timestamps1 data2 timestamps2 data3 timestamps3 data4 timestamps4</span><br><span class="line">    datasets = &#123;data1, data2, data3, data4&#125;;</span><br><span class="line">    timestamps = &#123;timestamps1, timestamps2, timestamps3, timestamps4&#125;;</span><br><span class="line">    <span class="keyword">for</span> iData = <span class="number">1</span>:<span class="number">8</span></span><br><span class="line">        <span class="keyword">for</span> jData = <span class="number">1</span>:<span class="built_in">length</span>(datasets)</span><br><span class="line">            <span class="keyword">if</span> ~<span class="built_in">isempty</span>(datasets&#123;jData&#125;) &amp;&amp; ~<span class="built_in">isempty</span>(timestamps&#123;jData&#125;)</span><br><span class="line">                meanData = <span class="built_in">mean</span>(datasets&#123;jData&#125;, <span class="number">1</span>);</span><br><span class="line">                meanTime = <span class="built_in">mean</span>(timestamps&#123;jData&#125;);</span><br><span class="line">                <span class="keyword">if</span> ~<span class="built_in">isnan</span>(meanTime) &amp;&amp; ~<span class="built_in">isnan</span>(meanData(iData))</span><br><span class="line">                    <span class="built_in">plot</span>(meanTime, meanData(iData), sym(jData), <span class="string">&#x27;Color&#x27;</span>, col(iData, :), ...</span><br><span class="line">                        <span class="string">&#x27;linewidth&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;MarkerFaceColor&#x27;</span>, col(iData, :), <span class="string">&#x27;MarkerSize&#x27;</span>, <span class="number">4</span>);</span><br><span class="line">                <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">plotResults</span><span class="params">(nameFolder, deviceNames, iCali)</span></span></span><br><span class="line">    <span class="built_in">figure</span>; ax(<span class="number">1</span>) = axes; <span class="built_in">hold</span>(ax(<span class="number">1</span>), <span class="string">&#x27;on&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> iDevice = <span class="number">1</span>:<span class="built_in">length</span>(deviceNames)</span><br><span class="line">        devID = getDeviceID(deviceNames&#123;iDevice&#125;);</span><br><span class="line">        fName = [devID, <span class="string">&#x27;tcData&#x27;</span>, num2str(iCali)];</span><br><span class="line">        fComplete = fullfile(nameFolder, fName);</span><br><span class="line">        alldata = load([fComplete, <span class="string">&#x27;.dat&#x27;</span>]);</span><br><span class="line">        insTC = alldata(:, <span class="number">2</span>:<span class="keyword">end</span>);</span><br><span class="line">        <span class="built_in">plot</span>(alldata(:, <span class="number">1</span>), insTC, <span class="string">&#x27;linewidth&#x27;</span>, <span class="number">1.4</span>);</span><br><span class="line">        <span class="built_in">hold</span> on;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    annotation(gcf, <span class="string">&#x27;textbox&#x27;</span>, [<span class="number">0.14</span>, <span class="number">0.76</span>, <span class="number">0.15</span>, <span class="number">0.14</span>], <span class="string">&#x27;FitBoxToText&#x27;</span>, <span class="string">&#x27;off&#x27;</span>, <span class="string">&#x27;string&#x27;</span>, [num2str(tmpTH(iCali)), <span class="string">&#x27;C&#x27;</span>]);</span><br><span class="line">    xlabel(<span class="string">&#x27;$t$ (s)&#x27;</span>, <span class="string">&#x27;Interpreter&#x27;</span>, <span class="string">&#x27;Latex&#x27;</span>);</span><br><span class="line">    ylabel(<span class="string">&#x27;T (C)&#x27;</span>, <span class="string">&#x27;Interpreter&#x27;</span>, <span class="string">&#x27;Latex&#x27;</span>);</span><br><span class="line">    tmpTC(iCali, :) = <span class="built_in">mean</span>(insTC);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logData</span><span class="params">(src, ~, fname)</span></span></span><br><span class="line">    <span class="keyword">global</span> data1 timestamps1 data2 timestamps2 data3 timestamps3 data4 timestamps4</span><br><span class="line">    [data, timestamps, ~] = read(src, src.ScansAvailableFcnCount, <span class="string">&quot;OutputFormat&quot;</span>, <span class="string">&quot;Matrix&quot;</span>);</span><br><span class="line">    deviceID = src.DeviceID;</span><br><span class="line">    <span class="keyword">if</span> contains(deviceID, <span class="string">&#x27;DT9828(00)&#x27;</span>)</span><br><span class="line">        data1 = data; timestamps1 = timestamps;</span><br><span class="line">    <span class="keyword">elseif</span> contains(deviceID, <span class="string">&#x27;DT9828(01)&#x27;</span>)</span><br><span class="line">        data2 = data; timestamps2 = timestamps;</span><br><span class="line">    <span class="keyword">elseif</span> contains(deviceID, <span class="string">&#x27;DT9828(02)&#x27;</span>)</span><br><span class="line">        data3 = data; timestamps3 = timestamps;</span><br><span class="line">    <span class="keyword">elseif</span> contains(deviceID, <span class="string">&#x27;DT9828(03)&#x27;</span>)</span><br><span class="line">        data4 = data; timestamps4 = timestamps;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    alldata = [timestamps, data];</span><br><span class="line">    writematrix(alldata, [fname <span class="string">&#x27;.dat&#x27;</span>], <span class="string">&#x27;WriteMode&#x27;</span>, <span class="string">&#x27;append&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/10/09/DT9828CalibCode/" data-id="cm21pswwr0000tvjs6uj0dv2d"
+        class="article-share-link">share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MatLab-Code/" rel="tag">MatLab Code</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/10/08/P201EncoderInterface/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">P201 Encoder Interface</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2024
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

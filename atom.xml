@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-08T04:42:32.476Z</updated>
+  <updated>2024-10-09T20:58:34.720Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DT series board for DT9828 signal collection</title>
+    <link href="http://yoursite.com/2024/10/09/DT9828CalibCode/"/>
+    <id>http://yoursite.com/2024/10/09/DT9828CalibCode/</id>
+    <published>2024-10-08T13:00:00.000Z</published>
+    <updated>2024-10-09T20:58:34.720Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The following MATLAB code is specifically used for DT9828 boards.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>P201 Encoder Interface</title>
@@ -162,25 +181,6 @@
     
     
     <category term="Arduino Code, MatLab Code" scheme="http://yoursite.com/tags/Arduino-Code-MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DT series board for DT9828 signal collection</title>
-    <link href="http://yoursite.com/2024/05/01/DT9828CalibCode/"/>
-    <id>http://yoursite.com/2024/05/01/DT9828CalibCode/</id>
-    <published>2024-04-30T21:54:24.826Z</published>
-    <updated>2024-10-09T10:16:06.714Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;The following MATLAB code is specifically used for DT9828 boards.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
     
   </entry>
   
