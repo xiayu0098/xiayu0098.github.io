@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-10T02:46:42.196Z</updated>
+  <updated>2024-10-10T03:18:10.551Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2024/10/10/powerBoxControl/"/>
     <id>http://yoursite.com/2024/10/10/powerBoxControl/</id>
     <published>2024-10-10T09:00:00.000Z</published>
-    <updated>2024-10-10T02:46:42.196Z</updated>
+    <updated>2024-10-10T03:18:10.551Z</updated>
     
     
     <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;
@@ -39,13 +39,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Expandable with Arduino Mega&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The embedded Arduino Mega board allows for easy expansion. You can add modules for monitoring temperature, pressure, and more, making this power box highly adaptable for future developments.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For a closer look, check out the images of the power box below:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2024/10/10/powerBoxControl/powerBoxPic.jpeg&quot; alt=&quot;Power Box&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Arduino-Code&quot;&gt;&lt;a href=&quot;#Arduino-Code&quot; class=&quot;headerlink&quot; title=&quot;Arduino Code&quot;&gt;&lt;/a&gt;Arduino Code&lt;/h2&gt;&lt;p&gt;The board comes pre-loaded with essential Arduino code, ensuring the power box is ready to use straight out of the box.&lt;/p&gt;</summary>
+&lt;li&gt;The embedded Arduino Mega board allows for easy expansion. You can add modules for monitoring temperature, pressure, and more, making this power box highly adaptable for future developments.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
     
     
     
