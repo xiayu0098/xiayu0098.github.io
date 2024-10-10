@@ -121,14 +121,35 @@
   </entry>
   
   <entry>
-    <title>Power Box Controller Arduino Code</title>
-    <link href="http://yoursite.com/2024/09/27/powerBoxControl20240430/"/>
-    <id>http://yoursite.com/2024/09/27/powerBoxControl20240430/</id>
+    <title>Multi-functional Power Box</title>
+    <link href="http://yoursite.com/2024/09/27/powerBoxControl/"/>
+    <id>http://yoursite.com/2024/09/27/powerBoxControl/</id>
     <published>2024-09-27T10:00:00.000Z</published>
-    <updated>2024-09-27T04:00:02.985Z</updated>
+    <updated>2024-10-10T02:40:15.352Z</updated>
     
     
-    <summary type="html">&lt;p&gt;The Arduino code is in the following.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;
+&lt;h2 id=&quot;Key-Features&quot;&gt;&lt;a href=&quot;#Key-Features&quot; class=&quot;headerlink&quot; title=&quot;Key Features&quot;&gt;&lt;/a&gt;Key Features&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Dual Relay System&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outlet 1&lt;/strong&gt;: Connected to a solid-state relay, perfect for use in PID control systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outlet 2&lt;/strong&gt;: Equipped with a mechanical relay, ideal for simple on&amp;#x2F;off power operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Integrated AC Power Meter&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Provides instant and accurate measurements of current and voltage, with a precision of ±1 W.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expandable with Arduino Mega&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The embedded Arduino Mega board allows for easy expansion. You can add modules for monitoring temperature, pressure, and more, making this power box highly adaptable for future developments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a closer look, check out the images of the power box below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2024/09/27/powerBoxControl/powerBoxPic.jpg&quot; alt=&quot;Power Box&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Arduino-Code&quot;&gt;&lt;a href=&quot;#Arduino-Code&quot; class=&quot;headerlink&quot; title=&quot;Arduino Code&quot;&gt;&lt;/a&gt;Arduino Code&lt;/h2&gt;&lt;p&gt;The board comes pre-loaded with essential Arduino code, ensuring the power box is ready to use straight out of the box.&lt;/p&gt;</summary>
     
     
     
