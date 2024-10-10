@@ -184,13 +184,10 @@
     <link href="http://yoursite.com/2024/05/01/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/05/01/motorEncoderController202404/</id>
     <published>2024-04-30T21:54:24.826Z</published>
-    <updated>2024-10-10T03:03:29.551Z</updated>
+    <updated>2024-10-10T03:19:12.178Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I developed a stepper motor controller using a Pololu board and Arduino, designed to manage a stepper motor up to 4 A and read a single-end encoder. The system uses serial communction for interaction between the motor, encoder, and PC. That means you can even use MATLAB (with the example code shown below) to operate the motor and capture encoder counts.&lt;/p&gt;
-&lt;p&gt;Take a closer look:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2024/05/01/motorEncoderController202404/pic1.png&quot; alt=&quot;Pic 1&quot;&gt;&lt;br&gt;&lt;img src=&quot;/2024/05/01/motorEncoderController202404/pic2.png&quot; alt=&quot;Pic 2&quot;&gt;&lt;br&gt;&lt;img src=&quot;/2024/05/01/motorEncoderController202404/pic3.png&quot; alt=&quot;Pic 3&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;StepperMotorEncoderControllerQuickStartGuide.pdf&quot;&gt;A quick start for the stepper motor controller.&lt;/a&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;I developed a stepper motor controller using a Pololu board and Arduino, designed to manage a stepper motor up to 4 A and read a single-end encoder. The system uses serial communction for interaction between the motor, encoder, and PC. That means you can even use MATLAB (with the example code shown below) to operate the motor and capture encoder counts.&lt;/p&gt;</summary>
     
     
     
