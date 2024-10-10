@@ -125,7 +125,7 @@
     <link href="http://yoursite.com/2024/09/27/powerBoxControl/"/>
     <id>http://yoursite.com/2024/09/27/powerBoxControl/</id>
     <published>2024-09-27T10:00:00.000Z</published>
-    <updated>2024-10-10T02:40:15.352Z</updated>
+    <updated>2024-10-10T02:43:28.212Z</updated>
     
     
     <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;
@@ -148,7 +148,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;For a closer look, check out the images of the power box below:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2024/09/27/powerBoxControl/powerBoxPic.jpg&quot; alt=&quot;Power Box&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2024/09/27/powerBoxControl/powerBoxPic.jpeg&quot; alt=&quot;Power Box&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Arduino-Code&quot;&gt;&lt;a href=&quot;#Arduino-Code&quot; class=&quot;headerlink&quot; title=&quot;Arduino Code&quot;&gt;&lt;/a&gt;Arduino Code&lt;/h2&gt;&lt;p&gt;The board comes pre-loaded with essential Arduino code, ensuring the power box is ready to use straight out of the box.&lt;/p&gt;</summary>
     
     
