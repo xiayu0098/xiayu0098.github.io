@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    My Custom Latex Style File (.sty) |  X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="&#39;LaTex-customSty" class="article article-type-&#39;LaTex" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  My Custom Latex Style File (.sty)
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2024/10/17/customSty/" class="article-date">
+  <time datetime="2024-10-17T02:27:08.000Z" itemprop="datePublished">2024-10-17</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In this post, I’m sharing my custom LaTeX <code>.sty</code> file, which I regularly use in my projects. This <code>.sty</code> file includes settings and macros for <strong>biblatex</strong> with <code>biber</code>, custom TikZ symbols, and more.</p>
+<p>You can download the <code>.sty</code> file or copy the relevant parts below.</p>
+<span id="more"></span> 
+
+<h2 id="Usage-Instructions"><a href="#Usage-Instructions" class="headerlink" title="Usage Instructions"></a>Usage Instructions</h2><p>To use this style file (.sty) in your LaTeX projects, add the following line in the preamble:</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;mycustomstyle&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Additionally, if you would like to use <strong>biblatex</strong>, please include your .bib file (e.g., the name <em>referenceBitex.bib</em>) and add one line as below in the preamable.</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Citation and bibliography commands</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\addbibresource</span>&#123;referenceBitex.bib&#125;      <span class="comment">% Add bibliography file</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Custom-Sty-File"><a href="#Custom-Sty-File" class="headerlink" title="Custom .Sty File"></a>Custom .Sty File</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% biblatexCitationCusomisedTikz.sty</span></span><br><span class="line"><span class="keyword">\ProvidesPackage</span>&#123;mystyle&#125;[2024/10/16 Personal Style Package by YX]</span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Load essential packages</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>[american]&#123;babel&#125;         <span class="comment">% Language support</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>[utf8]&#123;inputenc&#125;          <span class="comment">% UTF-8 encoding</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;csquotes&#125;                <span class="comment">% Context-sensitive quotation marks</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Bibliography using biblatex</span></span><br><span class="line"><span class="comment">% - Uses biber backend</span></span><br><span class="line"><span class="comment">% - APA style</span></span><br><span class="line"><span class="comment">% - Configured for specific citation settings</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>[</span><br><span class="line">    backend=biber,                       <span class="comment">% Specify biber as backend</span></span><br><span class="line">    style=apa,                           <span class="comment">% Use APA citation style</span></span><br><span class="line">    natbib=true,                         <span class="comment">% Enable natbib compatibility</span></span><br><span class="line">    sorting=ynt,                         <span class="comment">% Sort by year, name, title</span></span><br><span class="line">    sortcites=true,                      <span class="comment">% Sort citations within one command</span></span><br><span class="line">    maxcitenames=2,                      <span class="comment">% Maximum number of names in citations</span></span><br><span class="line">    date=year,                           <span class="comment">% Only display year in citations</span></span><br><span class="line">    uniquename=false,                    <span class="comment">% Do not distinguish authors by first names</span></span><br><span class="line">    uniquelist=false                     <span class="comment">% Do not distinguish lists by first names</span></span><br><span class="line">]&#123;biblatex&#125;</span><br><span class="line"><span class="keyword">\DeclareLanguageMapping</span>&#123;american&#125;&#123;american-apa&#125;  <span class="comment">% Set language mapping for APA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Remove certain fields from bibliography</span></span><br><span class="line"><span class="comment">% - DOI, URL, ISSN, etc.</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\DeclareFieldFormat</span>&#123;doi&#125;&#123;&#125;               <span class="comment">% Remove DOI field</span></span><br><span class="line"><span class="keyword">\DeclareFieldFormat</span>&#123;url&#125;&#123;&#125;               <span class="comment">% Remove URL field</span></span><br><span class="line"><span class="keyword">\DeclareFieldFormat</span>&#123;issn&#125;&#123;&#125;              <span class="comment">% Remove ISSN field</span></span><br><span class="line"><span class="comment">%\DeclareFieldFormat&#123;urldate&#125;&#123;&#125;           % (Optional) Disable URL date</span></span><br><span class="line"><span class="comment">%\DeclareFieldFormat&#123;version&#125;&#123;&#125;           % (Optional) Disable version field</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Hyperref for clickable links</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;hyperref&#125;                <span class="comment">% Enable hyperlinks</span></span><br><span class="line"><span class="keyword">\hypersetup</span>&#123;</span><br><span class="line">    colorlinks=true,                     <span class="comment">% Enable colored links</span></span><br><span class="line">    linktoc=all,                         <span class="comment">% Make table of contents fully linked</span></span><br><span class="line">    citecolor=black,                     <span class="comment">% Set citation link color to black</span></span><br><span class="line">    filecolor=black,                     <span class="comment">% Set file link color to black</span></span><br><span class="line">    linkcolor=black,                     <span class="comment">% Set hyperlink color to black</span></span><br><span class="line">    urlcolor=black                       <span class="comment">% Set URL link color to black</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Cleveref for enhanced cross-referencing</span></span><br><span class="line"><span class="comment">% - Customize names of references</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>[capitalize]&#123;cleveref&#125;    <span class="comment">% Capitalize cref references</span></span><br><span class="line"><span class="keyword">\crefname</span>&#123;figure&#125;&#123;Figure&#125;&#123;Figures&#125;       <span class="comment">% Custom name for figures</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Custom commands for references</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\seecref</span>&#125;[1]&#123;(see <span class="keyword">\cref</span>&#123;<span class="params">#1</span>&#125;)&#125;   <span class="comment">% Custom &quot;see cref&quot;</span></span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\cfcref</span>&#125;[1]&#123;(cf. <span class="keyword">\cref</span>&#123;<span class="params">#1</span>&#125;)&#125;    <span class="comment">% Custom &quot;cf. cref&quot;</span></span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\figref</span>&#125;[1]&#123;Figure~<span class="keyword">\ref</span>&#123;<span class="params">#1</span>&#125;&#125;    <span class="comment">% Custom &quot;Figure&quot; reference</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Math symbols and utilities</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;upgreek&#125;                 <span class="comment">% Upright Greek symbols</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Custom colors (for plots or other uses)</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;tikz&#125;                    <span class="comment">% Enable TikZ for drawing</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;blue1&#125;&#123;rgb&#125;&#123;0.1216,0.4667,0.7059&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;red1&#125;&#123;rgb&#125;&#123;0.8392,0.1529,0.1569&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;brown1&#125;&#123;RGB&#125;&#123;140,86,76&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;green1&#125;&#123;RGB&#125;&#123;43,160,43&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;blue2&#125;&#123;RGB&#125;&#123;66,146,198&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;magenta2&#125;&#123;RGB&#125;&#123;223,62,155&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange2&#125;&#123;RGB&#125;&#123;239,102,71&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;red2&#125;&#123;rgb&#125;&#123;0.9373,0.3961,0.2824&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;magenta3&#125;&#123;rgb&#125;&#123;0.8902,0.4667,0.7608&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;grey1&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;delta1&#125;&#123;rgb&#125;&#123;0.8431,0.1882,0.1216&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;delta2&#125;&#123;rgb&#125;&#123;0.6824,0.0039,0.4941&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;delta3&#125;&#123;rgb&#125;&#123;0.1294,0.4431,0.7098&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange1&#125;&#123;RGB&#125;&#123;255,127,14&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Custom TikZ commands for shapes and symbols</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\plusdefined</span>&#125;[1]&#123;</span><br><span class="line">    <span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">    <span class="keyword">\draw</span>[line width=<span class="params">#1</span>] (0,0) -- (0.50em,0);</span><br><span class="line">    <span class="keyword">\draw</span>[line width=<span class="params">#1</span>] (0.275em,0.275em) -- (0.275em,-0.275em);</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\fillddiamondColor</span>&#125;[2]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;[line width=<span class="params">#1</span>]</span><br><span class="line"><span class="keyword">\node</span>[inner sep=0pt, diamond, minimum size=0.55em, draw=none,fill=<span class="params">#2</span>] (diamond) &#123;&#125;;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\filldsquareColor</span>&#125;[2]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;[line width=<span class="params">#1</span>]</span><br><span class="line"><span class="keyword">\node</span>[inner sep=0pt, minimum size=0.55em, draw=none,fill=<span class="params">#2</span>] (square) &#123;&#125;;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\crossdefined</span>&#125;[1]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line"><span class="keyword">\node</span>[inner sep=0pt] (cross) at (0,0) &#123;</span><br><span class="line">    <span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">    <span class="keyword">\draw</span>[line width=<span class="params">#1</span>] (0,0) -- (0.3525em,-0.3525em);</span><br><span class="line">    <span class="keyword">\draw</span>[line width=<span class="params">#1</span>] (0,-0.3525em) -- (0.3525em,0);</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\filluptriangle</span>&#125;[2]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;[line width=<span class="params">#1</span>]</span><br><span class="line">    <span class="keyword">\draw</span>[fill=<span class="params">#2</span>, draw = <span class="params">#2</span>, line width=<span class="params">#1</span>] </span><br><span class="line">    (0,0) -- ++(0.55em,0) -- ++(-0.275em,0.55em) -- cycle;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\uptriangle</span>&#125;[2]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line"><span class="keyword">\node</span>[inner sep=0pt] (triangle) at (0,0) &#123;</span><br><span class="line">    <span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">    <span class="keyword">\fill</span>[line width = <span class="params">#1</span>,color = <span class="params">#2</span>,fill = none,draw = <span class="params">#2</span>] (0,0) -- ++(0.55em,0) -- ++(-0.275em,0.55em) -- cycle;</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">\DeclareRobustCommand</span>&#123;<span class="keyword">\downtriangle</span>&#125;[2]&#123;</span><br><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line"><span class="keyword">\node</span>[inner sep=0pt] (triangle) at (0,0) &#123;</span><br><span class="line">    <span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">    <span class="keyword">\fill</span>[line width = <span class="params">#1</span>,color = <span class="params">#2</span>,fill = none,draw = <span class="params">#2</span>] (0,0) -- ++(0.55em,0) -- ++(-0.275em,-0.55em) -- cycle;</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% PGFPlots setup (for data plots)</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pgfplots&#125;</span><br><span class="line"><span class="keyword">\pgfplotsset</span>&#123;compat=newest&#125;</span><br><span class="line">  <span class="comment">%% the following commands are needed for some matlab2tikz features</span></span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;plotmarks&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;arrows.meta&#125;</span><br><span class="line"><span class="keyword">\usepgfplotslibrary</span>&#123;patchplots&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;arrows,shapes&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;decorations.pathreplacing&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;snakes&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;calc,positioning,shadows.blur,decorations.pathreplacing&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;arrows,shapes&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Table styling packages</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;threeparttable&#125;          <span class="comment">% Enable table notes</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;booktabs&#125;                <span class="comment">% Professional table formatting</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;caption&#125;                 <span class="comment">% Advanced caption control</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="comment">% Landscape support (for wide figures or tables)</span></span><br><span class="line"><span class="comment">% ===============================</span></span><br><span class="line"><span class="keyword">\RequirePackage</span>&#123;pdflscape&#125;               <span class="comment">% Support for rotating pages in landscape mode</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% % Make journal titles in article references clickable</span></span><br><span class="line"><span class="comment">% \DeclareFieldFormat[article]&#123;journaltitle&#125;&#123;\href&#123;\thefield&#123;url&#125;&#125;&#123;\textnormal&#123;#1&#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">% % Remove quotation marks around article titles</span></span><br><span class="line"><span class="comment">% \DeclareFieldFormat[article]&#123;title&#125;&#123;#1&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/10/17/customSty/" data-id="cm2co5mh200004r0b8oyeh4ir"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/10/10/powerBoxControl/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Multi-functional Power Box</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2024
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
