@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolset id="user_favorite_commands_toolset" template="false">
+   <tool id="clear_example" label="Clear Variables &amp; Commands" toolset_id="user_favorite_commands_toolset">
+      <callback>% Remove all variables from the current MATLAB® workspace
+clear;
+
+% Clear all input and output from the MATLAB® Command Window
+clc;</callback>
+      <icon name="favorite_command_C"/>
+   </tool>
+   <tool id="e660c54d-dcb4-4221-ae72-10cb40e9b6a2" label="RunOneLine" toolset_id="user_favorite_commands_toolset">
+      <callback>% Command summary goes here&#xD;
+&#xD;
+currentEditor = matlab.desktop.editor.getActive; &#xD;
+originalSelection = currentEditor.Selection; &#xD;
+assert(originalSelection(1)==originalSelection(3)); &#xD;
+currentEditor.Selection = [originalSelection(1) 1 originalSelection(1) Inf]; &#xD;
+disp(currentEditor.SelectedText); eval(currentEditor.SelectedText); &#xD;
+currentEditor.Selection = originalSelection + [1 0 1 0];</callback>
+      <icon name="favorite_command_R"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="e214fbda-7c4e-4bf9-a948-560c6f1f99bd" label="figStart" toolset_id="user_favorite_commands_toolset">
+      <callback>if exist('snippet'), snippet = struct('snippet',snippet); end;      % Save the variable SNIPPET, if it exists&#xD;
+% Type your text here!&#xD;
+snippet.txt = ...&#xD;
+['hFig  = figure;ax(1) = axes(''box'',''on'');hold(ax(1),''on'')' ];&#xD;
+ &#xD;
+snippet.txt = strrep(snippet.txt, '\n', sprintf('%c',10));          % Replace '\n' by a new line&#xD;
+if verLessThan('matlab', '8.1.0')&#xD;
+    snippet.activeEditor = editorservices.getActive;                % Get the active document in the editor&#xD;
+else&#xD;
+    snippet.activeEditor = matlab.desktop.editor.getActive;         % Get the active document in the editor&#xD;
+end&#xD;
+snippet.activeEditor.JavaEditor.insertTextAtCaret(snippet.txt);     % Insert text at the current position&#xD;
+if isfield(snippet,'snippet')                                       % Delete SNIPPET (or replace it by its original value)&#xD;
+    snippet = snippet.snippet;&#xD;
+else&#xD;
+    clear snippet&#xD;
+end;&#xD;
+</callback>
+      <icon name="favorite_command_A"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="about_example" label="About Favorite Commands" toolset_id="user_favorite_commands_toolset">
+      <callback>% Display help documentation for Favorite Commands
+helpview([docroot '/mapfiles/matlab_env.map'], 'matlab_favorites');</callback>
+      <icon name="help_command"/>
+   </tool>
+   <tool id="eb659f57-4b38-4778-90cd-700d4207b463" label="sortFile" toolset_id="user_favorite_commands_toolset">
+      <callback>if exist('snippet'), snippet = struct('snippet',snippet); end;      % Save the variable SNIPPET, if it exists&#xD;
+% Type your text here!&#xD;
+snippet.txt = ...&#xD;
+['sFile = dir();\n'...&#xD;
+ '%%%sort ascending filenames based on Number\n'...&#xD;
+ '[~, reindex] = sort(str2double(regexp( {sFile.name}, ''\d+'', ''match'', ''once'' )));\n'...&#xD;
+ 'sFile = sFile(reindex);\n'...&#xD;
+];&#xD;
+ &#xD;
+snippet.txt = strrep(snippet.txt, '\n', sprintf('%c',10));          % Replace '\n' by a new line&#xD;
+if verLessThan('matlab', '8.1.0')&#xD;
+    snippet.activeEditor = editorservices.getActive;                % Get the active document in the editor&#xD;
+else&#xD;
+    snippet.activeEditor = matlab.desktop.editor.getActive;         % Get the active document in the editor&#xD;
+end&#xD;
+snippet.activeEditor.JavaEditor.insertTextAtCaret(snippet.txt);     % Insert text at the current position&#xD;
+if isfield(snippet,'snippet')                                       % Delete SNIPPET (or replace it by its original value)&#xD;
+    snippet = snippet.snippet;&#xD;
+else&#xD;
+    clear snippet&#xD;
+end;          &#xD;
+</callback>
+      <icon name="favorite_command_1"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="goto_user_example" label="Go to User Folder" toolset_id="user_favorite_commands_toolset">
+      <callback>% Change MATLAB® current folder to the first folder on the search path
+cd(userpath);</callback>
+      <icon name="favorite_command"/>
+   </tool>
+   <tool id="a2007024-b4cb-4363-b589-a07079393b4f" label="FigEnd" toolset_id="user_favorite_commands_toolset">
+      <callback>if exist('snippet'), snippet = struct('snippet',snippet); end;      % Save the variable SNIPPET, if it exists&#xD;
+% Type your text here!&#xD;
+snippet.txt = ...&#xD;
+       ['  xlabel(''$xxx$''... \n'...&#xD;
+        '          ,''FontSize'',fS+1 ... \n'...&#xD;
+        '          ,''Interpreter'',''LaTex''); \n'...&#xD;
+        '  ylabel(''$xxx$''... \n'...&#xD;
+        '          ,''FontSize'',fS+1 ... \n'...&#xD;
+        '          ,''Interpreter'',''LaTex''); \n'...&#xD;
+        '  \n'...&#xD;
+        '  posiHW = [2.7 2.7/sqrt(2)]; \n'...&#xD;
+        '  specialPlot(ax,hFig,''FontSize'',fS,''positionwh'',posiHW);\n'...&#xD;
+        '  printName = ''untitle'';\n'...&#xD;
+        '  print(hFig,''-depsc'',[dir1 printName]);\n'...&#xD;
+        '  print(hFig,''-dtiff'',''-r600'',[dir1 printName]);\n'...&#xD;
+];&#xD;
+ &#xD;
+snippet.txt = strrep(snippet.txt, '\n', sprintf('%c',10));          % Replace '\n' by a new line&#xD;
+if verLessThan('matlab', '8.1.0')&#xD;
+    snippet.activeEditor = editorservices.getActive;                % Get the active document in the editor&#xD;
+else&#xD;
+    snippet.activeEditor = matlab.desktop.editor.getActive;         % Get the active document in the editor&#xD;
+end&#xD;
+snippet.activeEditor.JavaEditor.insertTextAtCaret(snippet.txt);     % Insert text at the current position&#xD;
+if isfield(snippet,'snippet')                                       % Delete SNIPPET (or replace it by its original value)&#xD;
+    snippet = snippet.snippet;&#xD;
+else&#xD;
+    clear snippet&#xD;
+end;&#xD;
+&#xD;
+</callback>
+      <icon name="favorite_command_B"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="examples" label="Examples" toolset_id="user_favorite_commands_toolset" type="group">
+      <icon name="favorite_category"/>
+      <child_tool id="about_example" toolset_id="user_favorite_commands_toolset"/>
+      <child_tool id="clear_example" toolset_id="user_favorite_commands_toolset"/>
+      <child_tool id="goto_user_example" toolset_id="user_favorite_commands_toolset"/>
+      <child_tool id="logo_example" toolset_id="user_favorite_commands_toolset"/>
+      <parent_tool id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="a0e2f2c1-233a-46fa-8214-5ffeec9c39f6" label="readableCode" toolset_id="user_favorite_commands_toolset">
+      <callback>% Command summary goes here&#xD;
+%% &gt;&gt; Get relevant text.&#xD;
+currentEditor     = matlab.desktop.editor.getActive;&#xD;
+originalSelection = currentEditor.Selection;&#xD;
+originalSelection(2)=1;&#xD;
+originalSelection(4)=inf;&#xD;
+currentEditor.Selection=originalSelection;&#xD;
+fid               = currentEditor.SelectedText;&#xD;
+flag              = 0;&#xD;
+if isempty(fid)&#xD;
+    flag = 1;&#xD;
+    fid  = currentEditor.Text;&#xD;
+end&#xD;
+fid2 = currentEditor.Text;&#xD;
+C    = textscan(fid,'%s','delimiter','\n');&#xD;
+C2   = textscan(fid2,'%s','delimiter','\n');&#xD;
+k    = string(C{1,1});&#xD;
+k2   = string(C2{1,1});&#xD;
+if flag&#xD;
+     originalSelection=[1,1,length(k),inf];&#xD;
+end&#xD;
+%% &gt;&gt; Prameters to take into consideration.&#xD;
+iequal = strfind(k,'=');&#xD;
+iend   = strfind(k,';');&#xD;
+ifor   = strfind(k,'for ');      % lines to ignore&#xD;
+iwh    = strfind(k,'while ');    % lines to ignore&#xD;
+iif    = strfind(k,'if ');       % lines to ignore&#xD;
+ifun   = strfind(k,'function '); % lines to ignore&#xD;
+ipr1   = strfind(k,'%');&#xD;
+iprtf  = strfind(k,'fprintf');   % to ignore&#xD;
+old    = '=';&#xD;
+new    = ' =';&#xD;
+new2   = '= ';&#xD;
+new3   = '; ';&#xD;
+%% &gt;&gt; Parmeters to logical vectors.&#xD;
+for i=1:length(k)&#xD;
+    vece(i)    = ~isempty(iequal{i});&#xD;
+    vecfo(i)   = isempty(ifor{i});&#xD;
+    vecwh(i)   = isempty(iwh{i});&#xD;
+    vecfi(i)   = isempty(iif{i});&#xD;
+    vecend(i)  = ~isempty(iend{i});&#xD;
+    vecprtf(i) = isempty(iprtf{i});&#xD;
+    if min(ipr1{i})&lt;min(ifor{i}) &amp; min(ipr1{i})&gt;min(iequal{i})&#xD;
+        vecfo(i)  = ~isempty(ifor{i});&#xD;
+    end&#xD;
+    if min(ipr1{i})&lt;min(iwh{i}) &amp; min(ipr1{i})&gt;min(iequal{i})&#xD;
+        vecwh(i)  = ~isempty(iwh{i});&#xD;
+    end&#xD;
+    if min(ipr1{i})&lt;min(iif{i}) &amp; min(ipr1{i})&gt;min(iequal{i})&#xD;
+        vecfi(i)  = ~isempty(iif{i});&#xD;
+    end&#xD;
+    vecfu(i)  = isempty(ifun{i});&#xD;
+    if min(ipr1{i})&lt;min(ifun{i}) &amp; min(ipr1{i})&gt;min(iequal{i})&#xD;
+        vecfu(i)  = ~isempty(ifun{i});&#xD;
+    end&#xD;
+    vecpr(i)  = ~isempty(ipr1{i});&#xD;
+    if size(iequal{i},2)&gt;1&#xD;
+        for j1=1:(size(iequal{i},2)-1)&#xD;
+            pntr = cell2mat(iequal(i));&#xD;
+            k(i) = replaceBetween(k(i),pntr(j1+1),pntr(j1+1),char(508)); &#xD;
+            % replaces all other '=' so it will be able to use split func effectivly&#xD;
+        end&#xD;
+    end&#xD;
+    if size(iend{i},2)&gt;1&#xD;
+        for j1=1:(size(iend{i},2)-1)&#xD;
+            pntr = cell2mat(iend(i));&#xD;
+            k(i) = replaceBetween(k(i),pntr(j1+1),pntr(j1+1),char(503)); &#xD;
+            % replaces all other ';' so it will be able to use split func effectivly&#xD;
+        end&#xD;
+    end&#xD;
+end&#xD;
+i2replace = and(and(and(and(and(vece,vecfo),vecfi),vecfu),vecprtf),vecwh);&#xD;
+iendrep = and(vece,vecend);&#xD;
+%% &gt;&gt; Arange text according to logical vectors.&#xD;
+i = 1;&#xD;
+while i&lt;length(k)&#xD;
+    while ~i2replace(i)&#xD;
+        i=i+1;&#xD;
+        if i&gt;length(k)&#xD;
+            break&#xD;
+        end&#xD;
+    end&#xD;
+    if i&gt;length(k)&#xD;
+        break&#xD;
+    end&#xD;
+    i1 = i;&#xD;
+    i2 = i;&#xD;
+    while i2replace(i)&#xD;
+        i  = i+1;&#xD;
+        i2 = i-1;&#xD;
+        if i&gt;length(k)&#xD;
+            break&#xD;
+        end&#xD;
+    end&#xD;
+    &#xD;
+    temp=split(k(i1:i2),'=');&#xD;
+    for j1=1:(i2-i1+1)&#xD;
+        temp(j1,1)=erase(temp(j1,1),' ');&#xD;
+    end&#xD;
+    if i1==i2&#xD;
+        temp(1) = strip(temp(1),'right');&#xD;
+        temp(2) = strip(temp(2),'left');&#xD;
+        tlen    = strlength(temp(1));&#xD;
+        temp    = strcat(temp(1),'=',temp(2));&#xD;
+    else&#xD;
+        temp(:,1) = strip(temp(:,1),'right');&#xD;
+        temp(:,2) = strip(temp(:,2),'left');&#xD;
+        tlen      = strlength(temp(:,1));&#xD;
+        temp      = strcat(temp(:,1),'=',temp(:,2));&#xD;
+    end&#xD;
+    B=sort(tlen,'descend');&#xD;
+    maxlen = max(tlen);&#xD;
+    if length(tlen)&gt;1&#xD;
+        if B(1)-B(2)&gt;10&#xD;
+            maxlen=B(2);&#xD;
+        end&#xD;
+    end&#xD;
+    for j=i1:i2&#xD;
+        if tlen((j-i1+1))&gt;maxlen&#xD;
+            temp(j-i1+1) = replace(temp(j-i1+1),old,new);&#xD;
+        else&#xD;
+            for kdx=1:(maxlen-tlen(j-i1+1)+1)&#xD;
+                temp(j-i1+1) = replace(temp(j-i1+1),old,new);&#xD;
+            end&#xD;
+        end&#xD;
+    end&#xD;
+    &#xD;
+    temp     = replace(temp,old,new2);&#xD;
+    if prod(iendrep(i1:i2))&#xD;
+        temp=split(temp,';');&#xD;
+        if i1==i2&#xD;
+            temp(1) = strip(temp(1),'right');&#xD;
+            temp(2) = strip(temp(2),'left');&#xD;
+            tlen    = strlength(temp(1));&#xD;
+            temp    = strcat(temp(1),';',temp(2));&#xD;
+        else&#xD;
+            temp(:,1) = strip(temp(:,1),'right');&#xD;
+            temp(:,2) = strip(temp(:,2),'left');&#xD;
+            tlen      = strlength(temp(:,1));&#xD;
+            temp      = strcat(temp(:,1),';',temp(:,2));&#xD;
+        end&#xD;
+        maxlen = max(tlen.*vecpr(i1:i2)');&#xD;
+        for j=i1:i2&#xD;
+            if vecpr(j)&#xD;
+                for kdx=1:(maxlen-tlen(j-i1+1)+1)&#xD;
+                    temp(j-i1+1) = replace(temp(j-i1+1),';',new3);&#xD;
+                end&#xD;
+            end&#xD;
+        end&#xD;
+    end&#xD;
+    k(i1:i2) = temp;&#xD;
+    if i&gt;length(k)&#xD;
+        break&#xD;
+    end&#xD;
+    &#xD;
+end&#xD;
+%% &gt;&gt; stitch the text back and replace the original.&#xD;
+k      = replace(k,char(503),';');&#xD;
+k      = replace(k,char(508),'=');&#xD;
+k2(originalSelection(1):(originalSelection(1)+length(k)-1))=k;&#xD;
+finale = strjoin(k2,'\n');&#xD;
+currentEditor.Text=finale;&#xD;
+originalSelection(2)=1;&#xD;
+originalSelection(4)=inf;&#xD;
+currentEditor.Selection=originalSelection;&#xD;
+currentEditor.smartIndentContents;&#xD;
+clear &#xD;
+</callback>
+      <icon name="favorite_command_X"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="8e0ceff7-e2e8-4192-b6d0-dcf71dfd032e" label="ShowAllFigures" toolset_id="user_favorite_commands_toolset">
+      <callback>% Find all figure handles and sort them based on their 'Number' property&#xD;
+all_figure_handles = findall(0, 'type', 'figure');&#xD;
+[~, sortedIdx] = sort([all_figure_handles.Number]); % Sort by figure number&#xD;
+sorted_handles = all_figure_handles(sortedIdx);     % Re-arrange handles based on sorted numbers&#xD;
+&#xD;
+% Initial positions&#xD;
+starthPos = 20; % Horizontal start position (pixels)&#xD;
+startvPos = 500; % Vertical start position (pixels)&#xD;
+&#xD;
+% Get screen size (in pixels)&#xD;
+screenSize = get(0, 'ScreenSize');&#xD;
+&#xD;
+% Grid layout parameters&#xD;
+i = 1; &#xD;
+j = 1;&#xD;
+&#xD;
+% Loop through all figures in sorted order&#xD;
+for iCount = 1:length(sorted_handles)&#xD;
+    % Bring the figure to focus&#xD;
+    figure(sorted_handles(iCount));&#xD;
+    &#xD;
+    % Get current figure position and original units&#xD;
+    originalUnits = get(sorted_handles(iCount), 'Units'); % Save current units&#xD;
+    set(sorted_handles(iCount), 'Units', 'pixels'); % Work with pixel units&#xD;
+    figPos = get(sorted_handles(iCount), 'Position'); % Get current position&#xD;
+    &#xD;
+    % Compute new position based on grid layout&#xD;
+    newPos = [starthPos + (i-1) * figPos(3), ...  % Horizontal position&#xD;
+              startvPos - (j-1) * figPos(4), ...  % Vertical position&#xD;
+              figPos(3), ...                      % Width remains unchanged&#xD;
+              figPos(4)];                         % Height remains unchanged&#xD;
+    &#xD;
+    % Check if we need to start a new row&#xD;
+    if (starthPos + i * figPos(3)) &gt; screenSize(3)&#xD;
+        j = j + 1; % Move to next row&#xD;
+        i = 1;     % Reset to the first column&#xD;
+    else&#xD;
+        i = i + 1; % Move to the next column&#xD;
+    end&#xD;
+    &#xD;
+    % Set new figure position&#xD;
+    set(sorted_handles(iCount), 'Position', newPos);&#xD;
+    &#xD;
+    % Restore original units&#xD;
+    set(sorted_handles(iCount), 'Units', originalUnits);&#xD;
+end&#xD;
+&#xD;
+% Clear variables&#xD;
+clear all_figure_handles sorted_handles sortedIdx iCount originalUnits starthPos startvPos i j screenSize figPos newPos&#xD;
+</callback>
+      <icon name="favorite_command_S"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="22adc7a2-1c2c-4c3c-920f-a95613c110cc" label="contourfMap" toolset_id="user_favorite_commands_toolset">
+      <callback>if exist('snippet'), snippet = struct('snippet',snippet); end;      % Save the variable SNIPPET, if it exists&#xD;
+% Type your text here!&#xD;
+snippet.txt = ...&#xD;
+['[cContourMap, hContourMap] = contourf(ax,XXL,YYL,ZZL);\n'...&#xD;
+'set(hContourMap,''linestyle'',''none'');\n'...&#xD;
+'\n' ...&#xD;
+'colormap(brewermap(10,''YlGnBu''));\n'...&#xD;
+'yclimColorbar = [0 1];\n'...&#xD;
+'ytickColorbar = 0:0.10:1;\n'...&#xD;
+'colLevelist   = 0:0.05:1;\n'...&#xD;
+'hContourMap.LevelList = ytickColorbar;\n' ...&#xD;
+'\n' ...&#xD;
+'phi_index     = ''$\gamma$'';\n'...&#xD;
+'hColorbar1    = colorbar(ax);\n'...&#xD;
+'set(get(hColorbar1,''title''),''string''...\n'...&#xD;
+'     ,phi_index...\n'...&#xD;
+'     ,''FontSize'',fS...\n'...&#xD;
+'     ,''interpreter'',''LaTex''...\n'...&#xD;
+'     ,''FontName'',''Times New Roman'' ...\n'...&#xD;
+'     );\n'...&#xD;
+'set(hColorbar1...\n'...&#xD;
+'     ,''ylim'',yclimColorbar...\n'...&#xD;
+'     ,''ytick'',ytickColorbar...\n'...&#xD;
+'     ,''Location'',''SouthOutSide''...\n'...&#xD;
+'     ,''FontSize'',fS ...\n'...&#xD;
+'     ,''FontName'',''Times New Roman'' ...\n'...&#xD;
+'     ,''Position'',[0.2 0.1 0.6 0.03] ...\n' ...&#xD;
+'     );\n'...&#xD;
+'\n' ...&#xD;
+'absYClim = max(abs(yclimColorbar)); \n' ...&#xD;
+'set(ax(1),''clim'',[-absYClim absYClim] ...\n' ...&#xD;
+'         ,''yscale'',''linear'' ... \n' ...&#xD;
+'         ,''ylim'',[0.01 1] ... \n' ...&#xD;
+'         ,''ytick'',[0:0.2:1] ... \n' ...&#xD;
+'         ,''xlim'',[-3 3] ... \n' ...&#xD;
+'         ,''xtick'',[-3:1:3] ... \n' ...&#xD;
+'         ,''layer'',''top'' ... \n'...&#xD;
+'         ,''yminortick'',''on'' ... \n' ...&#xD;
+'         ,''Ticklength'',[0.02 0.015] ... \n' ...&#xD;
+'         )'];&#xD;
+ &#xD;
+snippet.txt = strrep(snippet.txt, '\n', sprintf('%c',10));          % Replace '\n' by a new line&#xD;
+if verLessThan('matlab', '8.1.0')&#xD;
+    snippet.activeEditor = editorservices.getActive;                % Get the active document in the editor&#xD;
+else&#xD;
+    snippet.activeEditor = matlab.desktop.editor.getActive;         % Get the active document in the editor&#xD;
+end&#xD;
+snippet.activeEditor.JavaEditor.insertTextAtCaret(snippet.txt);     % Insert text at the current position&#xD;
+if isfield(snippet,'snippet')                                       % Delete SNIPPET (or replace it by its original value)&#xD;
+    snippet = snippet.snippet;&#xD;
+else&#xD;
+    clear snippet&#xD;
+end;&#xD;
+&#xD;
+</callback>
+      <icon name="favorite_command"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool id="logo_example" label="MATLAB® Logo" toolset_id="user_favorite_commands_toolset">
+      <callback>% Create a figure and display the MATLAB® logo
+logo;
+
+% Update figure so it is visible during animation
+drawnow;
+
+% Rotate the MATLAB® logo
+[az,el] = view;
+for step = 1:360
+   % Set new position of viewer
+   view(az + step, el);
+   % Stop MATLAB execution temporarily to slow down animation
+   pause(0.005);
+end</callback>
+      <icon name="matlab_command"/>
+   </tool>
+   <tool id="7725ef6d-3418-4ac6-9dc2-dd37e71e51d9" label="axSetting" toolset_id="user_favorite_commands_toolset">
+      <callback>if exist('snippet'), snippet = struct('snippet',snippet); end;      % Save the variable SNIPPET, if it exists&#xD;
+% Type your text here!&#xD;
+snippet.txt = [ ...&#xD;
+    ' set(ax(1),''xlim'',[-60 60] ... \n' ...&#xD;
+    '          ,''xtick'',[-60:10:60] ... \n' ...&#xD;
+    '          ,''xticklabelrotation'',0 ... \n' ... &#xD;
+    '          ,''xscale'',''linear'' ... \n' ...&#xD;
+    '          ,''ylim'',[-1 1] ... \n' ...&#xD;
+    '          ,''TickLength'',[0.02 0.02] ... \n' ...&#xD;
+    '          )';&#xD;
+      ];&#xD;
+&#xD;
+% snippet.txt = strrep(snippet.txt, '\n', char(10));  % Replace '\n' by a new line&#xD;
+snippet.txt = strrep(snippet.txt, '\n', sprintf('%c',10));          % Replace '\n' by a new line&#xD;
+if verLessThan('matlab', '8.1.0')&#xD;
+    snippet.activeEditor = editorservices.getActive();                % Get the active document in the editor&#xD;
+else&#xD;
+    snippet.activeEditor = matlab.desktop.editor.getActive();         % Get the active document in the editor&#xD;
+end&#xD;
+snippet.activeEditor.JavaEditor.insertTextAtCaret(snippet.txt);     % Insert text at the current position&#xD;
+if isfield(snippet,'snippet')                                       % Delete SNIPPET (or replace it by its original value)&#xD;
+    snippet = snippet.snippet;&#xD;
+else&#xD;
+    clear snippet&#xD;
+end;&#xD;
+&#xD;
+</callback>
+      <icon name="favorite_command_a"/>
+      <parent_tool id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+</toolset>

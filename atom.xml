@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-16T13:00:00.000Z</updated>
+  <updated>2024-10-17T02:19:59.620Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2024/10/17/customSty/"/>
     <id>http://yoursite.com/2024/10/17/customSty/</id>
     <published>2024-10-17T02:27:08.000Z</published>
-    <updated>2024-10-16T13:00:00.000Z</updated>
+    <updated>2024-10-17T02:19:59.620Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;In this post, I’m sharing my custom LaTeX &lt;code&gt;.sty&lt;/code&gt; file, which I regularly use in my projects. This &lt;code&gt;.sty&lt;/code&gt; file includes settings and macros for &lt;strong&gt;biblatex&lt;/strong&gt; with &lt;code&gt;biber&lt;/code&gt;, custom TikZ symbols, and more.&lt;/p&gt;
@@ -30,6 +30,8 @@
     
     
     
+    <category term="Latex" scheme="http://yoursite.com/tags/Latex/"/>
+    
   </entry>
   
   <entry>
@@ -37,25 +39,10 @@
     <link href="http://yoursite.com/2024/10/10/powerBoxControl/"/>
     <id>http://yoursite.com/2024/10/10/powerBoxControl/</id>
     <published>2024-10-10T09:00:00.000Z</published>
-    <updated>2024-10-12T03:53:17.846Z</updated>
+    <updated>2024-11-09T09:56:54.492Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;
-&lt;h2 id=&quot;Key-Features&quot;&gt;&lt;a href=&quot;#Key-Features&quot; class=&quot;headerlink&quot; title=&quot;Key Features&quot;&gt;&lt;/a&gt;Key Features&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Dual Relay System&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Outlet 1&lt;/strong&gt;: Connected to a solid-state relay, perfect for use in PID control systems.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Outlet 2&lt;/strong&gt;: Equipped with a mechanical relay, ideal for simple on&amp;#x2F;off power operations.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Integrated AC Power Meter&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Provides instant and accurate measurements of current and voltage, with a precision of ±1 W.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expandable with Arduino Mega&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The embedded Arduino Mega board allows for easy expansion. You can add modules for monitoring temperature, pressure, and more, making this power box highly adaptable for future developments.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+    <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;</summary>
     
     
     
@@ -71,7 +58,7 @@
     <link href="http://yoursite.com/2024/10/09/DT9828CalibCode/"/>
     <id>http://yoursite.com/2024/10/09/DT9828CalibCode/</id>
     <published>2024-10-08T13:00:00.000Z</published>
-    <updated>2024-10-10T03:16:45.933Z</updated>
+    <updated>2024-10-10T03:16:45.930Z</updated>
     
     
     <summary type="html">&lt;p&gt;The following MATLAB code is specifically used for DT9828 boards.&lt;/p&gt;</summary>
@@ -90,7 +77,7 @@
     <link href="http://yoursite.com/2024/10/08/P201EncoderInterface/"/>
     <id>http://yoursite.com/2024/10/08/P201EncoderInterface/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:42:32.476Z</updated>
+    <updated>2024-10-08T04:42:32.470Z</updated>
     
     
     <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
@@ -111,7 +98,7 @@
     <link href="http://yoursite.com/2024/10/08/summaryMicroStepMotor/"/>
     <id>http://yoursite.com/2024/10/08/summaryMicroStepMotor/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:44:23.186Z</updated>
+    <updated>2024-10-08T04:44:23.180Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Table-for-stepper-motor-and-lead-screw&quot;&gt;&lt;a href=&quot;#Table-for-stepper-motor-and-lead-screw&quot; class=&quot;headerlink&quot; title=&quot;Table for stepper motor and lead screw&quot;&gt;&lt;/a&gt;Table for stepper motor and lead screw&lt;/h1&gt;&lt;table&gt;
@@ -175,7 +162,7 @@
     <link href="http://yoursite.com/2024/08/09/matlabCodeSearch/"/>
     <id>http://yoursite.com/2024/08/09/matlabCodeSearch/</id>
     <published>2024-08-08T14:00:00.000Z</published>
-    <updated>2024-09-06T01:29:14.155Z</updated>
+    <updated>2024-09-06T01:29:14.150Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
@@ -199,8 +186,8 @@
     <title>Motor/Encoder Control Code</title>
     <link href="http://yoursite.com/2024/05/01/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/05/01/motorEncoderController202404/</id>
-    <published>2024-04-30T21:54:24.826Z</published>
-    <updated>2024-10-10T03:19:12.178Z</updated>
+    <published>2024-04-30T21:54:24.820Z</published>
+    <updated>2024-10-10T03:26:22.890Z</updated>
     
     
     <summary type="html">&lt;p&gt;I developed a stepper motor controller using a Pololu board and Arduino, designed to manage a stepper motor up to 4 A and read a single-end encoder. The system uses serial communction for interaction between the motor, encoder, and PC. That means you can even use MATLAB (with the example code shown below) to operate the motor and capture encoder counts.&lt;/p&gt;</summary>
@@ -241,7 +228,7 @@
     <link href="http://yoursite.com/2024/04/12/flowVisualisation/"/>
     <id>http://yoursite.com/2024/04/12/flowVisualisation/</id>
     <published>2024-04-11T23:00:00.000Z</published>
-    <updated>2024-09-07T23:15:26.536Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/04/12/flowVisualisation/noActivation.png&quot; alt=&quot;Offset attaching jet flow without activation&quot;&gt;&lt;/p&gt;</summary>
@@ -310,7 +297,7 @@
     <link href="http://yoursite.com/2020/02/14/Git-notes/"/>
     <id>http://yoursite.com/2020/02/14/Git-notes/</id>
     <published>2020-02-14T06:04:27.000Z</published>
-    <updated>2024-09-07T23:15:26.533Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
     <summary type="html">&lt;ul&gt;
@@ -328,7 +315,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/02/14/Zotero/"/>
     <id>http://yoursite.com/2020/02/14/Zotero/</id>
     <published>2020-02-14T00:13:19.000Z</published>
-    <updated>2024-09-07T23:15:26.536Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
     <summary type="html">&lt;p&gt;科研的旅途中，需要阅读大量的论文，海量的论文无疑使得管理文献的工作变得非常复杂，尤其是因为命名方法的不恰当，导致后期再次阅读时查找困难。我看到部分学者喜欢使用&lt;strong&gt;author&lt;/strong&gt;,&lt;strong&gt;year&lt;/strong&gt;,&lt;strong&gt;title&lt;/strong&gt;的组合方式命名文献如下图，然后存储至一固定文件夹中，以此管理文献。&lt;/p&gt;</summary>
@@ -345,7 +332,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/02/04/hello-world/"/>
     <id>http://yoursite.com/2020/02/04/hello-world/</id>
     <published>2020-02-04T07:19:25.000Z</published>
-    <updated>2024-09-07T23:15:26.536Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
@@ -360,7 +347,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/01/20/Inkscape_Tricks/"/>
     <id>http://yoursite.com/2020/01/20/Inkscape_Tricks/</id>
     <published>2020-01-19T22:39:36.000Z</published>
-    <updated>2024-09-07T23:15:26.534Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
     <summary type="html">&lt;p&gt;Some tricks are listed in the following to help get speed up with this software.&lt;/p&gt;</summary>
@@ -375,7 +362,7 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     <link href="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</id>
     <published>2020-01-19T02:00:11.000Z</published>
-    <updated>2024-09-07T23:15:26.539Z</updated>
+    <updated>2024-09-07T23:15:26.530Z</updated>
     
     
       

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<quick_access_configuration>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="7725ef6d-3418-4ac6-9dc2-dd37e71e51d9" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="e660c54d-dcb4-4221-ae72-10cb40e9b6a2" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="8e0ceff7-e2e8-4192-b6d0-dcf71dfd032e" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="a0e2f2c1-233a-46fa-8214-5ffeec9c39f6" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="eb659f57-4b38-4778-90cd-700d4207b463" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="a2007024-b4cb-4363-b589-a07079393b4f" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="default_category" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="e214fbda-7c4e-4bf9-a948-560c6f1f99bd" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool display_condition="always" label_visible="true" section_id="code" tab_id="home" tool_id="22adc7a2-1c2c-4c3c-920f-a95613c110cc" toolset_id="user_favorite_commands_toolset">
+      <ancestor tool_id="favorite_commands" toolset_id="favorite_commands_toolset"/>
+      <ancestor tool_id="favorite_commands_gallery" toolset_id="favorite_commands_toolset"/>
+   </tool>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="save" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="cut" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="copy" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="paste" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="undo" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="redo" toolset_id="common_tools"/>
+   <tool display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="switch_windows" toolset_id="common_tools"/>
+   <tool common="true" display_condition="always" section_id="common_section" tab_id="common_tab" tool_id="help" toolset_id="common_tools"/>
+</quick_access_configuration>
