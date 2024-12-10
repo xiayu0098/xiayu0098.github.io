@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-10-17T02:19:59.620Z</updated>
+  <updated>2024-12-10T04:54:54.544Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MATLAB Drawing Tips</title>
+    <link href="http://yoursite.com/2024/12/09/matlabDrawing/"/>
+    <id>http://yoursite.com/2024/12/09/matlabDrawing/</id>
+    <published>2024-12-08T13:00:00.000Z</published>
+    <updated>2024-12-10T04:54:54.544Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to visualize and customize 3D geometrical elements such as cuboids, cylinders, and arrows, often used to represent components in engineering setups like sensor assemblies.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>My Custom Latex Style File (.sty)</title>
