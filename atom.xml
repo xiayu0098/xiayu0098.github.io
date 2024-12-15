@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-12-10T04:54:54.544Z</updated>
+  <updated>2024-12-10T06:17:58.010Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Water Rocket Code</title>
+    <link href="http://yoursite.com/2024/12/10/matlabWaterRocket/"/>
+    <id>http://yoursite.com/2024/12/10/matlabWaterRocket/</id>
+    <published>2024-12-09T13:00:00.000Z</published>
+    <updated>2024-12-10T06:17:58.010Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This MATLAB code simulates the initial velocity of a water rocket based on varying air-water ratios (&#92;alpha) and internal air pressures (P), and visualizes the results in a 3D surface plot.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>MATLAB Drawing Tips</title>
@@ -181,7 +200,7 @@
     <link href="http://yoursite.com/2024/08/09/matlabCodeSearch/"/>
     <id>http://yoursite.com/2024/08/09/matlabCodeSearch/</id>
     <published>2024-08-08T14:00:00.000Z</published>
-    <updated>2024-09-06T01:29:14.150Z</updated>
+    <updated>2024-12-10T05:08:49.674Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
@@ -247,10 +266,10 @@
     <link href="http://yoursite.com/2024/04/12/flowVisualisation/"/>
     <id>http://yoursite.com/2024/04/12/flowVisualisation/</id>
     <published>2024-04-11T23:00:00.000Z</published>
-    <updated>2024-09-07T23:15:26.530Z</updated>
+    <updated>2024-12-15T04:21:14.039Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/04/12/flowVisualisation/noActivation.png&quot; alt=&quot;Offset attaching jet flow without activation&quot;&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/04/12/flowVisualisation/jetLowReynolds.jpg&quot; alt=&quot;jet flow&quot;&gt;&lt;/p&gt;</summary>
     
     
     
