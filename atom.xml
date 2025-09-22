@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-12-10T06:17:58.010Z</updated>
+  <updated>2025-09-22T23:30:16.754Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2025/09/23/modbusNotesLoadCell/"/>
+    <id>http://yoursite.com/2025/09/23/modbusNotesLoadCell/</id>
+    <published>2025-09-22T23:28:08.014Z</published>
+    <updated>2025-09-22T23:30:16.754Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;Modbus-RTU-Example-of-load-cell-module&quot;&gt;&lt;a href=&quot;#Modbus-RTU-Example-of-load-cell-</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB Code Generating DXF Sinusoidal Curve</title>
+    <link href="http://yoursite.com/2025/01/30/generateSinusoidalDXF/"/>
+    <id>http://yoursite.com/2025/01/30/generateSinusoidalDXF/</id>
+    <published>2025-01-29T13:00:00.000Z</published>
+    <updated>2025-01-30T04:33:06.539Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to generate a DNX file containing a sinusoidal curve represented as a polyline with a controlled number of points. All units are in millimeters (mm).&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>Water Rocket Code</title>
@@ -389,25 +426,6 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     
     
     <summary type="html">&lt;p&gt;Some tricks are listed in the following to help get speed up with this software.&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>仅用于测试</title>
-    <link href="http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2020/01/19/%E4%BB%85%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95/</id>
-    <published>2020-01-19T02:00:11.000Z</published>
-    <updated>2024-09-07T23:15:26.530Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;大家好，这是我的第一篇blog.&lt;/p&gt;
-</summary>
-      
     
     
     
