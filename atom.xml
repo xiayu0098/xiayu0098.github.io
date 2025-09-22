@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2025-09-22T23:34:20.843Z</updated>
+  <updated>2025-09-22T23:58:40.887Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,40 @@
     <link href="http://yoursite.com/2025/09/23/modbusNotesLoadCell/"/>
     <id>http://yoursite.com/2025/09/23/modbusNotesLoadCell/</id>
     <published>2025-09-22T14:00:00.000Z</published>
-    <updated>2025-09-22T23:34:20.843Z</updated>
+    <updated>2025-09-22T23:58:40.887Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;1-Frame-structure-RTU&quot;&gt;&lt;a href=&quot;#1-Frame-structure-RTU&quot; class=&quot;headerlink&quot; title=&quot;</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;1-Frame-structure-RTU&quot;&gt;&lt;a href=&quot;#1-Frame-structure-RTU&quot; class=&quot;headerlink&quot; title=&quot;1) Frame structure (RTU)&quot;&gt;&lt;/a&gt;1) Frame structure (RTU)&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;Size&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Address&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;1 byte&lt;/td&gt;
+&lt;td&gt;Slave ID: 1…247 (0 &amp;#x3D; broadcast; 248–255 reserved).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Function code&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;1 byte&lt;/td&gt;
+&lt;td&gt;e.g., &lt;code&gt;0x03&lt;/code&gt; Read Holding Regs; &lt;code&gt;0x06&lt;/code&gt; Write Single Reg.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;0…252 B&lt;/td&gt;
+&lt;td&gt;Depends on function: start address, quantity, payload, byte count…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CRC-16&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2 bytes&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Little-endian&lt;/strong&gt; on the wire: &lt;strong&gt;CRC low byte first, then high byte&lt;/strong&gt;. Polynomial &lt;code&gt;0xA001&lt;/code&gt;, init &lt;code&gt;0xFFFF&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Framing by silence:&lt;/strong&gt; ≥ &lt;strong&gt;3.5&lt;/strong&gt; character times between frames; ≤ &lt;strong&gt;1.5&lt;/strong&gt; character times between bytes &lt;em&gt;within&lt;/em&gt; a frame.&lt;/p&gt;
+&lt;hr&gt;</summary>
     
     
     
