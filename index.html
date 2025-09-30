@@ -68,8 +68,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2025/09/30/LEDCircuit/"
-    >LED circuit note</a
+  <a class="article-title" href="/2025/10/01/LEDCircuit/"
+    >LED Brightness Cheat-Sheet (lm, lux, mcd) + Ring Notes</a
   >
 </h2>
   
@@ -79,14 +79,10 @@
 
     
     <div class="article-meta">
-      <a href="/2025/09/30/LEDCircuit/" class="article-date">
-  <time datetime="2025-09-29T14:00:00.000Z" itemprop="datePublished">2025-09-30</time>
+      <a href="/2025/10/01/LEDCircuit/" class="article-date">
+  <time datetime="2025-09-30T14:00:00.000Z" itemprop="datePublished">2025-10-01</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/research/">research</a>
-  </div>
-
       
       
       
@@ -102,44 +98,28 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><h2 id="1-Addressable-LED"><a href="#1-Addressable-LED" class="headerlink" title="1) Addressable LED"></a>1) Addressable LED</h2><p>SK6812-GRBW, SMD-5050 as an example</p>
-<p>VSS — Ground<br>DIN — Data Input (-0.5 $\sim$ VDD + 0.5)<br>VDD — Power<br>DOUT — Data Output</p>
-<p>The speed of data transmission: 800 kHz</p>
-<p>DIN - DOUT delay 500 ns</p>
-<p>GRBW frame<br>8 bit - G + 8 bit - R + 8 bit - B + 8 bit - W<br>32 bits to control the colour and brightness</p>
-<p>Several paras should be noted: </p>
-<ul>
-<li>Brightness (mcd): 1800 $\sim$ 2500</li>
-<li>Delivering current: 16.5 mA</li>
-<li>Interval: 7 - 10 mm</li>
-<li>Forward voltage</li>
-<li>Forward current</li>
-<li>IREF: contant-current values<br>When it comes to an array of leds, resettable fuse, TVS, large capacitor should be added.</li>
+      <ul>
+<li>mcd &#x3D; directional intensity (good for indicators).</li>
+<li>lm &#x3D; total light output (good for illumination).</li>
+<li>lux &#x3D; light on a surface.</li>
+<li>At 1 m, on-axis: lux ~ cd.</li>
+<li>A 180 mcd LED is an indicator, not a light source.</li>
+<li>Ring of 54 white LEDs at ~8.5 lm each -&gt; ~459 lm total -&gt; ~146 lux at 1 m on-axis (assuming wide spread). Usually run well below max for comfort and thermals.</li>
 </ul>
-<h2 id="2-Pure-white-LED"><a href="#2-Pure-white-LED" class="headerlink" title="2) Pure white LED"></a>2) Pure white LED</h2><p>Constant drivers are used to control on&#x2F;off. </p>
-<p>TLC5947, 24 channels LED drivers</p>
-<p>TLC5973D, 3 channels<br>IS31FL3218, 9 channels</p>
-<h2 id="3-mcd-lm-lux"><a href="#3-mcd-lm-lux" class="headerlink" title="3) mcd, lm, lux"></a>3) mcd, lm, lux</h2><ul>
-<li><p>Coloured LEDs are usually spec’d in mcd, which are used for directional indicators.</p>
-</li>
-<li><p>White LEDs are spec’d in lumens for area illumination<br>lumens $\approx I \Omega$ with $I$ in c, $\Omega \approx 2\pi (1 - \cos(\theta&#x2F;2))$.</p>
-<p>For 180 mcd at view angle $\theta &#x3D; 60 ^\circ$<br>lumens $\approx $ 0.15 lm</p>
-<p>flashlight: 300 lm</p>
-<ul>
-<li>To estimate &#96;brightness’ at a distance $r$:<br>Illuminance (lux) $\approx I&#x2F;r^2$.</li>
-</ul>
-<p>lux is used to evaluate the brightness on-axis at the centre of the beam.</p>
-</li>
-</ul>
-
+<hr>
+      
+      <a class="article-more-link" href="/2025/10/01/LEDCircuit/">read more...</a>
+      
       
       <!-- 打赏 -->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2025/09/30/LEDCircuit/" data-id="cmg751dxg000j7cjs6smaaugp"
+      <a data-url="http://yoursite.com/2025/10/01/LEDCircuit/" data-id="cmg751dxg000j7cjs6smaaugp"
         class="article-share-link">share</a>
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LED/" rel="tag">LED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/brightness/" rel="tag">brightness</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/candela/" rel="tag">candela</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-notes/" rel="tag">design-notes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lumens/" rel="tag">lumens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lux/" rel="tag">lux</a></li></ul>
+
     </footer>
 
   </div>
