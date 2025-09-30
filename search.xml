@@ -25,6 +25,7 @@
 </li>
 <li><p>White LEDs are spec’d in lumens for area illumination<br>lumens $\approx I \Omega$ with $I$ in c, $\Omega \approx 2\pi (1 - \cos(\theta&#x2F;2))$.</p>
 <p>For 180 mcd at view angle $\theta &#x3D; 60 ^\circ$<br>lumens $\approx $ 0.15 lm</p>
+<p>flashlight: 300 lm</p>
 <ul>
 <li>To estimate &#96;brightness’ at a distance $r$:<br>Illuminance (lux) $\approx I&#x2F;r^2$.</li>
 </ul>
