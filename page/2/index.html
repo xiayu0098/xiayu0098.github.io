@@ -60,6 +60,82 @@
     
     
     
+    <article id="post-matlabCodeSearch" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/08/09/matlabCodeSearch/"
+    >MATLAB Tips</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2024/08/09/matlabCodeSearch/" class="article-date">
+  <time datetime="2024-08-08T14:00:00.000Z" itemprop="datePublished">2024-08-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="General-Programming-Tips"><a href="#General-Programming-Tips" class="headerlink" title="General Programming Tips"></a>General Programming Tips</h2><ol>
+<li><p>Compute the running time of a function all</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tic; fft(<span class="built_in">rand</span>(<span class="number">500</span>)); <span class="built_in">disp</span>( [’it takes ’ num2str(toc) ’s.’] );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Locate the indice of minimum value in a matrice</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[M,I]         = <span class="built_in">min</span>(objMatrice(:)); <span class="comment">% &#x27;objMatrice&#x27; is the objective matrix</span></span><br><span class="line">[Irow,Icol]   = <span class="built_in">ind2sub</span>(<span class="built_in">size</span>(objMatrice),I);</span><br></pre></td></tr></table></figure></li>
+</ol>
+      
+      <a class="article-more-link" href="/2024/08/09/matlabCodeSearch/">read more...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/09/matlabCodeSearch/" data-id="cm39zg8fw000npf0bch9v9229"
+        class="article-share-link">share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MatLab-Code/" rel="tag">MatLab Code</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-motorEncoderController202404" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -650,70 +726,6 @@ Fatal: refusing to merge unrelated histories</p>
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2020/02/04/hello-world/" data-id="cm39zg8fw000rpf0b1j0d90qx"
-        class="article-share-link">share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Inkscape_Tricks" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/20/Inkscape_Tricks/"
-    >Inkscape Tricks</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/20/Inkscape_Tricks/" class="article-date">
-  <time datetime="2020-01-19T22:39:36.000Z" itemprop="datePublished">2020-01-20</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>Some tricks are listed in the following to help get speed up with this software.</p>
-      
-      <a class="article-more-link" href="/2020/01/20/Inkscape_Tricks/">read more...</a>
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/20/Inkscape_Tricks/" data-id="cm39zg8fv000lpf0bhiw83tde"
         class="article-share-link">share</a>
       
     </footer>

@@ -181,17 +181,8 @@
 <h3 id="Endianness-definitions-byte-order-for-multi-byte-values"><a href="#Endianness-definitions-byte-order-for-multi-byte-values" class="headerlink" title="Endianness definitions (byte order for multi-byte values)"></a>Endianness definitions (byte order for multi-byte values)</h3><h4 id="Big-endian-“network-order”"><a href="#Big-endian-“network-order”" class="headerlink" title="Big-endian (“network order”)"></a>Big-endian (“network order”)</h4><p>Stores&#x2F;sends the most significant byte first (the “big end”).<br>16-bit example: value 0x1234 → bytes on the wire&#x2F;in memory: 12 34<br>32-bit example: 0x12345678 → 12 34 56 78</p>
 <h4 id="Little-endian"><a href="#Little-endian" class="headerlink" title="Little-endian"></a>Little-endian</h4><p>Stores&#x2F;sends the least significant byte first (the “little end”).<br>16-bit example: 0x1234 → 34 12<br>32-bit example: 0x12345678 → 78 56 34 12</p>
 <h3 id="Bit-Byte-Word-Modbus-register-don’t-mix-them"><a href="#Bit-Byte-Word-Modbus-register-don’t-mix-them" class="headerlink" title="Bit,  Byte, Word(Modbus register)  (don’t mix them!)"></a>Bit,  Byte, Word(Modbus register)  (don’t mix them!)</h3><p>Bit: 1 or 0.<br>Byte: 8 bits (e.g., 0x0B &#x3D; 00001011₂).<br>Word (Modbus register): 16 bits &#x3D; 2 bytes.<br>Double word (DWORD): 32 bits &#x3D; 2 words &#x3D; 4 bytes (uses two consecutive registers).<br>Quad word (QWORD): 64 bits &#x3D; 4 words &#x3D; 8 bytes (four consecutive registers).</p>
-<p>Example (32-bit unsigned 0x12345678)<br>High-word first:</p>
-<ul>
-<li>Register N (high word) &#x3D; 0x1234 → bytes 12 34</li>
-<li>Register N+1 (low word) &#x3D; 0x5678 → bytes 56 78</li>
-<li>On the wire (data payload): 12 34 56 78<br>Low-word first (word-swap):</li>
-<li>Register N (low word) &#x3D; 0x5678 → bytes 56 78</li>
-<li>Register N+1 (high word) &#x3D; 0x1234 → bytes 12 34</li>
-<li>On the wire (data payload): 56 78 12 34</li>
-</ul>
-<hr>
-<h2 id="4-Hex-x2F-Bin-x2F-Dec-two’s-complement-refresher"><a href="#4-Hex-x2F-Bin-x2F-Dec-two’s-complement-refresher" class="headerlink" title="4) Hex&#x2F;Bin&#x2F;Dec + two’s complement refresher"></a>4) Hex&#x2F;Bin&#x2F;Dec + two’s complement refresher</h2><h3 id="4-1-Quick-Hex–Binary–Decimal"><a href="#4-1-Quick-Hex–Binary–Decimal" class="headerlink" title="4.1 Quick Hex–Binary–Decimal"></a>4.1 Quick Hex–Binary–Decimal</h3><table>
+<p>Example (32-bit unsigned 0x12345678)</p>
+<h2 id="High-word-first-Register-N-high-word-x3D-0x1234-→-bytes-12-34-Register-N-1-low-word-x3D-0x5678-→-bytes-56-78-On-the-wire-data-payload-12-34-56-78Low-word-first-word-swap-Register-N-low-word-x3D-0x5678-→-bytes-56-78-Register-N-1-high-word-x3D-0x1234-→-bytes-12-34-On-the-wire-data-payload-56-78-12-34"><a href="#High-word-first-Register-N-high-word-x3D-0x1234-→-bytes-12-34-Register-N-1-low-word-x3D-0x5678-→-bytes-56-78-On-the-wire-data-payload-12-34-56-78Low-word-first-word-swap-Register-N-low-word-x3D-0x5678-→-bytes-56-78-Register-N-1-high-word-x3D-0x1234-→-bytes-12-34-On-the-wire-data-payload-56-78-12-34" class="headerlink" title="High-word first:- Register N (high word) &#x3D; 0x1234 → bytes 12 34- Register N+1 (low word) &#x3D; 0x5678 → bytes 56 78- On the wire (data payload): 12 34 56 78Low-word first (word-swap):- Register N (low word) &#x3D; 0x5678 → bytes 56 78- Register N+1 (high word) &#x3D; 0x1234 → bytes 12 34- On the wire (data payload): 56 78 12 34"></a>High-word first:<br>- Register N (high word) &#x3D; 0x1234 → bytes 12 34<br>- Register N+1 (low word) &#x3D; 0x5678 → bytes 56 78<br>- On the wire (data payload): 12 34 56 78<br>Low-word first (word-swap):<br>- Register N (low word) &#x3D; 0x5678 → bytes 56 78<br>- Register N+1 (high word) &#x3D; 0x1234 → bytes 12 34<br>- On the wire (data payload): 56 78 12 34</h2><h2 id="4-Hex-x2F-Bin-x2F-Dec-two’s-complement-refresher"><a href="#4-Hex-x2F-Bin-x2F-Dec-two’s-complement-refresher" class="headerlink" title="4) Hex&#x2F;Bin&#x2F;Dec + two’s complement refresher"></a>4) Hex&#x2F;Bin&#x2F;Dec + two’s complement refresher</h2><h3 id="4-1-Quick-Hex–Binary–Decimal"><a href="#4-1-Quick-Hex–Binary–Decimal" class="headerlink" title="4.1 Quick Hex–Binary–Decimal"></a>4.1 Quick Hex–Binary–Decimal</h3><table>
 <thead>
 <tr>
 <th align="right">Dec</th>
@@ -434,6 +425,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2025/09/30/LEDCircuit/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            LED circuit note
+          
+        </div>
+      </a>
     
     
       <a href="/2025/01/30/generateSinusoidalDXF/" class="article-nav-link">
