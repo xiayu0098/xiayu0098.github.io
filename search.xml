@@ -6,12 +6,28 @@
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a new AI scheduling tool  <a href="/scheduler/">Check it out here</a>.</p>
 ]]></content>
       <tags>
-        <tag>LED</tag>
-        <tag>brightness</tag>
-        <tag>lumens</tag>
-        <tag>lux</tag>
-        <tag>candela</tag>
-        <tag>design-notes</tag>
+        <tag>AI</tag>
+        <tag>Scheduler</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Smart Scheduler</title>
+    <url>/2025/12/08/SNgenerator/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a new Serial number generator  <a href="/serialNumberGenerator/">Check it out here</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>Serial Number</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Smart Scheduler</title>
+    <url>/2025/12/08/CRCCheck/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a Modbus RTU CRC checker <a href="/modbusCRC/">Check it out here</a>.</p>
+]]></content>
+      <tags>
+        <tag>Modbus RTU</tag>
+        <tag>CRC</tag>
       </tags>
   </entry>
   <entry>

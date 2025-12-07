@@ -1,0 +1,435 @@
+<script src="/assets/js/APlayer.min.js"> </script><!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Modbus RTU CRC16 Calculator</title>
+
+<style>
+
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 20px; color:#111; }
+
+  h1 { color: #D95F3B; }
+
+  textarea { width:100%; height:100px; font-family: monospace; padding:8px; }
+
+  input[type="text"] { width:100%; font-family: monospace; padding:6px; }
+
+  button { background:#D95F3B; color:white; border:0; padding:8px 12px; cursor:pointer; border-radius:4px; }
+
+  .row { display:flex; gap:10px; margin-top:8px; }
+
+  .col { flex:1; }
+
+  pre { background:#f6f6f6; padding:10px; border-radius:6px; overflow:auto; }
+
+  table { border-collapse: collapse; width:100%; margin-top:10px; }
+
+  th, td { border:1px solid #ddd; padding:6px 8px; text-align:left; font-family: monospace; }
+
+  th { background:#f0f0f0; }
+
+  .good { color:green; font-weight:600; }
+
+  .bad { color:crimson; font-weight:600; }
+
+  .small { font-size:0.9rem; color:#555; }
+
+</style>
+
+</head>
+
+<body>
+
+  <h1>Modbus RTU CRC16 Calculator</h1>
+
+  <p class="small">Paste a hex byte sequence (slave ID + function + data) and press <strong>Calculate CRC</strong>. Output is shown <strong>Low byte, High byte</strong> (Modbus wire order).</p>
+
+
+
+  <label>Enter hex bytes (space or comma separated). You may include or omit existing CRC bytes.</label>
+
+  <textarea id="inputHex" placeholder="e.g. 02 06 00 17 00 01"></textarea>
+
+
+
+  <div class="row" style="margin-top:8px;">
+
+    <div class="col"><button id="btnCalc">Calculate CRC</button></div>
+
+    <div class="col"><button id="btnCopy">Copy full frame</button></div>
+
+    <div class="col"><button id="btnClear">Clear</button></div>
+
+  </div>
+
+
+
+  <h3>Result</h3>
+
+  <pre id="result">No calculation yet.</pre>
+
+
+
+  <h3>Presets / Examples</h3>
+
+  <select id="preset">
+
+    <option value>-- choose preset example --</option>
+
+  </select>
+
+  <div style="margin-top:8px;">
+
+    <button id="btnLoadPreset">Load preset</button>
+
+    <button id="btnTestAll">Run automatic tests (examples)</button>
+
+  </div>
+
+
+
+  <h3>Example test table (provided by you)</h3>
+
+  <table id="tests">
+
+    <thead>
+
+      <tr><th>Frame (no CRC)</th><th>Expected CRC (Lo Hi)</th><th>Computed CRC</th><th>Full frame</th><th>Match</th></tr>
+
+    </thead>
+
+    <tbody></tbody>
+
+  </table>
+
+
+
+<script>
+
+/* Modbus RTU CRC16 (poly 0xA001, init 0xFFFF) */
+
+function crcModbus(bytes) {
+
+  let crc = 0xFFFF;
+
+  for (let b of bytes) {
+
+    crc ^= b;
+
+    for (let i=0;i<8;i++) {
+
+      if (crc & 1) crc = (crc >> 1) ^ 0xA001;
+
+      else crc >>= 1;
+
+    }
+
+  }
+
+  return crc & 0xFFFF;
+
+}
+
+
+
+/* Normalise input string -> byte array (ignore CRC if included optionally) */
+
+function parseHexInput(s) {
+
+  // Remove 0x prefixes, commas, newlines; split on whitespace
+
+  s = s.replace(/0x/ig,'').replace(/[,\r\n]+/g,' ').trim();
+
+  if (!s) return [];
+
+  const parts = s.split(/\s+/);
+
+  const bytes = [];
+
+  for (let p of parts) {
+
+    if (p === '') continue;
+
+    // allow single-digit hex like "A" => "0A"
+
+    if (p.length === 1) p = '0' + p;
+
+    if (p.length % 2 === 1) p = '0' + p;
+
+    // if part has multiple bytes like "010203", split every two chars
+
+    for (let i=0;i<p.length;i+=2) {
+
+      const hex = p.substr(i,2);
+
+      const val = parseInt(hex,16);
+
+      if (Number.isNaN(val)) throw new Error('Invalid hex token: ' + hex);
+
+      bytes.push(val);
+
+    }
+
+  }
+
+  return bytes;
+
+}
+
+
+
+/* format bytes to hex strings */
+
+function bytesToHex(bytes) {
+
+  return bytes.map(b => b.toString(16).toUpperCase().padStart(2,'0')).join(' ');
+
+}
+
+
+
+/* main calculate function */
+
+function calculateCRCfromInput(text) {
+
+  const bytes = parseHexInput(text);
+
+  if (bytes.length === 0) return { error:'No bytes provided' };
+
+  // If the user included a CRC already (last two bytes), we still compute CRC for preceding bytes.
+
+  const crc = crcModbus(bytes);
+
+  const lo = crc & 0xFF;
+
+  const hi = (crc >> 8) & 0xFF;
+
+  return {
+
+    bytes: bytes,
+
+    crcVal: crc,
+
+    crcLo: lo,
+
+    crcHi: hi,
+
+    crcHex: (lo.toString(16).toUpperCase().padStart(2,'0') + ' ' + hi.toString(16).toUpperCase().padStart(2,'0')),
+
+    fullFrame: bytesToHex(bytes) + ' ' + lo.toString(16).toUpperCase().padStart(2,'0') + ' ' + hi.toString(16).toUpperCase().padStart(2,'0')
+
+  };
+
+}
+
+
+
+/* Presets (from user's examples)
+
+   Format: {label, frame (no CRC), expectedCrc (lo hi) optional}
+
+*/
+
+const presets = [
+
+  {label:'02 03 00 21 00 05 (example)', frame:'02 03 00 21 00 05', expected:'D5 F0'},
+
+  {label:'02 03 00 00 00 02 (example)', frame:'02 03 00 00 00 02', expected:'C4 38'},
+
+  {label:'02 06 00 15 00 01 (tare example)', frame:'02 06 00 15 00 01', expected:'59 FD'},
+
+
+
+  {label:'01 03 00 21 00 05', frame:'01 03 00 21 00 05', expected:'D5 C3'},
+
+  {label:'01 03 00 00 00 02', frame:'01 03 00 00 00 02', expected:'C4 0B'},
+
+  {label:'01 06 00 15 00 01', frame:'01 06 00 15 00 01', expected:'59 CE'},
+
+
+
+  {label:'01 06 00 17 00 01', frame:'01 06 00 17 00 01', expected:'F8 0E'},
+
+  {label:'01 06 00 16 00 01', frame:'01 06 00 16 00 01', expected:'A9 CE'},
+
+  {label:'01 06 00 06 13 88', frame:'01 06 00 06 13 88', expected:'64 9D'},
+
+  {label:'01 06 00 06 07 D0', frame:'01 06 00 06 07 D0', expected:'6A 67'},
+
+  {label:'01 06 00 17 00 00', frame:'01 06 00 17 00 00', expected:'39 CE'},
+
+
+
+  {label:'02 06 00 17 00 01', frame:'02 06 00 17 00 01', expected:'F8 3D'},
+
+  {label:'02 06 00 16 00 01', frame:'02 06 00 16 00 01', expected:'A9 FD'},
+
+  {label:'02 06 00 06 13 88', frame:'02 06 00 06 13 88', expected:'64 AE'},
+
+  {label:'02 06 00 06 07 D0', frame:'02 06 00 06 07 D0', expected:'6A 54'},
+
+  {label:'02 06 00 17 00 00', frame:'02 06 00 17 00 00', expected:'39 FD'}
+
+];
+
+
+
+function populatePresets() {
+
+  const sel = document.getElementById('preset');
+
+  for (let p of presets) {
+
+    const opt = document.createElement('option');
+
+    opt.value = p.frame;
+
+    opt.textContent = p.label + (p.expected ? ('  (expected CRC: ' + p.expected + ')') : '');
+
+    sel.appendChild(opt);
+
+  }
+
+}
+
+
+
+function runTestTable() {
+
+  const tbody = document.querySelector('#tests tbody');
+
+  tbody.innerHTML = '';
+
+  for (let p of presets) {
+
+    try {
+
+      const res = calculateCRCfromInput(p.frame);
+
+      const comp = res.crcHex;
+
+      const match = p.expected ? (comp === p.expected) : false;
+
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = '<td>' + p.frame + '</td>'
+
+                   + '<td>' + (p.expected || '') + '</td>'
+
+                   + '<td>' + comp + '</td>'
+
+                   + '<td>' + res.fullFrame + '</td>'
+
+                   + '<td class="' + (match ? 'good' : 'bad') + '">' + (match ? 'OK' : 'DIFFER') + '</td>';
+
+      tbody.appendChild(tr);
+
+    } catch (e) {
+
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = '<td>' + p.frame + '</td><td>' + (p.expected||'') + '</td><td colspan=3 style="color:crimson">' + e.message + '</td>';
+
+      tbody.appendChild(tr);
+
+    }
+
+  }
+
+}
+
+
+
+/* UI wiring */
+
+document.getElementById('btnCalc').addEventListener('click', () => {
+
+  const txt = document.getElementById('inputHex').value;
+
+  try {
+
+    const out = calculateCRCfromInput(txt);
+
+    if (out.error) {
+
+      document.getElementById('result').textContent = out.error;
+
+      return;
+
+    }
+
+    document.getElementById('result').textContent =
+
+      'Input bytes: ' + bytesToHex(out.bytes) + '\n' +
+
+      'Computed CRC (Lo Hi): ' + out.crcHex + '\n' +
+
+      'Full frame (with CRC): ' + out.fullFrame;
+
+  } catch (err) {
+
+    document.getElementById('result').textContent = 'Error: ' + err.message;
+
+  }
+
+});
+
+
+
+document.getElementById('btnCopy').addEventListener('click', () => {
+
+  const txt = document.getElementById('result').textContent;
+
+  if (!txt) return;
+
+  navigator.clipboard.writeText(txt).then(() => {
+
+    alert('Result copied to clipboard');
+
+  }).catch(()=> alert('Copy failed'));
+
+});
+
+
+
+document.getElementById('btnClear').addEventListener('click', () => {
+
+  document.getElementById('inputHex').value = '';
+
+  document.getElementById('result').textContent = 'No calculation yet.';
+
+});
+
+
+
+document.getElementById('btnLoadPreset').addEventListener('click', () => {
+
+  const sel = document.getElementById('preset');
+
+  if (!sel.value) return alert('Choose a preset');
+
+  document.getElementById('inputHex').value = sel.value;
+
+});
+
+
+
+document.getElementById('btnTestAll').addEventListener('click', runTestTable);
+
+
+
+populatePresets();
+
+runTestTable(); // run on load
+
+</script>
+
+</body>
+
+</html>
