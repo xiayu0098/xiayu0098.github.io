@@ -155,6 +155,160 @@
       </tags>
   </entry>
   <entry>
+    <title>LED Brightness Cheat-Sheet (lm, lux, mcd) + Ring Notes</title>
+    <url>/2025/10/01/scheduler/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ul>
+<li>mcd &#x3D; directional intensity (good for indicators).</li>
+<li>lm &#x3D; total light output (good for illumination).</li>
+<li>lux &#x3D; light on a surface.</li>
+<li>At 1 m, on-axis: lux ~ cd.</li>
+<li>A 180 mcd LED is an indicator, not a light source.</li>
+<li>Ring of 54 white LEDs at ~8.5 lm each -&gt; ~459 lm total -&gt; ~146 lux at 1 m on-axis (assuming wide spread). Usually run well below max for comfort and thermals.</li>
+</ul>
+<hr>
+<span id="more"></span>
+
+<h2 id="1-Units"><a href="#1-Units" class="headerlink" title="1) Units"></a>1) Units</h2><ul>
+<li>Lumens (lm): total light output in all directions.</li>
+<li>Candela (cd) &#x2F; millicandela (mcd): intensity in a specific direction.</li>
+<li>Lux (lx): illumination on a surface (how bright it looks on a target).</li>
+</ul>
+<p>At distance r (meters), the basic relation is:</p>
+<p>$$<br>E_{\mathrm{lux}} &#x3D; \frac{I_{\mathrm{cd}}}{r^{2}}<br>$$</p>
+<p>At r &#x3D; 1 m:</p>
+<p>$$<br>E_{\mathrm{lux}} \approx I_{\mathrm{cd}}<br>$$</p>
+<hr>
+<h2 id="2-Conversions-you-will-use"><a href="#2-Conversions-you-will-use" class="headerlink" title="2) Conversions you will use"></a>2) Conversions you will use</h2><p>Given a full viewing angle theta (in degrees), approximate solid angle:</p>
+<p>$$<br>\Omega ;\approx; 2\pi!\left(1 - \cos\frac{\theta}{2}\right) \quad \text{[steradians]}<br>$$</p>
+<p>From lumens to candela:</p>
+<p>$$<br>I_{\mathrm{cd}} ;\approx; \frac{\Phi_{\mathrm{lm}}}{\Omega}<br>$$</p>
+<p>From candela to lumens:</p>
+<p>$$<br>\Phi_{\mathrm{lm}} ;\approx; I_{\mathrm{cd}} \cdot \Omega<br>$$</p>
+<p>Millicandela shortcut at 1 m:</p>
+<p>$$<br>E_{\mathrm{lux}} ;\approx; \frac{\mathrm{mcd}}{1000}<br>$$</p>
+<p>Notes:</p>
+<ul>
+<li>Narrower beam -&gt; higher cd on-axis without increasing total lumens.</li>
+<li>Diffusers improve uniformity but reduce peak cd and peak lux.</li>
+</ul>
+<hr>
+<h2 id="3-How-bright-at-1-m-on-axis-examples"><a href="#3-How-bright-at-1-m-on-axis-examples" class="headerlink" title="3) How bright at 1 m (on-axis examples)"></a>3) How bright at 1 m (on-axis examples)</h2><table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Spec</th>
+<th>Angle (full)</th>
+<th>cd (approx)</th>
+<th>lux @ 1 m (approx)</th>
+<th>lm (approx)</th>
+<th>What it feels like</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Indicator LED</td>
+<td>180 mcd</td>
+<td>20 deg</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>0.017</td>
+<td>Tiny status dot; no area lighting</td>
+</tr>
+<tr>
+<td>Indicator LED</td>
+<td>180 mcd</td>
+<td>60 deg</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>0.15</td>
+<td>Small indicator; visible up close</td>
+</tr>
+<tr>
+<td>Indicator LED</td>
+<td>180 mcd</td>
+<td>120 deg</td>
+<td>0.18</td>
+<td>0.18</td>
+<td>0.56</td>
+<td>Still only an indicator</td>
+</tr>
+<tr>
+<td>White SMD LED</td>
+<td>8.5 lm</td>
+<td>120 deg</td>
+<td>~2.7</td>
+<td>~2.7</td>
+<td>8.5</td>
+<td>Modest accent at 1 m</td>
+</tr>
+<tr>
+<td>LED Ring (54 x 8.5 lm)</td>
+<td>459 lm</td>
+<td>120 deg</td>
+<td>~146</td>
+<td>~146</td>
+<td>459</td>
+<td>Bright accent &#x2F; light wash</td>
+</tr>
+<tr>
+<td>Flashlight (spot)</td>
+<td>300 lm</td>
+<td>20 deg</td>
+<td>~3140</td>
+<td>~3140</td>
+<td>300</td>
+<td>Intense hotspot</td>
+</tr>
+<tr>
+<td>Bare bulb (omni)</td>
+<td>800 lm</td>
+<td>~360 deg</td>
+<td>~64</td>
+<td>~64</td>
+<td>800</td>
+<td>Gentle room illumination</td>
+</tr>
+</tbody></table>
+<p>Lux context: hallway ~50 lx, living room ~100 to 300 lx, desk work ~300 to 500 lx, overcast daylight ~1000 to 10000 lx.</p>
+<hr>
+<h2 id="4-Why-colored-LEDs-use-mcd-and-white-LEDs-use-lm"><a href="#4-Why-colored-LEDs-use-mcd-and-white-LEDs-use-lm" class="headerlink" title="4) Why colored LEDs use mcd and white LEDs use lm"></a>4) Why colored LEDs use mcd and white LEDs use lm</h2><ul>
+<li>Colored LEDs are commonly used as directional indicators, so vendors quote mcd (directional punch depends on angle).</li>
+<li>White LEDs are used for area illumination, so lumens communicate total light output better.</li>
+</ul>
+<p>Bottom line: a 180 mcd colored LED is not bright at 1 m (about 0.18 lux on-axis). For colored light that actually illuminates, use RGB or RGBW parts specified in lumens, or mix white for output with color as accent.</p>
+<hr>
+<h2 id="5-Your-LED-ring-current-working-spec-preliminary"><a href="#5-Your-LED-ring-current-working-spec-preliminary" class="headerlink" title="5) Your LED ring (current working spec, preliminary)"></a>5) Your LED ring (current working spec, preliminary)</h2><ul>
+<li>LEDs: up to 66 (~4000 K) total. Layout supports 54 on the ring plus up to 12 near the center for a cruising mode. Final count may shift slightly with layout and thermal constraints.</li>
+<li>Drivers: four TLC5947 constant-current drivers (30 mA max per channel). One is master, three are slaves.</li>
+<li>Estimated power: about 6 W at 5 V under representative patterns (depends on current, PWM, and LED binning).</li>
+<li>Thermal monitoring: TMP117 for board temperature (I2C).</li>
+<li>Control interfaces: SPI for TLC5947 and I2C for TMP117.</li>
+<li>Connectivity: JST-XH connector on the rear PCB.</li>
+<li>Status: preliminary layout. Minor placement, routing, clearance, and DFM changes expected before final release.</li>
+</ul>
+<p>Brightness takeaway:</p>
+<ul>
+<li>54 x 8.5 lm ~ 459 lm total. With a wide spread, on-axis illuminance ~146 lux at 1 m.</li>
+<li>In practice, operate below 30 mA (for example 10 to 20 mA, or PWM &lt;&#x3D; 50 percent) for comfort and thermal headroom.</li>
+<li>A diffuser improves uniformity but may reduce peak lux by about 20 to 40 percent.</li>
+</ul>
+<hr>
+<h2 id="6-Design-scenarios"><a href="#6-Design-scenarios" class="headerlink" title="6) Design scenarios"></a>6) Design scenarios</h2><ul>
+<li>Status or indicator ring at 0.5 to 1 m: 54 whites at reduced current are sufficient; enable inner 12 for extra pop if needed.</li>
+<li>Colored accent visible at ~1 m: avoid low-mcd parts; select RGB or RGBW with lumen ratings, or blend white + color.</li>
+<li>Thermals and longevity: keep junction temperature down using copper pours, thermal vias, and moderate drive currents.</li>
+</ul>
+<hr>
+]]></content>
+      <tags>
+        <tag>LED</tag>
+        <tag>brightness</tag>
+        <tag>lumens</tag>
+        <tag>lux</tag>
+        <tag>candela</tag>
+        <tag>design-notes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Modbus RTU (Example of load cell module)</title>
     <url>/2025/09/23/modbusNotesLoadCell/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-Frame-structure-RTU"><a href="#1-Frame-structure-RTU" class="headerlink" title="1) Frame structure (RTU)"></a>1) Frame structure (RTU)</h2><table>

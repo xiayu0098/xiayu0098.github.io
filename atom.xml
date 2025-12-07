@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2025-09-30T23:18:21.220Z</updated>
+  <updated>2025-09-30T23:18:33.265Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,42 @@
     <link href="http://yoursite.com/2025/10/01/LEDCircuit/"/>
     <id>http://yoursite.com/2025/10/01/LEDCircuit/</id>
     <published>2025-09-30T14:00:00.000Z</published>
-    <updated>2025-09-30T23:18:21.220Z</updated>
+    <updated>2025-09-30T23:18:33.265Z</updated>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;mcd &amp;#x3D; directional intensity (good for indicators).&lt;/li&gt;
+&lt;li&gt;lm &amp;#x3D; total light output (good for illumination).&lt;/li&gt;
+&lt;li&gt;lux &amp;#x3D; light on a surface.&lt;/li&gt;
+&lt;li&gt;At 1 m, on-axis: lux ~ cd.&lt;/li&gt;
+&lt;li&gt;A 180 mcd LED is an indicator, not a light source.&lt;/li&gt;
+&lt;li&gt;Ring of 54 white LEDs at ~8.5 lm each -&amp;gt; ~459 lm total -&amp;gt; ~146 lux at 1 m on-axis (assuming wide spread). Usually run well below max for comfort and thermals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</summary>
+    
+    
+    
+    
+    <category term="LED" scheme="http://yoursite.com/tags/LED/"/>
+    
+    <category term="brightness" scheme="http://yoursite.com/tags/brightness/"/>
+    
+    <category term="lumens" scheme="http://yoursite.com/tags/lumens/"/>
+    
+    <category term="lux" scheme="http://yoursite.com/tags/lux/"/>
+    
+    <category term="candela" scheme="http://yoursite.com/tags/candela/"/>
+    
+    <category term="design-notes" scheme="http://yoursite.com/tags/design-notes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LED Brightness Cheat-Sheet (lm, lux, mcd) + Ring Notes</title>
+    <link href="http://yoursite.com/2025/10/01/scheduler/"/>
+    <id>http://yoursite.com/2025/10/01/scheduler/</id>
+    <published>2025-09-30T14:00:00.000Z</published>
+    <updated>2025-09-30T23:18:33.265Z</updated>
     
     
     <summary type="html">&lt;ul&gt;
@@ -462,21 +497,6 @@ Fatal: refusing to merge unrelated histories&lt;/p&gt;
     
     
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2020/02/04/hello-world/"/>
-    <id>http://yoursite.com/2020/02/04/hello-world/</id>
-    <published>2020-02-04T07:19:25.000Z</published>
-    <updated>2024-09-07T23:15:26.530Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
-    
-    
     
     
   </entry>
