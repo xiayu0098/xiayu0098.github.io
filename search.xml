@@ -11,7 +11,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Smart Scheduler</title>
+    <title>Serial Number Generator</title>
     <url>/2025/12/08/SNgenerator/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a new Serial number generator  <a href="/serialNumberGenerator/">Check it out here</a>.</p>
 ]]></content>
@@ -21,7 +21,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Smart Scheduler</title>
+    <title>Modbus RTU CRC</title>
     <url>/2025/12/08/CRCCheck/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a Modbus RTU CRC checker <a href="/modbusCRC/">Check it out here</a>.</p>
 ]]></content>
