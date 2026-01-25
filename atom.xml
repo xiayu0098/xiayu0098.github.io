@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2025-12-07T22:49:08.298Z</updated>
+  <updated>2026-01-25T05:40:05.138Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记</title>
+    <link href="http://yoursite.com/2026/01/25/UPS_BMSCircuit/"/>
+    <id>http://yoursite.com/2026/01/25/UPS_BMSCircuit/</id>
+    <published>2026-01-24T13:00:00.000Z</published>
+    <updated>2026-01-25T05:40:05.138Z</updated>
+    
+    
+    <summary type="html">本文总结了 3S 锂电池 UPS 系统的设计核心，包括 USB PD 诱骗逻辑、Buck-Boost 充电管理、功率计算及 PCB 布局规范。</summary>
+    
+    
+    
+    <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    <category term="Power Design" scheme="http://yoursite.com/categories/Hardware/Power-Design/"/>
+    
+    
+    <category term="UPS" scheme="http://yoursite.com/tags/UPS/"/>
+    
+    <category term="BQ25798" scheme="http://yoursite.com/tags/BQ25798/"/>
+    
+    <category term="HUSB238" scheme="http://yoursite.com/tags/HUSB238/"/>
+    
+    <category term="PCB Layout" scheme="http://yoursite.com/tags/PCB-Layout/"/>
+    
+    <category term="USB-PD" scheme="http://yoursite.com/tags/USB-PD/"/>
+    
+  </entry>
   
   <entry>
     <title>Smart Scheduler</title>
@@ -477,22 +506,6 @@
 &lt;figure&gt;
     &lt;img src=&quot;/2023/08/08/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
 &lt;/figure&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PowerPoint</title>
-    <link href="http://yoursite.com/2020/06/01/Powerpoint/"/>
-    <id>http://yoursite.com/2020/06/01/Powerpoint/</id>
-    <published>2020-05-31T22:49:36.000Z</published>
-    <updated>2020-06-01T01:45:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.&lt;/p&gt;
-&lt;p&gt; It is annoying to do this work from your storage if have a large number of pictures added. Here, we introduce a good way to establish connection between PowerPoint and Matlab  to help us import images quickly.&lt;/p&gt;</summary>
     
     
     

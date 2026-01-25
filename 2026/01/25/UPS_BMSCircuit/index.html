@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="description" content="本文总结了 3S 锂电池 UPS 系统的设计核心，包括 USB PD 诱骗逻辑、Buck-Boost 充电管理、功率计算及 PCB 布局规范。" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记 |  X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-UPS_BMSCircuit" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/01/25/UPS_BMSCircuit/" class="article-date">
+  <time datetime="2026-01-24T13:00:00.000Z" itemprop="datePublished">2026-01-25</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hardware/">Hardware</a> / <a class="article-category-link" href="/categories/Hardware/Power-Design/">Power Design</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.4k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>本项目旨在设计一款基于 <strong>USB-C PD 输入</strong> 的 <strong>3S 18650 锂电池 UPS</strong>，支持 5A 大电流充放电。核心方案采用 <strong>HUSB238</strong>（PD 诱骗）搭配 <strong>BQ25798</strong>（Buck-Boost 充电管理）。</p>
+<hr>
+<span id="more"></span>
+
+<h2 id="1-供电输入级：USB-PD-诱骗-HUSB238"><a href="#1-供电输入级：USB-PD-诱骗-HUSB238" class="headerlink" title="1. 供电输入级：USB PD 诱骗 (HUSB238)"></a>1. 供电输入级：USB PD 诱骗 (HUSB238)</h2><p>系统采用 <strong>HUSB238</strong> 作为 PD Sink Controller，支持高达 100W 的功率申请，负责与适配器协商电压电流。</p>
+<h3 id="1-1-硬件配置-Resistor-Set"><a href="#1-1-硬件配置-Resistor-Set" class="headerlink" title="1.1 硬件配置 (Resistor Set)"></a>1.1 硬件配置 (Resistor Set)</h3><ul>
+<li><strong>VSET &#x2F; ISET</strong>：通过外接电阻设置请求的最大电压和电流。</li>
+<li><strong>CC1 &#x2F; CC2</strong>：用于 PD 协议握手与通信。</li>
+</ul>
+<h3 id="1-2-协商逻辑-RDO-vs-PDO"><a href="#1-2-协商逻辑-RDO-vs-PDO" class="headerlink" title="1.2 协商逻辑 (RDO vs PDO)"></a>1.2 协商逻辑 (RDO vs PDO)</h3><p>HUSB238 内部根据设定的 <strong>RDO (Requested Data Object)</strong> 与适配器广播的 <strong>PDO (Power Data Object)</strong> 进行匹配。出厂默认 RDO 通常为 <code>20V / 3.25A</code>。</p>
+<p><strong>匹配规则：</strong></p>
+<ol>
+<li><code>SOURCE_PDO_VOLTAGE</code> ≤ <code>RDO_VOLTAGE</code></li>
+<li><code>SOURCE_PDO_CURRENT</code> ≥ <code>RDO_CURRENT</code></li>
+</ol>
+<blockquote>
+<p><strong>案例推演：</strong><br>假设 RDO 设置为 <strong>18V &#x2F; 1.5A</strong>。<br>适配器广播档位为：<code>20V/2.25A</code>, <code>15V/3A</code>, <code>9V/3A</code>, <code>5V/5A</code>。</p>
+<ul>
+<li><strong>比对 20V 档</strong>：<code>20V &lt; 18V</code> (❌ 电压超标，跳过)</li>
+<li><strong>比对 15V 档</strong>：<code>15V &lt; 18V</code> (✅) 且 <code>3A &gt; 1.5A</code> (✅)</li>
+<li><strong>结果</strong>：握手成功，申请输出 <strong>15V</strong>。</li>
+</ul>
+</blockquote>
+<h3 id="1-3-I2C-动态控制"><a href="#1-3-I2C-动态控制" class="headerlink" title="1.3 I2C 动态控制"></a>1.3 I2C 动态控制</h3><ul>
+<li><strong>通信接口</strong>：I2C 从机地址 <code>0x08</code>。</li>
+<li><strong>优先级</strong>：I2C 指令 &gt; 硬件电阻 (VSET&#x2F;ISET) &gt; 出厂默认。</li>
+<li><strong>工作流程</strong>：POR（上电复位）后，芯片自动读取适配器信息并存入寄存器。MCU 可通过 I2C 读取支持的 PDO 列表，并写入指令强制请求特定的电压&#x2F;电流档位。</li>
+</ul>
+<hr>
+<h2 id="2-核心管理级：Buck-Boost-充电-BQ25798"><a href="#2-核心管理级：Buck-Boost-充电-BQ25798" class="headerlink" title="2. 核心管理级：Buck-Boost 充电 (BQ25798)"></a>2. 核心管理级：Buck-Boost 充电 (BQ25798)</h2><p>BQ25798 是核心 VQFN 封装芯片，负责充放电路径管理。</p>
+<h3 id="2-1-关键引脚功能解析"><a href="#2-1-关键引脚功能解析" class="headerlink" title="2.1 关键引脚功能解析"></a>2.1 关键引脚功能解析</h3><table>
+<thead>
+<tr>
+<th align="left">引脚</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>ACDRV1</strong></td>
+<td align="left"><strong>输入保护驱动</strong>。控制输入端 N-MOSFET。检测到 OVP&#x2F;UVP 或反向电流时，立即拉低关闭 MOS。正常导通时 $V_{GS} \approx 5V$（内部 Charge Pump 供电）。</td>
+</tr>
+<tr>
+<td align="left"><strong>REGN</strong></td>
+<td align="left"><strong>内部 LDO 输出</strong>。为芯片内部电路和 MOS 驱动供电。<br>当 $V_{BUS} &#x3D; 15V$ 时，$V_{REGN} &#x3D; 5V$；<br>当 $V_{BUS} &#x3D; 5V$ 时，$V_{REGN} \approx 4.8V$。</td>
+</tr>
+<tr>
+<td align="left"><strong>PROG</strong></td>
+<td align="left"><strong>硬件配置</strong>。通过电阻设置电池串数和频率。例如 3S 电池配置：10.5kΩ 接地。</td>
+</tr>
+<tr>
+<td align="left"><strong>ILIM_HIZ</strong></td>
+<td align="left"><strong>输入限流 &amp; HIZ 模式</strong>。<br>1. <strong>限流计算</strong>：$V_{ILIM_HIZ} &#x3D; 1V + 0.8 \Omega \times I_{LIM}$。<br>2. <strong>HIZ 控制</strong>：电压 &lt; 0.75V 时进入高阻态（停止输入）。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-逻辑控制：Ship-Mode-与-QON"><a href="#2-2-逻辑控制：Ship-Mode-与-QON" class="headerlink" title="2.2 逻辑控制：Ship Mode 与 QON"></a>2.2 逻辑控制：Ship Mode 与 QON</h3><h4 id="A-Ship-Mode-运输模式"><a href="#A-Ship-Mode-运输模式" class="headerlink" title="A. Ship Mode (运输模式)"></a>A. Ship Mode (运输模式)</h4><ul>
+<li><strong>目的</strong>：库存期间断开电池，将漏电流降至最低。</li>
+<li><strong>物理动作</strong>：SDRV 拉低 -&gt; 外部 Ship FET (Q21) 关闭 -&gt; 电池物理断开。</li>
+<li><strong>如何进入</strong>：拔掉 VBUS -&gt; I2C 写入 <code>Charger_Control_3</code> 寄存器 <code>EN_SHIPMODE = 1</code>。</li>
+</ul>
+<h4 id="B-QON-按键的双重功能"><a href="#B-QON-按键的双重功能" class="headerlink" title="B. QON 按键的双重功能"></a>B. QON 按键的双重功能</h4><p>QON 引脚（内部已上拉，外部直连按键对地）是唯一的硬件“复活”接口。</p>
+<ol>
+<li>**短按 (约 1s)<strong>：</strong>唤醒 (Wake Up)**。退出 Ship Mode，拉高 SDRV，系统上电。</li>
+<li>**长按 (约 10s)<strong>：</strong>硬复位 (System Reset)**。强制关闭 Ship FET 和 BATFET -&gt; SYS 下拉放电 (250ms) -&gt; 自动重启。</li>
+</ol>
+<hr>
+<h2 id="3-工程计算与选型笔记"><a href="#3-工程计算与选型笔记" class="headerlink" title="3. 工程计算与选型笔记"></a>3. 工程计算与选型笔记</h2><h3 id="3-1-电感选型-Buck-Boost-核心"><a href="#3-1-电感选型-Buck-Boost-核心" class="headerlink" title="3.1 电感选型 (Buck-Boost 核心)"></a>3.1 电感选型 (Buck-Boost 核心)</h3><p>电感必须满足 $I_{SAT}$ (饱和电流) 和 $I_{RMS}$ (温升电流) 的要求。</p>
+<p><strong>纹波电流 ($I_{RIPPLE}$) 计算公式：</strong></p>
+<ul>
+<li><p><strong>Buck 模式</strong> ($V_{BUS} &gt; V_{SYS}$):<br>  $$I_{RIPPLE} &#x3D; \frac{V_{SYS} \times (V_{BUS} - V_{SYS})}{V_{BUS} \times f_{SW} \times L}$$</p>
+</li>
+<li><p><strong>Boost 模式</strong> ($V_{BUS} &lt; V_{SYS}$):<br>  $$I_{RIPPLE} &#x3D; \frac{V_{BUS} \times (V_{SYS} - V_{BUS})}{V_{SYS} \times f_{SW} \times L}$$</p>
+</li>
+</ul>
+<p><strong>选型铁律：</strong></p>
+<ol>
+<li>**饱和电流 ($I_{SAT}$)<strong>：必须 $&gt; I_{PEAK}$ (建议留 20% 余量)。</strong>5A 应用推荐 $I_{SAT} \ge 6A$**。饱和会导致电感值归零，瞬间炸管。</li>
+<li>**直流电阻 (DCR)**：5A 应用建议 $&lt; 20m\Omega$，否则发热严重。</li>
+<li><strong>封装</strong>：必须全屏蔽，建议 4040 或 5050 封装。</li>
+</ol>
+<h3 id="3-2-SYS-输出能力评估-I-SYS-MAX"><a href="#3-2-SYS-输出能力评估-I-SYS-MAX" class="headerlink" title="3.2 SYS 输出能力评估 ($I_{SYS_MAX}$)"></a>3.2 SYS 输出能力评估 ($I_{SYS_MAX}$)</h3><p>SYS 口能输出 5A 吗？取决于三个瓶颈（木桶效应）：</p>
+<ol>
+<li><strong>输入功率瓶颈</strong> (最常见)：$P_{IN} \times \eta \approx P_{SYS}$<ul>
+<li>若输入 5V&#x2F;3A (15W)，SYS (9V) 最大只能出 1.5A。硬拉 5A 会导致 $V_{SYS}$ 跌落并触发电池补给模式。</li>
+</ul>
+</li>
+<li><strong>MOSFET 开关限流</strong>：芯片内部 High-side MOSFET 峰值限流约 9A~10A，折算直流上限约 **6A+**。</li>
+<li><strong>热限制</strong>：长期运行建议控制在 <strong>5A</strong> 以内。</li>
+</ol>
+<hr>
+<h2 id="4-软件监控：ADC-寄存器映射"><a href="#4-软件监控：ADC-寄存器映射" class="headerlink" title="4. 软件监控：ADC 寄存器映射"></a>4. 软件监控：ADC 寄存器映射</h2><p>BQ25798 内置 ADC，可通过 I2C 实时监控系统状态。</p>
+<ul>
+<li><strong>VBAT (电池电压)</strong>: <code>REG3B</code> (或 <code>REG35</code>)</li>
+<li><strong>IBAT (电池电流)</strong>: <code>REG31</code>&#x2F;<code>REG32</code> (正&#x3D;充电，负&#x3D;放电)</li>
+<li><strong>VSYS (系统电压)</strong>: <code>REG3D</code> (3S 电池下约为 9V~12.6V)</li>
+<li><strong>VBUS (输入电压)</strong>: <code>REG35</code></li>
+<li><strong>IBUS (输入电流)</strong>: <code>REG33</code></li>
+</ul>
+<hr>
+<h2 id="5-PCB-Layout-黄金法则-生存指南"><a href="#5-PCB-Layout-黄金法则-生存指南" class="headerlink" title="5. PCB Layout 黄金法则 (生存指南)"></a>5. PCB Layout 黄金法则 (生存指南)</h2><p><strong>核心目标</strong>：5A 充放电不发烫、EMI 不超标、ADC 采样精准。</p>
+<h3 id="5-1-核心电容布局-Top-Priority"><a href="#5-1-核心电容布局-Top-Priority" class="headerlink" title="5.1 核心电容布局 (Top Priority)"></a>5.1 核心电容布局 (Top Priority)</h3><blockquote>
+<p><strong>规则</strong>：VBUS, PMID, SYS 引脚旁的 <strong>0.1μF (100nF)</strong> 小电容必须 <strong>紧贴芯片引脚</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>严禁</strong>在电容和引脚之间打过孔。</li>
+<li>必须在 Top 层直接连接回路，这直接决定了 EMI 是否炸裂。</li>
+</ul>
+<h3 id="5-2-开关节点-SW1-x2F-SW2"><a href="#5-2-开关节点-SW1-x2F-SW2" class="headerlink" title="5.2 开关节点 (SW1&#x2F;SW2)"></a>5.2 开关节点 (SW1&#x2F;SW2)</h3><ul>
+<li>采用 <strong>“潜伏式”</strong> 走线：由于 Top 层被小电容占了，SW 必须打过孔走内层 (L2&#x2F;L3) 连接电感。</li>
+<li><strong>注意</strong>：铜皮面积够用即可，不要铺太大，避免变成辐射天线。</li>
+</ul>
+<h3 id="5-3-大电流路径-5A"><a href="#5-3-大电流路径-5A" class="headerlink" title="5.3 大电流路径 (5A+)"></a>5.3 大电流路径 (5A+)</h3><ul>
+<li><strong>必须铺铜</strong>：VBUS, SYS, BAT 严禁走细线，必须使用多边形铺铜或 &gt;2.5mm 宽线。</li>
+<li><strong>过孔阵列</strong>：换层时必须打 <strong>Via Stitching</strong> (6~9 个过孔并联)，防止烧断。</li>
+</ul>
+<h3 id="5-4-开尔文连接-Kelvin-Connection"><a href="#5-4-开尔文连接-Kelvin-Connection" class="headerlink" title="5.4 开尔文连接 (Kelvin Connection)"></a>5.4 开尔文连接 (Kelvin Connection)</h3><ul>
+<li><strong>BATP (检测线)</strong> 必须单独走线。</li>
+<li>使用 10mil 细线，从 <strong>电池座子焊盘根部</strong> 引出，与 BAT 功率线汇合（Y 字形连接）。</li>
+<li><strong>一定要远离</strong> SW1&#x2F;SW2 和电感区域。</li>
+</ul>
+<h3 id="5-5-散热设计"><a href="#5-5-散热设计" class="headerlink" title="5.5 散热设计"></a>5.5 散热设计</h3><ul>
+<li>芯片底部 Thermal Pad 必须完整焊接。</li>
+<li>必须打 <strong>3x3 或 4x4</strong> 的散热过孔矩阵通到 Bottom 层，且 Bottom 层需大面积铺地。</li>
+</ul>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2026/01/25/UPS_BMSCircuit/" data-id="cmktazvp10000zujsg04w0z87"
+        class="article-share-link">share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BQ25798/" rel="tag">BQ25798</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HUSB238/" rel="tag">HUSB238</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PCB-Layout/" rel="tag">PCB Layout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UPS/" rel="tag">UPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/USB-PD/" rel="tag">USB-PD</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/12/08/scheduler/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Smart Scheduler</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2026
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
