@@ -200,10 +200,10 @@
     <link href="http://yoursite.com/2025/01/30/generateSinusoidalDXF/"/>
     <id>http://yoursite.com/2025/01/30/generateSinusoidalDXF/</id>
     <published>2025-01-29T13:00:00.000Z</published>
-    <updated>2025-01-30T04:33:06.539Z</updated>
+    <updated>2026-01-26T23:40:25.534Z</updated>
     
     
-    <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to generate a DNX file containing a sinusoidal curve represented as a polyline with a controlled number of points. All units are in millimeters (mm).&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to generate a DXF file containing a sinusoidal curve represented as a polyline with a controlled number of points. All units are in millimeters (mm).&lt;/p&gt;</summary>
     
     
     
