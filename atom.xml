@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-02-08T04:35:14.931Z</updated>
+  <updated>2026-02-08T04:42:37.683Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,25 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Kalman filter, POD and PINN</title>
+    <title>电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI</title>
     <link href="http://yoursite.com/2026/02/08/KL_POD/"/>
     <id>http://yoursite.com/2026/02/08/KL_POD/</id>
-    <published>2026-02-07T13:00:00.000Z</published>
-    <updated>2026-02-08T04:35:14.931Z</updated>
+    <published>2026-02-08T01:00:00.000Z</published>
+    <updated>2026-02-08T04:42:37.683Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI&quot;&gt;&lt;a href=&quot;#电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI&quot; class=&quot;headerlink&quot; title=&quot;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI&quot;&gt;&lt;/a&gt;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI&lt;/h1&gt;&lt;h2 id=&quot;1-核心问题与场景定义&quot;&gt;&lt;a href=&quot;#1-核心问题与场景定义&quot; class=&quot;headerlink&quot; title=&quot;1. 核心问题与场景定义&quot;&gt;&lt;/a&gt;1. 核心问题与场景定义&lt;/h2&gt;&lt;p&gt;在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;1-核心问题与场景定义&quot;&gt;&lt;a href=&quot;#1-核心问题与场景定义&quot; class=&quot;headerlink&quot; title=&quot;1. 核心问题与场景定义&quot;&gt;&lt;/a&gt;1. 核心问题与场景定义&lt;/h2&gt;&lt;p&gt;在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。&lt;/p&gt;</summary>
     
     
     
-    <category term="algorithm" scheme="http://yoursite.com/categories/algorithm/"/>
+    <category term="Engineering" scheme="http://yoursite.com/categories/Engineering/"/>
     
     
     <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
     
-    <category term="POD" scheme="http://yoursite.com/tags/POD/"/>
+    <category term="BMS" scheme="http://yoursite.com/tags/BMS/"/>
     
-    <category term="KF" scheme="http://yoursite.com/tags/KF/"/>
+    <category term="Kalman Filter" scheme="http://yoursite.com/tags/Kalman-Filter/"/>
+    
+    <category term="Battery" scheme="http://yoursite.com/tags/Battery/"/>
     
   </entry>
   

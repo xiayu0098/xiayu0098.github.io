@@ -8,7 +8,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Kalman filter, POD and PINN |  X. Blog
+    电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI |  X. Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Kalman filter, POD and PINN
+  电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI
 </h1>
   
 
@@ -52,11 +52,11 @@
     
     <div class="article-meta">
       <a href="/2026/02/08/KL_POD/" class="article-date">
-  <time datetime="2026-02-07T13:00:00.000Z" itemprop="datePublished">2026-02-08</time>
+  <time datetime="2026-02-08T01:00:00.000Z" itemprop="datePublished">2026-02-08</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+    <a class="article-category-link" href="/categories/Engineering/">Engineering</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k字</span>
+            <span class="post-count">2.2k字</span>
         </span>
     </span>
 
@@ -101,7 +101,7 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><h1 id="电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI"><a href="#电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI" class="headerlink" title="电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI"></a>电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI</h1><h2 id="1-核心问题与场景定义"><a href="#1-核心问题与场景定义" class="headerlink" title="1. 核心问题与场景定义"></a>1. 核心问题与场景定义</h2><p>在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。</p>
+      <script src="/assets/js/APlayer.min.js"> </script><h2 id="1-核心问题与场景定义"><a href="#1-核心问题与场景定义" class="headerlink" title="1. 核心问题与场景定义"></a>1. 核心问题与场景定义</h2><p>在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。</p>
 <span id="more"></span>
 <p>典型的工程场景如下：</p>
 <ul>
@@ -113,10 +113,10 @@
 <hr>
 <h2 id="2-基于物理模型的估计：卡尔曼滤波-Kalman-Filter"><a href="#2-基于物理模型的估计：卡尔曼滤波-Kalman-Filter" class="headerlink" title="2. 基于物理模型的估计：卡尔曼滤波 (Kalman Filter)"></a>2. 基于物理模型的估计：卡尔曼滤波 (Kalman Filter)</h2><p>卡尔曼滤波（KF）是工业界最成熟的状态估计算法。其核心思想是基于物理模型的预测与基于传感器观测的修正相结合，实现最小方差估计。</p>
 <h3 id="2-1-核心矩阵定义"><a href="#2-1-核心矩阵定义" class="headerlink" title="2.1 核心矩阵定义"></a>2.1 核心矩阵定义</h3><ul>
-<li>**状态向量 $x$ ($100 \times 1$)**：包含全场 100 个节点的温度值。</li>
-<li>**系统矩阵 $A$ ($100 \times 100$)**：表征物理导热网络，描述热量在相邻节点间的传导与耗散关系。</li>
-<li>**观测矩阵 $H$ ($20 \times 100$)**：稀疏矩阵（Mask），对应 20 个传感器位置的元素为 1，其余为 0。</li>
-<li>**协方差矩阵 $P$ ($100 \times 100$)**：算法的核心。对角线元素代表各节点的估计误差方差，非对角线元素代表节点间的误差相关性。</li>
+<li><strong>状态向量</strong> $x$ ($100 \times 1$)：包含全场 100 个节点的温度值。</li>
+<li><strong>系统矩阵</strong> $A$ ($100 \times 100$)：表征物理导热网络，描述热量在相邻节点间的传导与耗散关系。</li>
+<li><strong>观测矩阵</strong> $H$ ($20 \times 100$)：稀疏矩阵（Mask），对应 20 个传感器位置的元素为 1，其余为 0。</li>
+<li><strong>协方差矩阵</strong> $P$ ($100 \times 100$)：算法的核心。对角线元素代表各节点的估计误差方差，非对角线元素代表节点间的误差相关性。</li>
 </ul>
 <h3 id="2-2-稀疏观测重构全场的原理"><a href="#2-2-稀疏观测重构全场的原理" class="headerlink" title="2.2 稀疏观测重构全场的原理"></a>2.2 稀疏观测重构全场的原理</h3><p>仅通过 20 个点推测 100 个点的数学基础在于协方差矩阵 $P$ 的非对角元素。</p>
 <ol>
@@ -125,38 +125,56 @@
 <li><strong>结果</strong>：传感器 20 的观测残差，通过 $K$ 矩阵的系数加权，实现了对无传感器节点 21 的状态修正。</li>
 </ol>
 <h3 id="2-3-离散卡尔曼滤波标准流程"><a href="#2-3-离散卡尔曼滤波标准流程" class="headerlink" title="2.3 离散卡尔曼滤波标准流程"></a>2.3 离散卡尔曼滤波标准流程</h3><p>算法在嵌入式控制器（MCU）中按固定周期（如 10ms）执行以下五个步骤：</p>
-<p><strong>阶段一：时间更新（预测）</strong><br>利用上一时刻的最优估计，通过物理模型推算当前时刻的先验状态。</p>
+<p><strong>阶段一：时间更新（预测）</strong></p>
+<p>利用上一时刻的最优估计，通过物理模型推算当前时刻的先验状态。</p>
 <ol>
-<li><p><strong>状态预测</strong>：<br>$<br>\hat{x}<em>k^- &#x3D; A \hat{x}</em>{k-1} + B u_k<br>$<br>物理含义：基于热传导方程和电流产热输入 $u_k$，计算当前时刻的先验温度分布。</p>
-</li>
-<li><p><strong>协方差预测</strong>：<br>$<br>P_k^- &#x3D; A P_{k-1} A^T + Q<br>$<br>物理含义：引入过程噪声 $Q$，并计算误差随物理系统的扩散情况。此步骤建立了节点间的相关性。</p>
-</li>
+<li><strong>状态预测</strong>：</li>
 </ol>
-<p><strong>阶段二：测量更新（修正）</strong><br>引入当前时刻的传感器观测值 $z_k$，修正先验估计。</p>
+<p>$$<br>\hat{x}<em>k^- &#x3D; A \hat{x}</em>{k-1} + B u_k<br>$$</p>
+<p>物理含义：基于热传导方程和电流产热输入 $u_k$，计算当前时刻的先验温度分布。</p>
+<ol start="2">
+<li><strong>协方差预测</strong>：</li>
+</ol>
+<p>$$<br>P_k^- &#x3D; A P_{k-1} A^T + Q<br>$$</p>
+<p>物理含义：引入过程噪声 $Q$，并计算误差随物理系统的扩散情况。此步骤建立了节点间的相关性。</p>
+<p><strong>阶段二：测量更新（修正）</strong></p>
+<p>引入当前时刻的传感器观测值 $z_k$，修正先验估计。</p>
 <ol start="3">
-<li><p><strong>计算卡尔曼增益</strong>：<br>$<br>K_k &#x3D; P_k^- H^T (H P_k^- H^T + R)^{-1}<br>$<br>物理含义：权衡模型不确定性 ($P^-$) 与测量噪声 ($R$)，决定修正权重。</p>
-</li>
-<li><p><strong>状态更新（最终输出）</strong>：<br>$<br>\hat{x}_k &#x3D; \hat{x}_k^- + K_k (z_k - H \hat{x}_k^-)<br>$<br>物理含义：利用观测残差（实测值 - 预测观测值）对全场状态进行修正。</p>
-</li>
-<li><p><strong>协方差更新</strong>：<br>$<br>P_k &#x3D; (I - K_k H) P_k^-<br>$<br>物理含义：融合测量信息后，系统估计的不确定性收敛，为下一时刻做准备。</p>
-</li>
+<li><strong>计算卡尔曼增益</strong>：</li>
 </ol>
+<p>$$<br>K_k &#x3D; P_k^- H^T (H P_k^- H^T + R)^{-1}<br>$$</p>
+<p>物理含义：权衡模型不确定性 ($P^-$) 与测量噪声 ($R$)，决定修正权重。</p>
+<ol start="4">
+<li><strong>状态更新（最终输出）</strong>：</li>
+</ol>
+<p>$$<br>\hat{x}_k &#x3D; \hat{x}_k^- + K_k (z_k - H \hat{x}_k^-)<br>$$</p>
+<p>物理含义：利用观测残差（实测值 - 预测观测值）对全场状态进行修正。</p>
+<ol start="5">
+<li><strong>协方差更新</strong>：</li>
+</ol>
+<p>$$<br>P_k &#x3D; (I - K_k H) P_k^-<br>$$</p>
+<p>物理含义：融合测量信息后，系统估计的不确定性收敛，为下一时刻做准备。</p>
 <hr>
 <h2 id="3-数据驱动的降维方法：本征正交分解-POD"><a href="#3-数据驱动的降维方法：本征正交分解-POD" class="headerlink" title="3. 数据驱动的降维方法：本征正交分解 (POD)"></a>3. 数据驱动的降维方法：本征正交分解 (POD)</h2><p>对于高维系统，直接运行高阶 KF 算力消耗较大。POD（Proper Orthogonal Decomposition）提供了一种基于数据特征的降维思路。</p>
-<p><strong>核心公式</strong>：<br>$<br>T(x, t) \approx \Phi(x) \cdot a(t)<br>$<br>其中 $\Phi(x)$ 为空间模态，$a(t)$ 为时间系数。</p>
+<p><strong>核心公式</strong>：</p>
+<p>$$<br>T(x, t) \approx \Phi(x) \cdot a(t)<br>$$</p>
+<p>其中 $\Phi(x)$ 为空间模态，$a(t)$ 为时间系数。</p>
 <h3 id="3-1-实施流程"><a href="#3-1-实施流程" class="headerlink" title="3.1 实施流程"></a>3.1 实施流程</h3><ol>
 <li><strong>离线建模</strong>：对高保真 CFD 仿真数据进行奇异值分解（SVD），提取前 $r$ 个（例如 $r&#x3D;5$）主要能量的空间模态 $\Phi$（$100 \times 5$）。</li>
 <li><strong>在线重构</strong>：<ul>
 <li>获取 20 个传感器实时数据 $y$。</li>
 <li>截取模态矩阵 $\Phi$ 中对应的 20 行，得到 $\Phi_{sensor}$。</li>
-<li>通过最小二乘法求解时间系数 $a(t)$：<br>  $<br>  a &#x3D; (\Phi_s^T \Phi_s)^{-1} \Phi_s^T y<br>  $</li>
+<li>通过最小二乘法求解时间系数 $a(t)$：</li>
 </ul>
 </li>
+</ol>
+<p>$$<br>a &#x3D; (\Phi_s^T \Phi_s)^{-1} \Phi_s^T y<br>$$</p>
+<ol start="3">
 <li><strong>全场映射</strong>：利用求解出的低维系数 $a(t)$ 还原全场温度 $T_{full} &#x3D; \Phi_{full} \cdot a(t)$。</li>
 </ol>
 <h3 id="3-2-方法对比与进阶"><a href="#3-2-方法对比与进阶" class="headerlink" title="3.2 方法对比与进阶"></a>3.2 方法对比与进阶</h3><ul>
 <li><strong>POD 优劣势</strong>：计算量极低（仅需解 $5 \times 5$ 矩阵），在稳态或典型工况下空间重构精度高。但在非典型工况（如流道堵塞导致的未知温度场分布）下，由于缺乏物理机制约束，泛化能力较弱。</li>
-<li>**进阶方案：ROM-KF (降阶卡尔曼)**：<br>  结合 POD 的空间降维能力与 KF 的动态滤波能力。在芯片中运行 KF，但将状态变量从 100 个温度点转换为 5 个模态系数 $a(t)$，既保留了物理系统的动态特性，又大幅降低了嵌入式算力需求。</li>
+<li>**进阶方案：ROM-KF (降阶卡尔曼)**：结合 POD 的空间降维能力与 KF 的动态滤波能力。在芯片中运行 KF，但将状态变量从 100 个温度点转换为 5 个模态系数 $a(t)$，既保留了物理系统的动态特性，又大幅降低了嵌入式算力需求。</li>
 </ul>
 <hr>
 <h2 id="4-人工智能的融合：物理感知-AI-Physics-Informed-AI"><a href="#4-人工智能的融合：物理感知-AI-Physics-Informed-AI" class="headerlink" title="4. 人工智能的融合：物理感知 AI (Physics-Informed AI)"></a>4. 人工智能的融合：物理感知 AI (Physics-Informed AI)</h2><p>AI 在工程落地的核心价值在于处理<strong>强非线性</strong>和<strong>未知物理参数</strong>，而非单纯替代传统算法。</p>
@@ -174,9 +192,13 @@
 <li><strong>工程痛点</strong>：在传感器稀疏的情况下，需要反演流场或辨识未知区域的热物性参数。</li>
 <li>**解决方案：数据同化 (Data Assimilation)**。<ul>
 <li>利用 PINN (Physics-Informed Neural Networks) 融合稀疏测量数据。</li>
-<li><strong>损失函数设计</strong>：$Loss &#x3D; Loss_{Data} + \lambda \cdot Loss_{PDE}$（数据误差 + 物理方程残差）。</li>
+<li><strong>损失函数设计</strong>：</li>
 </ul>
 </li>
+</ul>
+<p>$$<br>Loss &#x3D; Loss_{Data} + \lambda \cdot Loss_{PDE}<br>$$</p>
+<p>（数据误差 + 物理方程残差）。</p>
+<ul>
 <li><strong>可信度评估</strong>：<ul>
 <li>仅在训练集验证属于过拟合，不可信。</li>
 <li>工程可信标准需包含：<strong>盲测 (Blind Test)<strong>（预测未参与训练的关键点）、</strong>物理一致性检查</strong>（如质量&#x2F;能量守恒验证）以及**不确定性量化 (UQ)**。</li>
@@ -213,7 +235,7 @@
       <a data-url="http://yoursite.com/2026/02/08/KL_POD/" data-id="cmld8uika0000s0js2gdghozh"
         class="article-share-link">share</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KF/" rel="tag">KF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POD/" rel="tag">POD</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BMS/" rel="tag">BMS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Battery/" rel="tag">Battery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kalman-Filter/" rel="tag">Kalman Filter</a></li></ul>
 
     </footer>
 
