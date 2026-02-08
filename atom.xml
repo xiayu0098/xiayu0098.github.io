@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-01-25T05:40:05.138Z</updated>
+  <updated>2026-02-08T04:35:14.931Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kalman filter, POD and PINN</title>
+    <link href="http://yoursite.com/2026/02/08/KL_POD/"/>
+    <id>http://yoursite.com/2026/02/08/KL_POD/</id>
+    <published>2026-02-07T13:00:00.000Z</published>
+    <updated>2026-02-08T04:35:14.931Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI&quot;&gt;&lt;a href=&quot;#电池热管理状态估计技术综述：从卡尔曼滤波到物理感知-AI&quot; class=&quot;headerlink&quot; title=&quot;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI&quot;&gt;&lt;/a&gt;电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI&lt;/h1&gt;&lt;h2 id=&quot;1-核心问题与场景定义&quot;&gt;&lt;a href=&quot;#1-核心问题与场景定义&quot; class=&quot;headerlink&quot; title=&quot;1. 核心问题与场景定义&quot;&gt;&lt;/a&gt;1. 核心问题与场景定义&lt;/h2&gt;&lt;p&gt;在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="algorithm" scheme="http://yoursite.com/categories/algorithm/"/>
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+    <category term="POD" scheme="http://yoursite.com/tags/POD/"/>
+    
+    <category term="KF" scheme="http://yoursite.com/tags/KF/"/>
+    
+  </entry>
   
   <entry>
     <title>基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记</title>
@@ -490,25 +513,6 @@
     
     
     <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Latex Tips</title>
-    <link href="http://yoursite.com/2023/08/08/Tips/"/>
-    <id>http://yoursite.com/2023/08/08/Tips/</id>
-    <published>2023-08-08T03:27:08.000Z</published>
-    <updated>2023-06-07T14:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;Using-braces-to-label-parts-of-an-equation&quot;&gt;&lt;a href=&quot;#Using-braces-to-label-parts-of-an-equation&quot; class=&quot;headerlink&quot; title=&quot;Using braces to label parts of an equation&quot;&gt;&lt;/a&gt;Using braces to label parts of an equation&lt;/h3&gt;&lt;figure class=&quot;highlight latex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;&#92;[&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;&#92;Theta&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+ = &lt;span class=&quot;keyword&quot;&gt;&#92;underbrace&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;int&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;0&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;crit&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;frac&lt;/span&gt;&amp;#123;dz&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&amp;#123;1/Pr +&lt;span class=&quot;keyword&quot;&gt;&#92;alpha&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;t/&lt;span class=&quot;keyword&quot;&gt;&#92;nu&lt;/span&gt;&amp;#125;&amp;#125;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;Romannum&lt;/span&gt;&amp;#123;1&amp;#125;&amp;#125; + &lt;span class=&quot;keyword&quot;&gt;&#92;underbrace&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;int&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;crit&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;&amp;#123;z&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;frac&lt;/span&gt;&amp;#123;dz&lt;span class=&quot;built_in&quot;&gt;^&lt;/span&gt;+&amp;#125;&amp;#123;1/Pr +&lt;span class=&quot;keyword&quot;&gt;&#92;alpha&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;t/&lt;span class=&quot;keyword&quot;&gt;&#92;nu&lt;/span&gt;&amp;#125;&amp;#125;&lt;span class=&quot;built_in&quot;&gt;_&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;&#92;Romannum&lt;/span&gt;&amp;#123;2&amp;#125;&amp;#125;&lt;span class=&quot;keyword&quot;&gt;&#92;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;figure&gt;
-    &lt;img src=&quot;/2023/08/08/Tips/underbrace.png&quot; style=&quot;width:400px; text-align:center&quot; alt=&quot;underbrace type&quot; title=&quot;title&quot;&gt;
-&lt;/figure&gt;</summary>
-    
-    
-    
     
   </entry>
   
