@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-02-08T04:42:37.683Z</updated>
+  <updated>2026-03-02T04:48:28.931Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2026/02/08/KL_POD/"/>
     <id>http://yoursite.com/2026/02/08/KL_POD/</id>
     <published>2026-02-08T01:00:00.000Z</published>
-    <updated>2026-02-08T04:42:37.683Z</updated>
+    <updated>2026-03-02T04:48:28.931Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-核心问题与场景定义&quot;&gt;&lt;a href=&quot;#1-核心问题与场景定义&quot; class=&quot;headerlink&quot; title=&quot;1. 核心问题与场景定义&quot;&gt;&lt;/a&gt;1. 核心问题与场景定义&lt;/h2&gt;&lt;p&gt;在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。&lt;/p&gt;</summary>
