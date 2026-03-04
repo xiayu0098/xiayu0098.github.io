@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.9k字</span>
+            <span class="post-count">3.1k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">10分钟</span>
+            <span class="post-count">11分钟</span>
         </span>
     </span>
 </div>
@@ -161,28 +161,29 @@
 <li><strong>物理含义</strong>：获取了传感器信息后，系统的不确定性必然下降。公式通过减去一项修正值，将膨胀的先验误差 $P_k^-$ 缩小为后验误差 $P_k$，为下一控制周期做准备。</li>
 <li><strong>为何是减去 $K_k H P_k^-$？（维度视角的解析）</strong>：<br>这里包含了一个精妙的维度投影过程。要从全场误差 $P^-$ ($100 \times 100$) 中扣减消除掉的误差，必须先通过 $H \cdot P^-$ 将全场误差<strong>降维</strong>投影到 20 个传感器的观测空间 ($20 \times 100$)；随后，再通过增益矩阵 $K$ 将这部分被传感器消除的误差<strong>升维映射</strong>回全场 100 个节点 ($100 \times 100$)，最终完成对全场协方差的矩阵扣减。</li>
 </ul>
-<h2 id="3-数据驱动的降维方法：本征正交分解-POD"><a href="#3-数据驱动的降维方法：本征正交分解-POD" class="headerlink" title="3. 数据驱动的降维方法：本征正交分解 (POD)"></a>3. 数据驱动的降维方法：本征正交分解 (POD)</h2><p>对于高维系统，直接运行高阶 KF 算力消耗较大。POD（Proper Orthogonal Decomposition）提供了一种基于数据特征的降维思路。</p>
+<h2 id="3-数据驱动的降维方法：本征正交分解-POD"><a href="#3-数据驱动的降维方法：本征正交分解-POD" class="headerlink" title="3. 数据驱动的降维方法：本征正交分解 (POD)"></a>3. 数据驱动的降维方法：本征正交分解 (POD)</h2><p>对于高维系统，直接运行高阶 KF 算力消耗较大。POD（Proper Orthogonal Decomposition）提供了一种基于数据特征的降维思路（Gappy POD 算法）。</p>
 <p><strong>核心公式</strong>：</p>
-<p>$$<br>T(x, t) \approx \Phi(x) \cdot a(t)<br>$$</p>
-<p>其中 $\Phi(x)$ 为空间模态，$a(t)$ 为时间系数。</p>
-<h3 id="3-1-实施流程"><a href="#3-1-实施流程" class="headerlink" title="3.1 实施流程"></a>3.1 实施流程</h3><ol>
-<li><strong>离线建模</strong>：对高保真 CFD 仿真数据进行奇异值分解（SVD），提取前 $r$ 个（例如 $r&#x3D;5$）主要能量的空间模态 $\Phi$（$100 \times 5$）。</li>
-<li><strong>在线重构</strong>：<ul>
-<li>获取 20 个传感器实时数据 $y$。</li>
-<li>截取模态矩阵 $\Phi$ 中对应的 20 行，得到 $\Phi_{sensor}$。</li>
-<li>通过最小二乘法求解时间系数 $a(t)$：</li>
+<p>$$<br>T(x, t) \approx \sum_{i&#x3D;1}^{r} \phi_i(x) \cdot a_i(t) &#x3D; \Phi_r(x) \cdot a(t)<br>$$</p>
+<p>其中 $\Phi_r(x)$ 为截断后的空间正交基模态，$a(t)$ 为对应的时间系数。</p>
+<h3 id="3-1-严格实施流程"><a href="#3-1-严格实施流程" class="headerlink" title="3.1 严格实施流程"></a>3.1 严格实施流程</h3><ol>
+<li><strong>离线建模与基底提取</strong>：对高保真 CFD 仿真数据（Snapshots）进行奇异值分解（SVD），得到一个恒定且完备的全场正交基矩阵 $\Phi_{full}$（维度为 $100 \times 100$）。</li>
+<li><strong>能量截断（降维）</strong>：根据特征值（能量）占比，我们人为地进行截断，只提取前 $r$ 个（例如 $r&#x3D;5$）包含系统 99% 以上能量的主导空间模态，构成**降维基矩阵 $\Phi_r$**（维度变为 $100 \times 5$）。</li>
+<li><strong>在线重构（Gappy POD）</strong>：<ul>
+<li>获取 20 个传感器的实时观测数据向量 $y$（$20 \times 1$）。</li>
+<li>从降维基矩阵 $\Phi_r$ 中，提取与传感器物理位置对应的 20 行，得到**传感器观测空间内的局部模态矩阵 $\Phi_s$**（维度为 $20 \times 5$）。</li>
+<li>此时，这是一个超定方程组（20 个方程求解 5 个未知数）。通过<strong>最小二乘法</strong>求解当前时刻的最佳时间系数 $a(t)$（$5 \times 1$）：</li>
 </ul>
 </li>
 </ol>
-<p>$$<br>a &#x3D; (\Phi_s^T \Phi_s)^{-1} \Phi_s^T y<br>$$</p>
-<ol start="3">
-<li><strong>全场映射</strong>：利用求解出的低维系数 $a(t)$ 还原全场温度 $T_{full} &#x3D; \Phi_{full} \cdot a(t)$。</li>
+<p>$$<br>a(t) &#x3D; (\Phi_s^T \Phi_s)^{-1} \Phi_s^T y(t)<br>$$</p>
+<ol start="4">
+<li><strong>全场映射</strong>：利用求解出的 5 个低维时间系数 $a(t)$，乘以完整的降维基矩阵，还原全场 100 个节点的温度 $T_{full}$（$100 \times 1$）：</li>
 </ol>
+<p>$$<br>T_{full} &#x3D; \Phi_r \cdot a(t)<br>$$</p>
 <h3 id="3-2-方法对比与进阶"><a href="#3-2-方法对比与进阶" class="headerlink" title="3.2 方法对比与进阶"></a>3.2 方法对比与进阶</h3><ul>
-<li><strong>POD 优劣势</strong>：计算量极低（仅需解 $5 \times 5$ 矩阵），在稳态或典型工况下空间重构精度高。但在非典型工况（如流道堵塞导致的未知温度场分布）下，由于缺乏物理机制约束，泛化能力较弱。</li>
-<li>**进阶方案：ROM-KF (降阶卡尔曼)**：结合 POD 的空间降维能力与 KF 的动态滤波能力。在芯片中运行 KF，但将状态变量从 100 个温度点转换为 5 个模态系数 $a(t)$，既保留了物理系统的动态特性，又大幅降低了嵌入式算力需求。</li>
+<li><strong>POD 优劣势</strong>：计算量极低（仅需解 $5 \times 5$ 矩阵求逆），在稳态或典型工况下空间重构精度极高。但在非典型工况（如流道堵塞导致的未知温度场分布，超出原 Snapshot 空间）下，由于缺乏物理机制的实时约束，泛化能力较弱。</li>
+<li>**进阶方案：ROM-KF (降阶卡尔曼)**：结合 POD 的空间降维能力与 KF 的动态滤波能力。在芯片中运行 KF，但将状态变量从 100 个温度物理节点，转换（投影）为 5 个模态系数 $a(t)$。既保留了物理系统的动态演化特性，又大幅降低了嵌入式 MCU 的算力负担。</li>
 </ul>
-<hr>
 <h2 id="4-人工智能的融合：物理感知-AI-Physics-Informed-AI"><a href="#4-人工智能的融合：物理感知-AI-Physics-Informed-AI" class="headerlink" title="4. 人工智能的融合：物理感知 AI (Physics-Informed AI)"></a>4. 人工智能的融合：物理感知 AI (Physics-Informed AI)</h2><p>AI 在工程落地的核心价值在于处理<strong>强非线性</strong>和<strong>未知物理参数</strong>，而非单纯替代传统算法。</p>
 <h3 id="4-1-场景一：基于-RNN-的在线参数辨识-Digital-Twin"><a href="#4-1-场景一：基于-RNN-的在线参数辨识-Digital-Twin" class="headerlink" title="4.1 场景一：基于 RNN 的在线参数辨识 (Digital Twin)"></a>4.1 场景一：基于 RNN 的在线参数辨识 (Digital Twin)</h3><ul>
 <li><strong>工程痛点</strong>：物理模型矩阵 $A$ 通常为固定值，但电池全生命周期中，内阻 $R$ 和热容 $C$ 会随老化发生漂移，导致模型失效。</li>
