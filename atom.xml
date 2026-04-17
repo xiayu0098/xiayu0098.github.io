@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-03-04T07:38:25.256Z</updated>
+  <updated>2026-04-17T23:48:19.749Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Comprehensive Guide to System-Level Thermocouple Calibration</title>
+    <link href="http://yoursite.com/2026/04/18/thermocoupleCalibration/"/>
+    <id>http://yoursite.com/2026/04/18/thermocoupleCalibration/</id>
+    <published>2026-04-18T10:00:00.000Z</published>
+    <updated>2026-04-17T23:48:19.749Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Here is a comprehensive summary of the system-level calibration protocol, outlining the theoretical framework, Allan Variance analysis, and the standard operating procedure for water bath calibration.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="research" scheme="http://yoursite.com/categories/research/"/>
+    
+    
+    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI</title>
@@ -498,23 +517,6 @@
     
     <category term="research" scheme="http://yoursite.com/categories/research/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Calculator created by MATLAB</title>
-    <link href="http://yoursite.com/2024/01/27/calculatorMATLABGUI/"/>
-    <id>http://yoursite.com/2024/01/27/calculatorMATLABGUI/</id>
-    <published>2024-01-26T21:47:41.000Z</published>
-    <updated>2024-01-26T13:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;This-is-a-MATLAB-GUI-code-for-an-advanced-calculator-with-multiple-functions&quot;&gt;&lt;a href=&quot;#This-is-a-MATLAB-GUI-code-for-an-advanced-calculator-with-multiple-functions&quot; class=&quot;headerlink&quot; title=&quot;This is a MATLAB GUI code for an advanced calculator with multiple functions.&quot;&gt;&lt;/a&gt;This is a MATLAB GUI code for an advanced calculator with multiple functions.&lt;/h2&gt;</summary>
-    
-    
-    
-    
-    <category term="Matlab graphics" scheme="http://yoursite.com/tags/Matlab-graphics/"/>
     
   </entry>
   

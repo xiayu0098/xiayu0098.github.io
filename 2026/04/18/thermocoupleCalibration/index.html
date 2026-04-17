@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Comprehensive Guide to System-Level Thermocouple Calibration |  X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-thermocoupleCalibration" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Comprehensive Guide to System-Level Thermocouple Calibration
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/04/18/thermocoupleCalibration/" class="article-date">
+  <time datetime="2026-04-18T10:00:00.000Z" itemprop="datePublished">2026-04-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">881字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>Here is a comprehensive summary of the system-level calibration protocol, outlining the theoretical framework, Allan Variance analysis, and the standard operating procedure for water bath calibration.</p>
+<span id="more"></span> 
+<h2 id="1-Allan-Variance-Analysis-Defining-the-Noise-Floor"><a href="#1-Allan-Variance-Analysis-Defining-the-Noise-Floor" class="headerlink" title="1. Allan Variance Analysis: Defining the Noise Floor"></a>1. Allan Variance Analysis: Defining the Noise Floor</h2><p>The Allan Variance (or Allan Deviation, ADEV) is a time-domain analysis used to characterize the stability of a measurement system and identify the <strong>Optimum Averaging Time ($\tau_{opt}$)</strong>. </p>
+<h3 id="Steps-to-Generate-an-Allan-Variance-Plot"><a href="#Steps-to-Generate-an-Allan-Variance-Plot" class="headerlink" title="Steps to Generate an Allan Variance Plot"></a>Steps to Generate an Allan Variance Plot</h3><ol>
+<li><strong>Setup:</strong> Place the thermocouple(s) in a highly stable environment (e.g., a static water bath at a fixed temperature, typically at the upper boundary of your measurement range to capture the worst-case thermal drift).</li>
+<li><strong>Thermal Equilibrium:</strong> Allow the system to stabilize until fluctuations are minimal (e.g., within $\pm 0.01^\circ\text{C}$ for 10 minutes).</li>
+<li><strong>Long-term Acquisition:</strong> Record continuous data at the instrument’s native sampling rate (e.g., 2Hz) for a prolonged period (minimum 2 hours, ideally overnight).</li>
+<li><strong>Data Processing:</strong> Group the time-series data into blocks of varying time lengths ($\tau$). Calculate the variance of the difference between adjacent blocks.</li>
+<li><strong>Plotting:</strong> Create a log-log plot with Averaging Time ($\tau$) on the X-axis and Allan Deviation ($\sigma$) on the Y-axis. </li>
+<li><strong>Identification:</strong> Locate the minimum point (the “floor”) of the V-shaped or U-shaped curve. <ul>
+<li>The X-coordinate is the <strong>Optimum Averaging Time ($\tau_{opt}$)</strong>.</li>
+<li>The Y-coordinate is the <strong>Random Noise Uncertainty ($U_{noise}$)</strong>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="What-Noise-Sources-are-Covered-by-U-noise"><a href="#What-Noise-Sources-are-Covered-by-U-noise" class="headerlink" title="What Noise Sources are Covered by $U_{noise}$?"></a>What Noise Sources are Covered by $U_{noise}$?</h3><p>The minimum point on the Allan Variance plot represents the absolute physical limit of your electrical measurement system. It specifically accounts for:</p>
+<ul>
+<li><strong>Instrument Electronic Noise:</strong> Analog-to-Digital Converter (ADC) quantization noise and amplifier background noise (High-frequency White Noise).</li>
+<li><strong>Sensor Johnson-Nyquist Noise:</strong> Inherent thermal agitation of electrons within the thermocouple wires.</li>
+<li><strong>High-Frequency Fluid Turbulence:</strong> Micro-fluctuations in the water bath immediately surrounding the probe tip.</li>
+<li><em>Crucial Note:</em> It <strong>does not</strong> account for spatial temperature differences across the water bath or long-term low-frequency thermal drifts (which appear on the rising right-hand side of the ADEV plot).</li>
+</ul>
+<hr>
+<h2 id="2-The-Error-Budget-Calculating-E-calibrated"><a href="#2-The-Error-Budget-Calculating-E-calibrated" class="headerlink" title="2. The Error Budget: Calculating $E_{calibrated}$"></a>2. The Error Budget: Calculating $E_{calibrated}$</h2><p>Once systematic bias is removed via mathematical fitting, the remaining measurement uncertainty is calculated using the <strong>Root-Sum-Square (RSS)</strong> method. This assumes all error sources are independent and uncorrelated.</p>
+<p>$$E_{calibrated} &#x3D; \sqrt{U_{ref}^2 + U_{bath}^2 + U_{noise}^2 + U_{fit}^2}$$</p>
+<h3 id="Component-Breakdown"><a href="#Component-Breakdown" class="headerlink" title="Component Breakdown:"></a>Component Breakdown:</h3><ul>
+<li><strong>$U_{ref}$ (Reference Uncertainty):</strong> The certified accuracy of your standard reference thermometer (e.g., $\pm 0.05^\circ\text{C}$ for a high-grade PT100). This is the hard physical ceiling of your calibration.</li>
+<li><strong>$U_{bath}$ (Spatial Non-uniformity):</strong> The physical temperature gradient inside the water bath. If the reference probe is in the center and the thermocouple is near the wall, they are measuring physically different temperatures. <em>This is a spatial error, completely distinct from temporal fluctuations.</em></li>
+<li><strong>$U_{noise}$ (Random Noise Limit):</strong> The baseline electrical noise extracted from the minimum point of the Allan Variance plot.</li>
+<li><strong>$U_{fit}$ (Fitting Residual &#x2F; RMSE):</strong> The mathematical imperfection of your calibration curve (e.g., Least-Squares Fit). It represents how far the calibration points deviate from the idealized mathematical function.</li>
+</ul>
+<hr>
+<h2 id="3-Standard-Operating-Procedure-SOP-for-Water-Bath-Calibration"><a href="#3-Standard-Operating-Procedure-SOP-for-Water-Bath-Calibration" class="headerlink" title="3. Standard Operating Procedure (SOP) for Water Bath Calibration"></a>3. Standard Operating Procedure (SOP) for Water Bath Calibration</h2><p>This procedure converts a standard industrial thermocouple into a high-precision measurement system through <strong>End-to-End System Calibration</strong>.</p>
+<h3 id="Phase-I-System-Profiling"><a href="#Phase-I-System-Profiling" class="headerlink" title="Phase I: System Profiling"></a>Phase I: System Profiling</h3><ul>
+<li><strong>Action:</strong> Perform the Allan Variance test at the maximum operational temperature (e.g., $40^\circ\text{C}$).</li>
+<li><strong>Why:</strong> High temperatures induce maximum thermal stress and the fastest PID heating&#x2F;cooling cycles in the water bath, leading to earlier thermal drift. Finding $\tau_{opt}$ here ensures that your sampling window will safely avoid low-frequency thermal drift across all lower temperatures.</li>
+</ul>
+<h3 id="Phase-II-Multi-Point-Data-Acquisition"><a href="#Phase-II-Multi-Point-Data-Acquisition" class="headerlink" title="Phase II: Multi-Point Data Acquisition"></a>Phase II: Multi-Point Data Acquisition</h3><ul>
+<li><strong>Action:</strong> Set the water bath to the lowest temperature point (e.g., $20^\circ\text{C}$). Wait for strict thermal equilibrium.</li>
+<li><strong>Action:</strong> Record data from both the Reference PT100 and the Thermocouples strictly for the duration of $\tau_{opt}$ (e.g., 60 seconds). Average this data to get a single data point. Repeat for all desired temperature setpoints (e.g., every $3^\circ\text{C}$ up to $40^\circ\text{C}$).</li>
+<li><strong>Why:</strong> Utilizing the exact $\tau_{opt}$ found in Phase I guarantees that random white noise is maximally suppressed without accidentally integrating low-frequency drift ($1&#x2F;f$ noise) from the environment into your data.</li>
+</ul>
+<h3 id="Phase-III-Mathematical-Fitting"><a href="#Phase-III-Mathematical-Fitting" class="headerlink" title="Phase III: Mathematical Fitting"></a>Phase III: Mathematical Fitting</h3><ul>
+<li><strong>Action:</strong> Perform a Least-Squares Fit (linear or polynomial) using the averaged Thermocouple readings as the X-axis and the Reference PT100 readings as the Y-axis. </li>
+<li><strong>Why:</strong> This step is the core of the calibration. It entirely eliminates the <strong>Systematic Bias (Offset)</strong> caused by material impurities in the thermocouple wire (e.g., the factory $\pm 0.9^\circ\text{C}$ error) and any static voltage offset within the Data Acquisition (DAQ) hardware.</li>
+</ul>
+<h3 id="Phase-IV-Uncertainty-Synthesis"><a href="#Phase-IV-Uncertainty-Synthesis" class="headerlink" title="Phase IV: Uncertainty Synthesis"></a>Phase IV: Uncertainty Synthesis</h3><ul>
+<li><strong>Action:</strong> Calculate the Root-Mean-Square Error (RMSE) of the fit to determine $U_{fit}$. Combine this with your known $U_{ref}$, $U_{bath}$, and $U_{noise}$ using the RSS formula.</li>
+<li><strong>Why:</strong> Fitting only centers your “aim” on the target; it does not eliminate the “scatter.” Synthesizing these four variables provides a scientifically rigorous, worst-case boundary ($E_{calibrated}$) that defines the true operational precision of your freshly calibrated measurement system.</li>
+</ul>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2026/04/18/thermocoupleCalibration/" data-id="cmo3k73nx0000ydjs8qh46958"
+        class="article-share-link">share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino-Code/" rel="tag">Arduino Code</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2026/02/08/KL_POD/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">电池热管理状态估计技术综述：从卡尔曼滤波到物理感知 AI</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2026
+        Yu Xia
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
