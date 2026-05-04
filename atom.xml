@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-05-04T06:27:17.374Z</updated>
+  <updated>2026-05-04T06:31:52.966Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,10 @@
     <link href="http://yoursite.com/2026/05/04/EMC_note/"/>
     <id>http://yoursite.com/2026/05/04/EMC_note/</id>
     <published>2026-05-04T10:00:00.000Z</published>
-    <updated>2026-05-04T06:27:17.374Z</updated>
+    <updated>2026-05-04T06:31:52.966Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;1-The-Non-Ideal-Component-Model&quot;&gt;&lt;a href=&quot;#1-The-Non-Ideal-Component-Model&quot; class=</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;1-The-Non-Ideal-Component-Model&quot;&gt;&lt;a href=&quot;#1-The-Non-Ideal-Component-Model&quot; class=&quot;headerlink&quot; title=&quot;1. The Non-Ideal Component Model&quot;&gt;&lt;/a&gt;1. The Non-Ideal Component Model&lt;/h2&gt;&lt;p&gt;Components in the real world are never perfect; they always possess parasitic properties that dominate at high frequencies.&lt;/p&gt;</summary>
     
     
     
@@ -41,10 +38,18 @@
     <link href="http://yoursite.com/2026/04/18/thermocoupleCalibration/"/>
     <id>http://yoursite.com/2026/04/18/thermocoupleCalibration/</id>
     <published>2026-04-18T10:00:00.000Z</published>
-    <updated>2026-04-17T23:48:19.749Z</updated>
+    <updated>2026-05-04T06:50:24.862Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Here is a comprehensive summary of the system-level calibration protocol, outlining the theoretical framework, Allan Variance analysis, and the standard operating procedure for water bath calibration.&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;1-Principle-of-Thermocouple-Measurement&quot;&gt;&lt;a href=&quot;#1-Principle-of-Thermocouple-Measurement&quot; class=&quot;headerlink&quot; title=&quot;1. Principle of Thermocouple Measurement&quot;&gt;&lt;/a&gt;1. Principle of Thermocouple Measurement&lt;/h2&gt;&lt;p&gt;Thermocouples operate on the &lt;strong&gt;Seebeck Effect&lt;/strong&gt;: when two dissimilar metals are joined at two points and subjected to a temperature gradient, a proportional thermoelectric voltage is generated. &lt;/p&gt;
+&lt;p&gt;In a practical data acquisition (DAQ) system, the signal path is defined by the following equation:&lt;/p&gt;
+&lt;p&gt;$$V_{out} &amp;#x3D; G [V(T_{hot}) - V(T_{cold}) + V_{cjc}]$$&lt;/p&gt;
+&lt;h3 id=&quot;Variable-Breakdown&quot;&gt;&lt;a href=&quot;#Variable-Breakdown&quot; class=&quot;headerlink&quot; title=&quot;Variable Breakdown:&quot;&gt;&lt;/a&gt;Variable Breakdown:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;$T_{hot}$ (Measurement Junction):&lt;/strong&gt; The actual temperature you are trying to measure at the tip of the probe.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$T_{cold}$ (Reference Junction):&lt;/strong&gt; The point where the thermocouple wires connect to the DAQ system (which is usually copper). This connection creates a new, unwanted thermocouple. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$V_{cjc}$ (Cold Junction Compensation):&lt;/strong&gt; Because the DAQ terminals are at ambient room temperature (not absolute zero or 0°C), we must compensate for this offset. The DAQ uses a localized, high-precision sensor (like an RTD or thermistor) to measure the exact temperature of the terminal block, converts that temperature to its equivalent voltage ($V_{cjc}$), and mathematically adds it back into the equation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$G$ (System Gain):&lt;/strong&gt; The amplification factor applied by the measurement hardware to scale the microvolt-level signals up to readable levels for the ADC.&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
