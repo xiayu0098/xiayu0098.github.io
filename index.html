@@ -60,6 +60,125 @@
     
     
     
+    <article id="post-EMC_note" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2026/05/04/EMC_note/"
+    >Hardware Design &amp; EMC Reference Notes</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/05/04/EMC_note/" class="article-date">
+  <time datetime="2026-05-04T10:00:00.000Z" itemprop="datePublished">2026-05-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><h2 id="1-The-Non-Ideal-Component-Model"><a href="#1-The-Non-Ideal-Component-Model" class="headerlink" title="1. The Non-Ideal Component Model"></a>1. The Non-Ideal Component Model</h2><p>Components in the real world are never perfect; they always possess parasitic properties that dominate at high frequencies.</p>
+<ul>
+<li><strong>The Real Capacitor:</strong> $C_{total} &#x3D; C + R_{ESR} + L_{ESL}$ <ul>
+<li><strong>$C$ (Ideal Capacitance):</strong> Stores energy.</li>
+<li><strong>$R_{ESR}$ (Equivalent Series Resistance):</strong> Causes heat dissipation and voltage ripple during charge&#x2F;discharge cycles.</li>
+<li><strong>$L_{ESL}$ (Equivalent Series Inductance):</strong> Limits high-frequency filtering. Above its self-resonant frequency, a capacitor effectively acts as an inductor.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Electromagnetic-Compatibility-EMC"><a href="#2-Electromagnetic-Compatibility-EMC" class="headerlink" title="2. Electromagnetic Compatibility (EMC)"></a>2. Electromagnetic Compatibility (EMC)</h2><p>EMC ensures your device doesn’t emit too much noise (EMI) and can withstand external noise (EMS).</p>
+<h3 id="Emissions-EMI"><a href="#Emissions-EMI" class="headerlink" title="Emissions (EMI)"></a>Emissions (EMI)</h3><ul>
+<li><strong>FCC Class B:</strong> The standard for residential devices (stricter than Class A for industrial).<ul>
+<li><em>Key constraint:</em> In the $30 \text{ MHz} - 88 \text{ MHz}$ range, radiated emissions must be $&lt; 40 \text{ dB}\mu\text{V&#x2F;m}$ (measured at a 3-meter distance).</li>
+</ul>
+</li>
+<li><strong>CE (Conducted &amp; Radiated Emissions):</strong> European conformity standards regulating noise pushed back onto the AC mains and radiated into space.</li>
+</ul>
+<h3 id="Susceptibility-x2F-Immunity-EMS"><a href="#Susceptibility-x2F-Immunity-EMS" class="headerlink" title="Susceptibility &#x2F; Immunity (EMS)"></a>Susceptibility &#x2F; Immunity (EMS)</h3><p>How well the device survives external electrical abuse:</p>
+<ul>
+<li><strong>ESD (Electrostatic Discharge):</strong> High voltage, fast transients (e.g., static shock from a user).</li>
+<li><strong>EFT (Electrical Fast Transient):</strong> Bursts of high-frequency pulses, often from switching inductive loads on the power grid.</li>
+<li><strong>Surge:</strong> High energy, low-frequency spikes (e.g., nearby lightning strikes).</li>
+</ul>
+<h2 id="3-PCB-Traces-amp-Loop-Inductance"><a href="#3-PCB-Traces-amp-Loop-Inductance" class="headerlink" title="3. PCB Traces &amp; Loop Inductance"></a>3. PCB Traces &amp; Loop Inductance</h2><p>The physical layout of a PCB dictates its electromagnetic behavior. </p>
+<ul>
+<li><strong>The Trace is an Inductor:</strong> Every trace has parasitic inductance. </li>
+<li><strong>Voltage Drop (Ground Bounce &#x2F; Ringing):</strong> Calculated as $V_{drop} &#x3D; L \frac{dI}{dt}$. Rapid switching of currents ($dI&#x2F;dt$) across trace inductance ($L$) causes voltage spikes.</li>
+<li><strong>The Antenna Effect:</strong> A trace suspended in free space (or routed poorly over a broken ground plane) acts as a <strong>monopole antenna</strong>, radiating EMI.</li>
+<li><strong>Loops &#x3D; Magnetic Field Generators:</strong> The area between the source signal and its return path forms a loop. A larger loop area acts as a stronger loop antenna, radiating and receiving more magnetic interference. </li>
+<li><strong>The Golden Rule of Return Currents:</strong> Current <em>always</em> returns to its source. <ul>
+<li>At <em>low frequencies</em> ($&lt; 10 \text{ kHz}$), current takes the path of least <strong>resistance</strong> (the shortest physical path).</li>
+<li>At <em>high frequencies</em> ($&gt; 100 \text{ kHz}$), current takes the path of least <strong>impedance</strong> (the path directly underneath the signal trace, which minimizes the loop area).</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-Signal-Integrity-amp-Routing-Rules"><a href="#4-Signal-Integrity-amp-Routing-Rules" class="headerlink" title="4. Signal Integrity &amp; Routing Rules"></a>4. Signal Integrity &amp; Routing Rules</h2><p>Managing how signals interact with each other and their environment.</p>
+<ul>
+<li><strong>Mixed-Signal Routing (MCU $\rightarrow$ Power $\rightarrow$ ADC):</strong> Keep noisy digital circuits (MCU) strictly separated from sensitive analog circuits (ADC). They should share a single solid ground plane, but digital return currents must never be allowed to cross under analog components. Power to the ADC should be filtered (e.g., using a ferrite bead and decoupling caps).</li>
+<li><strong>Crosstalk:</strong> The unwanted coupling of signals between adjacent traces. <ul>
+<li><strong>Capacitive Coupling:</strong> Driven by parasitic capacitance ($C_m$) due to parallel traces; sensitive to high $dV&#x2F;dt$.</li>
+<li><strong>Inductive Coupling:</strong> Driven by mutual inductance ($L_m$) from overlapping magnetic fields; sensitive to high $dI&#x2F;dt$.</li>
+</ul>
+</li>
+<li><strong>The 3W Rule:</strong> To minimize crosstalk, the distance between the <em>centers</em> of two adjacent traces should be at least <strong>3 times the trace width (W)</strong>. This reduces coupling by approximately 70%.</li>
+</ul>
+<h2 id="5-Standard-4-Layer-PCB-Stackup"><a href="#5-Standard-4-Layer-PCB-Stackup" class="headerlink" title="5. Standard 4-Layer PCB Stackup"></a>5. Standard 4-Layer PCB Stackup</h2><p>A good stackup is the foundation of good EMC. This specific 4-layer configuration ensures low-impedance return paths and good signal integrity. </p>
+<ol>
+<li><strong>Top Layer (Signal):</strong> Primary routing for high-speed components and microstrips.</li>
+<li><strong>Inner Layer 1 (Solid GND Plane):</strong> Crucial! Provides an immediate, low-impedance return path for the Top Signal layer, minimizing loop area.</li>
+<li><strong>Inner Layer 2 (Power &#x2F; Signal):</strong> Used for power distribution (VCC planes&#x2F;polygons) and slower, non-critical signal routing.</li>
+<li><strong>Bottom Layer (Signal):</strong> Secondary routing layer.</li>
+</ol>
+<hr>
+<p><em>Tip: When laying out the board, always visualize the invisible return path of your high-speed signals. If you force the return current to take a detour around a split in the ground plane, you have just created an antenna.</em></p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2026/05/04/EMC_note/" data-id="cmoqtizc30000ccjs3x28c784"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-thermocoupleCalibration" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -687,76 +806,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2025/01/30/generateSinusoidalDXF/" data-id="cmg751dxi000v7cjs9b445ar1"
-        class="article-share-link">share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MatLab-Code/" rel="tag">MatLab Code</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-matlabWaterRocket" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/12/10/matlabWaterRocket/"
-    >Water Rocket Code</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2024/12/10/matlabWaterRocket/" class="article-date">
-  <time datetime="2024-12-09T13:00:00.000Z" itemprop="datePublished">2024-12-10</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/research/">research</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>This MATLAB code simulates the initial velocity of a water rocket based on varying air-water ratios (\alpha) and internal air pressures (P), and visualizes the results in a 3D surface plot.</p>
-      
-      <a class="article-more-link" href="/2024/12/10/matlabWaterRocket/">read more...</a>
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/12/10/matlabWaterRocket/" data-id="cmg751dxi000y7cjs70kpaawd"
         class="article-share-link">share</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MatLab-Code/" rel="tag">MatLab Code</a></li></ul>
