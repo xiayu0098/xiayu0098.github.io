@@ -138,28 +138,6 @@
   </entry>
   
   <entry>
-    <title>Serial Number Generator</title>
-    <link href="http://yoursite.com/2025/12/08/SNgenerator/"/>
-    <id>http://yoursite.com/2025/12/08/SNgenerator/</id>
-    <published>2025-12-07T13:00:00.000Z</published>
-    <updated>2025-12-07T23:12:50.199Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a new Serial number generator  &lt;a href=&quot;/serialNumberGenerator/&quot;&gt;Check it out h</summary>
-      
-    
-    
-    
-    
-    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
-    
-    <category term="Serial Number" scheme="http://yoursite.com/tags/Serial-Number/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Modbus RTU CRC</title>
     <link href="http://yoursite.com/2025/12/08/CRCCheck/"/>
     <id>http://yoursite.com/2025/12/08/CRCCheck/</id>
@@ -214,6 +192,28 @@
     <category term="candela" scheme="http://yoursite.com/tags/candela/"/>
     
     <category term="design-notes" scheme="http://yoursite.com/tags/design-notes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Serial Number Generator</title>
+    <link href="http://yoursite.com/2025/09/23/SNgenerator/"/>
+    <id>http://yoursite.com/2025/09/23/SNgenerator/</id>
+    <published>2025-09-22T23:28:08.014Z</published>
+    <updated>2025-09-22T23:28:08.014Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a new Serial number generator  &lt;a href=&quot;/serialNumberGenerator/&quot;&gt;Check it out h</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+    <category term="Serial Number" scheme="http://yoursite.com/tags/Serial-Number/"/>
     
   </entry>
   

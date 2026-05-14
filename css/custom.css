@@ -1,0 +1,409 @@
+/* ================================================
+   ORANGE & BLACK THEME — Hexo Ayer
+   Place this file at: blog/source/css/custom.css
+   Then set in _config.ayer.yml:  custom_css: /css/custom.css
+   ================================================ */
+
+/* ---------- VARIABLES ---------- */
+:root {
+  --orange:       #FF6600;
+  --orange-light: #FF9933;
+  --orange-dim:   #cc5200;
+  --bg-deep:      #0f0f0f;
+  --bg-card:      #1a1a1a;
+  --bg-hover:     #222222;
+  --border:       #2a2a2a;
+  --text-main:    #e0e0e0;
+  --text-muted:   #888888;
+  --text-code:    #f0c070;
+}
+
+/* ---------- BASE ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg-deep) !important;
+  color: var(--text-main) !important;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--orange-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* ---------- LINKS ---------- */
+a, a:visited {
+  color: var(--orange) !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--orange-light) !important;
+  text-decoration: underline;
+}
+
+/* ---------- HEADER / NAV ---------- */
+#header,
+.header,
+header,
+#navbar,
+.navbar {
+  background-color: #111111 !important;
+  border-bottom: 2px solid var(--orange) !important;
+  box-shadow: 0 2px 12px rgba(255, 102, 0, 0.2) !important;
+}
+
+.blog-title a,
+.site-title a,
+#header .logo a {
+  color: var(--orange) !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.blog-subtitle,
+.site-subtitle {
+  color: var(--text-muted) !important;
+}
+
+nav a,
+.nav-item a,
+.menu a,
+#nav a {
+  color: var(--text-main) !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover,
+.nav-item a:hover,
+.menu a:hover {
+  color: var(--orange) !important;
+  background: rgba(255, 102, 0, 0.1) !important;
+  text-decoration: none !important;
+}
+
+/* ---------- MAIN CONTENT AREA ---------- */
+#main,
+.main,
+.container,
+#content,
+.content {
+  background-color: var(--bg-deep) !important;
+}
+
+/* ---------- POST CARDS ---------- */
+.post,
+article,
+.post-card,
+.article-entry,
+.post-block {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.post:hover,
+article:hover,
+.post-card:hover {
+  border-color: var(--orange-dim) !important;
+  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.15) !important;
+}
+
+/* ---------- HEADINGS ---------- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--orange) !important;
+}
+
+.post-title a,
+.article-title a {
+  color: var(--orange) !important;
+  font-weight: 700;
+}
+
+.post-title a:hover,
+.article-title a:hover {
+  color: var(--orange-light) !important;
+  text-decoration: none !important;
+}
+
+/* ---------- POST META (date, author) ---------- */
+.post-meta,
+.article-meta,
+.post-date,
+.post-time {
+  color: var(--text-muted) !important;
+  font-size: 0.85em;
+}
+
+.post-meta i,
+.post-meta .fa {
+  color: var(--orange-dim) !important;
+}
+
+/* ---------- TAGS ---------- */
+.tag,
+.tag-list-item a,
+.post-tag,
+.article-tag-list-item a {
+  background-color: rgba(255, 102, 0, 0.15) !important;
+  color: var(--orange) !important;
+  border: 1px solid var(--orange-dim) !important;
+  border-radius: 4px !important;
+  padding: 2px 10px !important;
+  font-size: 0.8em;
+  margin: 2px;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.tag:hover,
+.tag-list-item a:hover,
+.post-tag:hover,
+.article-tag-list-item a:hover {
+  background-color: var(--orange) !important;
+  color: #111 !important;
+  text-decoration: none !important;
+}
+
+/* ---------- CATEGORIES ---------- */
+.category-list-item a,
+.post-category a {
+  color: var(--orange-light) !important;
+  font-weight: 600;
+}
+
+.category-list-item a:hover {
+  color: var(--orange) !important;
+}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar,
+.sidebar,
+.side,
+aside {
+  background-color: #111111 !important;
+  border-left: 2px solid var(--border) !important;
+  border-radius: 8px;
+}
+
+.widget-title,
+.sidebar-title {
+  color: var(--orange) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding-bottom: 8px;
+}
+
+/* ---------- CODE & PRE ---------- */
+code {
+  background-color: #1e1e1e !important;
+  color: var(--text-code) !important;
+  border: 1px solid #333 !important;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: #161616 !important;
+  border: 1px solid var(--orange-dim) !important;
+  border-left: 4px solid var(--orange) !important;
+  border-radius: 6px !important;
+  padding: 16px !important;
+}
+
+pre code {
+  background: transparent !important;
+  border: none !important;
+  color: #e0c080 !important;
+}
+
+/* Highlight line numbers */
+.gutter {
+  background-color: #1a1a1a !important;
+  border-right: 1px solid var(--orange-dim) !important;
+  color: var(--text-muted) !important;
+}
+
+/* ---------- BLOCKQUOTE ---------- */
+blockquote {
+  background-color: rgba(255, 102, 0, 0.05) !important;
+  border-left: 4px solid var(--orange) !important;
+  color: var(--text-muted) !important;
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ---------- TABLE ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: rgba(255, 102, 0, 0.2) !important;
+  color: var(--orange) !important;
+  border: 1px solid var(--border) !important;
+  padding: 8px 12px;
+}
+
+td {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  padding: 8px 12px;
+}
+
+tr:hover td {
+  background-color: var(--bg-hover) !important;
+}
+
+/* ---------- HORIZONTAL RULE ---------- */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* ---------- READ MORE BUTTON ---------- */
+.excerpt-link,
+.read-more,
+.btn,
+a.btn {
+  background-color: var(--orange) !important;
+  color: #111 !important;
+  border-radius: 5px !important;
+  padding: 6px 16px !important;
+  font-weight: 600;
+  border: none !important;
+  transition: background 0.2s;
+  text-decoration: none !important;
+}
+
+.excerpt-link:hover,
+.read-more:hover,
+.btn:hover {
+  background-color: var(--orange-light) !important;
+  color: #111 !important;
+}
+
+/* ---------- PAGINATION ---------- */
+.pagination,
+#page-nav {
+  text-align: center;
+  margin: 32px 0;
+}
+
+.pagination a,
+.page-number {
+  background-color: var(--bg-card) !important;
+  color: var(--orange) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  padding: 4px 12px !important;
+  margin: 2px;
+  transition: all 0.2s;
+}
+
+.pagination a:hover,
+.page-number:hover {
+  background-color: var(--orange) !important;
+  color: #111 !important;
+  text-decoration: none !important;
+}
+
+.pagination .current,
+.page-number.current {
+  background-color: var(--orange) !important;
+  color: #111 !important;
+  border-color: var(--orange) !important;
+  font-weight: 700;
+}
+
+/* ---------- FOOTER ---------- */
+#footer,
+footer,
+.footer {
+  background-color: #111111 !important;
+  border-top: 2px solid var(--orange) !important;
+  color: var(--text-muted) !important;
+  padding: 20px 0;
+}
+
+.footer a,
+#footer a {
+  color: var(--orange) !important;
+}
+
+/* ---------- TOC (Table of Contents) ---------- */
+#toc,
+.toc,
+.toc-wrapper {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--orange) !important;
+  border-radius: 6px;
+}
+
+.toc-item a,
+.toc a {
+  color: var(--text-muted) !important;
+}
+
+.toc-item a:hover,
+.toc a:hover,
+.toc-item.active a {
+  color: var(--orange) !important;
+}
+
+/* ---------- SEARCH BOX ---------- */
+#search-input,
+.search-input,
+input[type="search"],
+input[type="text"] {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+#search-input:focus,
+.search-input:focus,
+input:focus {
+  border-color: var(--orange) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+/* ---------- ARCHIVE / CATEGORY PAGES ---------- */
+.archive-year,
+.archive-month-content {
+  border-left: 3px solid var(--orange) !important;
+  padding-left: 16px;
+}
+
+.archive-article-date {
+  color: var(--text-muted) !important;
+}
+
+/* ---------- AVATAR / PROFILE ---------- */
+.avatar img,
+.author-avatar img {
+  border: 3px solid var(--orange) !important;
+  border-radius: 50%;
+}
+
+/* ---------- SELECTION ---------- */
+::selection {
+  background-color: rgba(255, 102, 0, 0.35);
+  color: #fff;
+}

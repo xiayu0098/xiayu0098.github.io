@@ -399,16 +399,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Serial Number Generator</title>
-    <url>/2025/12/08/SNgenerator/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a new Serial number generator  <a href="/serialNumberGenerator/">Check it out here</a>.</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>Serial Number</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Modbus RTU CRC</title>
     <url>/2025/12/08/CRCCheck/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a Modbus RTU CRC checker <a href="/modbusCRC/">Check it out here</a>.</p>
@@ -570,6 +560,16 @@
         <tag>lux</tag>
         <tag>candela</tag>
         <tag>design-notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Serial Number Generator</title>
+    <url>/2025/09/23/SNgenerator/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a new Serial number generator  <a href="/serialNumberGenerator/">Check it out here</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>Serial Number</tag>
       </tags>
   </entry>
   <entry>
