@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-05-04T06:31:52.966Z</updated>
+  <updated>2026-05-04T10:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2026/05/04/EMC_note/"/>
     <id>http://yoursite.com/2026/05/04/EMC_note/</id>
     <published>2026-05-04T10:00:00.000Z</published>
-    <updated>2026-05-04T06:31:52.966Z</updated>
+    <updated>2026-05-04T10:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-The-Non-Ideal-Component-Model&quot;&gt;&lt;a href=&quot;#1-The-Non-Ideal-Component-Model&quot; class=&quot;headerlink&quot; title=&quot;1. The Non-Ideal Component Model&quot;&gt;&lt;/a&gt;1. The Non-Ideal Component Model&lt;/h2&gt;&lt;p&gt;Components in the real world are never perfect; they always possess parasitic properties that dominate at high frequencies.&lt;/p&gt;</summary>
@@ -38,7 +38,7 @@
     <link href="http://yoursite.com/2026/04/18/thermocoupleCalibration/"/>
     <id>http://yoursite.com/2026/04/18/thermocoupleCalibration/</id>
     <published>2026-04-18T10:00:00.000Z</published>
-    <updated>2026-05-04T06:50:24.862Z</updated>
+    <updated>2026-04-18T10:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-Principle-of-Thermocouple-Measurement&quot;&gt;&lt;a href=&quot;#1-Principle-of-Thermocouple-Measurement&quot; class=&quot;headerlink&quot; title=&quot;1. Principle of Thermocouple Measurement&quot;&gt;&lt;/a&gt;1. Principle of Thermocouple Measurement&lt;/h2&gt;&lt;p&gt;Thermocouples operate on the &lt;strong&gt;Seebeck Effect&lt;/strong&gt;: when two dissimilar metals are joined at two points and subjected to a temperature gradient, a proportional thermoelectric voltage is generated. &lt;/p&gt;
@@ -65,7 +65,7 @@
     <link href="http://yoursite.com/2026/02/08/KL_POD/"/>
     <id>http://yoursite.com/2026/02/08/KL_POD/</id>
     <published>2026-02-08T01:00:00.000Z</published>
-    <updated>2026-03-04T07:38:25.256Z</updated>
+    <updated>2026-02-08T01:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-核心问题与场景定义&quot;&gt;&lt;a href=&quot;#1-核心问题与场景定义&quot; class=&quot;headerlink&quot; title=&quot;1. 核心问题与场景定义&quot;&gt;&lt;/a&gt;1. 核心问题与场景定义&lt;/h2&gt;&lt;p&gt;在大型电池包热管理系统（BMS）中，准确获取全场温度分布是实现精细化控制和热失控预警的前提。然而，受限于成本、通信带宽和绝缘要求，实际工程中无法在每个电芯表面布置传感器。&lt;/p&gt;</summary>
@@ -75,31 +75,31 @@
     <category term="Engineering" scheme="http://yoursite.com/categories/Engineering/"/>
     
     
-    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
-    
     <category term="BMS" scheme="http://yoursite.com/tags/BMS/"/>
     
     <category term="Kalman Filter" scheme="http://yoursite.com/tags/Kalman-Filter/"/>
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
     
     <category term="Battery" scheme="http://yoursite.com/tags/Battery/"/>
     
   </entry>
   
   <entry>
-    <title>基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记</title>
+    <title>3S 18650 UPS 电源设计复盘 (HUSB238 + BQ25798)</title>
     <link href="http://yoursite.com/2026/01/25/UPS_BMSCircuit/"/>
     <id>http://yoursite.com/2026/01/25/UPS_BMSCircuit/</id>
     <published>2026-01-24T13:00:00.000Z</published>
-    <updated>2026-01-25T05:40:05.138Z</updated>
+    <updated>2026-01-24T13:00:00.000Z</updated>
     
     
-    <summary type="html">本文总结了 3S 锂电池 UPS 系统的设计核心，包括 USB PD 诱骗逻辑、Buck-Boost 充电管理、功率计算及 PCB 布局规范。</summary>
+    <summary type="html">基于 USB PD 100W 输入与 3S 锂电管理的 5A 大电流 UPS 设计实战笔记，涵盖 PD 诱骗逻辑、BQ25798 关键配置及 PCB 布线避坑指南。</summary>
     
     
     
     <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
     
-    <category term="Power Design" scheme="http://yoursite.com/categories/Hardware/Power-Design/"/>
+    <category term="Power" scheme="http://yoursite.com/categories/Hardware/Power/"/>
     
     
     <category term="UPS" scheme="http://yoursite.com/tags/UPS/"/>
@@ -110,30 +110,7 @@
     
     <category term="PCB Layout" scheme="http://yoursite.com/tags/PCB-Layout/"/>
     
-    <category term="USB-PD" scheme="http://yoursite.com/tags/USB-PD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Smart Scheduler</title>
-    <link href="http://yoursite.com/2025/12/08/scheduler/"/>
-    <id>http://yoursite.com/2025/12/08/scheduler/</id>
-    <published>2025-12-07T13:00:00.000Z</published>
-    <updated>2025-12-07T22:49:08.298Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a new AI scheduling tool  &lt;a href=&quot;/scheduler/&quot;&gt;Check it out here&lt;/a&gt;.&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
-    
-    <category term="Scheduler" scheme="http://yoursite.com/tags/Scheduler/"/>
+    <category term="Engineering Note" scheme="http://yoursite.com/tags/Engineering-Note/"/>
     
   </entry>
   
@@ -142,7 +119,7 @@
     <link href="http://yoursite.com/2025/12/08/CRCCheck/"/>
     <id>http://yoursite.com/2025/12/08/CRCCheck/</id>
     <published>2025-12-07T13:00:00.000Z</published>
-    <updated>2025-12-07T23:13:02.899Z</updated>
+    <updated>2025-12-07T13:00:00.000Z</updated>
     
     
       
@@ -161,11 +138,34 @@
   </entry>
   
   <entry>
+    <title>Smart Scheduler</title>
+    <link href="http://yoursite.com/2025/12/08/scheduler/"/>
+    <id>http://yoursite.com/2025/12/08/scheduler/</id>
+    <published>2025-12-07T13:00:00.000Z</published>
+    <updated>2025-12-07T13:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a new AI scheduling tool  &lt;a href=&quot;/scheduler/&quot;&gt;Check it out here&lt;/a&gt;.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+    <category term="Scheduler" scheme="http://yoursite.com/tags/Scheduler/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LED Brightness Cheat-Sheet (lm, lux, mcd) + Ring Notes</title>
     <link href="http://yoursite.com/2025/10/01/LEDCircuit/"/>
     <id>http://yoursite.com/2025/10/01/LEDCircuit/</id>
     <published>2025-09-30T14:00:00.000Z</published>
-    <updated>2025-09-30T23:18:33.265Z</updated>
+    <updated>2025-09-30T14:00:00.000Z</updated>
     
     
     <summary type="html">&lt;ul&gt;
@@ -222,7 +222,7 @@
     <link href="http://yoursite.com/2025/09/23/modbusNotesLoadCell/"/>
     <id>http://yoursite.com/2025/09/23/modbusNotesLoadCell/</id>
     <published>2025-09-22T14:00:00.000Z</published>
-    <updated>2025-09-23T00:00:25.434Z</updated>
+    <updated>2025-09-22T14:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-Frame-structure-RTU&quot;&gt;&lt;a href=&quot;#1-Frame-structure-RTU&quot; class=&quot;headerlink&quot; title=&quot;1) Frame structure (RTU)&quot;&gt;&lt;/a&gt;1) Frame structure (RTU)&lt;/h2&gt;&lt;table&gt;
@@ -269,7 +269,7 @@
     <link href="http://yoursite.com/2025/01/30/generateSinusoidalDXF/"/>
     <id>http://yoursite.com/2025/01/30/generateSinusoidalDXF/</id>
     <published>2025-01-29T13:00:00.000Z</published>
-    <updated>2026-01-26T23:40:25.534Z</updated>
+    <updated>2025-01-29T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to generate a DXF file containing a sinusoidal curve represented as a polyline with a controlled number of points. All units are in millimeters (mm).&lt;/p&gt;</summary>
@@ -288,7 +288,7 @@
     <link href="http://yoursite.com/2024/12/10/matlabWaterRocket/"/>
     <id>http://yoursite.com/2024/12/10/matlabWaterRocket/</id>
     <published>2024-12-09T13:00:00.000Z</published>
-    <updated>2024-12-10T06:17:58.010Z</updated>
+    <updated>2024-12-09T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;This MATLAB code simulates the initial velocity of a water rocket based on varying air-water ratios (&#92;alpha) and internal air pressures (P), and visualizes the results in a 3D surface plot.&lt;/p&gt;</summary>
@@ -307,7 +307,7 @@
     <link href="http://yoursite.com/2024/12/09/matlabDrawing/"/>
     <id>http://yoursite.com/2024/12/09/matlabDrawing/</id>
     <published>2024-12-08T13:00:00.000Z</published>
-    <updated>2024-12-10T04:54:54.544Z</updated>
+    <updated>2024-12-08T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;This MATLAB script demonstrates how to visualize and customize 3D geometrical elements such as cuboids, cylinders, and arrows, often used to represent components in engineering setups like sensor assemblies.&lt;/p&gt;</summary>
@@ -326,7 +326,7 @@
     <link href="http://yoursite.com/2024/10/17/customSty/"/>
     <id>http://yoursite.com/2024/10/17/customSty/</id>
     <published>2024-10-17T02:27:08.000Z</published>
-    <updated>2024-10-17T02:19:59.620Z</updated>
+    <updated>2024-10-17T02:27:08.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;In this post, I’m sharing my custom LaTeX &lt;code&gt;.sty&lt;/code&gt; file, which I regularly use in my projects. This &lt;code&gt;.sty&lt;/code&gt; file includes settings and macros for &lt;strong&gt;biblatex&lt;/strong&gt; with &lt;code&gt;biber&lt;/code&gt;, custom TikZ symbols, and more.&lt;/p&gt;
@@ -344,7 +344,7 @@
     <link href="http://yoursite.com/2024/10/10/powerBoxControl/"/>
     <id>http://yoursite.com/2024/10/10/powerBoxControl/</id>
     <published>2024-10-10T09:00:00.000Z</published>
-    <updated>2024-11-09T09:56:54.492Z</updated>
+    <updated>2024-10-10T09:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;</summary>
@@ -363,7 +363,7 @@
     <link href="http://yoursite.com/2024/10/09/DT9828CalibCode/"/>
     <id>http://yoursite.com/2024/10/09/DT9828CalibCode/</id>
     <published>2024-10-08T13:00:00.000Z</published>
-    <updated>2024-10-10T03:16:45.930Z</updated>
+    <updated>2024-10-08T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;The following MATLAB code is specifically used for DT9828 boards.&lt;/p&gt;</summary>
@@ -382,7 +382,7 @@
     <link href="http://yoursite.com/2024/10/08/P201EncoderInterface/"/>
     <id>http://yoursite.com/2024/10/08/P201EncoderInterface/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:42:32.470Z</updated>
+    <updated>2024-10-07T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
@@ -403,7 +403,7 @@
     <link href="http://yoursite.com/2024/10/08/summaryMicroStepMotor/"/>
     <id>http://yoursite.com/2024/10/08/summaryMicroStepMotor/</id>
     <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-08T04:44:23.180Z</updated>
+    <updated>2024-10-07T13:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Table-for-stepper-motor-and-lead-screw&quot;&gt;&lt;a href=&quot;#Table-for-stepper-motor-and-lead-screw&quot; class=&quot;headerlink&quot; title=&quot;Table for stepper motor and lead screw&quot;&gt;&lt;/a&gt;Table for stepper motor and lead screw&lt;/h1&gt;&lt;table&gt;
@@ -467,7 +467,7 @@
     <link href="http://yoursite.com/2024/08/09/matlabCodeSearch/"/>
     <id>http://yoursite.com/2024/08/09/matlabCodeSearch/</id>
     <published>2024-08-08T14:00:00.000Z</published>
-    <updated>2024-12-10T05:08:49.674Z</updated>
+    <updated>2024-08-08T14:00:00.000Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;General-Programming-Tips&quot;&gt;&lt;a href=&quot;#General-Programming-Tips&quot; class=&quot;headerlink&quot; title=&quot;General Programming Tips&quot;&gt;&lt;/a&gt;General Programming Tips&lt;/h2&gt;&lt;ol&gt;
@@ -492,7 +492,7 @@
     <link href="http://yoursite.com/2024/05/01/motorEncoderController202404/"/>
     <id>http://yoursite.com/2024/05/01/motorEncoderController202404/</id>
     <published>2024-04-30T21:54:24.820Z</published>
-    <updated>2024-10-10T03:26:22.890Z</updated>
+    <updated>2024-04-30T21:54:24.820Z</updated>
     
     
     <summary type="html">&lt;p&gt;I developed a stepper motor controller using a Pololu board and Arduino, designed to manage a stepper motor up to 4 A and read a single-end encoder. The system uses serial communction for interaction between the motor, encoder, and PC. That means you can even use MATLAB (with the example code shown below) to operate the motor and capture encoder counts.&lt;/p&gt;</summary>
@@ -511,7 +511,7 @@
     <link href="http://yoursite.com/2024/04/20/pdfAchive/"/>
     <id>http://yoursite.com/2024/04/20/pdfAchive/</id>
     <published>2024-04-19T14:00:00.000Z</published>
-    <updated>2024-10-08T06:00:58.290Z</updated>
+    <updated>2024-04-19T14:00:00.000Z</updated>
     
     
       

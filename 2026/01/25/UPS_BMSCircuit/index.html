@@ -6,11 +6,11 @@
    
   <meta name="keywords" content="nnn" />
    
-  <meta name="description" content="本文总结了 3S 锂电池 UPS 系统的设计核心，包括 USB PD 诱骗逻辑、Buck-Boost 充电管理、功率计算及 PCB 布局规范。" />
+  <meta name="description" content="基于 USB PD 100W 输入与 3S 锂电管理的 5A 大电流 UPS 设计实战笔记，涵盖 PD 诱骗逻辑、BQ25798 关键配置及 PCB 布线避坑指南。" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记 |  X. Blog
+    3S 18650 UPS 电源设计复盘 (HUSB238 + BQ25798) |  X. Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -19,6 +19,9 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <link rel="stylesheet" href="/css/custom.css">
+  
   
 <script src="/js/pace.min.js"></script>
 
@@ -32,6 +35,7 @@
 
 </html>
 
+
 <body>
   <div id="app">
     <main class="content">
@@ -44,7 +48,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  基于 HUSB238 + BQ25798 的 3S 18650 UPS 电源管理系统设计笔记
+  3S 18650 UPS 电源设计复盘 (HUSB238 + BQ25798)
 </h1>
   
 
@@ -58,7 +62,7 @@
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Hardware/">Hardware</a> / <a class="article-category-link" href="/categories/Hardware/Power-Design/">Power Design</a>
+    <a class="article-category-link" href="/categories/Hardware/">Hardware</a> / <a class="article-category-link" href="/categories/Hardware/Power/">Power</a>
   </div>
 
       
@@ -68,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.4k字</span>
+            <span class="post-count">1.1k字</span>
         </span>
     </span>
 
@@ -77,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -103,129 +107,144 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>本项目旨在设计一款基于 <strong>USB-C PD 输入</strong> 的 <strong>3S 18650 锂电池 UPS</strong>，支持 5A 大电流充放电。核心方案采用 <strong>HUSB238</strong>（PD 诱骗）搭配 <strong>BQ25798</strong>（Buck-Boost 充电管理）。</p>
+      <script src="/assets/js/APlayer.min.js"> </script><h1 id="笔记-3S-18650-UPS-电源设计-HUSB238-BQ25798"><a href="#笔记-3S-18650-UPS-电源设计-HUSB238-BQ25798" class="headerlink" title="[笔记] 3S 18650 UPS 电源设计 (HUSB238 + BQ25798)"></a>[笔记] 3S 18650 UPS 电源设计 (HUSB238 + BQ25798)</h1><blockquote>
+<p><strong>设计目标</strong>：实现 USB-C PD 100W 输入，支持 3S 锂电池组（12.6V），并提供稳定的 5A 大电流充放电能力。<br><strong>核心芯片</strong>：HUSB238 (PD Sink) + BQ25798 (Buck-Boost Charger)</p>
+</blockquote>
 <hr>
 <span id="more"></span>
 
-<h2 id="1-供电输入级：USB-PD-诱骗-HUSB238"><a href="#1-供电输入级：USB-PD-诱骗-HUSB238" class="headerlink" title="1. 供电输入级：USB PD 诱骗 (HUSB238)"></a>1. 供电输入级：USB PD 诱骗 (HUSB238)</h2><p>系统采用 <strong>HUSB238</strong> 作为 PD Sink Controller，支持高达 100W 的功率申请，负责与适配器协商电压电流。</p>
-<h3 id="1-1-硬件配置-Resistor-Set"><a href="#1-1-硬件配置-Resistor-Set" class="headerlink" title="1.1 硬件配置 (Resistor Set)"></a>1.1 硬件配置 (Resistor Set)</h3><ul>
-<li><strong>VSET &#x2F; ISET</strong>：通过外接电阻设置请求的最大电压和电流。</li>
-<li><strong>CC1 &#x2F; CC2</strong>：用于 PD 协议握手与通信。</li>
-</ul>
-<h3 id="1-2-协商逻辑-RDO-vs-PDO"><a href="#1-2-协商逻辑-RDO-vs-PDO" class="headerlink" title="1.2 协商逻辑 (RDO vs PDO)"></a>1.2 协商逻辑 (RDO vs PDO)</h3><p>HUSB238 内部根据设定的 <strong>RDO (Requested Data Object)</strong> 与适配器广播的 <strong>PDO (Power Data Object)</strong> 进行匹配。出厂默认 RDO 通常为 <code>20V / 3.25A</code>。</p>
-<p><strong>匹配规则：</strong></p>
-<ol>
-<li><code>SOURCE_PDO_VOLTAGE</code> ≤ <code>RDO_VOLTAGE</code></li>
-<li><code>SOURCE_PDO_CURRENT</code> ≥ <code>RDO_CURRENT</code></li>
-</ol>
-<blockquote>
-<p><strong>案例推演：</strong><br>假设 RDO 设置为 <strong>18V &#x2F; 1.5A</strong>。<br>适配器广播档位为：<code>20V/2.25A</code>, <code>15V/3A</code>, <code>9V/3A</code>, <code>5V/5A</code>。</p>
+<h2 id="1-输入级：PD-诱骗逻辑-HUSB238"><a href="#1-输入级：PD-诱骗逻辑-HUSB238" class="headerlink" title="1. 输入级：PD 诱骗逻辑 (HUSB238)"></a>1. 输入级：PD 诱骗逻辑 (HUSB238)</h2><p>HUSB238 负责把 USB-C 接口的电压“骗”出来。它支持硬件电阻设置和 I2C 动态设置。</p>
+<h3 id="1-1-档位匹配机制-RDO-vs-PDO"><a href="#1-1-档位匹配机制-RDO-vs-PDO" class="headerlink" title="1.1 档位匹配机制 (RDO vs PDO)"></a>1.1 档位匹配机制 (RDO vs PDO)</h3><p>这是最容易搞混的地方。</p>
 <ul>
-<li><strong>比对 20V 档</strong>：<code>20V &lt; 18V</code> (❌ 电压超标，跳过)</li>
-<li><strong>比对 15V 档</strong>：<code>15V &lt; 18V</code> (✅) 且 <code>3A &gt; 1.5A</code> (✅)</li>
-<li><strong>结果</strong>：握手成功，申请输出 <strong>15V</strong>。</li>
+<li><strong>PDO</strong>：充电头广播的能力（例如：我能提供 5V, 9V, 15V, 20V）。</li>
+<li><strong>RDO</strong>：我们芯片请求的档位（通过电阻或软件设定）。</li>
+</ul>
+<p><strong>匹配原则</strong>：只有当 <code>充电头电压 ≤ RDO设定值</code> 且 <code>充电头电流 ≥ RDO设定值</code> 时，才会握手成功。</p>
+<blockquote>
+<p><strong>举个栗子</strong>：<br>设定 RDO &#x3D; <strong>18V &#x2F; 1.5A</strong>。<br>充电头有：20V&#x2F;2.25A, 15V&#x2F;3A, 9V&#x2F;3A。</p>
+<ul>
+<li>20V 档：20V &gt; 18V -&gt; <strong>❌ 淘汰</strong>（电压超标）</li>
+<li>15V 档：15V &lt; 18V (✅) 且 3A &gt; 1.5A (✅) -&gt; <strong>握手 15V</strong></li>
 </ul>
 </blockquote>
-<h3 id="1-3-I2C-动态控制"><a href="#1-3-I2C-动态控制" class="headerlink" title="1.3 I2C 动态控制"></a>1.3 I2C 动态控制</h3><ul>
-<li><strong>通信接口</strong>：I2C 从机地址 <code>0x08</code>。</li>
-<li><strong>优先级</strong>：I2C 指令 &gt; 硬件电阻 (VSET&#x2F;ISET) &gt; 出厂默认。</li>
-<li><strong>工作流程</strong>：POR（上电复位）后，芯片自动读取适配器信息并存入寄存器。MCU 可通过 I2C 读取支持的 PDO 列表，并写入指令强制请求特定的电压&#x2F;电流档位。</li>
-</ul>
+<h3 id="1-2-控制优先级"><a href="#1-2-控制优先级" class="headerlink" title="1.2 控制优先级"></a>1.2 控制优先级</h3><p><strong>I2C指令 &gt; 硬件电阻配置 &gt; 出厂默认</strong><br>上电后，MCU 可以通过 I2C (<code>Addr: 0x08</code>) 读取充电头能力，并强制请求特定电压。</p>
 <hr>
-<h2 id="2-核心管理级：Buck-Boost-充电-BQ25798"><a href="#2-核心管理级：Buck-Boost-充电-BQ25798" class="headerlink" title="2. 核心管理级：Buck-Boost 充电 (BQ25798)"></a>2. 核心管理级：Buck-Boost 充电 (BQ25798)</h2><p>BQ25798 是核心 VQFN 封装芯片，负责充放电路径管理。</p>
-<h3 id="2-1-关键引脚功能解析"><a href="#2-1-关键引脚功能解析" class="headerlink" title="2.1 关键引脚功能解析"></a>2.1 关键引脚功能解析</h3><table>
+<h2 id="2-核心级：充放电管理-BQ25798"><a href="#2-核心级：充放电管理-BQ25798" class="headerlink" title="2. 核心级：充放电管理 (BQ25798)"></a>2. 核心级：充放电管理 (BQ25798)</h2><h3 id="2-1-关键引脚配置-硬件设定"><a href="#2-1-关键引脚配置-硬件设定" class="headerlink" title="2.1 关键引脚配置 (硬件设定)"></a>2.1 关键引脚配置 (硬件设定)</h3><table>
 <thead>
 <tr>
 <th align="left">引脚</th>
-<th align="left">功能描述</th>
+<th align="left">配置&#x2F;说明</th>
+<th align="left">备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><strong>ACDRV1</strong></td>
-<td align="left"><strong>输入保护驱动</strong>。控制输入端 N-MOSFET。检测到 OVP&#x2F;UVP 或反向电流时，立即拉低关闭 MOS。正常导通时 $V_{GS} \approx 5V$（内部 Charge Pump 供电）。</td>
-</tr>
-<tr>
-<td align="left"><strong>REGN</strong></td>
-<td align="left"><strong>内部 LDO 输出</strong>。为芯片内部电路和 MOS 驱动供电。<br>当 $V_{BUS} &#x3D; 15V$ 时，$V_{REGN} &#x3D; 5V$；<br>当 $V_{BUS} &#x3D; 5V$ 时，$V_{REGN} \approx 4.8V$。</td>
-</tr>
-<tr>
 <td align="left"><strong>PROG</strong></td>
-<td align="left"><strong>硬件配置</strong>。通过电阻设置电池串数和频率。例如 3S 电池配置：10.5kΩ 接地。</td>
+<td align="left"><strong>10.5kΩ 接地</strong></td>
+<td align="left">设定为 3S 电池配置，匹配开关频率。</td>
 </tr>
 <tr>
 <td align="left"><strong>ILIM_HIZ</strong></td>
-<td align="left"><strong>输入限流 &amp; HIZ 模式</strong>。<br>1. <strong>限流计算</strong>：$V_{ILIM_HIZ} &#x3D; 1V + 0.8 \Omega \times I_{LIM}$。<br>2. <strong>HIZ 控制</strong>：电压 &lt; 0.75V 时进入高阻态（停止输入）。</td>
+<td align="left"><strong>$V &#x3D; 1 + 0.8 \times I_{LIM}$</strong></td>
+<td align="left">设定输入限流。若量测 3.56V，则限流 3.2A。<br>若电压 &lt; 0.75V，进入高阻态（停止输入）。</td>
+</tr>
+<tr>
+<td align="left"><strong>REGN</strong></td>
+<td align="left"><strong>LDO 输出</strong></td>
+<td align="left">驱动 MOS 用。输入&gt;15V 时输出 5V；输入 5V 时输出 4.8V。</td>
+</tr>
+<tr>
+<td align="left"><strong>ACDRV1</strong></td>
+<td align="left"><strong>输入保护驱动</strong></td>
+<td align="left">驱动输入端隔离 N-MOS。Charge Pump 供电，$V_{GS} \approx 5V$。</td>
 </tr>
 </tbody></table>
-<h3 id="2-2-逻辑控制：Ship-Mode-与-QON"><a href="#2-2-逻辑控制：Ship-Mode-与-QON" class="headerlink" title="2.2 逻辑控制：Ship Mode 与 QON"></a>2.2 逻辑控制：Ship Mode 与 QON</h3><h4 id="A-Ship-Mode-运输模式"><a href="#A-Ship-Mode-运输模式" class="headerlink" title="A. Ship Mode (运输模式)"></a>A. Ship Mode (运输模式)</h4><ul>
-<li><strong>目的</strong>：库存期间断开电池，将漏电流降至最低。</li>
-<li><strong>物理动作</strong>：SDRV 拉低 -&gt; 外部 Ship FET (Q21) 关闭 -&gt; 电池物理断开。</li>
-<li><strong>如何进入</strong>：拔掉 VBUS -&gt; I2C 写入 <code>Charger_Control_3</code> 寄存器 <code>EN_SHIPMODE = 1</code>。</li>
-</ul>
-<h4 id="B-QON-按键的双重功能"><a href="#B-QON-按键的双重功能" class="headerlink" title="B. QON 按键的双重功能"></a>B. QON 按键的双重功能</h4><p>QON 引脚（内部已上拉，外部直连按键对地）是唯一的硬件“复活”接口。</p>
-<ol>
-<li>**短按 (约 1s)<strong>：</strong>唤醒 (Wake Up)**。退出 Ship Mode，拉高 SDRV，系统上电。</li>
-<li>**长按 (约 10s)<strong>：</strong>硬复位 (System Reset)**。强制关闭 Ship FET 和 BATFET -&gt; SYS 下拉放电 (250ms) -&gt; 自动重启。</li>
-</ol>
+<h3 id="2-2-逻辑控制：Ship-Mode-与-QON"><a href="#2-2-逻辑控制：Ship-Mode-与-QON" class="headerlink" title="2.2 逻辑控制：Ship Mode 与 QON"></a>2.2 逻辑控制：Ship Mode 与 QON</h3><p>为了库存时不耗电，以及死机时能硬重启，这块逻辑必须搞清。</p>
+<table>
+<thead>
+<tr>
+<th align="left">状态&#x2F;操作</th>
+<th align="left">触发方式</th>
+<th align="left">动作描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>进入运输模式</strong><br>(Ship Mode)</td>
+<td align="left">拔掉 USB<br>+ I2C 写 <code>EN_SHIPMODE=1</code></td>
+<td align="left">关闭外部隔离 MOS (Q21)，电池与系统物理断开，漏电流极低。</td>
+</tr>
+<tr>
+<td align="left"><strong>唤醒</strong><br>(Wake Up)</td>
+<td align="left"><strong>短按 QON (约 1s)</strong></td>
+<td align="left">退出 Ship Mode，Q21 导通，系统上电。</td>
+</tr>
+<tr>
+<td align="left"><strong>硬复位</strong><br>(Hard Reset)</td>
+<td align="left"><strong>长按 QON (约 10s)</strong></td>
+<td align="left">强制断电 (Q21 &amp; BATFET 关闭) -&gt; SYS 放电 250ms -&gt; 自动重启。</td>
+</tr>
+</tbody></table>
 <hr>
-<h2 id="3-工程计算与选型笔记"><a href="#3-工程计算与选型笔记" class="headerlink" title="3. 工程计算与选型笔记"></a>3. 工程计算与选型笔记</h2><h3 id="3-1-电感选型-Buck-Boost-核心"><a href="#3-1-电感选型-Buck-Boost-核心" class="headerlink" title="3.1 电感选型 (Buck-Boost 核心)"></a>3.1 电感选型 (Buck-Boost 核心)</h3><p>电感必须满足 $I_{SAT}$ (饱和电流) 和 $I_{RMS}$ (温升电流) 的要求。</p>
-<p><strong>纹波电流 ($I_{RIPPLE}$) 计算公式：</strong></p>
+<h2 id="3-避坑指南：工程选型与计算"><a href="#3-避坑指南：工程选型与计算" class="headerlink" title="3. 避坑指南：工程选型与计算"></a>3. 避坑指南：工程选型与计算</h2><h3 id="3-1-电感选型-Buck-Boost-的心脏"><a href="#3-1-电感选型-Buck-Boost-的心脏" class="headerlink" title="3.1 电感选型 (Buck-Boost 的心脏)"></a>3.1 电感选型 (Buck-Boost 的心脏)</h3><p>这块选错了直接炸机。</p>
 <ul>
-<li><p><strong>Buck 模式</strong> ($V_{BUS} &gt; V_{SYS}$):<br>  $$I_{RIPPLE} &#x3D; \frac{V_{SYS} \times (V_{BUS} - V_{SYS})}{V_{BUS} \times f_{SW} \times L}$$</p>
-</li>
-<li><p><strong>Boost 模式</strong> ($V_{BUS} &lt; V_{SYS}$):<br>  $$I_{RIPPLE} &#x3D; \frac{V_{BUS} \times (V_{SYS} - V_{BUS})}{V_{SYS} \times f_{SW} \times L}$$</p>
-</li>
+<li><strong>饱和电流 ($I_{SAT}$)<strong>：</strong>必须 $\ge 6A$</strong> (针对 5A 充放电应用)。<ul>
+<li><em>理由</em>：电感一旦饱和，感值归零，电流瞬间失控。</li>
 </ul>
-<p><strong>选型铁律：</strong></p>
-<ol>
-<li>**饱和电流 ($I_{SAT}$)<strong>：必须 $&gt; I_{PEAK}$ (建议留 20% 余量)。</strong>5A 应用推荐 $I_{SAT} \ge 6A$**。饱和会导致电感值归零，瞬间炸管。</li>
-<li>**直流电阻 (DCR)**：5A 应用建议 $&lt; 20m\Omega$，否则发热严重。</li>
+</li>
+<li>**直流电阻 (DCR)**：建议 $&lt; 20m\Omega$，否则发热严重。</li>
 <li><strong>封装</strong>：必须全屏蔽，建议 4040 或 5050 封装。</li>
-</ol>
-<h3 id="3-2-SYS-输出能力评估-I-SYS-MAX"><a href="#3-2-SYS-输出能力评估-I-SYS-MAX" class="headerlink" title="3.2 SYS 输出能力评估 ($I_{SYS_MAX}$)"></a>3.2 SYS 输出能力评估 ($I_{SYS_MAX}$)</h3><p>SYS 口能输出 5A 吗？取决于三个瓶颈（木桶效应）：</p>
+</ul>
+<h3 id="3-2-SYS-输出能力-别指望-5V-输入能出-9V-x2F-5A"><a href="#3-2-SYS-输出能力-别指望-5V-输入能出-9V-x2F-5A" class="headerlink" title="3.2 SYS 输出能力 (别指望 5V 输入能出 9V&#x2F;5A)"></a>3.2 SYS 输出能力 (别指望 5V 输入能出 9V&#x2F;5A)</h3><p>SYS 口的输出能力受限于“木桶效应”的最短板：</p>
 <ol>
-<li><strong>输入功率瓶颈</strong> (最常见)：$P_{IN} \times \eta \approx P_{SYS}$<ul>
-<li>若输入 5V&#x2F;3A (15W)，SYS (9V) 最大只能出 1.5A。硬拉 5A 会导致 $V_{SYS}$ 跌落并触发电池补给模式。</li>
+<li><strong>输入功率限制</strong>：$P_{IN} \times \eta \approx P_{SYS}$。<ul>
+<li><em>典型坑点</em>：用 5V&#x2F;3A (15W) 充电头，想让 SYS (9V) 出 5A (45W) 是不可能的。此时 SYS 会被拉垮，触发电池补给模式 (Supplement Mode)。</li>
 </ul>
 </li>
-<li><strong>MOSFET 开关限流</strong>：芯片内部 High-side MOSFET 峰值限流约 9A~10A，折算直流上限约 **6A+**。</li>
-<li><strong>热限制</strong>：长期运行建议控制在 <strong>5A</strong> 以内。</li>
+<li><strong>MOSFET 物理限流</strong>：芯片内部 MOS 峰值限流约 9A，折算直流输出上限约 **6A+**。</li>
+<li><strong>热限制</strong>：长期连续运行建议控制在 <strong>5A</strong> 以内。</li>
 </ol>
 <hr>
-<h2 id="4-软件监控：ADC-寄存器映射"><a href="#4-软件监控：ADC-寄存器映射" class="headerlink" title="4. 软件监控：ADC 寄存器映射"></a>4. 软件监控：ADC 寄存器映射</h2><p>BQ25798 内置 ADC，可通过 I2C 实时监控系统状态。</p>
+<h2 id="4-软件调试：ADC-寄存器速查"><a href="#4-软件调试：ADC-寄存器速查" class="headerlink" title="4. 软件调试：ADC 寄存器速查"></a>4. 软件调试：ADC 寄存器速查</h2><p>BQ25798 自带 ADC，I2C 读取以下寄存器监控状态：</p>
 <ul>
-<li><strong>VBAT (电池电压)</strong>: <code>REG3B</code> (或 <code>REG35</code>)</li>
-<li><strong>IBAT (电池电流)</strong>: <code>REG31</code>&#x2F;<code>REG32</code> (正&#x3D;充电，负&#x3D;放电)</li>
-<li><strong>VSYS (系统电压)</strong>: <code>REG3D</code> (3S 电池下约为 9V~12.6V)</li>
+<li><strong>VBAT (电池电压)</strong>: <code>REG3B</code></li>
+<li><strong>IBAT (电池电流)</strong>: <code>REG31</code> (正数&#x3D;充电，负数&#x3D;放电)</li>
+<li><strong>VSYS (系统电压)</strong>: <code>REG3D</code> (3S 下约为 9V~12.6V)</li>
 <li><strong>VBUS (输入电压)</strong>: <code>REG35</code></li>
 <li><strong>IBUS (输入电流)</strong>: <code>REG33</code></li>
 </ul>
 <hr>
-<h2 id="5-PCB-Layout-黄金法则-生存指南"><a href="#5-PCB-Layout-黄金法则-生存指南" class="headerlink" title="5. PCB Layout 黄金法则 (生存指南)"></a>5. PCB Layout 黄金法则 (生存指南)</h2><p><strong>核心目标</strong>：5A 充放电不发烫、EMI 不超标、ADC 采样精准。</p>
-<h3 id="5-1-核心电容布局-Top-Priority"><a href="#5-1-核心电容布局-Top-Priority" class="headerlink" title="5.1 核心电容布局 (Top Priority)"></a>5.1 核心电容布局 (Top Priority)</h3><blockquote>
-<p><strong>规则</strong>：VBUS, PMID, SYS 引脚旁的 <strong>0.1μF (100nF)</strong> 小电容必须 <strong>紧贴芯片引脚</strong>。</p>
-</blockquote>
+<h2 id="5-PCB-Layout-重点-画板必看"><a href="#5-PCB-Layout-重点-画板必看" class="headerlink" title="5. PCB Layout 重点 (画板必看)"></a>5. PCB Layout 重点 (画板必看)</h2><p><strong>如果 5A 电流下板子发烫或者 EMI 炸了，查这几条：</strong></p>
+<ol>
+<li><p>**”VIP” 电容 (0.1μF)**：</p>
 <ul>
-<li><strong>严禁</strong>在电容和引脚之间打过孔。</li>
-<li>必须在 Top 层直接连接回路，这直接决定了 EMI 是否炸裂。</li>
+<li><code>VBUS</code>, <code>PMID</code>, <code>SYS</code> 旁边的 0.1μF 电容必须<strong>紧贴引脚</strong>。</li>
+<li><strong>禁止</strong>在电容焊盘和芯片引脚之间打过孔。必须 Top 层直连！</li>
 </ul>
-<h3 id="5-2-开关节点-SW1-x2F-SW2"><a href="#5-2-开关节点-SW1-x2F-SW2" class="headerlink" title="5.2 开关节点 (SW1&#x2F;SW2)"></a>5.2 开关节点 (SW1&#x2F;SW2)</h3><ul>
-<li>采用 <strong>“潜伏式”</strong> 走线：由于 Top 层被小电容占了，SW 必须打过孔走内层 (L2&#x2F;L3) 连接电感。</li>
-<li><strong>注意</strong>：铜皮面积够用即可，不要铺太大，避免变成辐射天线。</li>
+</li>
+<li><p><strong>潜伏式 SW 走线</strong>：</p>
+<ul>
+<li>因为 Top 层被电容占了，SW1&#x2F;SW2 必须在焊盘旁打过孔，走<strong>内层</strong>连接电感。</li>
+<li>铜皮面积够用就行，别铺太大，那是辐射源。</li>
 </ul>
-<h3 id="5-3-大电流路径-5A"><a href="#5-3-大电流路径-5A" class="headerlink" title="5.3 大电流路径 (5A+)"></a>5.3 大电流路径 (5A+)</h3><ul>
-<li><strong>必须铺铜</strong>：VBUS, SYS, BAT 严禁走细线，必须使用多边形铺铜或 &gt;2.5mm 宽线。</li>
-<li><strong>过孔阵列</strong>：换层时必须打 <strong>Via Stitching</strong> (6~9 个过孔并联)，防止烧断。</li>
+</li>
+<li><p><strong>大电流路径铺铜</strong>：</p>
+<ul>
+<li><code>VBUS</code>, <code>SYS</code>, <code>BAT</code> 必须铺铜，线宽至少 <strong>2.5mm</strong> (或铺铜)。</li>
+<li>换层时必须打 **过孔阵列 (Via Stitching)**，至少 6~9 个过孔并联。</li>
 </ul>
-<h3 id="5-4-开尔文连接-Kelvin-Connection"><a href="#5-4-开尔文连接-Kelvin-Connection" class="headerlink" title="5.4 开尔文连接 (Kelvin Connection)"></a>5.4 开尔文连接 (Kelvin Connection)</h3><ul>
-<li><strong>BATP (检测线)</strong> 必须单独走线。</li>
-<li>使用 10mil 细线，从 <strong>电池座子焊盘根部</strong> 引出，与 BAT 功率线汇合（Y 字形连接）。</li>
-<li><strong>一定要远离</strong> SW1&#x2F;SW2 和电感区域。</li>
+</li>
+<li><p>**开尔文连接 (Kelvin Connection)**：</p>
+<ul>
+<li><code>BATP</code> (电压检测线) 必须单独拉一根 10mil 细线。</li>
+<li>必须在<strong>电池插座的焊盘根部</strong>与 BAT 粗线汇合 (Y型连接)。</li>
+<li>这根线要躲开电感和 SW 节点。</li>
 </ul>
-<h3 id="5-5-散热设计"><a href="#5-5-散热设计" class="headerlink" title="5.5 散热设计"></a>5.5 散热设计</h3><ul>
-<li>芯片底部 Thermal Pad 必须完整焊接。</li>
-<li>必须打 <strong>3x3 或 4x4</strong> 的散热过孔矩阵通到 Bottom 层，且 Bottom 层需大面积铺地。</li>
+</li>
+<li><p><strong>散热</strong>：</p>
+<ul>
+<li>芯片肚子底下的 Thermal Pad 必须打 <strong>3x3</strong> 过孔通到背面，背面必须铺大面积 GND 散热。</li>
 </ul>
+</li>
+</ol>
 
       
       <!-- 打赏 -->
@@ -236,10 +255,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2026/01/25/UPS_BMSCircuit/" data-id="cmktazvp10000zujsg04w0z87"
+      <a data-url="http://yoursite.com/2026/01/25/UPS_BMSCircuit/" data-id="cmpypyr8w0000dn3t8kp0e1zu"
         class="article-share-link">share</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BQ25798/" rel="tag">BQ25798</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HUSB238/" rel="tag">HUSB238</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PCB-Layout/" rel="tag">PCB Layout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UPS/" rel="tag">UPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/USB-PD/" rel="tag">USB-PD</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BQ25798/" rel="tag">BQ25798</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Engineering-Note/" rel="tag">Engineering Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HUSB238/" rel="tag">HUSB238</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PCB-Layout/" rel="tag">PCB Layout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UPS/" rel="tag">UPS</a></li></ul>
 
     </footer>
 
@@ -259,9 +278,9 @@
       </a>
     
     
-      <a href="/2025/12/08/scheduler/" class="article-nav-link">
+      <a href="/2025/12/08/CRCCheck/" class="article-nav-link">
         <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Smart Scheduler</div>
+        <div class="article-nav-title">Modbus RTU CRC</div>
       </a>
     
   </nav>
@@ -393,6 +412,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/latex">LaTeX</a>
     </li>
     
     <li class="nav-item">
