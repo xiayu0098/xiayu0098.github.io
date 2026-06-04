@@ -1,22 +1,22 @@
 /* ================================================
-   ORANGE & WHITE THEME — Hexo Ayer
+   NEUTRAL SCIENCE THEME — Hexo Ayer
    Place this file at: blog/source/css/custom.css
    Then set in _config.ayer.yml:  custom_css: /css/custom.css
    ================================================ */
 
 /* ---------- VARIABLES ---------- */
 :root {
-  --orange:       #c96b2c;
-  --orange-light: #dd8b4e;
-  --orange-dim:   #a9551b;
-  --bg-page:      #f6f7f9;
+  --orange:       #111111;
+  --orange-light: #333333;
+  --orange-dim:   #666666;
+  --bg-page:      #f7f8fa;
   --bg-surface:   #ffffff;
   --bg-card:      #ffffff;
-  --bg-hover:     #eef2f5;
-  --border:       #d6dce2;
-  --text-main:    #1f2933;
-  --text-muted:   #667380;
-  --text-code:    #7a4a22;
+  --bg-hover:     #eef1f4;
+  --border:       #d9dfe5;
+  --text-main:    #111111;
+  --text-muted:   #5f6b76;
+  --text-code:    #111111;
 }
 
 /* ---------- BASE ---------- */
@@ -27,23 +27,23 @@
 html, body {
   background-color: var(--bg-page) !important;
   color: var(--text-main) !important;
-  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Aptos, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
 /* ---------- SCROLLBAR ---------- */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-page); }
-::-webkit-scrollbar-thumb { background: var(--orange-dim); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+::-webkit-scrollbar-thumb { background: #b8c2cc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #8e9aa6; }
 
 /* ---------- LINKS ---------- */
 a, a:visited {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   text-decoration: none;
   transition: color 0.2s;
 }
 a:hover {
-  color: var(--orange-light) !important;
+  color: var(--text-muted) !important;
   text-decoration: underline;
 }
 
@@ -61,7 +61,7 @@ header,
 .blog-title a,
 .site-title a,
 #header .logo a {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -84,7 +84,7 @@ nav a,
 nav a:hover,
 .nav-item a:hover,
 .menu a:hover {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   background: var(--bg-hover) !important;
   text-decoration: none !important;
 }
@@ -122,18 +122,18 @@ article:hover,
 
 /* ---------- HEADINGS ---------- */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
 }
 
 .post-title a,
 .article-title a {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   font-weight: 700;
 }
 
 .post-title a:hover,
 .article-title a:hover {
-  color: var(--orange-light) !important;
+  color: var(--text-muted) !important;
   text-decoration: none !important;
 }
 
@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .post-meta i,
 .post-meta .fa {
-  color: var(--orange-dim) !important;
+  color: var(--text-muted) !important;
 }
 
 /* ---------- TAGS ---------- */
@@ -157,8 +157,8 @@ h1, h2, h3, h4, h5, h6 {
 .post-tag,
 .article-tag-list-item a {
   background-color: var(--bg-surface) !important;
-  color: var(--orange) !important;
-  border: 1px solid var(--orange-dim) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
   border-radius: 4px !important;
   padding: 2px 10px !important;
   font-size: 0.8em;
@@ -171,20 +171,20 @@ h1, h2, h3, h4, h5, h6 {
 .tag-list-item a:hover,
 .post-tag:hover,
 .article-tag-list-item a:hover {
-  background-color: var(--orange) !important;
-  color: #111 !important;
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
   text-decoration: none !important;
 }
 
 /* ---------- CATEGORIES ---------- */
 .category-list-item a,
 .post-category a {
-  color: var(--orange-light) !important;
+  color: var(--text-main) !important;
   font-weight: 600;
 }
 
 .category-list-item a:hover {
-  color: var(--orange) !important;
+  color: var(--text-muted) !important;
 }
 
 /* ---------- SIDEBAR ---------- */
@@ -199,7 +199,7 @@ aside {
 
 .widget-title,
 .sidebar-title {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   border-bottom: 1px solid var(--border) !important;
   padding-bottom: 8px;
 }
@@ -217,7 +217,7 @@ code {
 pre {
   background-color: #fafbfc !important;
   border: 1px solid var(--border) !important;
-  border-left: 4px solid var(--orange) !important;
+  border-left: 4px solid var(--text-main) !important;
   border-radius: 6px !important;
   padding: 16px !important;
 }
@@ -238,7 +238,7 @@ pre code {
 /* ---------- BLOCKQUOTE ---------- */
 blockquote {
   background-color: #fbfcfd !important;
-  border-left: 4px solid var(--orange) !important;
+  border-left: 4px solid var(--text-main) !important;
   color: var(--text-muted) !important;
   padding: 12px 16px;
   border-radius: 0 4px 4px 0;
@@ -252,7 +252,7 @@ table {
 
 th {
   background-color: #f3f6f9 !important;
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   border: 1px solid var(--border) !important;
   padding: 8px 12px;
 }
@@ -281,11 +281,11 @@ hr {
 .btn,
 a.btn {
   background-color: #ffffff !important;
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   border-radius: 5px !important;
   padding: 6px 16px !important;
   font-weight: 600;
-  border: 1px solid var(--orange-dim) !important;
+  border: 1px solid var(--border) !important;
   transition: background 0.2s;
   text-decoration: none !important;
 }
@@ -294,7 +294,7 @@ a.btn {
 .read-more:hover,
 .btn:hover {
   background-color: var(--bg-hover) !important;
-  color: var(--orange-dim) !important;
+  color: var(--text-main) !important;
 }
 
 /* ---------- PAGINATION ---------- */
@@ -307,7 +307,7 @@ a.btn {
 .pagination a,
 .page-number {
   background-color: var(--bg-card) !important;
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   border: 1px solid var(--border) !important;
   border-radius: 4px !important;
   padding: 4px 12px !important;
@@ -318,15 +318,15 @@ a.btn {
 .pagination a:hover,
 .page-number:hover {
   background-color: var(--bg-hover) !important;
-  color: var(--orange-dim) !important;
+  color: var(--text-main) !important;
   text-decoration: none !important;
 }
 
 .pagination .current,
 .page-number.current {
   background-color: var(--bg-hover) !important;
-  color: var(--orange-dim) !important;
-  border-color: var(--orange-dim) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
   font-weight: 700;
 }
 
@@ -342,7 +342,7 @@ footer,
 
 .footer a,
 #footer a {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
 }
 
 /* ---------- TOC (Table of Contents) ---------- */
@@ -351,7 +351,7 @@ footer,
 .toc-wrapper {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
-  border-left: 3px solid var(--orange) !important;
+  border-left: 3px solid var(--text-main) !important;
   border-radius: 6px;
 }
 
@@ -363,7 +363,7 @@ footer,
 .toc-item a:hover,
 .toc a:hover,
 .toc-item.active a {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
 }
 
 /* ---------- SEARCH BOX ---------- */
@@ -381,15 +381,15 @@ input[type="text"] {
 #search-input:focus,
 .search-input:focus,
 input:focus {
-  border-color: var(--orange) !important;
+  border-color: var(--text-main) !important;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.10);
 }
 
 /* ---------- ARCHIVE / CATEGORY PAGES ---------- */
 .archive-year,
 .archive-month-content {
-  border-left: 3px solid var(--orange) !important;
+  border-left: 3px solid var(--text-main) !important;
   padding-left: 16px;
 }
 
@@ -400,13 +400,13 @@ input:focus {
 /* ---------- AVATAR / PROFILE ---------- */
 .avatar img,
 .author-avatar img {
-  border: 3px solid var(--orange) !important;
+  border: 3px solid var(--border) !important;
   border-radius: 50%;
 }
 
 /* ---------- SELECTION ---------- */
 ::selection {
-  background-color: rgba(255, 122, 24, 0.25);
+  background-color: rgba(17, 17, 17, 0.10);
   color: #111;
 }
 
@@ -434,9 +434,9 @@ input:focus {
 }
 
 .latex-doc__status--ready {
-  color: var(--orange-light) !important;
-  border-color: var(--orange-dim) !important;
-  background: #fcf4ec;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+  background: #f7f8fa;
 }
 
 .latex-doc__status--missing {
@@ -465,21 +465,21 @@ input:focus {
   min-height: 42px;
   padding: 0 16px;
   border-radius: 999px;
-  border: 1px solid var(--orange-dim) !important;
+  border: 1px solid var(--border) !important;
   background: #ffffff !important;
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   font-weight: 700;
   text-decoration: none !important;
 }
 
 .latex-doc__button:hover {
   background: var(--bg-hover) !important;
-  color: var(--orange-dim) !important;
+  color: var(--text-main) !important;
 }
 
 .latex-doc__button--ghost {
   background: transparent !important;
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
 }
 
 .latex-doc__viewer {
@@ -529,7 +529,7 @@ input:focus {
 }
 
 .latex-index__link:hover {
-  color: var(--orange) !important;
+  color: var(--text-main) !important;
   background: var(--bg-surface);
   padding-left: 14px;
 }
@@ -538,8 +538,15 @@ input:focus {
 .home-post-grid .articles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: start;
+  grid-auto-flow: row;
+}
+
+.home-post-grid {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
 }
 
 .home-post-grid .articles .article {
@@ -560,11 +567,12 @@ input:focus {
   overflow: hidden;
   box-shadow: 0 8px 26px rgba(31, 41, 51, 0.05);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  min-height: 420px;
 }
 
 .home-post-grid .articles .article:hover .article-inner {
   transform: translateY(-3px);
-  border-color: var(--orange-dim);
+  border-color: var(--border);
   box-shadow: 0 14px 32px rgba(31, 41, 51, 0.10);
 }
 
@@ -588,8 +596,9 @@ input:focus {
   background: transparent !important;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 5;
   overflow: hidden;
+  line-height: 1.8;
 }
 
 .home-post-grid .articles .article-entry img,
@@ -622,7 +631,11 @@ input:focus {
 }
 
 @media (max-width: 768px) {
+  .home-post-grid {
+    padding: 0 1rem 1.5rem;
+  }
   .home-post-grid .articles {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
