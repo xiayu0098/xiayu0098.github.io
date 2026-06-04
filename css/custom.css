@@ -6,17 +6,17 @@
 
 /* ---------- VARIABLES ---------- */
 :root {
-  --orange:       #ff7a18;
-  --orange-light: #ff9f45;
-  --orange-dim:   #e86f10;
-  --bg-page:      #ffffff;
-  --bg-surface:   #fff7ef;
+  --orange:       #c96b2c;
+  --orange-light: #dd8b4e;
+  --orange-dim:   #a9551b;
+  --bg-page:      #f6f7f9;
+  --bg-surface:   #ffffff;
   --bg-card:      #ffffff;
-  --bg-hover:     #fff2e8;
-  --border:       #f1d4bf;
-  --text-main:    #222222;
-  --text-muted:   #666666;
-  --text-code:    #7a3f00;
+  --bg-hover:     #eef2f5;
+  --border:       #d6dce2;
+  --text-main:    #1f2933;
+  --text-muted:   #667380;
+  --text-code:    #7a4a22;
 }
 
 /* ---------- BASE ---------- */
@@ -54,8 +54,8 @@ header,
 #navbar,
 .navbar {
   background-color: #ffffff !important;
-  border-bottom: 2px solid var(--orange) !important;
-  box-shadow: 0 2px 16px rgba(255, 122, 24, 0.08) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 1px 12px rgba(31, 41, 51, 0.05) !important;
 }
 
 .blog-title a,
@@ -85,7 +85,7 @@ nav a:hover,
 .nav-item a:hover,
 .menu a:hover {
   color: var(--orange) !important;
-  background: var(--bg-surface) !important;
+  background: var(--bg-hover) !important;
   text-decoration: none !important;
 }
 
@@ -110,14 +110,14 @@ article,
   padding: 24px !important;
   margin-bottom: 24px !important;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  box-shadow: 0 4px 18px rgba(255, 122, 24, 0.04);
+  box-shadow: 0 4px 18px rgba(31, 41, 51, 0.04);
 }
 
 .post:hover,
 article:hover,
 .post-card:hover {
   border-color: var(--orange-dim) !important;
-  box-shadow: 0 8px 24px rgba(255, 122, 24, 0.10) !important;
+  box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08) !important;
 }
 
 /* ---------- HEADINGS ---------- */
@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
 .side,
 aside {
   background-color: #ffffff !important;
-  border-left: 2px solid var(--border) !important;
+  border-left: 1px solid var(--border) !important;
   border-radius: 8px;
 }
 
@@ -206,7 +206,7 @@ aside {
 
 /* ---------- CODE & PRE ---------- */
 code {
-  background-color: var(--bg-surface) !important;
+  background-color: #fafbfc !important;
   color: var(--text-code) !important;
   border: 1px solid var(--border) !important;
   border-radius: 3px;
@@ -215,8 +215,8 @@ code {
 }
 
 pre {
-  background-color: #fffaf5 !important;
-  border: 1px solid var(--orange-dim) !important;
+  background-color: #fafbfc !important;
+  border: 1px solid var(--border) !important;
   border-left: 4px solid var(--orange) !important;
   border-radius: 6px !important;
   padding: 16px !important;
@@ -225,19 +225,19 @@ pre {
 pre code {
   background: transparent !important;
   border: none !important;
-  color: #5d3a10 !important;
+  color: #334155 !important;
 }
 
 /* Highlight line numbers */
 .gutter {
-  background-color: #fff3e8 !important;
-  border-right: 1px solid var(--orange-dim) !important;
+  background-color: #f8fafc !important;
+  border-right: 1px solid var(--border) !important;
   color: var(--text-muted) !important;
 }
 
 /* ---------- BLOCKQUOTE ---------- */
 blockquote {
-  background-color: var(--bg-surface) !important;
+  background-color: #fbfcfd !important;
   border-left: 4px solid var(--orange) !important;
   color: var(--text-muted) !important;
   padding: 12px 16px;
@@ -251,7 +251,7 @@ table {
 }
 
 th {
-  background-color: var(--bg-surface) !important;
+  background-color: #f3f6f9 !important;
   color: var(--orange) !important;
   border: 1px solid var(--border) !important;
   padding: 8px 12px;
@@ -280,12 +280,12 @@ hr {
 .read-more,
 .btn,
 a.btn {
-  background-color: var(--orange) !important;
-  color: #111 !important;
+  background-color: #ffffff !important;
+  color: var(--orange) !important;
   border-radius: 5px !important;
   padding: 6px 16px !important;
   font-weight: 600;
-  border: none !important;
+  border: 1px solid var(--orange-dim) !important;
   transition: background 0.2s;
   text-decoration: none !important;
 }
@@ -293,8 +293,8 @@ a.btn {
 .excerpt-link:hover,
 .read-more:hover,
 .btn:hover {
-  background-color: var(--orange-light) !important;
-  color: #111 !important;
+  background-color: var(--bg-hover) !important;
+  color: var(--orange-dim) !important;
 }
 
 /* ---------- PAGINATION ---------- */
@@ -317,16 +317,16 @@ a.btn {
 
 .pagination a:hover,
 .page-number:hover {
-  background-color: var(--orange) !important;
-  color: #111 !important;
+  background-color: var(--bg-hover) !important;
+  color: var(--orange-dim) !important;
   text-decoration: none !important;
 }
 
 .pagination .current,
 .page-number.current {
-  background-color: var(--orange) !important;
-  color: #111 !important;
-  border-color: var(--orange) !important;
+  background-color: var(--bg-hover) !important;
+  color: var(--orange-dim) !important;
+  border-color: var(--orange-dim) !important;
   font-weight: 700;
 }
 
@@ -335,7 +335,7 @@ a.btn {
 footer,
 .footer {
   background-color: #ffffff !important;
-  border-top: 2px solid var(--orange) !important;
+  border-top: 1px solid var(--border) !important;
   color: var(--text-muted) !important;
   padding: 20px 0;
 }
@@ -436,13 +436,13 @@ input:focus {
 .latex-doc__status--ready {
   color: var(--orange-light) !important;
   border-color: var(--orange-dim) !important;
-  background: rgba(255, 102, 0, 0.08);
+  background: #fcf4ec;
 }
 
 .latex-doc__status--missing {
   color: #ff9c9c !important;
   border-color: #7a3232 !important;
-  background: rgba(122, 50, 50, 0.12);
+  background: #fff3f3;
 }
 
 .latex-doc__lede,
@@ -466,15 +466,15 @@ input:focus {
   padding: 0 16px;
   border-radius: 999px;
   border: 1px solid var(--orange-dim) !important;
-  background: var(--orange) !important;
-  color: #111 !important;
+  background: #ffffff !important;
+  color: var(--orange) !important;
   font-weight: 700;
   text-decoration: none !important;
 }
 
 .latex-doc__button:hover {
-  background: var(--orange-light) !important;
-  color: #111 !important;
+  background: var(--bg-hover) !important;
+  color: var(--orange-dim) !important;
 }
 
 .latex-doc__button--ghost {
@@ -532,4 +532,97 @@ input:focus {
   color: var(--orange) !important;
   background: var(--bg-surface);
   padding-left: 14px;
+}
+
+/* ---------- ARTICLE GRID / BROWSING MODE ---------- */
+.home-post-grid .articles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.home-post-grid .articles .article {
+  padding: 0 !important;
+  margin: 0 !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.home-post-grid .articles .article-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(31, 41, 51, 0.05);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.home-post-grid .articles .article:hover .article-inner {
+  transform: translateY(-3px);
+  border-color: var(--orange-dim);
+  box-shadow: 0 14px 32px rgba(31, 41, 51, 0.10);
+}
+
+.home-post-grid .articles .article-header,
+.home-post-grid .articles .article-meta,
+.home-post-grid .articles .article-entry,
+.home-post-grid .articles .article-footer {
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+
+.home-post-grid .articles .article-header {
+  padding-top: 1.4rem;
+}
+
+.home-post-grid .articles .article-entry {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+}
+
+.home-post-grid .articles .article-entry img,
+.home-post-grid .articles .article-entry iframe,
+.home-post-grid .articles .article-entry video {
+  display: none !important;
+}
+
+.home-post-grid .articles .article-footer {
+  margin-top: auto;
+  padding-bottom: 1.25rem;
+}
+
+.home-post-grid .articles .article-title {
+  font-size: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-left: 0 !important;
+  border-left: none !important;
+}
+
+.home-post-grid .articles .article-meta {
+  padding-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1200px) {
+  .home-post-grid .articles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .home-post-grid .articles {
+    grid-template-columns: 1fr;
+  }
 }
