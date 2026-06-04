@@ -1,21 +1,22 @@
 /* ================================================
-   ORANGE & BLACK THEME — Hexo Ayer
+   ORANGE & WHITE THEME — Hexo Ayer
    Place this file at: blog/source/css/custom.css
    Then set in _config.ayer.yml:  custom_css: /css/custom.css
    ================================================ */
 
 /* ---------- VARIABLES ---------- */
 :root {
-  --orange:       #FF6600;
-  --orange-light: #FF9933;
-  --orange-dim:   #cc5200;
-  --bg-deep:      #0f0f0f;
-  --bg-card:      #1a1a1a;
-  --bg-hover:     #222222;
-  --border:       #2a2a2a;
-  --text-main:    #e0e0e0;
-  --text-muted:   #888888;
-  --text-code:    #f0c070;
+  --orange:       #ff7a18;
+  --orange-light: #ff9f45;
+  --orange-dim:   #e86f10;
+  --bg-page:      #ffffff;
+  --bg-surface:   #fff7ef;
+  --bg-card:      #ffffff;
+  --bg-hover:     #fff2e8;
+  --border:       #f1d4bf;
+  --text-main:    #222222;
+  --text-muted:   #666666;
+  --text-code:    #7a3f00;
 }
 
 /* ---------- BASE ---------- */
@@ -24,14 +25,14 @@
 }
 
 html, body {
-  background-color: var(--bg-deep) !important;
+  background-color: var(--bg-page) !important;
   color: var(--text-main) !important;
   font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
 /* ---------- SCROLLBAR ---------- */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-track { background: var(--bg-page); }
 ::-webkit-scrollbar-thumb { background: var(--orange-dim); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
 
@@ -52,9 +53,9 @@ a:hover {
 header,
 #navbar,
 .navbar {
-  background-color: #111111 !important;
+  background-color: #ffffff !important;
   border-bottom: 2px solid var(--orange) !important;
-  box-shadow: 0 2px 12px rgba(255, 102, 0, 0.2) !important;
+  box-shadow: 0 2px 16px rgba(255, 122, 24, 0.08) !important;
 }
 
 .blog-title a,
@@ -84,7 +85,7 @@ nav a:hover,
 .nav-item a:hover,
 .menu a:hover {
   color: var(--orange) !important;
-  background: rgba(255, 102, 0, 0.1) !important;
+  background: var(--bg-surface) !important;
   text-decoration: none !important;
 }
 
@@ -94,7 +95,7 @@ nav a:hover,
 .container,
 #content,
 .content {
-  background-color: var(--bg-deep) !important;
+  background-color: var(--bg-page) !important;
 }
 
 /* ---------- POST CARDS ---------- */
@@ -108,14 +109,15 @@ article,
   border-radius: 8px !important;
   padding: 24px !important;
   margin-bottom: 24px !important;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 4px 18px rgba(255, 122, 24, 0.04);
 }
 
 .post:hover,
 article:hover,
 .post-card:hover {
   border-color: var(--orange-dim) !important;
-  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.15) !important;
+  box-shadow: 0 8px 24px rgba(255, 122, 24, 0.10) !important;
 }
 
 /* ---------- HEADINGS ---------- */
@@ -154,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 .tag-list-item a,
 .post-tag,
 .article-tag-list-item a {
-  background-color: rgba(255, 102, 0, 0.15) !important;
+  background-color: var(--bg-surface) !important;
   color: var(--orange) !important;
   border: 1px solid var(--orange-dim) !important;
   border-radius: 4px !important;
@@ -190,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar,
 .side,
 aside {
-  background-color: #111111 !important;
+  background-color: #ffffff !important;
   border-left: 2px solid var(--border) !important;
   border-radius: 8px;
 }
@@ -204,16 +206,16 @@ aside {
 
 /* ---------- CODE & PRE ---------- */
 code {
-  background-color: #1e1e1e !important;
+  background-color: var(--bg-surface) !important;
   color: var(--text-code) !important;
-  border: 1px solid #333 !important;
+  border: 1px solid var(--border) !important;
   border-radius: 3px;
   padding: 1px 5px;
   font-size: 0.9em;
 }
 
 pre {
-  background-color: #161616 !important;
+  background-color: #fffaf5 !important;
   border: 1px solid var(--orange-dim) !important;
   border-left: 4px solid var(--orange) !important;
   border-radius: 6px !important;
@@ -223,19 +225,19 @@ pre {
 pre code {
   background: transparent !important;
   border: none !important;
-  color: #e0c080 !important;
+  color: #5d3a10 !important;
 }
 
 /* Highlight line numbers */
 .gutter {
-  background-color: #1a1a1a !important;
+  background-color: #fff3e8 !important;
   border-right: 1px solid var(--orange-dim) !important;
   color: var(--text-muted) !important;
 }
 
 /* ---------- BLOCKQUOTE ---------- */
 blockquote {
-  background-color: rgba(255, 102, 0, 0.05) !important;
+  background-color: var(--bg-surface) !important;
   border-left: 4px solid var(--orange) !important;
   color: var(--text-muted) !important;
   padding: 12px 16px;
@@ -249,14 +251,14 @@ table {
 }
 
 th {
-  background-color: rgba(255, 102, 0, 0.2) !important;
+  background-color: var(--bg-surface) !important;
   color: var(--orange) !important;
   border: 1px solid var(--border) !important;
   padding: 8px 12px;
 }
 
 td {
-  background-color: var(--bg-card) !important;
+  background-color: #ffffff !important;
   color: var(--text-main) !important;
   border: 1px solid var(--border) !important;
   padding: 8px 12px;
@@ -332,7 +334,7 @@ a.btn {
 #footer,
 footer,
 .footer {
-  background-color: #111111 !important;
+  background-color: #ffffff !important;
   border-top: 2px solid var(--orange) !important;
   color: var(--text-muted) !important;
   padding: 20px 0;
@@ -404,8 +406,8 @@ input:focus {
 
 /* ---------- SELECTION ---------- */
 ::selection {
-  background-color: rgba(255, 102, 0, 0.35);
-  color: #fff;
+  background-color: rgba(255, 122, 24, 0.25);
+  color: #111;
 }
 
 /* ---------- LATEX PDF PAGES ---------- */
@@ -502,65 +504,32 @@ input:focus {
   padding: 1rem 1.25rem;
   border-radius: 10px;
   border: 1px dashed var(--border);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-surface);
   color: var(--text-muted) !important;
 }
 
-.latex-index__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 1.25rem;
+.latex-index__list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
 }
 
-.latex-index__card {
+.latex-index__item {
+  border-bottom: 1px solid var(--border);
+}
+
+.latex-index__link {
   display: block;
-  padding: 18px 20px;
-  border-radius: 12px;
-  border: 1px solid var(--border) !important;
-  background: var(--bg-card) !important;
+  padding: 14px 6px;
+  color: var(--text-main) !important;
   text-decoration: none !important;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  font-weight: 600;
+  transition: color 0.15s ease, background 0.15s ease, padding-left 0.15s ease;
 }
 
-.latex-index__card:hover {
-  transform: translateY(-2px);
-  border-color: var(--orange-dim) !important;
-  box-shadow: 0 10px 28px rgba(255, 102, 0, 0.12);
-}
-
-.latex-index__card-title {
+.latex-index__link:hover {
   color: var(--orange) !important;
-  font-size: 1.08rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.latex-index__card-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--text-muted) !important;
-  font-size: 0.88rem;
-}
-
-.latex-index__badge {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-}
-
-.latex-index__badge--ready {
-  color: var(--orange-light) !important;
-  border-color: var(--orange-dim) !important;
-  background: rgba(255, 102, 0, 0.08);
-}
-
-.latex-index__badge--missing {
-  color: #ff9c9c !important;
-  border-color: #7a3232 !important;
-  background: rgba(122, 50, 50, 0.12);
+  background: var(--bg-surface);
+  padding-left: 14px;
 }
