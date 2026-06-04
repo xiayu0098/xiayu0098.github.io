@@ -590,7 +590,8 @@
   <entry>
     <title>Modbus RTU (Example of load cell module)</title>
     <url>/2025/09/23/modbusNotesLoadCell/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-Frame-structure-RTU"><a href="#1-Frame-structure-RTU" class="headerlink" title="1) Frame structure (RTU)"></a>1) Frame structure (RTU)</h2><table>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-Frame-structure-RTU"><a href="#1-Frame-structure-RTU" class="headerlink" title="1) Frame structure (RTU)"></a>1) Frame structure (RTU)</h2><span id="more"></span>
+<table>
 <thead>
 <tr>
 <th>Field</th>
@@ -621,8 +622,6 @@
 </tbody></table>
 <p><strong>Framing by silence:</strong> ≥ <strong>3.5</strong> character times between frames; ≤ <strong>1.5</strong> character times between bytes <em>within</em> a frame.</p>
 <hr>
-<span id="more"></span>
-
 <h2 id="2-Common-function-codes"><a href="#2-Common-function-codes" class="headerlink" title="2) Common function codes"></a>2) Common function codes</h2><table>
 <thead>
 <tr>
