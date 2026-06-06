@@ -6,9 +6,11 @@
    
   <meta name="keywords" content="nnn" />
    
+  <meta name="description" content="10+ years of experience delivering complex experimental systems end-to-end." />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Latex Tips |  X. Blog
+    Latex Tips |  Yu Xia
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -28,7 +30,7 @@
 
   
 
-<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Yu Xia" type="application/atom+xml">
 </head>
 
 </html>
@@ -38,7 +40,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="&#39;LaTex-Tips" class="article article-type-&#39;LaTex" itemscope
+  <article id="post-Tips" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -155,7 +157,6 @@
 <h3 id="using-package-cleveref"><a href="#using-package-cleveref" class="headerlink" title="using package cleveref"></a>using package <code>cleveref</code></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>[capitalize]&#123;cleveref&#125; </span><br><span class="line"><span class="keyword">\crefname</span>&#123;chapter&#125;&#123;Chapter&#125;&#123;Chapters&#125;</span><br><span class="line"><span class="keyword">\crefname</span>&#123;section&#125;&#123;Section&#125;&#123;Sections&#125;</span><br><span class="line"><span class="keyword">\AtBeginEnvironment</span>&#123;appendices&#125;&#123;<span class="keyword">\crefalias</span>&#123;chapter&#125;&#123;appendix&#125;&#125;</span><br><span class="line"><span class="keyword">\crefname</span>&#123;figure&#125;&#123;Figure&#125;&#123;Figures&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="add-footnotemark-in-table-environment"><a href="#add-footnotemark-in-table-environment" class="headerlink" title="add footnotemark in table environment"></a>add footnotemark in table environment</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;table&#125;[!t]</span><br><span class="line">  <span class="keyword">\centering</span></span><br><span class="line">   <span class="keyword">\begin</span>&#123;threeparttable&#125; <span class="comment">% Start threeparttable environment</span></span><br><span class="line">    <span class="keyword">\caption</span>&#123;<span class="comment">%</span></span><br><span class="line">    Dual-wire sensors&#x27; dimension. </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;tab:dual<span class="built_in">_</span>wireDimension&#125;</span><br><span class="line">    <span class="keyword">\begin</span>&#123;tabular&#125;&#123;cccccccc&#125;</span><br><span class="line">    <span class="keyword">\hline</span></span><br><span class="line">    <span class="built_in">$</span><span class="keyword">\alpha</span><span class="built_in">_</span>&#123;&#123;p&#125;&#125;<span class="built_in">$</span> <span class="built_in">&amp;</span>  <span class="built_in">$</span>d<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;hw&#125;<span class="built_in">$</span><span class="keyword">\tnote</span>&#123;*&#125;  <span class="built_in">&amp;</span> <span class="built_in">$</span>d<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;cw&#125;<span class="built_in">$</span><span class="keyword">\tnote</span>&#123;*&#125;   <span class="built_in">&amp;</span>   <span class="built_in">$</span>l<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;hw&#125;<span class="built_in">$</span> <span class="built_in">&amp;</span> <span class="built_in">$</span>l<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;cw&#125;<span class="built_in">$</span> <span class="built_in">&amp;</span>  <span class="built_in">$</span>L<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;hw&#125;<span class="built_in">$</span> <span class="built_in">&amp;</span> <span class="built_in">$</span>L<span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;cw&#125;<span class="built_in">$</span> <span class="built_in">&amp;</span> <span class="built_in">$</span><span class="keyword">\Delta</span> x<span class="built_in">$</span> <span class="keyword">\\</span></span><br><span class="line">     (deg)         <span class="built_in">&amp;</span>  (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;<span class="keyword">\upmu</span> m&#125;<span class="built_in">$</span>)  <span class="built_in">&amp;</span> (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;<span class="keyword">\upmu</span> m&#125;<span class="built_in">$</span>) <span class="built_in">&amp;</span>  (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;mm&#125;<span class="built_in">$</span>) <span class="built_in">&amp;</span> (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;mm&#125;<span class="built_in">$</span>) <span class="built_in">&amp;</span> (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;mm&#125;<span class="built_in">$</span>) <span class="built_in">&amp;</span> (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;mm&#125;<span class="built_in">$</span>) <span class="built_in">&amp;</span> (<span class="built_in">$</span><span class="keyword">\mathrm</span>&#123;mm&#125;<span class="built_in">$</span>) <span class="keyword">\\</span></span><br><span class="line">    <span class="built_in">$</span>10<span class="built_in">$</span>           <span class="built_in">&amp;</span>        5.0             <span class="built_in">&amp;</span> 1.5                  <span class="built_in">&amp;</span>     1.36         <span class="built_in">&amp;</span>  1.37           <span class="built_in">&amp;</span>       2.0       <span class="built_in">&amp;</span> 3.3            <span class="built_in">&amp;</span> 1.6    <span class="keyword">\\</span></span><br><span class="line">    <span class="built_in">$</span>25<span class="built_in">$</span>           <span class="built_in">&amp;</span>        5.0             <span class="built_in">&amp;</span> 1.5                  <span class="built_in">&amp;</span>     1.32         <span class="built_in">&amp;</span>  1.36           <span class="built_in">&amp;</span>       1.9       <span class="built_in">&amp;</span> 3.0            <span class="built_in">&amp;</span> 1.9    <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\hline</span></span><br><span class="line">    <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line">     <span class="keyword">\begin</span>&#123;tablenotes&#125;[flushleft] <span class="comment">% Start tablenotes environment with flushleft option</span></span><br><span class="line">            <span class="keyword">\item</span>[<span class="keyword">\textsuperscript</span>&#123;*&#125;] The subscript <span class="built_in">$</span><span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;hw&#125;<span class="built_in">$</span> and <span class="built_in">$</span><span class="built_in">_</span><span class="keyword">\mathrm</span>&#123;cw&#125;<span class="built_in">$</span> denotes the quantity of hot-wire and cold-wire, respectively.</span><br><span class="line">        <span class="keyword">\end</span>&#123;tablenotes&#125; <span class="comment">% End tablenotes environment</span></span><br><span class="line">    <span class="keyword">\end</span>&#123;threeparttable&#125; <span class="comment">% End threeparttable environment    </span></span><br><span class="line"><span class="keyword">\end</span>&#123;table&#125;</span><br></pre></td></tr></table></figure>
-
 
 
 
@@ -307,13 +308,17 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Yu Xia"></a>
   </div>
   
   <ul class="nav nav-main">
     
     <li class="nav-item">
       <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
     </li>
     
     <li class="nav-item">

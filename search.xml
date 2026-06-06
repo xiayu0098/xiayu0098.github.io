@@ -1396,7 +1396,6 @@
 
 
 
-
 ]]></content>
   </entry>
   <entry>
@@ -1409,7 +1408,6 @@
 <p><a href="https://github.com/stefslon/exportToPPTX"><strong>exportToPPTX</strong></a>  allows user to create PowrPoint files without using COM-objects automation.</p>
 <p>The example of  code is shown below.</p>
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% Open a slide named &#x27;example.PPTX&#x27; </span></span><br><span class="line">exportToPPTX(<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;example&#x27;</span>);</span><br><span class="line"><span class="comment">%% Add images in a new slide</span></span><br><span class="line">slideId     = exportToPPTX(<span class="string">&#x27;addslide&#x27;</span>);</span><br><span class="line"><span class="comment">% Upper left corner picture with a blue frame inserted via figure handle</span></span><br><span class="line">load earth; <span class="built_in">figure</span>(<span class="string">&#x27;Renderer&#x27;</span>,<span class="string">&#x27;zbuffer&#x27;</span>); image(X); colormap(map); axis off;</span><br><span class="line">exportToPPTX(<span class="string">&#x27;addpicture&#x27;</span>,gcf,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">1</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span>],<span class="string">&#x27;EdgeColor&#x27;</span>,[<span class="number">0</span> <span class="number">0</span> <span class="number">0.8</span>],<span class="string">&#x27;LineWidth&#x27;</span>,<span class="number">3</span>); <span class="comment">%</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 ]]></content>
   </entry>
   <entry>
