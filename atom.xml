@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>X. Blog</title>
   <icon>http://yoursite.com/icon.png</icon>
-  <subtitle>10+ years delivering complex experimental systems end-to-end</subtitle>
+  
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
