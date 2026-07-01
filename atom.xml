@@ -115,6 +115,23 @@
   </entry>
   
   <entry>
+    <title>为什么中国学术界难出世界级原创突破：一份高赞回答之外的补充</title>
+    <link href="http://yoursite.com/2026/01/25/blogThinking01/"/>
+    <id>http://yoursite.com/2026/01/25/blogThinking01/</id>
+    <published>2026-01-24T13:00:00.000Z</published>
+    <updated>2026-01-24T13:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;：这篇文章的起点，是知乎问题《&lt;a href=&quot;https://www.zhihu.com/question/1975502561307010225&quot;&gt;为什么中国的学术体系难以诞生世界级的原创性突破？&lt;/a&gt;》下作者「跑酱er」的一个高赞回答（2000+ 赞）。那篇回答用”局部最优解””科研工分制””缺乏容错率”这几个概念，把”评价体系如何异化科研行为”这件事讲得很清楚，我很认同它的分析框架。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Modbus RTU CRC</title>
     <link href="http://yoursite.com/2025/12/08/CRCCheck/"/>
     <id>http://yoursite.com/2025/12/08/CRCCheck/</id>
@@ -473,28 +490,6 @@
     
     
     <category term="Arduino Code, MatLab Code" scheme="http://yoursite.com/tags/Arduino-Code-MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Guideline &amp; Technical Document</title>
-    <link href="http://yoursite.com/2024/04/20/pdfAchive/"/>
-    <id>http://yoursite.com/2024/04/20/pdfAchive/</id>
-    <published>2024-04-19T14:00:00.000Z</published>
-    <updated>2024-04-19T14:00:00.000Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;&lt;a href=&quot;StepperMotorEncoderControllerQuickStartGuide.pdf&quot;&gt;Stepper Motor and Encoder Wi</summary>
-      
-    
-    
-    
-    <category term="Research" scheme="http://yoursite.com/categories/Research/"/>
-    
-    
-    <category term="Device guideline" scheme="http://yoursite.com/tags/Device-guideline/"/>
     
   </entry>
   
