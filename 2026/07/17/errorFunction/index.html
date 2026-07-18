@@ -8,7 +8,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    PowerPoint |  X. Blog
+    Error Function |  X. Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Powerpoint" class="article article-type-post" itemscope
+  <article id="post-errorFunction" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  PowerPoint
+  Error Function
 </h1>
   
 
@@ -55,8 +55,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/06/01/Powerpoint/" class="article-date">
-  <time datetime="2020-05-31T22:49:36.000Z" itemprop="datePublished">2020-06-01</time>
+      <a href="/2026/07/17/errorFunction/" class="article-date">
+  <time datetime="2026-07-17T00:00:00.000Z" itemprop="datePublished">2026-07-17</time>
 </a>
       
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">160字</span>
+            <span class="post-count">1.4k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">8分钟</span>
         </span>
     </span>
 </div>
@@ -86,6 +86,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -99,13 +101,128 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><p>Before presentation, slides have to be prepared to deliver your ideas more precisely. One of things in the process of making slides is to add pictures in your case.</p>
-<p> It is annoying to do this work from your storage if have a large number of pictures added. Here, we introduce a good way to establish connection between PowerPoint and Matlab  to help us import images quickly.</p>
+      <script src="/assets/js/APlayer.min.js"> </script><p>If you have ever tried to integrate the famous bell curve $e^{-x^2}$ by hand, you have already met the reason the error function exists: <strong>you can’t do it with elementary functions.</strong> There is no combination of polynomials, exponentials, logarithms, or trig functions whose derivative is $e^{-x^2}$. Yet this integral shows up everywhere -— probability, statistics, heat conduction, diffusion, signal processing. So mathematicians did the sensible thing: they gave the integral a name and studied it as a function in its own right. That function is the <strong>error function</strong>, written $\operatorname{erf}(x)$.</p>
 <span id="more"></span> 
+<hr>
+<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>The error function is defined as</p>
+<p>$$<br>\operatorname{erf}(x) ;&#x3D;; \frac{2}{\sqrt{\pi}} \int_0^{x} e^{-t^2}, dt<br>$$</p>
+<p>Intuitively, $\operatorname{erf}(x)$ measures the <strong>area under the Gaussian curve</strong> $e^{-t^2}$ from $0$ out to $x$, rescaled so that the total area from $0$ to $\infty$ equals exactly $1$. The factor $\frac{2}{\sqrt{\pi}}$ is the normalization constant: since $\int_{-\infty}^{\infty} e^{-t^2},dt &#x3D; \sqrt{\pi}$ (the classic Gaussian integral), this scaling forces $\operatorname{erf}(x) \to 1$ as $x \to \infty$.</p>
+<p>Two close relatives are worth knowing:</p>
+<p><strong>The complementary error function</strong> —- the area in the <em>tail</em>:</p>
+<p>$$<br>\operatorname{erfc}(x) ;&#x3D;; 1 - \operatorname{erf}(x) ;&#x3D;; \frac{2}{\sqrt{\pi}} \int_x^{\infty} e^{-t^2}, dt<br>$$</p>
+<p><strong>The imaginary error function</strong> (appears in some physics problems):</p>
+<p>$$<br>\operatorname{erfi}(x) &#x3D; -i,\operatorname{erf}(ix) &#x3D; \frac{2}{\sqrt{\pi}}\int_0^x e^{t^2},dt<br>$$</p>
+<blockquote>
+<p><strong>Why is it called the “error” function?</strong> The name comes from the 19th-century theory of measurement errors. If repeated measurements of a quantity have random errors that follow a normal (Gaussian) distribution, then $\operatorname{erf}$ gives the probability that a measurement error falls within a given range. The name stuck even though the function now appears far beyond error analysis.</p>
+</blockquote>
+<hr>
+<h2 id="2-Key-Properties"><a href="#2-Key-Properties" class="headerlink" title="2. Key Properties"></a>2. Key Properties</h2><p><strong>Odd symmetry.</strong> The integrand $e^{-t^2}$ is even, so integrating from $0$ makes the result odd:</p>
+<p>$$<br>\operatorname{erf}(-x) &#x3D; -\operatorname{erf}(x)<br>$$</p>
+<p><strong>Limits and special values.</strong></p>
+<p>$$<br>\operatorname{erf}(0) &#x3D; 0, \qquad \lim_{x\to\infty}\operatorname{erf}(x) &#x3D; 1, \qquad \lim_{x\to-\infty}\operatorname{erf}(x) &#x3D; -1<br>$$</p>
+<p><strong>Derivative.</strong> By the fundamental theorem of calculus,</p>
+<p>$$<br>\frac{d}{dx}\operatorname{erf}(x) &#x3D; \frac{2}{\sqrt{\pi}}, e^{-x^2}<br>$$</p>
+<p>The derivative is always positive, so $\operatorname{erf}$ is <strong>strictly increasing</strong> everywhere — it’s a smooth S-shaped (sigmoid) curve.</p>
+<p><strong>Maclaurin series.</strong> Expanding $e^{-t^2}$ and integrating term by term:</p>
+<p>$$<br>\operatorname{erf}(x) &#x3D; \frac{2}{\sqrt{\pi}} \sum_{n&#x3D;0}^{\infty} \frac{(-1)^n, x^{2n+1}}{n!,(2n+1)}<br>&#x3D; \frac{2}{\sqrt{\pi}}\left( x - \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} + \cdots \right)<br>$$</p>
+<p>This series converges for all $x$ and is how small arguments are computed in practice.</p>
+<p><strong>Asymptotic behaviour for large $x$.</strong> The tail shrinks extremely fast:</p>
+<p>$$<br>\operatorname{erfc}(x) ;\sim; \frac{e^{-x^2}}{x\sqrt{\pi}} \quad \text{as } x \to \infty<br>$$</p>
+<p>This “faster-than-exponential” decay is why extreme events under a Gaussian model are so improbable.</p>
+<p><strong>Analyticity.</strong> $\operatorname{erf}$ extends to an entire function on the whole complex plane -— no singularities anywhere.</p>
+<p>Some reference values:</p>
+<table>
+<thead>
+<tr>
+<th>$x$</th>
+<th>$\operatorname{erf}(x)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.0</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.5205</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.8427</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>0.9661</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.9953</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>0.99998</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-The-Plot"><a href="#3-The-Plot" class="headerlink" title="3. The Plot"></a>3. The Plot</h2><!-- ![Error function, complementary error function, and the normal CDF](erf_plot.png) -->
+<img src="/2026/07/17/errorFunction/erf_plot.png" class="" width="800">
 
-<p><a target="_blank" rel="noopener" href="https://github.com/stefslon/exportToPPTX"><strong>exportToPPTX</strong></a>  allows user to create PowrPoint files without using COM-objects automation.</p>
-<p>The example of  code is shown below.</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% Open a slide named &#x27;example.PPTX&#x27; </span></span><br><span class="line">exportToPPTX(<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;example&#x27;</span>);</span><br><span class="line"><span class="comment">%% Add images in a new slide</span></span><br><span class="line">slideId     = exportToPPTX(<span class="string">&#x27;addslide&#x27;</span>);</span><br><span class="line"><span class="comment">% Upper left corner picture with a blue frame inserted via figure handle</span></span><br><span class="line">load earth; <span class="built_in">figure</span>(<span class="string">&#x27;Renderer&#x27;</span>,<span class="string">&#x27;zbuffer&#x27;</span>); image(X); colormap(map); axis off;</span><br><span class="line">exportToPPTX(<span class="string">&#x27;addpicture&#x27;</span>,gcf,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">1</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span>],<span class="string">&#x27;EdgeColor&#x27;</span>,[<span class="number">0</span> <span class="number">0</span> <span class="number">0.8</span>],<span class="string">&#x27;LineWidth&#x27;</span>,<span class="number">3</span>); <span class="comment">%</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Left:</strong> $\operatorname{erf}(x)$ is the blue sigmoid -— antisymmetric about the origin, passing through $(0,0)$, and saturating at $\pm 1$. Its steepest slope is at $x&#x3D;0$, where the derivative equals $2&#x2F;\sqrt{\pi} \approx 1.128$. The red dashed curve is $\operatorname{erfc}(x)$, which simply mirrors the transition, going from $2$ down to $0$.</p>
+<p><strong>Right:</strong> the standard normal CDF $\Phi(x)$ plotted against the erf-based formula $\tfrac12[1+\operatorname{erf}(x&#x2F;\sqrt2)]$ -— the two curves lie exactly on top of each other, which brings us to the main connection.</p>
+<hr>
+<h2 id="4-What-Is-the-Point-of-the-Error-Function"><a href="#4-What-Is-the-Point-of-the-Error-Function" class="headerlink" title="4. What Is the Point of the Error Function?"></a>4. What Is the Point of the Error Function?</h2><p>The honest answer: <strong>erf is the “named answer” to an integral that has no elementary answer.</strong> Its value is threefold.</p>
+<p><strong>It makes Gaussian probabilities computable.</strong> Any question of the form “what is the probability that a normally distributed quantity lands in the interval $[a,b]$?” reduces to evaluating erf. Every statistical table, every calculator, every <code>norm.cdf</code> call ultimately rests on efficient numerical evaluation of this one function.</p>
+<p><strong>It solves the diffusion&#x2F;heat equation.</strong> If you suddenly hold the end of a semi-infinite rod at a fixed temperature, the temperature profile at time $t$ is</p>
+<p>$$<br>T(x,t) &#x3D; T_0 \operatorname{erfc}!\left(\frac{x}{2\sqrt{\alpha t}}\right)<br>$$</p>
+<p>The same erfc profile describes dopant diffusion into silicon wafers in chip fabrication, and moisture or solute diffusion in materials science.</p>
+<p><strong>It quantifies error rates in engineering.</strong> In digital communications, the bit-error rate of a signal corrupted by Gaussian noise is expressed with erfc (or the closely related Q-function). Tail probabilities <em>are</em> erfc values.</p>
+<p>In short: wherever a Gaussian appears — and Gaussians appear everywhere thanks to the Central Limit Theorem — erf is the tool that turns the bell curve into actual numbers.</p>
+<hr>
+<h2 id="5-Relationship-with-the-Normal-Distribution-and-Its-Cumulative-Distribution-Function"><a href="#5-Relationship-with-the-Normal-Distribution-and-Its-Cumulative-Distribution-Function" class="headerlink" title="5. Relationship with the Normal Distribution and Its Cumulative Distribution Function"></a>5. Relationship with the Normal Distribution and Its Cumulative Distribution Function</h2><p>This is the connection most people actually need. The standard normal distribution has density</p>
+<p>$$<br>\varphi(x) &#x3D; \frac{1}{\sqrt{2\pi}}, e^{-x^2&#x2F;2}<br>$$</p>
+<p>and its <strong>cumulative distribution function (CDF)</strong> is</p>
+<p>$$<br>\Phi(x) &#x3D; \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{-t^2&#x2F;2}, dt<br>$$</p>
+<p>Notice the integrand is $e^{-t^2&#x2F;2}$, not $e^{-t^2}$ — the two differ only by the substitution $t &#x3D; u\sqrt{2}$. Carrying that substitution through gives the fundamental identity:</p>
+<p>$$<br>\boxed{;\Phi(x) &#x3D; \frac{1}{2}\left[,1 + \operatorname{erf}!\left(\frac{x}{\sqrt{2}}\right)\right];}<br>$$</p>
+<p>and conversely</p>
+<p>$$<br>\operatorname{erf}(x) &#x3D; 2,\Phi!\left(x\sqrt{2}\right) - 1.<br>$$</p>
+<p>So <strong>erf and the normal CDF are the same function up to shifting, scaling, and stretching</strong>. The $\tfrac12(1 + \cdot)$ maps erf’s range $(-1,1)$ onto the CDF’s range $(0,1)$, and the $\sqrt2$ accounts for the variance convention.</p>
+<p>For a general normal random variable $X \sim \mathcal{N}(\mu, \sigma^2)$:</p>
+<p>$$<br>P(X \le x) &#x3D; \frac{1}{2}\left[1 + \operatorname{erf}!\left(\frac{x-\mu}{\sigma\sqrt{2}}\right)\right]<br>$$</p>
+<p>and the probability of landing within an interval is a difference of two erf values:</p>
+<p>$$<br>P(a \le X \le b) &#x3D; \frac{1}{2}\left[\operatorname{erf}!\left(\frac{b-\mu}{\sigma\sqrt{2}}\right) - \operatorname{erf}!\left(\frac{a-\mu}{\sigma\sqrt{2}}\right)\right]<br>$$</p>
+<p><strong>A satisfying sanity check — the 68–-95–-99.7 rule.</strong> The probability of falling within $k$ standard deviations of the mean is $\operatorname{erf}(k&#x2F;\sqrt{2})$:</p>
+<table>
+<thead>
+<tr>
+<th>$k$</th>
+<th>$\operatorname{erf}(k&#x2F;\sqrt2)$</th>
+<th>Familiar rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.6827</td>
+<td>~68%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.9545</td>
+<td>~95%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.9973</td>
+<td>~99.7%</td>
+</tr>
+</tbody></table>
+<p>The empirical rule every statistics student memorizes is nothing more than three values of the error function.</p>
+<p>Two more relatives you’ll meet in the wild: the engineer’s <strong>Q-function</strong> $Q(x) &#x3D; 1 - \Phi(x) &#x3D; \tfrac12\operatorname{erfc}(x&#x2F;\sqrt2)$ (upper-tail probability), and the <strong>probit function</strong> $\Phi^{-1}(p)$, the inverse CDF, expressible via the inverse error function as $\Phi^{-1}(p) &#x3D; \sqrt{2},\operatorname{erf}^{-1}(2p-1)$.</p>
+<hr>
+<h2 id="6-Takeaways"><a href="#6-Takeaways" class="headerlink" title="6. Takeaways"></a>6. Takeaways</h2><p>The error function is a normalized antiderivative of the Gaussian $e^{-x^2}$ —- invented because that antiderivative cannot be written in elementary terms. It is odd, strictly increasing, sigmoid-shaped, saturating at $\pm 1$, with derivative $\frac{2}{\sqrt\pi}e^{-x^2}$ and extraordinarily fast tail decay. Its whole practical purpose is to turn areas under bell curves into numbers, which is why the cumulative distribution function of every normal distribution is just a rescaled erf: $\Phi(x) &#x3D; \tfrac12[1+\operatorname{erf}(x&#x2F;\sqrt2)]$. Once you see that identity, statistical tables, diffusion profiles, and bit-error rates all reveal themselves as the same mathematical object wearing different clothes.</p>
+<hr>
 
       
       <!-- 打赏 -->
@@ -117,9 +234,11 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/Powerpoint/" data-id="cmrpngedy000p6y3t1bc50663"
+      <a data-url="http://yoursite.com/2026/07/17/errorFunction/" data-id="cmrpngee5002g6y3tbhxwf1vs"
         class="article-share-link">share</a>
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
+
     </footer>
 
   </div>
@@ -128,19 +247,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2023/08/08/Tips/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            Latex Tips
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/14/Git-notes/" class="article-nav-link">
+      <a href="/2026/05/04/EMC_note/" class="article-nav-link">
         <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Git notes</div>
+        <div class="article-nav-title">Hardware Design &amp; EMC Reference Notes</div>
       </a>
     
   </nav>

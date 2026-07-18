@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Error Function</title>
+    <url>/2026/07/17/errorFunction/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>If you have ever tried to integrate the famous bell curve $e^{-x^2}$ by hand, you have already met the reason the error function exists: <strong>you can’t do it with elementary functions.</strong> There is no combination of polynomials, exponentials, logarithms, or trig functions whose derivative is $e^{-x^2}$. Yet this integral shows up everywhere -— probability, statistics, heat conduction, diffusion, signal processing. So mathematicians did the sensible thing: they gave the integral a name and studied it as a function in its own right. That function is the <strong>error function</strong>, written $\operatorname{erf}(x)$.</p>
+<span id="more"></span> 
+<hr>
+<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>The error function is defined as</p>
+<p>$$<br>\operatorname{erf}(x) ;&#x3D;; \frac{2}{\sqrt{\pi}} \int_0^{x} e^{-t^2}, dt<br>$$</p>
+<p>Intuitively, $\operatorname{erf}(x)$ measures the <strong>area under the Gaussian curve</strong> $e^{-t^2}$ from $0$ out to $x$, rescaled so that the total area from $0$ to $\infty$ equals exactly $1$. The factor $\frac{2}{\sqrt{\pi}}$ is the normalization constant: since $\int_{-\infty}^{\infty} e^{-t^2},dt &#x3D; \sqrt{\pi}$ (the classic Gaussian integral), this scaling forces $\operatorname{erf}(x) \to 1$ as $x \to \infty$.</p>
+<p>Two close relatives are worth knowing:</p>
+<p><strong>The complementary error function</strong> —- the area in the <em>tail</em>:</p>
+<p>$$<br>\operatorname{erfc}(x) ;&#x3D;; 1 - \operatorname{erf}(x) ;&#x3D;; \frac{2}{\sqrt{\pi}} \int_x^{\infty} e^{-t^2}, dt<br>$$</p>
+<p><strong>The imaginary error function</strong> (appears in some physics problems):</p>
+<p>$$<br>\operatorname{erfi}(x) &#x3D; -i,\operatorname{erf}(ix) &#x3D; \frac{2}{\sqrt{\pi}}\int_0^x e^{t^2},dt<br>$$</p>
+<blockquote>
+<p><strong>Why is it called the “error” function?</strong> The name comes from the 19th-century theory of measurement errors. If repeated measurements of a quantity have random errors that follow a normal (Gaussian) distribution, then $\operatorname{erf}$ gives the probability that a measurement error falls within a given range. The name stuck even though the function now appears far beyond error analysis.</p>
+</blockquote>
+<hr>
+<h2 id="2-Key-Properties"><a href="#2-Key-Properties" class="headerlink" title="2. Key Properties"></a>2. Key Properties</h2><p><strong>Odd symmetry.</strong> The integrand $e^{-t^2}$ is even, so integrating from $0$ makes the result odd:</p>
+<p>$$<br>\operatorname{erf}(-x) &#x3D; -\operatorname{erf}(x)<br>$$</p>
+<p><strong>Limits and special values.</strong></p>
+<p>$$<br>\operatorname{erf}(0) &#x3D; 0, \qquad \lim_{x\to\infty}\operatorname{erf}(x) &#x3D; 1, \qquad \lim_{x\to-\infty}\operatorname{erf}(x) &#x3D; -1<br>$$</p>
+<p><strong>Derivative.</strong> By the fundamental theorem of calculus,</p>
+<p>$$<br>\frac{d}{dx}\operatorname{erf}(x) &#x3D; \frac{2}{\sqrt{\pi}}, e^{-x^2}<br>$$</p>
+<p>The derivative is always positive, so $\operatorname{erf}$ is <strong>strictly increasing</strong> everywhere — it’s a smooth S-shaped (sigmoid) curve.</p>
+<p><strong>Maclaurin series.</strong> Expanding $e^{-t^2}$ and integrating term by term:</p>
+<p>$$<br>\operatorname{erf}(x) &#x3D; \frac{2}{\sqrt{\pi}} \sum_{n&#x3D;0}^{\infty} \frac{(-1)^n, x^{2n+1}}{n!,(2n+1)}<br>&#x3D; \frac{2}{\sqrt{\pi}}\left( x - \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} + \cdots \right)<br>$$</p>
+<p>This series converges for all $x$ and is how small arguments are computed in practice.</p>
+<p><strong>Asymptotic behaviour for large $x$.</strong> The tail shrinks extremely fast:</p>
+<p>$$<br>\operatorname{erfc}(x) ;\sim; \frac{e^{-x^2}}{x\sqrt{\pi}} \quad \text{as } x \to \infty<br>$$</p>
+<p>This “faster-than-exponential” decay is why extreme events under a Gaussian model are so improbable.</p>
+<p><strong>Analyticity.</strong> $\operatorname{erf}$ extends to an entire function on the whole complex plane -— no singularities anywhere.</p>
+<p>Some reference values:</p>
+<table>
+<thead>
+<tr>
+<th>$x$</th>
+<th>$\operatorname{erf}(x)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.0</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.5205</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.8427</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>0.9661</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>0.9953</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>0.99998</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-The-Plot"><a href="#3-The-Plot" class="headerlink" title="3. The Plot"></a>3. The Plot</h2><!-- ![Error function, complementary error function, and the normal CDF](erf_plot.png) -->
+<img src="/2026/07/17/errorFunction/erf_plot.png" class="" width="800">
+
+
+
+<p><strong>Left:</strong> $\operatorname{erf}(x)$ is the blue sigmoid -— antisymmetric about the origin, passing through $(0,0)$, and saturating at $\pm 1$. Its steepest slope is at $x&#x3D;0$, where the derivative equals $2&#x2F;\sqrt{\pi} \approx 1.128$. The red dashed curve is $\operatorname{erfc}(x)$, which simply mirrors the transition, going from $2$ down to $0$.</p>
+<p><strong>Right:</strong> the standard normal CDF $\Phi(x)$ plotted against the erf-based formula $\tfrac12[1+\operatorname{erf}(x&#x2F;\sqrt2)]$ -— the two curves lie exactly on top of each other, which brings us to the main connection.</p>
+<hr>
+<h2 id="4-What-Is-the-Point-of-the-Error-Function"><a href="#4-What-Is-the-Point-of-the-Error-Function" class="headerlink" title="4. What Is the Point of the Error Function?"></a>4. What Is the Point of the Error Function?</h2><p>The honest answer: <strong>erf is the “named answer” to an integral that has no elementary answer.</strong> Its value is threefold.</p>
+<p><strong>It makes Gaussian probabilities computable.</strong> Any question of the form “what is the probability that a normally distributed quantity lands in the interval $[a,b]$?” reduces to evaluating erf. Every statistical table, every calculator, every <code>norm.cdf</code> call ultimately rests on efficient numerical evaluation of this one function.</p>
+<p><strong>It solves the diffusion&#x2F;heat equation.</strong> If you suddenly hold the end of a semi-infinite rod at a fixed temperature, the temperature profile at time $t$ is</p>
+<p>$$<br>T(x,t) &#x3D; T_0 \operatorname{erfc}!\left(\frac{x}{2\sqrt{\alpha t}}\right)<br>$$</p>
+<p>The same erfc profile describes dopant diffusion into silicon wafers in chip fabrication, and moisture or solute diffusion in materials science.</p>
+<p><strong>It quantifies error rates in engineering.</strong> In digital communications, the bit-error rate of a signal corrupted by Gaussian noise is expressed with erfc (or the closely related Q-function). Tail probabilities <em>are</em> erfc values.</p>
+<p>In short: wherever a Gaussian appears — and Gaussians appear everywhere thanks to the Central Limit Theorem — erf is the tool that turns the bell curve into actual numbers.</p>
+<hr>
+<h2 id="5-Relationship-with-the-Normal-Distribution-and-Its-Cumulative-Distribution-Function"><a href="#5-Relationship-with-the-Normal-Distribution-and-Its-Cumulative-Distribution-Function" class="headerlink" title="5. Relationship with the Normal Distribution and Its Cumulative Distribution Function"></a>5. Relationship with the Normal Distribution and Its Cumulative Distribution Function</h2><p>This is the connection most people actually need. The standard normal distribution has density</p>
+<p>$$<br>\varphi(x) &#x3D; \frac{1}{\sqrt{2\pi}}, e^{-x^2&#x2F;2}<br>$$</p>
+<p>and its <strong>cumulative distribution function (CDF)</strong> is</p>
+<p>$$<br>\Phi(x) &#x3D; \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{-t^2&#x2F;2}, dt<br>$$</p>
+<p>Notice the integrand is $e^{-t^2&#x2F;2}$, not $e^{-t^2}$ — the two differ only by the substitution $t &#x3D; u\sqrt{2}$. Carrying that substitution through gives the fundamental identity:</p>
+<p>$$<br>\boxed{;\Phi(x) &#x3D; \frac{1}{2}\left[,1 + \operatorname{erf}!\left(\frac{x}{\sqrt{2}}\right)\right];}<br>$$</p>
+<p>and conversely</p>
+<p>$$<br>\operatorname{erf}(x) &#x3D; 2,\Phi!\left(x\sqrt{2}\right) - 1.<br>$$</p>
+<p>So <strong>erf and the normal CDF are the same function up to shifting, scaling, and stretching</strong>. The $\tfrac12(1 + \cdot)$ maps erf’s range $(-1,1)$ onto the CDF’s range $(0,1)$, and the $\sqrt2$ accounts for the variance convention.</p>
+<p>For a general normal random variable $X \sim \mathcal{N}(\mu, \sigma^2)$:</p>
+<p>$$<br>P(X \le x) &#x3D; \frac{1}{2}\left[1 + \operatorname{erf}!\left(\frac{x-\mu}{\sigma\sqrt{2}}\right)\right]<br>$$</p>
+<p>and the probability of landing within an interval is a difference of two erf values:</p>
+<p>$$<br>P(a \le X \le b) &#x3D; \frac{1}{2}\left[\operatorname{erf}!\left(\frac{b-\mu}{\sigma\sqrt{2}}\right) - \operatorname{erf}!\left(\frac{a-\mu}{\sigma\sqrt{2}}\right)\right]<br>$$</p>
+<p><strong>A satisfying sanity check — the 68–-95–-99.7 rule.</strong> The probability of falling within $k$ standard deviations of the mean is $\operatorname{erf}(k&#x2F;\sqrt{2})$:</p>
+<table>
+<thead>
+<tr>
+<th>$k$</th>
+<th>$\operatorname{erf}(k&#x2F;\sqrt2)$</th>
+<th>Familiar rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.6827</td>
+<td>~68%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.9545</td>
+<td>~95%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.9973</td>
+<td>~99.7%</td>
+</tr>
+</tbody></table>
+<p>The empirical rule every statistics student memorizes is nothing more than three values of the error function.</p>
+<p>Two more relatives you’ll meet in the wild: the engineer’s <strong>Q-function</strong> $Q(x) &#x3D; 1 - \Phi(x) &#x3D; \tfrac12\operatorname{erfc}(x&#x2F;\sqrt2)$ (upper-tail probability), and the <strong>probit function</strong> $\Phi^{-1}(p)$, the inverse CDF, expressible via the inverse error function as $\Phi^{-1}(p) &#x3D; \sqrt{2},\operatorname{erf}^{-1}(2p-1)$.</p>
+<hr>
+<h2 id="6-Takeaways"><a href="#6-Takeaways" class="headerlink" title="6. Takeaways"></a>6. Takeaways</h2><p>The error function is a normalized antiderivative of the Gaussian $e^{-x^2}$ —- invented because that antiderivative cannot be written in elementary terms. It is odd, strictly increasing, sigmoid-shaped, saturating at $\pm 1$, with derivative $\frac{2}{\sqrt\pi}e^{-x^2}$ and extraordinarily fast tail decay. Its whole practical purpose is to turn areas under bell curves into numbers, which is why the cumulative distribution function of every normal distribution is just a rescaled erf: $\Phi(x) &#x3D; \tfrac12[1+\operatorname{erf}(x&#x2F;\sqrt2)]$. Once you see that identity, statistical tables, diffusion profiles, and bit-error rates all reveal themselves as the same mathematical object wearing different clothes.</p>
+<hr>
+]]></content>
+      <tags>
+        <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hardware Design &amp; EMC Reference Notes</title>
     <url>/2026/05/04/EMC_note/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-The-Non-Ideal-Component-Model"><a href="#1-The-Non-Ideal-Component-Model" class="headerlink" title="1. The Non-Ideal Component Model"></a>1. The Non-Ideal Component Model</h2><p>Components in the real world are never perfect; they always possess parasitic properties that dominate at high frequencies.</p>
@@ -1106,7 +1236,9 @@
   <entry>
     <title>Stepper Motor and Lead Screw Slides</title>
     <url>/2024/10/08/summaryMicroStepMotor/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Table-for-stepper-motor-and-lead-screw"><a href="#Table-for-stepper-motor-and-lead-screw" class="headerlink" title="Table for stepper motor and lead screw"></a>Table for stepper motor and lead screw</h1><table>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="Table-for-stepper-motor-and-lead-screw"><a href="#Table-for-stepper-motor-and-lead-screw" class="headerlink" title="Table for stepper motor and lead screw"></a>Table for stepper motor and lead screw</h3><span id="more"></span> 
+
+<table>
 <thead>
 <tr>
 <th>Item</th>
@@ -1152,8 +1284,6 @@
 <td>12800 pulses for 64x microstepping.</td>
 </tr>
 </tbody></table>
-<span id="more"></span> 
-
 <h3 id="Speed-and-Microstepping-Table"><a href="#Speed-and-Microstepping-Table" class="headerlink" title="Speed and Microstepping Table:"></a>Speed and Microstepping Table:</h3><table>
 <thead>
 <tr>
@@ -1407,7 +1537,7 @@
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="Using-braces-to-label-parts-of-an-equation"><a href="#Using-braces-to-label-parts-of-an-equation" class="headerlink" title="Using braces to label parts of an equation"></a>Using braces to label parts of an equation</h3><figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\[</span><span class="keyword">\Theta</span><span class="built_in">^</span>+ = <span class="keyword">\underbrace</span>&#123;<span class="keyword">\int</span><span class="built_in">_</span>0<span class="built_in">^</span>&#123;z<span class="built_in">_</span>&#123;crit&#125;<span class="built_in">^</span>+&#125;<span class="keyword">\frac</span>&#123;dz<span class="built_in">^</span>+&#125;&#123;1/Pr +<span class="keyword">\alpha</span><span class="built_in">_</span>t/<span class="keyword">\nu</span>&#125;&#125;<span class="built_in">_</span>&#123;<span class="keyword">\Romannum</span>&#123;1&#125;&#125; + <span class="keyword">\underbrace</span>&#123;<span class="keyword">\int</span><span class="built_in">_</span>&#123;z<span class="built_in">_</span>&#123;crit&#125;<span class="built_in">^</span>+&#125;<span class="built_in">^</span>&#123;z<span class="built_in">^</span>+&#125;<span class="keyword">\frac</span>&#123;dz<span class="built_in">^</span>+&#125;&#123;1/Pr +<span class="keyword">\alpha</span><span class="built_in">_</span>t/<span class="keyword">\nu</span>&#125;&#125;<span class="built_in">_</span>&#123;<span class="keyword">\Romannum</span>&#123;2&#125;&#125;<span class="keyword">\]</span></span><br></pre></td></tr></table></figure>
 
 <figure>
-    <img src="/2023/08/08/Tips/underbrace.png" style="width:400px; text-align:center" alt="underbrace type" title="title">
+    <img src="underbrace.png" style= "width:400px; text-align:center" alt="underbrace type"  title="title">
 </figure>
 
 
@@ -1428,14 +1558,14 @@
 
 <h3 id="Two-statements-using-curly-brace-in-an-equation"><a href="#Two-statements-using-curly-brace-in-an-equation" class="headerlink" title="Two statements using curly brace in an equation"></a>Two statements using curly brace in an equation</h3><figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;</span><br><span class="line">  f(x)=<span class="keyword">\begin</span>&#123;cases&#125;</span><br><span class="line">    1, <span class="built_in">&amp;</span> <span class="keyword">\text</span>&#123;if <span class="built_in">$</span>x&lt;0<span class="built_in">$</span>&#125;.<span class="keyword">\\</span></span><br><span class="line">    0, <span class="built_in">&amp;</span> <span class="keyword">\text</span>&#123;otherwise&#125;.</span><br><span class="line">  <span class="keyword">\end</span>&#123;cases&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2023/08/08/Tips/eqn1.png" style="width:400px; text-align:center" alt="equation format" title="title">
+    <img src="eqn1.png" style= "width:400px; text-align:center" alt="equation format"  title="title">
 </figure>
 
 
 
 <figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">This is your only binary choices</span><br><span class="line"><span class="keyword">\begin</span>&#123;math&#125;</span><br><span class="line">  <span class="keyword">\left</span><span class="keyword">\&#123;</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;array&#125;&#123;l&#125;</span><br><span class="line">      0<span class="keyword">\\</span></span><br><span class="line">      1</span><br><span class="line">    <span class="keyword">\end</span>&#123;array&#125;</span><br><span class="line">  <span class="keyword">\right</span>.</span><br><span class="line"><span class="keyword">\end</span>&#123;math&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-    <img src="/2023/08/08/Tips/eqn2.png" style="width:400px; text-align:center" alt="equation format 2" title="title">
+    <img src="eqn2.png" style= "width:400px; text-align:center" alt="equation format 2"  title="title">
 </figure>
 
 <h3 id="Get-information-of-LaTex-template-through-command"><a href="#Get-information-of-LaTex-template-through-command" class="headerlink" title="Get information of LaTex template through command"></a>Get information of LaTex template through command</h3><figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\makeatletter</span></span><br><span class="line"><span class="keyword">\newcommand</span><span class="keyword">\thefont</span>&#123;<span class="keyword">\expandafter</span><span class="keyword">\string</span><span class="keyword">\the</span><span class="keyword">\font</span>&#125;</span><br><span class="line"><span class="keyword">\makeatother</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\thefont</span> <span class="comment">% check all attributes of font</span></span><br><span class="line"><span class="keyword">\the</span><span class="keyword">\columnwidth</span> <span class="comment">% check column width</span></span><br><span class="line"><span class="keyword">\the</span><span class="keyword">\textwidth</span>   <span class="comment">% check text width</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
@@ -1479,33 +1609,33 @@
     <title>Git notes</title>
     <url>/2020/02/14/Git-notes/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ul>
-<li><p><input disabled type="checkbox"> 
+<li><p><input disabled="" type="checkbox"> 
 Fatal: refusing to merge unrelated histories</p>
 <p>using “git merge” that allows merging two branches(e.g. remote branches and local branches) that have no common base by default.</p>
  <span id="more"></span> 
 
 <p><strong>git merge –allow-unrelated-histories</strong> to force the merge to happen</p>
 </li>
-<li><p><input disabled type="checkbox"> 
+<li><p><input disabled="" type="checkbox"> 
 Undo changes &#x2F; used for operate wrongly<br>  “git reset” has three primary forms of invocation. –soft, –mixed, –hard.<br>  git reset is similar in behavior to git checkout, where git checkout solely operates on the HEAD of ref pointer, however, git reset will move the HEAD ref pointer and the current branch ref pointer.</p>
 <figure>
-  <img src="/2020/02/14/Git-notes/git-sequence-transparent1.png" style="width:400px; text-align:center" alt="commits on the master branch" title="title">
+  <img src="git-sequence-transparent1.png" style= "width:400px; text-align:center" alt="commits on the master branch"  title="title">
   <figcaption><p style="text-align:center">example of a sequence of commits</p></figcaption>
 </figure>
 git checkout b
 <figure>
-  <img src="/2020/02/14/Git-notes/git-checkout-transparent2.png" style="width:400px; text-align:center" alt="git checkout b" title="title2">
+  <img src="git-checkout-transparent2.png" style= "width:400px; text-align:center" alt="git checkout b"  title="title2">
 </figure>
 git reset b
 <figure>
-  <img src="/2020/02/14/Git-notes/git-checkout-transparent3.png" style="width:300px; text-align:center" alt="git reset b" title="title3">
+  <img src="git-checkout-transparent3.png" style= "width:300px; text-align:center" alt="git reset b"  title="title3">
 </figure></li>
 </ul>
 <h3 id="Main-options"><a href="#Main-options" class="headerlink" title="Main options"></a>Main options</h3><h4 id="–hard"><a href="#–hard" class="headerlink" title="–hard"></a>–hard</h4><p>the most direct, <em>DANGEROUS</em>, and frequently used option</p>
 <h4 id="–mixed"><a href="#–mixed" class="headerlink" title="–mixed"></a>–mixed</h4><p>the stagin index is reset to the state of the specified commit</p>
 <h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><p>head in the commit History can change</p>
 <figure>
-    <img src="/2020/02/14/Git-notes/option.png" style="width:400px; text-align:center" alt="git reset b" title="title3">
+    <img src="option.png" style= "width:400px; text-align:center" alt="git reset b"  title="title3">
 </figure>
 ]]></content>
   </entry>
@@ -1522,7 +1652,7 @@ git reset b
 <h2 id="Zotero的文献导入"><a href="#Zotero的文献导入" class="headerlink" title="Zotero的文献导入"></a>Zotero的文献导入</h2><p>Zotero的文献导入途径很多，经过笔者多年的测试，推荐使用以下方法。简单来说是<em>google scholar</em> + <em>firefox</em>结合。</p>
 <p>通过google scholar等途径可获取文献网址数据库(如springer, Elsevier等)后，可进入下载页面，如下图所示。</p>
 <figure>
-    <img src="/2020/02/14/Zotero/paper_title.png" style="width:500px; text-align:center" alt="git reset b" title="title">
+    <img src="paper_title.png" style= "width:500px; text-align:center" alt="git reset b"  title="title">
 </figure>
 点击 <u>download</u> 可进入下载页面，此时会发现zotero在firefox上的对应插件已经点亮，点击后，即发现参考文献已经导入Zotero软件中。 如果没有下载权限，也可点击<u>Export</u>，选择对应的文献管理软件即可。这里需要说明的是 Endnote 和 Mendeley 使用人数较多，所以很多数据库通常会默认选择这两个软件所支持的参考文献格式如Ref, Ris 等。但Zotero几乎支持上述所有的格式，所以任意选择一个即可。浏览器插件会自动检测是否需要导入参考文献。
 
