@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="page-" class="article article-type-page" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pressure-Tap Line Response Analyzer</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" defer></script>
+<style>
+  :root{
+    --bg1:#06090a; --bg2:#0d1a14;
+    --panel:#0a100d; --panel2:#0b1210;
+    --border:#16241d; --border2:#1c2b23;
+    --grid:#16241d;
+    --green:#35d488; --amber:#ffb454; --red:#ff5d5d;
+    --text:#d7ffe9; --muted:#8fb3a1; --dim:#5f8271;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:20px;
+    background: radial-gradient(1200px 600px at 15% -10%, var(--bg2) 0%, var(--bg1) 55%);
+    color:var(--text); font-family:var(--sans);
+  }
+  .wrap{ border:1px solid var(--border); border-radius:8px; padding:20px; max-width:1180px; margin:0 auto; }
+  .hdr{ display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+  .hdr svg{ display:block; }
+  .title{ font-size:15px; font-weight:600; letter-spacing:0.02em; }
+  .subtitle{ font-size:12px; color:var(--dim); margin-bottom:18px; }
+  .grid{ display:grid; grid-template-columns:230px 1fr; gap:20px; }
+  @media (max-width:760px){ .grid{ grid-template-columns:1fr; } }
+
+  .panel{ border:1px solid var(--border); border-radius:6px; padding:14px; background:var(--panel); }
+  .section-label{ font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--dim);
+    margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+
+  .slider-row{ margin-bottom:14px; }
+  .slider-row .row{ display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .slider-row .val{ font-family:var(--mono); color:var(--text); }
+  input[type=range]{ width:100%; accent-color:var(--green); }
+
+  .fluid-row{ display:flex; gap:6px; }
+  .fluid-btn{ flex:1; padding:6px 4px; font-size:11px; border-radius:4px; cursor:pointer;
+    border:1px solid var(--border2); background:var(--panel2); color:var(--muted); }
+  .fluid-btn.active{ border-color:var(--green); background:#122019; color:var(--green); }
+
+  .regime{ margin-top:18px; padding-top:14px; border-top:1px solid var(--border); font-size:11.5px;
+    color:var(--muted); line-height:1.5; }
+
+  .readouts{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px; }
+  @media (max-width:600px){ .readouts{ grid-template-columns:repeat(2,1fr); } }
+  .channel{ border:1px solid var(--border2); background:var(--panel2); border-radius:4px; padding:8px 10px; min-width:0; }
+  .channel .label{ font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--dim); margin-bottom:4px; }
+  .channel .value{ font-family:var(--mono); font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .channel .unit{ color:var(--dim); font-size:11px; margin-left:4px; }
+
+  .tabs{ display:flex; gap:6px; margin-bottom:8px; }
+  .tab{ display:flex; align-items:center; gap:6px; padding:6px 12px; font-size:12px; border-radius:4px;
+    cursor:pointer; border:1px solid var(--border2); background:transparent; color:var(--muted); }
+  .tab.active{ border-color:var(--green); background:#122019; color:var(--green); }
+
+  .screen{ border:1px solid var(--border); border-radius:6px; background:#080d0b; padding:10px 6px 8px; }
+  .screen-label{ font-size:10px; color:var(--dim); padding:0 8px 4px; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  svg.chart{ width:100%; display:block; }
+  .axis-text{ fill:var(--dim); font-size:10px; font-family:var(--sans); }
+  .grid-line{ stroke:var(--grid); stroke-width:1; }
+  .zero-line{ stroke:#2a3d33; stroke-dasharray:3 3; }
+  .fn-line{ stroke:var(--amber); stroke-dasharray:3 3; opacity:0.5; }
+  .trace-mag{ fill:none; stroke:var(--green); stroke-width:1.75; }
+  .trace-phase{ fill:none; stroke:var(--amber); stroke-width:1.75; }
+  .trace-step{ fill:none; stroke:var(--green); stroke-width:1.75; }
+  .peak-dot{ fill:var(--red); }
+
+  .deriv{ font-size:13px; line-height:1.6; color:var(--muted); padding:8px 14px 14px; }
+  .deriv h4{ color:var(--text); font-size:12px; letter-spacing:0.06em; text-transform:uppercase;
+    margin:16px 0 6px; color:var(--green); }
+  .deriv h4:first-child{ margin-top:2px; }
+  .deriv p{ margin:4px 0 10px; }
+  .deriv .sub{ color:var(--dim); font-size:11.5px; }
+  .deriv-values{ margin-top:16px; padding-top:12px; border-top:1px solid var(--border); font-family:var(--mono);
+    font-size:12px; color:var(--text); }
+  .deriv-values div{ margin-bottom:4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#35d488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1-4 3-6 5-6s3 4 5 4 3-6 5-6 3 4 5 4"/></svg>
+    <div class="title">Pressure-Tap Line Response Analyzer</div>
+  </div>
+  <div class="subtitle">Second-order lumped model &mdash; tube inertance + viscous resistance + sensor cavity compliance</div>
+
+  <div class="grid">
+
+    <!-- Controls -->
+    <div class="panel">
+      <div class="section-label">Geometry</div>
+
+      <div class="slider-row">
+        <div class="row"><span>Tube length</span><span class="val" id="L_val">300 mm</span></div>
+        <input type="range" id="L" min="20" max="2000" step="5" value="300">
+      </div>
+      <div class="slider-row">
+        <div class="row"><span>Inner radius</span><span class="val" id="r_val">1.00 mm</span></div>
+        <input type="range" id="r" min="0.25" max="4" step="0.05" value="1.0">
+      </div>
+      <div class="slider-row">
+        <div class="row"><span>Cavity volume</span><span class="val" id="V_val">200 mm&sup3;</span></div>
+        <input type="range" id="V" min="5" max="5000" step="5" value="200">
+      </div>
+
+      <div class="section-label" style="margin-top:16px;">Fluid</div>
+      <div class="fluid-row">
+        <button class="fluid-btn active" data-fluid="air">Air (20&deg;C)</button>
+        <button class="fluid-btn" data-fluid="water">Water (20&deg;C)</button>
+      </div>
+
+      <div class="regime" id="regime">Underdamped &mdash; sharp resonant peak</div>
+    </div>
+
+    <!-- Main -->
+    <div>
+      <div class="readouts" id="readouts"></div>
+
+      <div class="tabs">
+        <div class="tab active" data-view="bode">Frequency response</div>
+        <div class="tab" data-view="step">Step response</div>
+        <div class="tab" data-view="deriv">Derivation</div>
+      </div>
+
+      <div class="screen">
+        <div class="view active" id="view-bode">
+          <div class="screen-label">MAGNITUDE (dB)</div>
+          <svg class="chart" id="svg-mag" viewBox="0 0 600 200"></svg>
+          <div class="screen-label" style="margin-top:6px;">PHASE (deg)</div>
+          <svg class="chart" id="svg-phase" viewBox="0 0 600 150"></svg>
+        </div>
+        <div class="view" id="view-step">
+          <div class="screen-label">STEP RESPONSE &mdash; sensed / source pressure ratio</div>
+          <svg class="chart" id="svg-step" viewBox="0 0 600 340"></svg>
+        </div>
+        <div class="view" id="view-deriv">
+          <div class="deriv">
+            <h4>1. Momentum balance along the tube</h4>
+            <p>Newton's second law on the fluid slug (inertia + viscous friction):</p>
+            \[ P_{source}(t) - P_{sensor}(t) = I\frac{dQ}{dt} + R\,Q(t) \]
+
+            <h4>2. Mass conservation at the sensor cavity</h4>
+            <p>Flow into the fixed cavity volume shows up as a pressure rise:</p>
+            \[ Q(t) = C\frac{dP_{sensor}}{dt} \]
+
+            <h4>3. Eliminate the flow variable</h4>
+            <p>Differentiate step 2 and substitute into step 1:</p>
+            \[ P_{source} - P_{sensor} = IC\,\ddot P_{sensor} + RC\,\dot P_{sensor} \]
+            \[ IC\,\ddot P_{sensor} + RC\,\dot P_{sensor} + P_{sensor} = P_{source} \]
+
+            <h4>4. Laplace transform (zero initial conditions)</h4>
+            \[ \big(IC\,s^2 + RC\,s + 1\big)P_{sensor}(s) = P_{source}(s) \]
+
+            <h4>5. Transfer function</h4>
+            \[ H(s) = \frac{P_{sensor}(s)}{P_{source}(s)} = \frac{1}{IC\,s^2 + RC\,s + 1} \]
+
+            <h4>6. Standard second-order form</h4>
+            <p class="sub">Divide through by IC and match coefficients against \( H(s)=\dfrac{1}{s^2/\omega_n^2+(2\zeta/\omega_n)s+1} \):</p>
+            \[ \omega_n = \frac{1}{\sqrt{IC}} \qquad\qquad \zeta = \frac{R}{2}\sqrt{\frac{C}{I}} \]
+
+            <h4>7. Lumped elements from geometry</h4>
+            \[ I=\frac{\rho L}{A} \qquad R=\frac{8\mu L}{\pi r^4} \qquad C=\frac{V}{\rho c^2} \]
+
+            <div class="deriv-values" id="deriv-values"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---------- Fluids ----------
+const FLUIDS = {
+  air:   { label:"Air (20\u00B0C)",   rho:1.204, mu:1.825e-5, c:343  },
+  water: { label:"Water (20\u00B0C)", rho:998,   mu:1.002e-3, c:1481 },
+};
+let fluidKey = "air";
+
+// ---------- Elements ----------
+const el = id => document.getElementById(id);
+const Lin = el("L"), Rin = el("r"), Vin = el("V");
+
+// ---------- Physics ----------
+function computeParams(L_mm, r_mm, V_mm3, fk){
+  const {rho, mu, c} = FLUIDS[fk];
+  const L = L_mm/1000, r = r_mm/1000, V = V_mm3*1e-9;
+  const A = Math.PI*r*r;
+  const I = rho*L/A;
+  const C = V/(rho*c*c);
+  const R = 8*mu*L/(Math.PI*Math.pow(r,4));
+  const wn = Math.sqrt(1/(I*C));
+  const zeta = (R/2)*Math.sqrt(C/I);
+  const fn = wn/(2*Math.PI);
+  const fQuarterWave = c/(4*L);
+  const recBW = fn/5;
+  return {rho,mu,c,A,I,C,R,wn,zeta,fn,fQuarterWave,recBW};
+}
+
+function magnitudePhase(f, wn, zeta){
+  const w = 2*Math.PI*f;
+  const rr = w/wn;
+  const real = 1-rr*rr;
+  const imag = 2*zeta*rr;
+  const magLin = 1/Math.sqrt(real*real+imag*imag);
+  const magDb = 20*Math.log10(magLin);
+  const phaseDeg = -Math.atan2(imag, real)*180/Math.PI;
+  return {magDb, phaseDeg};
+}
+
+function buildBodeData(wn, zeta, fn){
+  const fMin = Math.max(fn/200, 0.5);
+  const fMax = fn*200;
+  const N = 220;
+  const logMin = Math.log10(fMin), logMax = Math.log10(fMax);
+  const data = [];
+  for(let i=0;i<=N;i++){
+    const f = Math.pow(10, logMin + (logMax-logMin)*i/N);
+    const {magDb, phaseDeg} = magnitudePhase(f, wn, zeta);
+    data.push({freq:f, magDb, phaseDeg});
+  }
+  return data;
+}
+
+function stepResponse(wn, zeta){
+  const zetaSim = Math.max(zeta, 0.015);
+  const tMax = Math.min(1.5, Math.max(0.002, 9/(zetaSim*wn)));
+  const steps = 260;
+  const dt = tMax/steps;
+  const deriv = (x1,x2) => [x2, wn*wn*(1-x1) - 2*zeta*wn*x2];
+  let x1=0, x2=0;
+  const data = [];
+  for(let i=0;i<=steps;i++){
+    data.push({t:i*dt*1000, x:x1});
+    const [k1a,k1b] = deriv(x1,x2);
+    const [k2a,k2b] = deriv(x1+dt/2*k1a, x2+dt/2*k1b);
+    const [k3a,k3b] = deriv(x1+dt/2*k2a, x2+dt/2*k2b);
+    const [k4a,k4b] = deriv(x1+dt*k3a, x2+dt*k3b);
+    x1 += dt/6*(k1a+2*k2a+2*k3a+k4a);
+    x2 += dt/6*(k1b+2*k2b+2*k3b+k4b);
+  }
+  return data;
+}
+
+function fmt(v, digits=3){
+  if(!isFinite(v)) return "--";
+  if(Math.abs(v)>=1000 || (Math.abs(v)<0.001 && v!==0)) return v.toExponential(digits-1);
+  return v.toPrecision(digits);
+}
+
+// ---------- SVG chart helpers ----------
+const NS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+function linScale(d0,d1,r0,r1){ return v => r0 + (r1-r0)*(v-d0)/(d1-d0); }
+function logScale(d0,d1,r0,r1){ const l0=Math.log10(d0), l1=Math.log10(d1);
+  return v => r0 + (r1-r0)*(Math.log10(v)-l0)/(l1-l0); }
+
+function pathFromData(data, xFn, yFn, xKey, yKey){
+  return data.map((d,i) => (i===0?"M":"L") + xFn(d[xKey]).toFixed(2) + "," + yFn(d[yKey]).toFixed(2)).join(" ");
+}
+
+function drawBodeMag(svg, data, fn, peak){
+  svg.innerHTML = "";
+  const W=600,H=200, padL=34, padR=16, padT=6, padB=18;
+  const fMin = data[0].freq, fMax = data[data.length-1].freq;
+  const magVals = data.map(d=>d.magDb);
+  let yMin = Math.min(-20, Math.floor(Math.min(...magVals)/10)*10);
+  let yMax = Math.max(10, Math.ceil(Math.max(...magVals)/10)*10);
+  const x = logScale(fMin, fMax, padL, W-padR);
+  const y = linScale(yMin, yMax, H-padB, padT);
+
+  // grid: horizontal at each 10dB
+  for(let g=yMin; g<=yMax; g+=10){
+    svg.appendChild(svgEl("line",{x1:padL,x2:W-padR,y1:y(g),y2:y(g),class:"grid-line"}));
+    const t = svgEl("text",{x:4,y:y(g)+3,class:"axis-text"}); t.textContent=g; svg.appendChild(t);
+  }
+  // vertical decade lines
+  const decStart = Math.floor(Math.log10(fMin)), decEnd = Math.ceil(Math.log10(fMax));
+  for(let d=decStart; d<=decEnd; d++){
+    const f = Math.pow(10,d);
+    if(f<fMin || f>fMax) continue;
+    svg.appendChild(svgEl("line",{x1:x(f),x2:x(f),y1:padT,y2:H-padB,class:"grid-line"}));
+    const t = svgEl("text",{x:x(f)-8,y:H-4,class:"axis-text"}); t.textContent = f>=1?Math.round(f):f.toFixed(2); svg.appendChild(t);
+  }
+  if(0>=yMin && 0<=yMax) svg.appendChild(svgEl("line",{x1:padL,x2:W-padR,y1:y(0),y2:y(0),class:"zero-line"}));
+  svg.appendChild(svgEl("line",{x1:x(fn),x2:x(fn),y1:padT,y2:H-padB,class:"fn-line"}));
+  svg.appendChild(svgEl("path",{d:pathFromData(data,x,y,"freq","magDb"),class:"trace-mag"}));
+  if(peak) svg.appendChild(svgEl("circle",{cx:x(peak.freq),cy:y(peak.magDb),r:4,class:"peak-dot"}));
+}
+
+function drawBodePhase(svg, data, fn){
+  svg.innerHTML = "";
+  const W=600,H=150, padL=34, padR=16, padT=6, padB=18;
+  const fMin = data[0].freq, fMax = data[data.length-1].freq;
+  const yMin=-180, yMax=0;
+  const x = logScale(fMin, fMax, padL, W-padR);
+  const y = linScale(yMin, yMax, H-padB, padT);
+  [-180,-90,0].forEach(g=>{
+    svg.appendChild(svgEl("line",{x1:padL,x2:W-padR,y1:y(g),y2:y(g),class:"grid-line"}));
+    const t = svgEl("text",{x:2,y:y(g)+3,class:"axis-text"}); t.textContent=g; svg.appendChild(t);
+  });
+  const decStart = Math.floor(Math.log10(fMin)), decEnd = Math.ceil(Math.log10(fMax));
+  for(let d=decStart; d<=decEnd; d++){
+    const f = Math.pow(10,d);
+    if(f<fMin || f>fMax) continue;
+    svg.appendChild(svgEl("line",{x1:x(f),x2:x(f),y1:padT,y2:H-padB,class:"grid-line"}));
+    const t = svgEl("text",{x:x(f)-8,y:H-4,class:"axis-text"}); t.textContent = f>=1?Math.round(f):f.toFixed(2); svg.appendChild(t);
+  }
+  svg.appendChild(svgEl("line",{x1:x(fn),x2:x(fn),y1:padT,y2:H-padB,class:"fn-line"}));
+  svg.appendChild(svgEl("path",{d:pathFromData(data,x,y,"freq","phaseDeg"),class:"trace-phase"}));
+}
+
+function drawStep(svg, data){
+  svg.innerHTML = "";
+  const W=600,H=340, padL=34, padR=16, padT=6, padB=22;
+  const tMax = data[data.length-1].t;
+  const xVals = data.map(d=>d.x);
+  let yMin = Math.min(0, Math.floor(Math.min(...xVals)*10)/10);
+  let yMax = Math.max(1.2, Math.ceil(Math.max(...xVals)*10)/10);
+  const x = linScale(0, tMax, padL, W-padR);
+  const y = linScale(yMin, yMax, H-padB, padT);
+  for(let g=Math.ceil(yMin*5)/5; g<=yMax; g+=0.2){
+    svg.appendChild(svgEl("line",{x1:padL,x2:W-padR,y1:y(g),y2:y(g),class:"grid-line"}));
+    const t = svgEl("text",{x:2,y:y(g)+3,class:"axis-text"}); t.textContent=g.toFixed(1); svg.appendChild(t);
+  }
+  const nT = 6;
+  for(let i=0;i<=nT;i++){
+    const tv = tMax*i/nT;
+    svg.appendChild(svgEl("line",{x1:x(tv),x2:x(tv),y1:padT,y2:H-padB,class:"grid-line"}));
+    const t = svgEl("text",{x:x(tv)-10,y:H-6,class:"axis-text"}); t.textContent=tv.toFixed(1); svg.appendChild(t);
+  }
+  const lbl = svgEl("text",{x:W-padR-60,y:H-6,class:"axis-text"}); lbl.textContent="time (ms)"; svg.appendChild(lbl);
+  svg.appendChild(svgEl("line",{x1:padL,x2:W-padR,y1:y(1),y2:y(1),class:"zero-line"}));
+  svg.appendChild(svgEl("path",{d:pathFromData(data,x,y,"t","x"),class:"trace-step"}));
+}
+
+// ---------- Readouts ----------
+function channel(label, value, unit){
+  return `<div class="channel"><div class="label">${label}</div><div class="value">${value}<span class="unit">${unit}</span></div></div>`;
+}
+
+// ---------- Main update ----------
+function update(){
+  const L_mm = parseFloat(Lin.value), r_mm = parseFloat(Rin.value), V_mm3 = parseFloat(Vin.value);
+  el("L_val").textContent = L_mm + " mm";
+  el("r_val").textContent = r_mm.toFixed(2) + " mm";
+  el("V_val").textContent = V_mm3 + " mm\u00B3";
+
+  const p = computeParams(L_mm, r_mm, V_mm3, fluidKey);
+  const {wn, zeta, fn, fQuarterWave, recBW, I, C, R} = p;
+
+  const regimeText = zeta < 1
+    ? (zeta < 0.4 ? "Underdamped \u2014 sharp resonant peak" : "Underdamped \u2014 mild peak")
+    : (zeta === 1 ? "Critically damped" : "Overdamped \u2014 sluggish, no peak");
+  el("regime").textContent = regimeText;
+
+  el("readouts").innerHTML =
+    channel("\u03C9\u2099", fmt(wn), "rad/s") +
+    channel("f\u2099 (resonance)", fmt(fn), "Hz") +
+    channel("\u03B6 (damping)", fmt(zeta), "") +
+    channel("\u2153-wave freq", fmt(fQuarterWave), "Hz") +
+    channel("Inertance I", fmt(I), "kg/m\u2074") +
+    channel("Compliance C", fmt(C), "m\u2074\u00B7s\u00B2/kg") +
+    channel("Resistance R", fmt(R), "Pa\u00B7s/m\u00B3") +
+    channel("Rec. bandwidth", fmt(recBW), "Hz");
+
+  const bodeData = buildBodeData(wn, zeta, fn);
+  let peak = null;
+  if(zeta < 0.707){
+    const fPeak = fn*Math.sqrt(Math.max(1-2*zeta*zeta,0));
+    const {magDb} = magnitudePhase(fPeak, wn, zeta);
+    peak = {freq:fPeak, magDb};
+  }
+  drawBodeMag(el("svg-mag"), bodeData, fn, peak);
+  drawBodePhase(el("svg-phase"), bodeData, fn);
+
+  const stepData = stepResponse(wn, zeta);
+  drawStep(el("svg-step"), stepData);
+
+  el("deriv-values").innerHTML =
+    `<div>I = ${fmt(I)} kg/m\u2074 &nbsp;&nbsp; R = ${fmt(R)} Pa\u00B7s/m\u00B3 &nbsp;&nbsp; C = ${fmt(C)} m\u2074\u00B7s\u00B2/kg</div>` +
+    `<div>\u03C9\u2099 = ${fmt(wn)} rad/s &nbsp;&nbsp; \u03B6 = ${fmt(zeta)} &nbsp;&nbsp; f\u2099 = ${fmt(fn)} Hz</div>`;
+}
+
+// ---------- Events ----------
+[Lin, Rin, Vin].forEach(i => i.addEventListener("input", update));
+document.querySelectorAll(".fluid-btn").forEach(btn=>{
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".fluid-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    fluidKey = btn.dataset.fluid;
+    update();
+  });
+});
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    tab.classList.add("active");
+    el("view-"+tab.dataset.view).classList.add("active");
+  });
+});
+
+update();
+</script>
+</body>
+</html>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/pressuretapanalyzer/index.html" data-id="cms8cylto0007t13tfzrd83ci"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2026
+        X.
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/latex">Technical Document</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

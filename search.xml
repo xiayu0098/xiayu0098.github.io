@@ -783,6 +783,15 @@
       </tags>
   </entry>
   <entry>
+    <title>Smart Scheduler</title>
+    <url>/2025/09/23/tubeFreEstimator/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a pressure tap line response analyzer <a href="/pressuretapanalyzer/">Check it out here</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Modbus RTU (Example of load cell module)</title>
     <url>/2025/09/23/modbusNotesLoadCell/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-Frame-structure-RTU"><a href="#1-Frame-structure-RTU" class="headerlink" title="1) Frame structure (RTU)"></a>1) Frame structure (RTU)</h2><span id="more"></span>
