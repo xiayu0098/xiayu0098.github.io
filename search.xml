@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pressure tap line response analyzer</title>
+    <url>/2026/07/31/tubeFreEstimator/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a <a href="/pressuretapanalyzer/">pressure tap line response analyzer</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Error Function</title>
     <url>/2026/07/17/errorFunction/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>If you have ever tried to integrate the famous bell curve $e^{-x^2}$ by hand, you have already met the reason the error function exists: <strong>you can’t do it with elementary functions.</strong> There is no combination of polynomials, exponentials, logarithms, or trig functions whose derivative is $e^{-x^2}$. Yet this integral shows up everywhere -— probability, statistics, heat conduction, diffusion, signal processing. So mathematicians did the sensible thing: they gave the integral a name and studied it as a function in its own right. That function is the <strong>error function</strong>, written $\operatorname{erf}(x)$.</p>
@@ -780,15 +789,6 @@
       <tags>
         <tag>AI</tag>
         <tag>Serial Number</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pressure tap line response analyzer</title>
-    <url>/2025/09/23/tubeFreEstimator/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a pressure tap line response analyzer <a href="/pressuretapanalyzer/">Check it out here</a>.</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
       </tags>
   </entry>
   <entry>

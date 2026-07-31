@@ -70,12 +70,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" defer></script>
 <style>
   :root{
-    --bg1:#06090a; --bg2:#0d1a14;
-    --panel:#0a100d; --panel2:#0b1210;
-    --border:#16241d; --border2:#1c2b23;
-    --grid:#16241d;
-    --green:#35d488; --amber:#ffb454; --red:#ff5d5d;
-    --text:#d7ffe9; --muted:#8fb3a1; --dim:#5f8271;
+    --bg1:#ffffff; --bg2:#fff6ec;
+    --panel:#ffffff; --panel2:#fdf4e9;
+    --border:#e8dccb; --border2:#efe1cd;
+    --grid:#f0e4d3;
+    --green:#e8660f; --amber:#c98a2e; --red:#d6473f;
+    --text:#2b2013; --muted:#7c6a56; --dim:#8f7a63;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
   }
@@ -106,7 +106,7 @@
   .fluid-row{ display:flex; gap:6px; }
   .fluid-btn{ flex:1; padding:6px 4px; font-size:11px; border-radius:4px; cursor:pointer;
     border:1px solid var(--border2); background:var(--panel2); color:var(--muted); }
-  .fluid-btn.active{ border-color:var(--green); background:#122019; color:var(--green); }
+  .fluid-btn.active{ border-color:var(--green); background:#fdead4; color:var(--green); }
 
   .regime{ margin-top:18px; padding-top:14px; border-top:1px solid var(--border); font-size:11.5px;
     color:var(--muted); line-height:1.5; }
@@ -121,9 +121,9 @@
   .tabs{ display:flex; gap:6px; margin-bottom:8px; }
   .tab{ display:flex; align-items:center; gap:6px; padding:6px 12px; font-size:12px; border-radius:4px;
     cursor:pointer; border:1px solid var(--border2); background:transparent; color:var(--muted); }
-  .tab.active{ border-color:var(--green); background:#122019; color:var(--green); }
+  .tab.active{ border-color:var(--green); background:#fdead4; color:var(--green); }
 
-  .screen{ border:1px solid var(--border); border-radius:6px; background:#080d0b; padding:10px 6px 8px; }
+  .screen{ border:1px solid var(--border); border-radius:6px; background:#fffaf3; padding:10px 6px 8px; }
   .screen-label{ font-size:10px; color:var(--dim); padding:0 8px 4px; }
   .view{ display:none; }
   .view.active{ display:block; }
@@ -131,7 +131,7 @@
   svg.chart{ width:100%; display:block; }
   .axis-text{ fill:var(--dim); font-size:10px; font-family:var(--sans); }
   .grid-line{ stroke:var(--grid); stroke-width:1; }
-  .zero-line{ stroke:#2a3d33; stroke-dasharray:3 3; }
+  .zero-line{ stroke:#e0d0bb; stroke-dasharray:3 3; }
   .fn-line{ stroke:var(--amber); stroke-dasharray:3 3; opacity:0.5; }
   .trace-mag{ fill:none; stroke:var(--green); stroke-width:1.75; }
   .trace-phase{ fill:none; stroke:var(--amber); stroke-width:1.75; }
@@ -153,7 +153,7 @@
 <div class="wrap">
 
   <div class="hdr">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#35d488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1-4 3-6 5-6s3 4 5 4 3-6 5-6 3 4 5 4"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8660f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1-4 3-6 5-6s3 4 5 4 3-6 5-6 3 4 5 4"/></svg>
     <div class="title">Pressure-Tap Line Response Analyzer</div>
   </div>
   <div class="subtitle">Second-order lumped model &mdash; tube inertance + viscous resistance + sensor cavity compliance</div>

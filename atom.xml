@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-07-17T00:00:00.000Z</updated>
+  <updated>2026-07-30T14:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pressure tap line response analyzer</title>
+    <link href="http://yoursite.com/2026/07/31/tubeFreEstimator/"/>
+    <id>http://yoursite.com/2026/07/31/tubeFreEstimator/</id>
+    <published>2026-07-30T14:00:00.000Z</published>
+    <updated>2026-07-30T14:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a &lt;a href=&quot;/pressuretapanalyzer/&quot;&gt;pressure tap line response analyzer&lt;/a&gt;.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Error Function</title>
@@ -248,26 +269,6 @@
     <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
     
     <category term="Serial Number" scheme="http://yoursite.com/tags/Serial-Number/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pressure tap line response analyzer</title>
-    <link href="http://yoursite.com/2025/09/23/tubeFreEstimator/"/>
-    <id>http://yoursite.com/2025/09/23/tubeFreEstimator/</id>
-    <published>2025-09-22T23:28:08.014Z</published>
-    <updated>2025-09-22T23:28:08.014Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a pressure tap line response analyzer &lt;a href=&quot;/pressuretapanalyzer/&quot;&gt;Check it </summary>
-      
-    
-    
-    
-    
-    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
     
   </entry>
   
