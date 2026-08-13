@@ -8,7 +8,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Pressure tap line response analyzer |  X. Blog
+    Transfer function and ODE |  X. Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-tubeFreEstimator" class="article article-type-post" itemscope
+  <article id="post-TransferFunctionODE" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Pressure tap line response analyzer
+  Transfer function and ODE
 </h1>
   
 
@@ -55,10 +55,14 @@
 
     
     <div class="article-meta">
-      <a href="/2026/07/31/tubeFreEstimator/" class="article-date">
-  <time datetime="2026-07-30T14:00:00.000Z" itemprop="datePublished">2026-07-31</time>
+      <a href="/2026/08/14/TransferFunctionODE/" class="article-date">
+  <time datetime="2026-08-13T14:00:00.000Z" itemprop="datePublished">2026-08-14</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/transfer-function/">transfer function</a>
+  </div>
+
       
       
 <div class="word_count">
@@ -66,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">8字</span>
+            <span class="post-count">780字</span>
         </span>
     </span>
 
@@ -75,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -86,6 +90,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -99,7 +105,118 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><p>I built a <a href="/pressuretapanalyzer/">pressure tap line response analyzer</a>.</p>
+      <script src="/assets/js/APlayer.min.js"> </script><h2 id="The-Core-Rule"><a href="#The-Core-Rule" class="headerlink" title="The Core Rule"></a>The Core Rule</h2><p>For a linear, time-invariant (LTI) system with zero initial conditions, the Laplace transform replaces derivatives and integrals with powers of $s$:</p>
+<p>$$\frac{d^n y}{dt^n} ;\longleftrightarrow; s^n Y(s), \qquad \underbrace{\int\cdots\int}_{n}, y,dt^n ;\longleftrightarrow; \frac{Y(s)}{s^n}$$</p>
+<p>The <strong>order of a system</strong> is the highest derivative acting on the output — equivalently, the degree of the denominator polynomial in $H(s)$, i.e. the number of poles. Integral terms work the same way but in reverse: they add <strong>negative</strong> powers of $s$, which get cleared into the denominator once you multiply through.</p>
+<span id="more"></span> 
+
+
+<hr>
+<h2 id="Table-1-—-Differentiation-Based-Systems-by-Order"><a href="#Table-1-—-Differentiation-Based-Systems-by-Order" class="headerlink" title="Table 1 — Differentiation-Based Systems (by Order)"></a>Table 1 — Differentiation-Based Systems (by Order)</h2><table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Time-domain ODE</th>
+<th>Transfer Function $H(s) &#x3D; \dfrac{Y(s)}{U(s)}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Zero-order (static gain)</td>
+<td>$y(t) &#x3D; K,u(t)$</td>
+<td>$H(s) &#x3D; K$</td>
+</tr>
+<tr>
+<td>First-order</td>
+<td>$\tau\dot{y} + y &#x3D; K,u$</td>
+<td>$H(s) &#x3D; \dfrac{K}{\tau s + 1}$</td>
+</tr>
+<tr>
+<td>First-order, general coefficients</td>
+<td>$a_1\dot{y} + a_0 y &#x3D; b_0 u$</td>
+<td>$H(s) &#x3D; \dfrac{b_0}{a_1 s + a_0}$</td>
+</tr>
+<tr>
+<td>Second-order, standard form</td>
+<td>$\ddot{y} + 2\zeta\omega_n\dot{y} + \omega_n^2 y &#x3D; K\omega_n^2 u$</td>
+<td>$H(s) &#x3D; \dfrac{K\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$</td>
+</tr>
+<tr>
+<td>Second-order, general coefficients</td>
+<td>$a_2\ddot{y}+a_1\dot{y}+a_0y &#x3D; b_0 u$</td>
+<td>$H(s) &#x3D; \dfrac{b_0}{a_2 s^2 + a_1 s + a_0}$</td>
+</tr>
+<tr>
+<td>Second-order with a zero</td>
+<td>$a_2\ddot{y}+a_1\dot{y}+a_0y &#x3D; b_1\dot{u}+b_0u$</td>
+<td>$H(s) &#x3D; \dfrac{b_1 s + b_0}{a_2 s^2 + a_1 s + a_0}$</td>
+</tr>
+<tr>
+<td>Pure differentiator</td>
+<td>$y &#x3D; K\dot{u}$</td>
+<td>$H(s) &#x3D; Ks$</td>
+</tr>
+<tr>
+<td>General $n$-th order LTI</td>
+<td>$a_n y^{(n)} + \dots + a_0 y &#x3D; b_m u^{(m)} + \dots + b_0 u$</td>
+<td>$H(s) &#x3D; \dfrac{b_m s^m + \dots + b_0}{a_n s^n + \dots + a_0}$</td>
+</tr>
+</tbody></table>
+<p><strong>$\zeta$ and $\omega_n$</strong> are just a repackaging of the general second-order coefficients — chosen because they map to physically meaningful quantities (damping ratio, natural frequency) instead of raw numbers:</p>
+<p>$$\omega_n &#x3D; \sqrt{\frac{a_0}{a_2}}, \qquad \zeta &#x3D; \frac{a_1}{2\sqrt{a_0 a_2}}$$</p>
+<hr>
+<h2 id="Table-2-—-Adding-Integration"><a href="#Table-2-—-Adding-Integration" class="headerlink" title="Table 2 — Adding Integration"></a>Table 2 — Adding Integration</h2><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>ODE &#x2F; Integro-differential equation</th>
+<th>Transfer Function $H(s)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pure integrator</td>
+<td>$\dot{y} &#x3D; K u$</td>
+<td>$H(s) &#x3D; \dfrac{K}{s}$</td>
+</tr>
+<tr>
+<td>Double integrator</td>
+<td>$\ddot{y} &#x3D; K u$</td>
+<td>$H(s) &#x3D; \dfrac{K}{s^2}$</td>
+</tr>
+<tr>
+<td>First-order + integral action</td>
+<td>$\dot{y} + a_0 y + a_{-1}\displaystyle\int y,dt &#x3D; b_0 u$</td>
+<td>$H(s) &#x3D; \dfrac{b_0 s}{s^2 + a_0 s + a_{-1}}$</td>
+</tr>
+<tr>
+<td>Second-order + integral (series RLC, current $i$)</td>
+<td>$L\dot{i} + Ri + \dfrac{1}{C}\displaystyle\int i,dt &#x3D; v(t)$</td>
+<td>$H(s) &#x3D; \dfrac{s}{Ls^2 + Rs + \frac{1}{C}}$</td>
+</tr>
+<tr>
+<td>PI controller</td>
+<td>$u(t) &#x3D; K_p e(t) + K_i\displaystyle\int e,dt$</td>
+<td>$C(s) &#x3D; K_p + \dfrac{K_i}{s} &#x3D; \dfrac{K_p s + K_i}{s}$</td>
+</tr>
+<tr>
+<td>PID controller</td>
+<td>$u(t) &#x3D; K_p e + K_i\displaystyle\int e,dt + K_d\dot{e}$</td>
+<td>$C(s) &#x3D; \dfrac{K_d s^2 + K_p s + K_i}{s}$</td>
+</tr>
+<tr>
+<td>General rule — clearing $1&#x2F;s$ terms</td>
+<td>any equation with a $\int^{(k)} y,dt$ term</td>
+<td>multiply numerator and denominator by $s^k$ to get a proper polynomial ratio</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Why-1-x2F-s-Specifically"><a href="#Why-1-x2F-s-Specifically" class="headerlink" title="Why $1&#x2F;s$ Specifically?"></a>Why $1&#x2F;s$ Specifically?</h2><p>It falls straight out of the Laplace integration property — just as $s^n$ represents $n$ derivatives, $s^{-n}$ represents $n$ integrations. A system’s order isn’t really “how many derivatives” — it’s the <strong>net power of $s$</strong> once fractions are cleared.</p>
+<p>One practical consequence: <strong>a pure integrator puts a pole at $s &#x3D; 0$</strong>, which is why $1&#x2F;s$ and $1&#x2F;s^2$ systems are marginally stable (or worse) on their own — a constant input never settles, it ramps or accelerates forever. That’s the mathematical reason integral-only control is never used alone in practice; it’s always paired with proportional (and often derivative) action, as in the PI&#x2F;PID rows above.</p>
+<hr>
+<h2 id="The-Fully-General-Form"><a href="#The-Fully-General-Form" class="headerlink" title="The Fully General Form"></a>The Fully General Form</h2><p>Putting differentiation and integration together, any LTI system can be written as:</p>
+<p>$$\sum_{k&#x3D;-p}^{n} a_k \frac{d^k y}{dt^k} &#x3D; \sum_{j&#x3D;-q}^{m} b_j \frac{d^j u}{dt^j}$$</p>
+<p>where negative $k, j$ denote integrations. Laplace-transforming and clearing the lowest negative power ($s^p$ in the denominator, $s^q$ in the numerator) gives the general transfer function:</p>
+<p>$$H(s) &#x3D; \frac{b_m s^{m+q} + \dots + b_{-q}}{a_n s^{n+p} + \dots + a_{-p}}$$</p>
+<p>Every row in the two tables above is a special case of this — set $p &#x3D; q &#x3D; 0$ for the pure differentiation table, or let $p, q &gt; 0$ to bring in integral terms.</p>
 
       
       <!-- 打赏 -->
@@ -111,10 +228,10 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2026/07/31/tubeFreEstimator/" data-id="cms8cvzob0003t13t95bp0k8i"
+      <a data-url="http://yoursite.com/2026/08/14/TransferFunctionODE/" data-id="cmss361sf00006k3tejvxhoin"
         class="article-share-link">share</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/research/" rel="tag">research</a></li></ul>
 
     </footer>
 
@@ -124,19 +241,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2026/08/14/TransferFunctionODE/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            Transfer function and ODE
-          
-        </div>
-      </a>
     
-    
-      <a href="/2026/07/17/errorFunction/" class="article-nav-link">
+      <a href="/2026/07/31/tubeFreEstimator/" class="article-nav-link">
         <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Error Function</div>
+        <div class="article-nav-title">Pressure tap line response analyzer</div>
       </a>
     
   </nav>

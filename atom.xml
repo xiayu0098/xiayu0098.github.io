@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-07-30T14:00:00.000Z</updated>
+  <updated>2026-08-13T14:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Transfer function and ODE</title>
+    <link href="http://yoursite.com/2026/08/14/TransferFunctionODE/"/>
+    <id>http://yoursite.com/2026/08/14/TransferFunctionODE/</id>
+    <published>2026-08-13T14:00:00.000Z</published>
+    <updated>2026-08-13T14:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;The-Core-Rule&quot;&gt;&lt;a href=&quot;#The-Core-Rule&quot; class=&quot;headerlink&quot; title=&quot;The Core Rule&quot;&gt;&lt;/a&gt;The Core Rule&lt;/h2&gt;&lt;p&gt;For a linear, time-invariant (LTI) system with zero initial conditions, the Laplace transform replaces derivatives and integrals with powers of $s$:&lt;/p&gt;
+&lt;p&gt;$$&#92;frac{d^n y}{dt^n} ;&#92;longleftrightarrow; s^n Y(s), &#92;qquad &#92;underbrace{&#92;int&#92;cdots&#92;int}_{n}, y,dt^n ;&#92;longleftrightarrow; &#92;frac{Y(s)}{s^n}$$&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;order of a system&lt;/strong&gt; is the highest derivative acting on the output — equivalently, the degree of the denominator polynomial in $H(s)$, i.e. the number of poles. Integral terms work the same way but in reverse: they add &lt;strong&gt;negative&lt;/strong&gt; powers of $s$, which get cleared into the denominator once you multiply through.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="transfer function" scheme="http://yoursite.com/categories/transfer-function/"/>
+    
+    
+    <category term="research" scheme="http://yoursite.com/tags/research/"/>
+    
+  </entry>
   
   <entry>
     <title>Pressure tap line response analyzer</title>
@@ -420,25 +441,6 @@
     
     
     <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Stepper Motor and Lead Screw Slides</title>
-    <link href="http://yoursite.com/2024/10/08/summaryMicroStepMotor/"/>
-    <id>http://yoursite.com/2024/10/08/summaryMicroStepMotor/</id>
-    <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-07T13:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;Table-for-stepper-motor-and-lead-screw&quot;&gt;&lt;a href=&quot;#Table-for-stepper-motor-and-lead-screw&quot; class=&quot;headerlink&quot; title=&quot;Table for stepper motor and lead screw&quot;&gt;&lt;/a&gt;Table for stepper motor and lead screw&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="research" scheme="http://yoursite.com/tags/research/"/>
     
   </entry>
   
