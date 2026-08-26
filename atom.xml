@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-08-13T14:00:00.000Z</updated>
+  <updated>2026-08-25T14:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cable Drop Compensation</title>
+    <link href="http://yoursite.com/2026/08/26/cableDropCompensation/"/>
+    <id>http://yoursite.com/2026/08/26/cableDropCompensation/</id>
+    <published>2026-08-25T14:00:00.000Z</published>
+    <updated>2026-08-25T14:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;A tool to guide FB type chip for cable &lt;a href=&quot;/cableDropCompen/&quot;&gt;cable drop compensat</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Transfer function and ODE</title>
@@ -41,27 +61,6 @@
     <title>Pressure tap line response analyzer</title>
     <link href="http://yoursite.com/2026/07/31/tubeFreEstimator/"/>
     <id>http://yoursite.com/2026/07/31/tubeFreEstimator/</id>
-    <published>2026-07-30T14:00:00.000Z</published>
-    <updated>2026-07-30T14:00:00.000Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a &lt;a href=&quot;/pressuretapanalyzer/&quot;&gt;pressure tap line response analyzer&lt;/a&gt;.&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pressure tap line response analyzer</title>
-    <link href="http://yoursite.com/2026/07/31/cableDropCompensation/"/>
-    <id>http://yoursite.com/2026/07/31/cableDropCompensation/</id>
     <published>2026-07-30T14:00:00.000Z</published>
     <updated>2026-07-30T14:00:00.000Z</updated>
     
