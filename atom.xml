@@ -59,6 +59,27 @@
   </entry>
   
   <entry>
+    <title>Pressure tap line response analyzer</title>
+    <link href="http://yoursite.com/2026/07/31/cableDropCompensation/"/>
+    <id>http://yoursite.com/2026/07/31/cableDropCompensation/</id>
+    <published>2026-07-30T14:00:00.000Z</published>
+    <updated>2026-07-30T14:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;I built a &lt;a href=&quot;/pressuretapanalyzer/&quot;&gt;pressure tap line response analyzer&lt;/a&gt;.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Error Function</title>
     <link href="http://yoursite.com/2026/07/17/errorFunction/"/>
     <id>http://yoursite.com/2026/07/17/errorFunction/</id>
@@ -413,27 +434,6 @@
     
     
     <summary type="html">&lt;p&gt;The following MATLAB code is specifically used for DT9828 boards.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>P201 Encoder Interface</title>
-    <link href="http://yoursite.com/2024/10/08/P201EncoderInterface/"/>
-    <id>http://yoursite.com/2024/10/08/P201EncoderInterface/</id>
-    <published>2024-10-07T13:00:00.000Z</published>
-    <updated>2024-10-07T13:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;The P201 series are single channel encoder interfaces suitable for use with a wide variety of 5V rotary and linear encoders. The USB versions allow encoders to be easily interfaced to and powered from a PC using only a USB cable. The new RS485 encoder interface (P201-9B-RS485) enables long distance, multidrop capability for SSI or BiSS C encoders.&lt;/p&gt;
-&lt;p&gt;Supported by PC based &lt;a href=&quot;https://www.joulefusion.com/protura4.htm&quot;&gt;GUI Demonstration software&lt;/a&gt; and supplied with USB drivers that emulate a COM Port. Virtual COM Port access enables simple interfacing from LabVIEW, C#.Net, VB.Net, MATLAB.&lt;/p&gt;
-&lt;p&gt;More details can be referred to &lt;a href=&quot;dataSheetP201.pdf&quot;&gt;the data sheet of P201 interface&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
     

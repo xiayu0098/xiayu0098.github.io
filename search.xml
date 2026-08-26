@@ -1843,4 +1843,13 @@ git reset b
         <tag>research</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Pressure tap line response analyzer</title>
+    <url>/2026/07/31/cableDropCompensation/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I built a <a href="/pressuretapanalyzer/">pressure tap line response analyzer</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
 </search>
