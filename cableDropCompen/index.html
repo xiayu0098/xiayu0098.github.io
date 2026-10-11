@@ -55,16 +55,13 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cable drop compensation — SY8286 + INA current feedback</title>
+      <script src="/assets/js/APlayer.min.js"> </script><!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cable Drop Compensation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* Layout: single engineering-notebook column; derivation first, then live calculator, noise sizing, and verification */
 :root{
   --paper:#FFFFFF;--wash:#FBF8F5;--wash-2:#F5F0EA;
   --rule:#E7E0D8;--rule-strong:#CFC5B9;
@@ -72,37 +69,52 @@
   --orange:#E8590C;--orange-deep:#B8450A;--orange-wash:#FFF2E8;
   --alarm:#C0392B;--alarm-wash:#FDF0EE;
   --warn:#9A6B08;--warn-wash:#FDF6E3;
-  --sans:'IBM Plex Sans',system-ui,sans-serif;
-  --cond:'Barlow Condensed',system-ui,sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --good:#0F766E;--good-wash:#E9F4F2;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --cond:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding:36px 22px 72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding-block:36px 72px;padding-inline:22px}
 .wrap{max-width:1020px;margin:0 auto}
 
 .masthead{border-bottom:2px solid var(--orange);padding-bottom:14px;display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap}
-h1{font-family:var(--cond);font-weight:600;font-size:40px;line-height:.98;margin:0}
+h1{font-family:var(--cond);font-weight:600;font-size:40px;line-height:.98;margin:0;text-wrap:balance}
 h1 em{font-style:normal;color:var(--orange)}
 .sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:5px}
-.lede{color:var(--muted);font-size:14.5px;max-width:64ch;margin:16px 0 34px}
+.lede{color:var(--muted);font-size:14.5px;max-width:66ch;margin:16px 0 34px}
 
 h2{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.19em;text-transform:uppercase;color:var(--orange);margin:0 0 15px;display:flex;align-items:center;gap:13px}
 h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+h3{font-family:var(--cond);font-weight:600;font-size:19px;letter-spacing:.02em;margin:26px 0 10px;color:var(--ink)}
 section{margin-bottom:40px}
+.intro{color:var(--muted);font-size:14px;max-width:70ch;margin:0 0 16px}
+.intro b{color:var(--ink);font-weight:500}
 
 .schem{background:var(--wash);border:1px solid var(--rule);padding:16px 12px 10px}
 svg{display:block;width:100%;height:auto}
 
-.eq{background:var(--wash);border-left:2px solid var(--orange);padding:15px 18px;margin-bottom:9px}
-.eq-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.eq-body{font-family:var(--mono);font-size:15px;overflow-x:auto;white-space:nowrap;padding-bottom:2px}
+.steps{display:grid;gap:9px}
+.eq{background:var(--wash);border-left:2px solid var(--orange);padding:14px 18px;min-width:0}
+.eq.key{background:var(--orange-wash);border-left-width:3px}
+.eq-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;display:flex;gap:10px;align-items:baseline}
+.eq-label .n{color:var(--orange-deep);font-weight:500}
+.eq-body{font-family:var(--mono);font-size:15px;overflow-x:auto;white-space:nowrap;padding-bottom:2px;line-height:1.9}
 .eq-body b{color:var(--orange-deep);font-weight:500}
-.eq-note{font-size:13.5px;color:var(--muted);margin-top:9px;white-space:normal}
+.eq-body .dim{color:var(--muted)}
+.eq-body .live{color:var(--orange-deep);font-weight:500;font-variant-numeric:tabular-nums}
+.eq-note{font-size:13.5px;color:var(--muted);margin-top:8px;white-space:normal;max-width:72ch}
+.eq-note b{color:var(--ink);font-weight:500}
+
+.recipe{counter-reset:none}
+.recipe .eq{border-left-color:var(--ink)}
+.recipe .eq.key{border-left-color:var(--orange)}
 
 .grid{display:grid;gap:10px}
 .g5{grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
 .g6{grid-template-columns:repeat(auto-fit,minmax(122px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
 
 .field{background:var(--wash);border:1px solid var(--rule);padding:12px 14px}
 .field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
@@ -114,15 +126,18 @@ input:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 
 .currentbar{background:var(--orange-wash);border:1px solid #F5C9A8;padding:16px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .currentbar label{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--orange-deep);white-space:nowrap}
-input[type=range]{flex:1;min-width:180px;accent-color:var(--orange);height:22px}
+input[type=range]{flex:1;min-width:160px;accent-color:var(--orange);height:22px}
 input[type=range]:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
 .currentbar output{font-family:var(--mono);font-size:26px;font-weight:500;color:var(--orange-deep);min-width:82px;text-align:right}
 
 .readout{background:var(--wash-2);padding:12px 14px}
 .readout .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
-.readout .v{font-family:var(--mono);font-size:20px;font-weight:500;margin-top:3px;letter-spacing:-.02em}
+.readout .v{font-family:var(--mono);font-size:20px;font-weight:500;margin-top:3px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.readout .s{font-size:12px;color:var(--muted);margin-top:2px}
+.readout.bad{background:var(--alarm-wash)}.readout.bad .v{color:var(--alarm)}
+.readout.good{background:var(--good-wash)}.readout.good .v{color:var(--good)}
 
-.seg{display:flex;flex-wrap:wrap;border:1px solid var(--rule-strong);width:fit-content;margin-bottom:14px}
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--rule-strong);width:fit-content;max-width:100%;margin-bottom:14px}
 .seg button{background:transparent;border:none;color:var(--muted);font-family:var(--cond);font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:9px 18px;cursor:pointer}
 .seg button+button{border-left:1px solid var(--rule-strong)}
 .seg button[aria-pressed=true]{background:var(--orange);color:#fff;font-weight:600}
@@ -135,41 +150,56 @@ input[type=range]:focus-visible{outline:2px solid var(--orange);outline-offset:4
 table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:14px;min-width:560px}
 th{font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-strong);white-space:nowrap}
 th:first-child{text-align:left}
-td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
-td:first-child{text-align:left;color:var(--muted);white-space:nowrap}
+td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;white-space:nowrap}
+td:first-child{text-align:left;color:var(--muted)}
 tr.design td:first-child{color:var(--orange);font-weight:500}
 tr.over td:first-child::after{content:" over";color:var(--muted);font-size:11px}
+tr.sel td{background:var(--orange-wash)}
+tr.sel td:first-child{color:var(--orange-deep);font-weight:500}
 td.hi{color:var(--orange);font-weight:500}
 td.bad{background:var(--alarm-wash);color:var(--alarm);font-weight:500}
 td.warn{background:var(--warn-wash);color:var(--warn);font-weight:500}
+
+.chip{display:inline-block;font-family:var(--cond);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border:1px solid currentColor}
+.chip.good{color:var(--good);background:var(--good-wash)}
+.chip.mid{color:var(--warn);background:var(--warn-wash)}
+.chip.bad{color:var(--alarm);background:var(--alarm-wash)}
+button.use{font-family:var(--cond);font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--orange-deep);border:1px solid var(--rule-strong);padding:3px 11px;cursor:pointer}
+button.use:hover{border-color:var(--orange);background:var(--orange-wash)}
+button.use:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+button.use[disabled]{color:var(--muted);cursor:default;background:transparent;border-color:var(--rule)}
+
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:16px}
+.tip{border-top:2px solid var(--ink);padding:10px 2px 0;font-size:14px;min-width:0}
+.tip b{display:block;font-family:var(--cond);font-size:16px;font-weight:600;letter-spacing:.02em;margin-bottom:3px}
+.tip span{color:var(--muted)}
 
 .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:12px;font-family:var(--mono)}
 .legend i{display:inline-block;width:22px;height:2px;vertical-align:3px;margin-right:7px}
 
 footer{border-top:1px solid var(--rule);margin-top:46px;padding-top:18px;font-size:13.5px;color:var(--muted)}
-footer p{margin:0 0 9px}
+footer p{margin:0 0 9px;max-width:80ch}
 
-@media (max-width:560px){h1{font-size:29px}body{padding:24px 14px 52px}.currentbar output{font-size:22px}}
-@media (prefers-reduced-motion:no-preference){input,.seg button{transition:border-color .15s ease,background .15s ease,color .15s ease}}
+@media (max-width:560px){h1{font-size:29px}body{padding-block:24px 52px;padding-inline:16px}.currentbar output{font-size:22px}.eq{padding:12px 14px}.eq-body{font-size:13.5px}}
+@media (prefers-reduced-motion:no-preference){input,.seg button,button.use{transition:border-color .15s ease,background .15s ease,color .15s ease}}
 </style>
-</head>
-<body>
+
 <div class="wrap">
 
 <header class="masthead">
   <h1>Cable drop<br><em>compensation</em></h1>
-  <div class="sub">SY8286A &middot; INA current feedback &middot; V<sub>FB</sub> = 0.6 V</div>
+  <div class="sub">SY8286A &middot; INA213 current feedback &middot; V<sub>FB</sub> = 0.6 V</div>
 </header>
 
-<p class="lede">A current-sense amplifier measures load current across a shunt and injects a proportional offset into the feedback divider, lifting the converter output by exactly the IR drop the cable will take away. The slope is fixed in hardware by R3, so it keeps climbing past the design point — the overload rows below show where that leads.</p>
+<p class="lede">The INA213 measures load current across the shunt and feeds a proportional signal through R3 into the feedback node. The converter raises V0 by exactly the voltage the shunt and cable will lose, so the load stays at the target. Below: the derivation step by step, a live calculator, how to pick R2 for noise immunity, and how the result behaves when the real cable differs from the design value.</p>
 
 <section>
   <h2>Circuit</h2>
   <div class="schem">
   <svg viewBox="0 0 700 470" role="img" aria-labelledby="sc-t sc-d">
     <title id="sc-t">Compensation network schematic</title>
-    <desc id="sc-d">The converter output V0 feeds a shunt, then the cable, then the load at V1. An instrumentation amplifier senses the shunt with IN plus on the load side, IN minus and REF on the converter side, and its output drives R3 into the feedback node where R1 from V0 and R2 to ground complete the divider.</desc>
-
+    <desc id="sc-d">The converter output V0 feeds a shunt, then the cable, then the load. V1 is the shunt's load side. The INA213 senses the shunt with IN plus on V1, IN minus and REF on V0, and its output drives R3 into the feedback node where R1 from V0 and R2 to ground complete the divider.</desc>
+    <rect x="0" y="0" width="700" height="470" fill="#FBF8F5"/>
     <g fill="none" stroke="#1B1917" stroke-width="1.5" stroke-linecap="round">
       <path d="M130 60 H205"/><path d="M269 60 H345"/><path d="M433 60 H480"/>
       <path d="M175 60 H80 V100"/><path d="M80 164 V330"/><path d="M80 394 V420"/>
@@ -230,24 +260,34 @@ footer p{margin:0 0 9px}
 </section>
 
 <section>
-  <h2>Design equations</h2>
-  <div class="eq"><div class="eq-label">1 &mdash; upper arm at zero current</div>
-    <div class="eq-body">R13 = R2 &times; ( V<sub>target</sub> / V<sub>FB</sub> &minus; 1 )</div>
-    <div class="eq-note">R13 is R1 in parallel with R3. With REF tied to V0, the amplifier output equals V0 at zero current, so both upper branches sit at the same potential and act as a single arm.</div></div>
-  <div class="eq"><div class="eq-label">2 &mdash; minimum shunt</div>
-    <div class="eq-body">Rsh<sub>min</sub> = Rc / ( G &minus; 1 )</div>
-    <div class="eq-note">The raw signal G&middot;Rsh&middot;I is attenuated by R13/R3 &lt; 1 on the way into the node, so it must start out larger than the drop it has to cancel. Below this limit R3 falls to R13 and R1 solves negative. Take two to three times the minimum.</div></div>
-  <div class="eq"><div class="eq-label">3 &mdash; compensation branch</div>
-    <div class="eq-body">R3 = R13 &times; ( G &middot; Rsh ) / ( Rc + Rsh )</div>
-    <div class="eq-note">A smaller R3 couples the amplifier more tightly to FB, giving it more authority over the output.</div></div>
-  <div class="eq"><div class="eq-label">4 &mdash; local branch</div>
-    <div class="eq-body">R1 = R13 &middot; R3 / ( R3 &minus; R13 )</div></div>
-  <div class="eq"><div class="eq-label">5 &mdash; converter output</div>
-    <div class="eq-body"><b>V0(I) = V<sub>FB</sub> ( 1 + R13/R2 ) + I &middot; ( R13 &middot; G &middot; Rsh / R3 )</b></div>
-    <div class="eq-note">Note what is missing: Rc, and any limit on I. Once R3 is soldered the slope is fixed and unbounded — the circuit measures current and applies an assumed cable resistance, with nothing to stop it climbing past the design point. This is feedforward, not feedback.</div></div>
-  <div class="eq"><div class="eq-label">6 &mdash; voltage at the load</div>
-    <div class="eq-body"><b>V<sub>load</sub>(I) = V0(I) &minus; I &middot; ( Rc<sub>actual</sub> + Rsh )</b></div>
-    <div class="eq-note">The shunt sits in the current path, so its own drop is part of what gets compensated. Cancellation is exact only when Rc<sub>actual</sub> equals the design Rc; every 100 m&Omega; of mismatch costs 0.1 V per amp at the load.</div></div>
+  <h2>How the formula is derived</h2>
+  <p class="intro">Five steps take you from the schematic to one clean equation. The trick in step 3 is to <b>keep every term as a conductance (1/R)</b> instead of cross-multiplying. R1 and R3 then collapse into a single parallel resistance, written <b>Rp = R1 &#8741; R3</b>.</p>
+  <div class="steps">
+    <div class="eq"><div class="eq-label"><span class="n">a</span> Amplifier output</div>
+      <div class="eq-body">V<sub>INA</sub> = G &middot; (V<sub>IN+</sub> &minus; V<sub>IN&minus;</sub>) + V<sub>REF</sub><br>
+      <span class="dim">&nbsp; &nbsp; &nbsp; = G &middot; (V1 &minus; V0) + V0</span><br>
+      <b>V<sub>INA</sub> = V0 &minus; G&middot;Rsh&middot;I</b></div>
+      <div class="eq-note">IN+ is on the load side, so V1 &minus; V0 = &minus;Rsh&middot;I. REF on V0 makes the output ride on V0: it equals V0 at zero current and drops G&middot;Rsh volts below it per amp (<span id="d-grsh">0.5</span> V/A here).</div></div>
+
+    <div class="eq"><div class="eq-label"><span class="n">b</span> KCL at the FB node</div>
+      <div class="eq-body">(V0 &minus; V<sub>FB</sub>)/R1 + (V<sub>INA</sub> &minus; V<sub>FB</sub>)/R3 = V<sub>FB</sub>/R2</div>
+      <div class="eq-note">The converter regulates FB to V<sub>FB</sub> = 0.6 V. Current arrives through R1 from V0 and through R3 from the amplifier, and leaves through R2.</div></div>
+
+    <div class="eq"><div class="eq-label"><span class="n">c</span> Group by conductance</div>
+      <div class="eq-body">V0&middot;(1/R1 + 1/R3) = V<sub>FB</sub>&middot;(1/R1 + 1/R3) + V<sub>FB</sub>/R2 + G&middot;Rsh&middot;I/R3<br>
+      <span class="dim">1/R1 + 1/R3 = 1/Rp &nbsp;&rarr;&nbsp; multiply both sides by Rp:</span></div>
+      <div class="eq-note">V0 and V<sub>FB</sub> carry the same group (1/R1 + 1/R3). That shared group is what lets the result stay short.</div></div>
+
+    <div class="eq key"><div class="eq-label"><span class="n">d</span> Converter output</div>
+      <div class="eq-body"><b>V0 = V<sub>FB</sub>&middot;(1 + Rp/R2) + G&middot;Rsh&middot;&alpha;&middot;I</b> &nbsp; <span class="dim">with &alpha; = Rp/R3 = R1/(R1 + R3)</span></div>
+      <div class="eq-note">The first term is the setpoint: an ordinary divider with Rp as the upper arm. The second term is the compensation: the amplifier's G&middot;Rsh volts per amp, scaled by the divider ratio &alpha;. Rc does not appear. Once R3 is fitted the slope is fixed, so the circuit applies an assumed cable resistance with no limit on current.</div></div>
+
+    <div class="eq"><div class="eq-label"><span class="n">e</span> Voltage at the load, and the flat condition</div>
+      <div class="eq-body">V<sub>load</sub> = V0 &minus; I&middot;(Rsh + Rc)<br>
+      <span class="dim">&nbsp; &nbsp; &nbsp; &nbsp;= V<sub>FB</sub>&middot;(1 + Rp/R2) + [ G&middot;Rsh&middot;&alpha; &minus; (Rsh + Rc) ]&middot;I</span><br>
+      <b>Flat when &nbsp;G&middot;Rsh&middot;&alpha; = Rsh + Rc</b></div>
+      <div class="eq-note">The bracket must be zero: the rise per amp equals the loss per amp. Smaller than that and the load still sags (undercompensated). Larger and the load voltage climbs with current (overcompensated). Because &alpha; &lt; 1, this needs <b>G&middot;Rsh &gt; Rsh + Rc</b>, i.e. <b>Rsh &gt; Rc/(G &minus; 1)</b> = <span id="d-rshmin">4.08 m&Omega;</span> here. Use two to three times that minimum.</div></div>
+  </div>
 </section>
 
 <section>
@@ -257,7 +297,7 @@ footer p{margin:0 0 9px}
     <input type="range" id="imax" min="1" max="5" step="0.1" value="5">
     <output id="imax-out" for="imax">5.0 A</output>
   </div>
-  <p style="color:#78706A;font-size:13.5px;margin:12px 0 0">The plot and table run to 1.5&times; this value so the overload region is visible. Nothing in the circuit clamps the compensation at the design point.</p>
+  <p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">The plot and table run to 1.5&times; this value so the overload region is visible. Nothing in the circuit clamps the compensation at the design point.</p>
 </section>
 
 <section>
@@ -274,8 +314,59 @@ footer p{margin:0 0 9px}
 <div id="alarm"></div>
 
 <section>
+  <h2>Design recipe &mdash; live values</h2>
+  <p class="intro">Two targets (setpoint and slope) and three resistors, so <b>R2 is your free choice</b> and the other two follow. The numbers below update with the parameters.</p>
+  <div class="steps recipe">
+    <div class="eq"><div class="eq-label"><span class="n">1</span> Divider ratio from the slope</div>
+      <div class="eq-body">&alpha; = (Rsh + Rc) / (G&middot;Rsh) = <span class="live" id="r-alpha-calc">&mdash;</span></div></div>
+    <div class="eq"><div class="eq-label"><span class="n">2</span> Upper-arm ratio from the setpoint</div>
+      <div class="eq-body">Rp/R2 = V<sub>target</sub>/V<sub>FB</sub> &minus; 1 = <span class="live" id="r-ratio-calc">&mdash;</span></div></div>
+    <div class="eq"><div class="eq-label"><span class="n">3</span> Choose R2, get Rp</div>
+      <div class="eq-body">Rp = (Rp/R2) &times; R2 = <span class="live" id="r-rp-calc">&mdash;</span></div>
+      <div class="eq-note">See <b>Noise resistance</b> below for how to choose R2.</div></div>
+    <div class="eq key"><div class="eq-label"><span class="n">4</span> Split Rp into R3 and R1</div>
+      <div class="eq-body"><b>R3 = Rp / &alpha;</b> = <span class="live" id="r-r3-calc">&mdash;</span><br>
+      <b>R1 = Rp / (1 &minus; &alpha;)</b> = <span class="live" id="r-r1-calc">&mdash;</span></div></div>
+    <div class="eq"><div class="eq-label"><span class="n">5</span> Check</div>
+      <div class="eq-body">V0 at 0 A = <span class="live" id="r-v0">&mdash;</span><br>
+      slope G&middot;Rsh&middot;&alpha; = <span class="live" id="r-slope">&mdash;</span> &nbsp;<span class="dim">vs Rsh + Rc =</span> <span class="live" id="r-loss">&mdash;</span></div>
+      <div class="eq-note">After rounding to standard values, recompute both lines with the parts you will actually buy. 1% parts shift the setpoint by tens of millivolts.</div></div>
+  </div>
+</section>
+
+<section>
   <h2>Computed network</h2>
   <div class="grid g6" id="readouts"></div>
+</section>
+
+<section>
+  <h2>Noise resistance &mdash; choosing R2</h2>
+  <p class="intro">Switching noise couples into the FB pin as a small current. The voltage it produces is that current times the impedance seen at FB, which is <b>Z<sub>FB</sub> = R1 &#8741; R2 &#8741; R3 = Rp &#8741; R2</b>. A smaller R2 lowers Z<sub>FB</sub> and makes the setpoint harder to disturb. Since Rp = (Rp/R2)&middot;R2 and R1, R3 are fixed multiples of Rp, <b>every resistor scales with R2</b>. The limits come from the amplifier and the feed-forward capacitor.</p>
+
+  <div class="grid g4" id="noise-readouts"></div>
+
+  <h3>Candidate values</h3>
+  <div class="tablewrap"><table id="sweep"></table></div>
+  <div class="legend">
+    <span><span class="chip good">Low Z</span>&nbsp; Z<sub>FB</sub> &le; 2 k&Omega;, R3 &ge; 10 k&Omega;</span>
+    <span><span class="chip mid">Higher Z</span>&nbsp; works, more noise pickup</span>
+    <span><span class="chip bad">R3 &lt; 10 k&Omega;</span>&nbsp; loads the INA213 output</span>
+  </div>
+
+  <h3>Limits on how small R2 can go</h3>
+  <div class="tips">
+    <div class="tip"><b>INA213 output load</b><span>R3 is a load on the amplifier. At zero current it carries (V<sub>target</sub> &minus; 0.6 V)/R3. The datasheet characterises output swing with roughly a 10 k&Omega; load; heavier loading adds gain error. Keep R3 &ge; 10 k&Omega;.</span></div>
+    <div class="tip"><b>Feed-forward capacitor</b><span>C_f across R1 sets a zero at f<sub>z</sub> = 1/(2&pi;&middot;R1&middot;C_f). Keep R1&middot;C_f constant: when R2 drops, R1 drops by the same factor and C_f rises by it. The table's C_f column shows the factor relative to R2 = 4.3 k&Omega;.</span></div>
+    <div class="tip"><b>Quiescent power</b><span>Divider plus R3 current stays below 1 mA for R2 &ge; 1 k&Omega;. That is negligible for a multi-amp converter and matters only for standby efficiency.</span></div>
+  </div>
+
+  <h3>Layout matters more than values</h3>
+  <div class="tips">
+    <div class="tip"><b>Keep FB short</b><span>Place R1, R2, R3 and C_f at the FB pin. Route the FB trace away from the switch node and inductor.</span></div>
+    <div class="tip"><b>Quiet ground for R2</b><span>Return R2 to the controller's analog ground, not a power ground path that carries switching current.</span></div>
+    <div class="tip"><b>Run the long trace from the INA</b><span>The trace from the INA output to R3 can be long, because a low-impedance source drives it. The short side belongs at FB.</span></div>
+    <div class="tip"><b>Optional RC filter</b><span>Split R3 into two halves with a small capacitor to ground at the midpoint. The DC value is unchanged, so the compensation maths stays the same. Put the corner well below the switching frequency.</span></div>
+  </div>
 </section>
 
 <section>
@@ -284,7 +375,7 @@ footer p{margin:0 0 9px}
     <button type="button" id="t-recept" aria-pressed="true">Receptacle on board</button>
     <button type="button" id="t-captive" aria-pressed="false">Captive cable</button>
   </div>
-  <p style="color:#78706A;font-size:14px;margin:0" id="topo-note"></p>
+  <p style="color:var(--muted);font-size:14px;margin:0" id="topo-note"></p>
 </section>
 
 <section>
@@ -310,7 +401,7 @@ footer p{margin:0 0 9px}
     <span><i style="background:#FDF0EE;height:11px;border:1px solid #E8C5BF"></i>Out of spec</span>
     <span><i style="background:#FDF6E3;height:11px;border:1px solid #E8DCB8"></i>Undervoltage warning</span>
   </div>
-  <p style="color:#78706A;font-size:13.5px;margin:14px 0 0">Curves carry their cable resistance in milliohms at the right edge. All three leave the same intercept and fan out linearly, because the compensation slope is fixed in hardware while the real drop is not. The vertical marker is the design point; everything to its right is overload.</p>
+  <p style="color:var(--muted);font-size:13.5px;margin:14px 0 0">Curves carry their cable resistance in milliohms at the right edge. All three start at the same intercept and fan out linearly, because the compensation slope is fixed in hardware while the real drop is not. The vertical marker is the design point; everything to its right is overload.</p>
 </section>
 
 <section>
@@ -320,26 +411,27 @@ footer p{margin:0 0 9px}
     <span><i style="background:#C0392B"></i>Out of spec</span>
     <span><i style="background:#D9A520"></i>Below 4.63 V &mdash; undervoltage warning</span>
   </div>
-  <p style="color:#78706A;font-size:13.5px;margin:14px 0 0" id="ceil-note"></p>
+  <p style="color:var(--muted);font-size:13.5px;margin:14px 0 0" id="ceil-note"></p>
 </section>
 
 <footer>
   <p>5.5 V is the vSafe5V maximum from the USB Power Delivery specification, measured at the source receptacle. 4.63 V and 4.25 V are the approximate Raspberry Pi 5 undervoltage warning and PMIC shutdown points.</p>
-  <p>IN+ ties to V1 and IN&minus; to V0 — reversed from ordinary high-side sensing. The amplifier output must fall as current rises, since V0 climbs by (R13/R3)(V0 &minus; V<sub>INA</sub>). Wire it the conventional way and the compensation runs backwards.</p>
-  <p>Cff spans R1 only. It carries switching ripple from the real output node into FB, which the ripple-based modulator needs; the R3 branch carries the amplifier's DC output and has no ripple to give.</p>
-  <p>Standard resistor values will shift the result by tens of millivolts. Measure the built board.</p>
+  <p>IN+ ties to V1 and IN&minus; to V0. Swap them and V<sub>INA</sub> = V0 + G&middot;Rsh&middot;I: the slope changes sign, the converter lowers V0 as current rises, and the load sees twice the uncompensated drop. The amplifier would also have to swing above V0, which needs extra supply headroom.</p>
+  <p>C_f spans R1 only. It carries switching ripple from the real output node into FB, which the ripple-based modulator needs; the R3 branch carries the amplifier's DC output and has no ripple to give.</p>
+  <p>Many designs compensate 80&ndash;90% of the expected Rc to leave margin for cable and connector variation. Measure the far end of the cable at 0 A and full load on the built board, and trim R3 if the slope is off.</p>
 </footer>
 
 </div>
 
 <script>
 (function(){
-  var VFB=0.6, CEIL=5.5, WARN=4.63, DEAD=4.25, OVER=1.5;
+  var VFB=0.6, CEIL=5.5, WARN=4.63, DEAD=4.25, OVER=1.5, R3MIN=10000, ZLOW=2000, R2REF=4300;
   var captive=false;
   var nums=['g','rsh','rc','vt','r2','ra','rb','rcc'];
   function n(id){return parseFloat(document.getElementById(id).value);}
-  function fmtR(v){return v>=1000?(v/1000).toFixed((v/1000)>=100?0:1)+' k\u03A9':v.toFixed(0)+' \u03A9';}
-  function txt(id,s){document.getElementById(id).textContent=s;}
+  function fmtR(v){if(v>=1000){var k=v/1000;return k.toFixed(k>=100?0:(k>=10?1:2))+' kΩ';}return v.toFixed(0)+' Ω';}
+  function fmtI(a){return a>=1e-3?(a*1000).toFixed(2)+' mA':(a*1e6).toFixed(0)+' µA';}
+  function txt(id,s){var e=document.getElementById(id);if(e)e.textContent=s;}
 
   function setTopo(c){
     captive=c;
@@ -350,8 +442,50 @@ footer p{margin:0 0 9px}
       : 'The connector is on the board and the cable plugs into it, so the 5.5 V ceiling applies to the V0 column. Anything above it is presented to whatever the user plugs in.');
     txt('ceil-note', c
       ? 'The 5.5 V ceiling is applied to the load columns, since the connector sits at the far end of the captive cable. V0 is an internal rail and is flagged only for reference. The 4.25 V floor applies to the load in both topologies.'
-      : 'The 5.5 V ceiling is applied to the V0 column, since that is what the receptacle presents. Load voltages above 5.5 V are not flagged here — beyond the connector the cable is the user\u2019s, and the sink is specified to tolerate the drop. The 4.25 V floor still applies.');
+      : 'The 5.5 V ceiling is applied to the V0 column, since that is what the receptacle presents. Load voltages above 5.5 V are not flagged here, because beyond the connector the cable is the user’s and the sink is specified to tolerate the drop. The 4.25 V floor still applies.');
     render();
+  }
+
+  function clearLive(){
+    ['r-alpha-calc','r-ratio-calc','r-rp-calc','r-r3-calc','r-r1-calc','r-v0','r-slope','r-loss'].forEach(function(id){txt(id,'—');});
+    document.getElementById('noise-readouts').innerHTML='';
+    document.getElementById('sweep').innerHTML='';
+  }
+
+  function network(G,Rsh,Rc,Vt,R2){
+    var alpha=(Rsh+Rc)/(G*Rsh), Rp=R2*(Vt/VFB-1);
+    var R3=Rp/alpha, R1=Rp/(1-alpha), Z=1/(1/Rp+1/R2);
+    return {alpha:alpha,Rp:Rp,R3:R3,R1:R1,Z:Z,Idiv:VFB/R2,Iina:(Vt-VFB)/R3};
+  }
+
+  function renderNoise(G,Rsh,Rc,Vt,R2){
+    var net=network(G,Rsh,Rc,Vt,R2);
+    var cards=[
+      ['Z at FB pin',fmtR(net.Z),'R1 ∥ R2 ∥ R3', net.Z<=ZLOW?'good':''],
+      ['Divider current',fmtI(net.Idiv),'0.6 V / R2',''],
+      ['INA output current',fmtI(net.Iina),'at 0 A, (V_target − 0.6)/R3', net.R3<R3MIN?'bad':''],
+      ['C_f factor','× '+(R2REF/R2).toFixed(2),'vs R2 = 4.3 kΩ','']
+    ];
+    document.getElementById('noise-readouts').innerHTML=cards.map(function(c){
+      return '<div class="readout '+c[3]+'"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div><div class="s">'+c[2]+'</div></div>';
+    }).join('');
+
+    var list=[0.56,1,2,4.3,10];
+    var cur=Math.round(R2/10)/100;
+    var has=list.some(function(v){return Math.abs(v-cur)<0.005;});
+    if(!has){list.push(cur);list.sort(function(a,b){return a-b;});}
+    var h='<tr><th>R2</th><th>R1</th><th>R3</th><th>Z at FB</th><th>Divider I</th><th>INA I</th><th>C_f factor</th><th style="text-align:left">Status</th><th></th></tr>';
+    list.forEach(function(k){
+      var r2=k*1000, m=network(G,Rsh,Rc,Vt,r2), sel=Math.abs(k-cur)<0.005;
+      var chip = m.R3<R3MIN ? '<span class="chip bad">R3 &lt; 10 kΩ</span>'
+               : (m.Z<=ZLOW ? '<span class="chip good">Low Z</span>' : '<span class="chip mid">Higher Z</span>');
+      h+='<tr'+(sel?' class="sel"':'')+'><td>'+fmtR(r2)+'</td><td>'+fmtR(m.R1)+'</td><td'+(m.R3<R3MIN?' class="bad"':'')+'>'+fmtR(m.R3)+'</td><td>'+fmtR(m.Z)+'</td><td>'+fmtI(m.Idiv)+'</td><td>'+fmtI(m.Iina)+'</td><td>× '+(R2REF/r2).toFixed(2)+'</td><td style="text-align:left">'+chip+'</td><td><button type="button" class="use" data-r2="'+k+'"'+(sel?' disabled':'')+'>'+(sel?'In use':'Use')+'</button></td></tr>';
+    });
+    var t=document.getElementById('sweep');
+    t.innerHTML=h;
+    t.querySelectorAll('button.use').forEach(function(b){
+      b.addEventListener('click',function(){document.getElementById('r2').value=b.getAttribute('data-r2');render();});
+    });
   }
 
   function render(){
@@ -360,26 +494,28 @@ footer p{margin:0 0 9px}
     var alarm=document.getElementById('alarm'), ro=document.getElementById('readouts'),
         tbl=document.getElementById('tbl'), body=document.getElementById('plot-body');
 
-    txt('lb-rsh',(Rsh*1000).toFixed(1)+' m\u03A9');
-    txt('lb-rc',(Rc*1000).toFixed(0)+' m\u03A9');
+    txt('lb-rsh',(Rsh*1000).toFixed(1)+' mΩ');
+    txt('lb-rc',(Rc*1000).toFixed(0)+' mΩ');
     txt('lb-g','G = '+G);
     txt('lb-r2',fmtR(R2));
 
     if(!(G>1)||!(Rsh>0)||!(Rc>0)||!(Vt>VFB)||!(R2>0)){
       alarm.innerHTML='<div class="alarmbox"><div>Invalid input. All values must be positive and the target must exceed 0.6 V.</div></div>';
-      ro.innerHTML='';tbl.innerHTML='';body.innerHTML='';
-      txt('lb-r1','\u2014');txt('lb-r3','\u2014');return;
+      ro.innerHTML='';tbl.innerHTML='';body.innerHTML='';clearLive();
+      txt('lb-r1','—');txt('lb-r3','—');return;
     }
-    var R13=R2*(Vt/VFB-1), RshMin=Rc/(G-1);
+    var RshMin=Rc/(G-1);
+    txt('d-grsh',(G*Rsh).toFixed(3));
+    txt('d-rshmin',(RshMin*1000).toFixed(2)+' mΩ');
     if(Rsh<=RshMin){
-      alarm.innerHTML='<div class="alarmbox"><div>Shunt below minimum. Rsh must exceed '+(RshMin*1000).toFixed(2)+
-        ' m&Omega; at this cable resistance and gain, otherwise R3 falls to or below R13 and R1 solves negative. Try '+
-        (RshMin*2500).toFixed(1)+' m&Omega;, or raise the gain.</div></div>';
-      ro.innerHTML='';tbl.innerHTML='';body.innerHTML='';
-      txt('lb-r1','\u2014');txt('lb-r3','\u2014');return;
+      alarm.innerHTML='<div class="alarmbox"><div>Shunt below minimum. With &alpha; = '+((Rsh+Rc)/(G*Rsh)).toFixed(3)+' the divider ratio would need to exceed 1, which no resistor values can give. Rsh must exceed '+(RshMin*1000).toFixed(2)+
+        ' m&Omega; at this cable resistance and gain. Try '+(RshMin*2500).toFixed(1)+' m&Omega;, or raise the gain.</div></div>';
+      ro.innerHTML='';tbl.innerHTML='';body.innerHTML='';clearLive();
+      txt('lb-r1','—');txt('lb-r3','—');return;
     }
-    var R3=R13*(G*Rsh)/(Rc+Rsh), R1=R13*R3/(R3-R13);
-    var inter=VFB*(1+R13/R2), slope=R13*G*Rsh/R3, Ip=Im*OVER;
+    var net=network(G,Rsh,Rc,Vt,R2);
+    var alpha=net.alpha, Rp=net.Rp, R3=net.R3, R1=net.R1;
+    var inter=VFB*(1+Rp/R2), slope=G*Rsh*alpha, Ip=Im*OVER;
     var v0=function(i){return inter+slope*i;};
     var rcs=[n('ra')/1000,n('rb')/1000,n('rcc')/1000];
     var vl=function(i,r){return v0(i)-i*(r+Rsh);};
@@ -388,28 +524,42 @@ footer p{margin:0 0 9px}
     txt('lb-r1',fmtR(R1));
     txt('lb-r3',fmtR(R3));
 
+    var rshm=(Rsh*1000), rcm=(Rc*1000);
+    txt('r-alpha-calc','('+rshm.toFixed(1)+' + '+rcm.toFixed(0)+') mΩ / ('+G+' × '+rshm.toFixed(1)+' mΩ) = '+alpha.toFixed(3));
+    txt('r-ratio-calc',Vt.toFixed(2)+' / 0.6 − 1 = '+(Vt/VFB-1).toFixed(3));
+    txt('r-rp-calc',(Vt/VFB-1).toFixed(3)+' × '+fmtR(R2)+' = '+fmtR(Rp));
+    txt('r-r3-calc',fmtR(Rp)+' / '+alpha.toFixed(3)+' = '+fmtR(R3));
+    txt('r-r1-calc',fmtR(Rp)+' / '+(1-alpha).toFixed(3)+' = '+fmtR(R1));
+    txt('r-v0','0.6 × (1 + '+(Rp/R2).toFixed(3)+') = '+inter.toFixed(3)+' V');
+    txt('r-slope',(slope*1000).toFixed(1)+' mΩ');
+    txt('r-loss',((Rsh+Rc)*1000).toFixed(1)+' mΩ');
+
     var msgs=[];
     if(!captive && v0(Im)>CEIL) msgs.push('V0 reaches '+v0(Im).toFixed(2)+' V at the '+Im.toFixed(1)+' A design point, above the 5.5 V ceiling at the receptacle. Compensation stays legal only to '+iCeil.toFixed(2)+' A.');
-    else if(!captive && v0(Ip)>CEIL) msgs.push('V0 is legal at the design point but crosses 5.5 V at '+iCeil.toFixed(2)+' A, reaching '+v0(Ip).toFixed(2)+' V at '+Ip.toFixed(1)+' A. Nothing in the network limits this — add an output clamp or a current limit upstream.');
+    else if(!captive && v0(Ip)>CEIL) msgs.push('V0 is legal at the design point but crosses 5.5 V at '+iCeil.toFixed(2)+' A, reaching '+v0(Ip).toFixed(2)+' V at '+Ip.toFixed(1)+' A. Nothing in the network limits this. Add an output clamp or a current limit upstream.');
     if(captive){
       var wd=Math.max.apply(null,rcs.map(function(r){return vl(Im,r);}));
       var wo=Math.max.apply(null,rcs.map(function(r){return vl(Ip,r);}));
       if(wd>CEIL) msgs.push('At the connector, the worst load case reaches '+wd.toFixed(2)+' V at the '+Im.toFixed(1)+' A design point, above the 5.5 V ceiling. With a captive cable the connector is the compliance point, so this is what a plugged-in device sees.');
       else if(wo>CEIL) msgs.push('The connector is legal at the design point but the worst load case reaches '+wo.toFixed(2)+' V at '+Ip.toFixed(1)+' A. Overload pushes the compliance point out of spec.');
     }
+    if(R3<R3MIN) msgs.push('R3 is '+fmtR(R3)+', below 10 kΩ. The INA213 output carries '+fmtI(net.Iina)+' at zero current. Raise R2 to bring R3 back above 10 kΩ.');
     if(pw>0.5) msgs.push('The shunt dissipates '+(pw*1000).toFixed(0)+' mW at the '+Ip.toFixed(1)+' A overload point. Check package rating and temperature coefficient.');
     alarm.innerHTML=msgs.length?'<div class="alarmbox">'+msgs.map(function(m){return '<div>'+m+'</div>';}).join('')+'</div>':'';
 
-    var cards=[['R1',fmtR(R1)],['R2',fmtR(R2)],['R3',fmtR(R3)],['R13 parallel',fmtR(R13)],
+    var cards=[['R1',fmtR(R1)],['R2',fmtR(R2)],['R3',fmtR(R3)],['Rp = R1 ∥ R3',fmtR(Rp)],
+               ['α',alpha.toFixed(3)],
                ['Slope',slope.toFixed(3)+' V/A'],
                ['V0 at design',v0(Im).toFixed(3)+' V'],
                ['V0 at '+Ip.toFixed(1)+' A',v0(Ip).toFixed(3)+' V'],
-               ['V0 hits 5.5 V',iCeil.toFixed(2)+' A']];
+               ['V0 hits 5.5 V',iCeil>0?iCeil.toFixed(2)+' A':'at 0 A']];
     ro.innerHTML=cards.map(function(c){return '<div class="readout"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>';}).join('');
+
+    renderNoise(G,Rsh,Rc,Vt,R2);
 
     var fr=[0,0.25,0.5,0.75,1,1.25,1.5];
     var h='<tr><th>Current</th><th>V0 converter</th>';
-    rcs.forEach(function(r,k){h+='<th>Load '+'ABC'[k]+' &middot; '+(r*1000).toFixed(0)+' <span style="text-transform: lowercase;">m</span>&Omega;</th>';});
+    rcs.forEach(function(r,k){h+='<th>Load '+'ABC'[k]+' &middot; '+(r*1000).toFixed(0)+' <span style="text-transform:lowercase">m</span>&Omega;</th>';});
     h+='</tr>';
     fr.forEach(function(f){
       var i=Im*f, v=v0(i);
@@ -436,7 +586,7 @@ footer p{margin:0 0 9px}
     var L=58,R=572,T=32,B=292;
     var X=function(i){return L+(R-L)*i/Ip;}, Y=function(v){return B-(B-T)*(v-lo)/(hi-lo);};
     var clamp=function(y){return Math.max(T,Math.min(B,y));};
-    var out='';
+    var out='<rect x="0" y="0" width="640" height="350" fill="#FBF8F5"/>';
     if(CEIL<hi) out+='<rect x="'+L+'" y="'+T+'" width="'+(R-L)+'" height="'+(clamp(Y(CEIL))-T).toFixed(1)+'" fill="#FDF0EE"/>';
     if(WARN>lo) out+='<rect x="'+L+'" y="'+clamp(Y(WARN)).toFixed(1)+'" width="'+(R-L)+'" height="'+(B-clamp(Y(WARN))).toFixed(1)+'" fill="#FDF6E3"/>';
     if(DEAD>lo) out+='<rect x="'+L+'" y="'+clamp(Y(DEAD)).toFixed(1)+'" width="'+(R-L)+'" height="'+(B-clamp(Y(DEAD))).toFixed(1)+'" fill="#FDF0EE"/>';
@@ -481,9 +631,8 @@ footer p{margin:0 0 9px}
   setTopo(false);
 })();
 </script>
-</body>
-</html>
 
+</body></html>
       
       <!-- 打赏 -->
       
