@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-09-04T14:00:00.000Z</updated>
+  <updated>2026-10-11T13:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Soldering guide</title>
+    <link href="http://yoursite.com/2026/10/12/soleringGuide/"/>
+    <id>http://yoursite.com/2026/10/12/soleringGuide/</id>
+    <published>2026-10-11T13:00:00.000Z</published>
+    <updated>2026-10-11T13:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Soldering-amp-Desoldering-Practical-Guideline&quot;&gt;&lt;a href=&quot;#Soldering-amp-Desoldering-Practical-Guideline&quot; class=&quot;headerlink&quot; title=&quot;Soldering &amp;amp; Desoldering: Practical Guideline&quot;&gt;&lt;/a&gt;Soldering &amp;amp; Desoldering: Practical Guideline&lt;/h1&gt;&lt;p&gt;All temperatures are iron&amp;#x2F;station &lt;strong&gt;set-points&lt;/strong&gt; for a temperature-controlled station.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1-Master-Temperature-Table&quot;&gt;&lt;a href=&quot;#1-Master-Temperature-Table&quot; class=&quot;headerlink&quot; title=&quot;1. Master Temperature Table&quot;&gt;&lt;/a&gt;1. Master Temperature Table&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alloy&lt;/th&gt;
+&lt;th&gt;Melts at&lt;/th&gt;
+&lt;th&gt;Soldering tip&lt;/th&gt;
+&lt;th&gt;Desoldering tip (wick&amp;#x2F;pump)&lt;/th&gt;
+&lt;th&gt;Hot air (SMD rework)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;63&amp;#x2F;37&lt;/strong&gt; (Sn63Pb37)&lt;/td&gt;
+&lt;td&gt;183 °C&lt;/td&gt;
+&lt;td&gt;315–330 °C&lt;/td&gt;
+&lt;td&gt;340–360 °C&lt;/td&gt;
+&lt;td&gt;300–340 °C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;60&amp;#x2F;40&lt;/strong&gt; (Sn60Pb40)&lt;/td&gt;
+&lt;td&gt;183–190 °C&lt;/td&gt;
+&lt;td&gt;320–340 °C&lt;/td&gt;
+&lt;td&gt;345–365 °C&lt;/td&gt;
+&lt;td&gt;310–350 °C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Lead-free SAC305&lt;/strong&gt; (Sn96.5Ag3Cu0.5)&lt;/td&gt;
+&lt;td&gt;217–220 °C&lt;/td&gt;
+&lt;td&gt;350–370 °C&lt;/td&gt;
+&lt;td&gt;370–400 °C&lt;/td&gt;
+&lt;td&gt;350–400 °C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Lead-free SnCu0.7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;227 °C&lt;/td&gt;
+&lt;td&gt;360–380 °C&lt;/td&gt;
+&lt;td&gt;380–400 °C&lt;/td&gt;
+&lt;td&gt;360–400 °C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Cold-Junction Compensation and Calibration in Thermocouple Modules</title>
@@ -420,25 +475,6 @@
     
     
     <category term="Latex" scheme="http://yoursite.com/tags/Latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Multi-functional Power Box</title>
-    <link href="http://yoursite.com/2024/10/10/powerBoxControl/"/>
-    <id>http://yoursite.com/2024/10/10/powerBoxControl/</id>
-    <published>2024-10-10T09:00:00.000Z</published>
-    <updated>2024-10-10T09:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;I am excited to unveil a newly developed multi-functional power box, designed speficially for engineering-related projects.&lt;br&gt;This versatile device is equipped with several key features to streamline your work.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="research" scheme="http://yoursite.com/categories/research/"/>
-    
-    
-    <category term="Arduino Code" scheme="http://yoursite.com/tags/Arduino-Code/"/>
     
   </entry>
   

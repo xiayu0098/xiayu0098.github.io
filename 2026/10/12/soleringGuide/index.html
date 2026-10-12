@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="nnn" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Soldering guide |  X. Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="X. Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-soleringGuide" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Soldering guide
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2026/10/12/soleringGuide/" class="article-date">
+  <time datetime="2026-10-11T13:00:00.000Z" itemprop="datePublished">2026-10-12</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><h1 id="Soldering-amp-Desoldering-Practical-Guideline"><a href="#Soldering-amp-Desoldering-Practical-Guideline" class="headerlink" title="Soldering &amp; Desoldering: Practical Guideline"></a>Soldering &amp; Desoldering: Practical Guideline</h1><p>All temperatures are iron&#x2F;station <strong>set-points</strong> for a temperature-controlled station.</p>
+<hr>
+<h2 id="1-Master-Temperature-Table"><a href="#1-Master-Temperature-Table" class="headerlink" title="1. Master Temperature Table"></a>1. Master Temperature Table</h2><table>
+<thead>
+<tr>
+<th>Alloy</th>
+<th>Melts at</th>
+<th>Soldering tip</th>
+<th>Desoldering tip (wick&#x2F;pump)</th>
+<th>Hot air (SMD rework)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>63&#x2F;37</strong> (Sn63Pb37)</td>
+<td>183 °C</td>
+<td>315–330 °C</td>
+<td>340–360 °C</td>
+<td>300–340 °C</td>
+</tr>
+<tr>
+<td><strong>60&#x2F;40</strong> (Sn60Pb40)</td>
+<td>183–190 °C</td>
+<td>320–340 °C</td>
+<td>345–365 °C</td>
+<td>310–350 °C</td>
+</tr>
+<tr>
+<td><strong>Lead-free SAC305</strong> (Sn96.5Ag3Cu0.5)</td>
+<td>217–220 °C</td>
+<td>350–370 °C</td>
+<td>370–400 °C</td>
+<td>350–400 °C</td>
+</tr>
+<tr>
+<td><strong>Lead-free SnCu0.7</strong></td>
+<td>227 °C</td>
+<td>360–380 °C</td>
+<td>380–400 °C</td>
+<td>360–400 °C</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<p><strong>Adjust for the job:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Joint type</th>
+<th>Change from table</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Small SMD (0603, SOIC pins)</td>
+<td>−20 °C</td>
+</tr>
+<tr>
+<td>Standard through-hole</td>
+<td>As table</td>
+</tr>
+<tr>
+<td>Large pad &#x2F; ground plane &#x2F; connector shell</td>
+<td>+20–30 °C <strong>and</strong> bigger tip</td>
+</tr>
+<tr>
+<td>Unknown solder on old board</td>
+<td>Treat as lead-free</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-Rules-of-Thumb"><a href="#2-Rules-of-Thumb" class="headerlink" title="2. Rules of Thumb"></a>2. Rules of Thumb</h2><ol>
+<li><strong>Soldering tip &#x3D; melting point + 120–150 °C.</strong></li>
+<li><strong>Desoldering tip &#x3D; soldering tip + 20–40 °C.</strong> Wick and pump steal heat, and you need the whole joint fully liquid.</li>
+<li><strong>Bigger tip before higher temperature.</strong> A 3 mm chisel at 330 °C beats a needle tip at 400 °C.</li>
+<li><strong>Joint time: 2–4 s.</strong> If it hasn’t flowed in 5 s, increase heat delivery (tip size → flux → +20 °C). Don’t just hold longer.</li>
+<li><strong>Never exceed ~400 °C</strong> on a standard FR-4 board: pads lift and tips die.</li>
+<li><strong>Too hot signs:</strong> flux burns black instantly, tip goes dark, board browns.</li>
+<li><strong>Too cold signs:</strong> solder balls up, looks grey and lumpy, won’t spread.</li>
+</ol>
+<hr>
+<h2 id="3-Soldering-Procedure"><a href="#3-Soldering-Procedure" class="headerlink" title="3. Soldering Procedure"></a>3. Soldering Procedure</h2><h3 id="Through-hole"><a href="#Through-hole" class="headerlink" title="Through-hole"></a>Through-hole</h3><ol>
+<li>Tin the tip, wipe on brass wool.</li>
+<li>Touch the tip to <strong>pad and lead together</strong>.</li>
+<li>Feed solder into the joint on the opposite side from the tip (not onto the tip).</li>
+<li>Stop feeding when you get a concave fillet covering the pad.</li>
+<li>Remove solder → remove iron 1 s later.</li>
+<li>Don’t move the part for 2–3 s (critical for 60&#x2F;40).</li>
+</ol>
+<h3 id="SMD-resistors-caps"><a href="#SMD-resistors-caps" class="headerlink" title="SMD (resistors, caps)"></a>SMD (resistors, caps)</h3><ol>
+<li>Tin one pad.</li>
+<li>Hold part with tweezers, reflow that pad to tack it.</li>
+<li>Solder the second pad, then touch up the first.</li>
+</ol>
+<h3 id="SMD-ICs-SOIC-x2F-QFP"><a href="#SMD-ICs-SOIC-x2F-QFP" class="headerlink" title="SMD ICs (SOIC&#x2F;QFP)"></a>SMD ICs (SOIC&#x2F;QFP)</h3><ol>
+<li>Tack two opposite corner pins, check alignment.</li>
+<li>Apply flux along all pins.</li>
+<li>Drag a solder-loaded tip along the pins.</li>
+<li>Remove bridges with flux + clean tip, or wick.</li>
+</ol>
+<hr>
+<h2 id="4-Desoldering-Procedure"><a href="#4-Desoldering-Procedure" class="headerlink" title="4. Desoldering Procedure"></a>4. Desoldering Procedure</h2><h3 id="Golden-rule"><a href="#Golden-rule" class="headerlink" title="Golden rule"></a>Golden rule</h3><p><strong>Add fresh solder + flux first.</strong> Old solder is oxidised and won’t flow. On lead-free boards, adding leaded solder drops the melting point and makes removal much easier (hobby&#x2F;repair only, not for RoHS products).</p>
+<h3 id="Method-selection"><a href="#Method-selection" class="headerlink" title="Method selection"></a>Method selection</h3><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Best method</th>
+<th>Tip &#x2F; air setting</th>
+<th>Time per joint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Clean pads, remove excess solder</td>
+<td>Solder wick</td>
+<td>Leaded 340–360 °C &#x2F; Lead-free 370–400 °C</td>
+<td>2–4 s</td>
+</tr>
+<tr>
+<td>Through-hole, few pins</td>
+<td>Solder pump</td>
+<td>Leaded 340–360 °C &#x2F; Lead-free 370–390 °C</td>
+<td>2–3 s</td>
+</tr>
+<tr>
+<td>Through-hole, many pins</td>
+<td>Desoldering gun (vacuum)</td>
+<td>Leaded 350–370 °C &#x2F; Lead-free 380–400 °C</td>
+<td>1–3 s</td>
+</tr>
+<tr>
+<td>2-terminal SMD</td>
+<td>Tweezers iron or 2 irons</td>
+<td>Leaded 330–350 °C &#x2F; Lead-free 360–380 °C</td>
+<td>2–3 s</td>
+</tr>
+<tr>
+<td>SMD ICs, QFN, multi-pin</td>
+<td>Hot air</td>
+<td>Leaded 300–350 °C &#x2F; Lead-free 350–400 °C, low-med airflow</td>
+<td>15–40 s</td>
+</tr>
+<tr>
+<td>Stubborn SMD, fragile board</td>
+<td>Low-melt removal alloy</td>
+<td>Iron 250–300 °C</td>
+<td>Until all pins stay liquid</td>
+</tr>
+<tr>
+<td>Big board, thick ground planes</td>
+<td>Bottom preheater + any above</td>
+<td>Board at 100–150 °C</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="Solder-wick"><a href="#Solder-wick" class="headerlink" title="Solder wick"></a>Solder wick</h3><ol>
+<li>Flux the joint.</li>
+<li>Braid on joint, iron on top of braid.</li>
+<li>Wait until solder wicks up (copper turns silver).</li>
+<li><strong>Lift iron and braid together.</strong> Never drag or pull.</li>
+<li>Cut used braid. Match braid width to tip width.</li>
+</ol>
+<h3 id="Solder-pump"><a href="#Solder-pump" class="headerlink" title="Solder pump"></a>Solder pump</h3><ol>
+<li>Cock the pump.</li>
+<li>Melt the joint fully (add fresh solder if dry).</li>
+<li>Nozzle on the molten solder, remove iron, trigger immediately.</li>
+<li>Repeat once if needed, then wiggle the pin to confirm it’s free.</li>
+</ol>
+<h3 id="Hot-air"><a href="#Hot-air" class="headerlink" title="Hot air"></a>Hot air</h3><ol>
+<li>Flux all pins.</li>
+<li>Shield nearby plastic parts with Kapton tape or foil.</li>
+<li>Nozzle 1–2 cm above the part, keep it moving in small circles.</li>
+<li>Start low airflow (small parts blow away on high).</li>
+<li>Lift with tweezers <strong>only when all pins are molten.</strong> Test with a gentle nudge.</li>
+<li>Clean pads with wick before fitting the new part.</li>
+</ol>
+<blockquote>
+<p>Hot air set-point ≠ temperature at the board. Air cools quickly with distance, so the set-point is higher than the melting point by a large margin.</p>
+</blockquote>
+<hr>
+<h2 id="5-Troubleshooting"><a href="#5-Troubleshooting" class="headerlink" title="5. Troubleshooting"></a>5. Troubleshooting</h2><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Grey, lumpy joint</td>
+<td>Too cold &#x2F; dirty</td>
+<td>Flux, reheat until it flows</td>
+</tr>
+<tr>
+<td>Frosty, cracked joint</td>
+<td>Moved while cooling</td>
+<td>Reheat, hold still</td>
+</tr>
+<tr>
+<td>Solder bridge</td>
+<td>Too much solder</td>
+<td>Flux + drag clean tip, or wick</td>
+</tr>
+<tr>
+<td>Solder won’t wick</td>
+<td>Braid cold or dry</td>
+<td>Add flux, +20 °C, wider braid</td>
+</tr>
+<tr>
+<td>Pump leaves solder in hole</td>
+<td>Joint not fully molten</td>
+<td>Add fresh solder, re-melt, retry</td>
+</tr>
+<tr>
+<td>Pad lifted</td>
+<td>Too hot &#x2F; too long &#x2F; pulled</td>
+<td>Lower temp, lift braid vertically; repair with jumper wire</td>
+</tr>
+<tr>
+<td>Tip won’t wet</td>
+<td>Oxidised tip</td>
+<td>Tip tinner&#x2F;activator; never file a plated tip</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-Tip-Care"><a href="#6-Tip-Care" class="headerlink" title="6. Tip Care"></a>6. Tip Care</h2><ul>
+<li>Tin the tip <strong>before</strong> putting it in the stand and <strong>before</strong> switching off.</li>
+<li>Clean on brass wool, not a soaking-wet sponge.</li>
+<li>Use sleep mode. Idling at high temperature destroys tips.</li>
+<li>Lead-free wears tips faster; lower the temperature whenever possible.</li>
+</ul>
+<hr>
+<h2 id="7-Safety"><a href="#7-Safety" class="headerlink" title="7. Safety"></a>7. Safety</h2><ul>
+<li>Wash hands after handling leaded solder; no food or drink at the bench.</li>
+<li>Use fume extraction: flux smoke irritates lungs.</li>
+<li>Always return the iron to the stand.</li>
+<li>Wear safety glasses when cutting leads.</li>
+</ul>
+<hr>
+<h2 id="8-Cheat-Sheet"><a href="#8-Cheat-Sheet" class="headerlink" title="8. Cheat Sheet"></a>8. Cheat Sheet</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">                 MELTS        SOLDER        DESOLDER      HOT AIR</span><br><span class="line">63/37            183 °C       315–330 °C    340–360 °C    300–340 °C</span><br><span class="line">60/40            183–190 °C   320–340 °C    345–365 °C    310–350 °C</span><br><span class="line">SAC305           217–220 °C   350–370 °C    370–400 °C    350–400 °C</span><br><span class="line">SnCu0.7          227 °C       360–380 °C    380–400 °C    360–400 °C</span><br><span class="line"></span><br><span class="line">• Solder   = melt + 120–150 °C</span><br><span class="line">• Desolder = solder + 20–40 °C</span><br><span class="line">• Bigger tip before higher temp</span><br><span class="line">• 2–4 s per joint; max ~400 °C on FR-4</span><br><span class="line">• Add solder + flux to remove solder</span><br><span class="line">• Lift wick and iron together</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2026/10/12/soleringGuide/" data-id="cmv4pwmrf0000693tbidycis9"
+        class="article-share-link">share</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2026/09/05/cold_junction_calibration_report/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Cold-Junction Compensation and Calibration in Thermocouple Modules</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'wySfJB8THOuRIjPqX5Kp9cjr-gzGzoHsz',
+        app_key: 'xpbwMigcIm4VTCVU1mIGqzIh',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: 'Comment',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2026
+        X.
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="X. Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/latex">Technical Document</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/albums">Albums</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a cup of coffee~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
