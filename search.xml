@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>晶体管工作原理</title>
+    <url>/2026/10/16/transistorWork/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>一个方便快速理解BJT和MOSFET的<a href="/transistorWork/">工具</a>.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Soldering guide</title>
     <url>/2026/10/12/soleringGuide/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Soldering-amp-Desoldering-Practical-Guideline"><a href="#Soldering-amp-Desoldering-Practical-Guideline" class="headerlink" title="Soldering &amp; Desoldering: Practical Guideline"></a>Soldering &amp; Desoldering: Practical Guideline</h1><p>All temperatures are iron&#x2F;station <strong>set-points</strong> for a temperature-controlled station.</p>

@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2026-10-11T13:00:00.000Z</updated>
+  <updated>2026-10-15T13:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>晶体管工作原理</title>
+    <link href="http://yoursite.com/2026/10/16/transistorWork/"/>
+    <id>http://yoursite.com/2026/10/16/transistorWork/</id>
+    <published>2026-10-15T13:00:00.000Z</published>
+    <updated>2026-10-15T13:00:00.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;一个方便快速理解BJT和MOSFET的&lt;a href=&quot;/transistorWork/&quot;&gt;工具&lt;/a&gt;.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="http://yoursite.com/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Soldering guide</title>
@@ -457,24 +478,6 @@
     
     
     <category term="MatLab Code" scheme="http://yoursite.com/tags/MatLab-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My Custom Latex Style File (.sty)</title>
-    <link href="http://yoursite.com/2024/10/17/customSty/"/>
-    <id>http://yoursite.com/2024/10/17/customSty/</id>
-    <published>2024-10-17T02:27:08.000Z</published>
-    <updated>2024-10-17T02:27:08.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;In this post, I’m sharing my custom LaTeX &lt;code&gt;.sty&lt;/code&gt; file, which I regularly use in my projects. This &lt;code&gt;.sty&lt;/code&gt; file includes settings and macros for &lt;strong&gt;biblatex&lt;/strong&gt; with &lt;code&gt;biber&lt;/code&gt;, custom TikZ symbols, and more.&lt;/p&gt;
-&lt;p&gt;You can download the &lt;code&gt;.sty&lt;/code&gt; file or copy the relevant parts below.&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Latex" scheme="http://yoursite.com/tags/Latex/"/>
     
   </entry>
   
