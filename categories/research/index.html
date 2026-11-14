@@ -23,16 +23,37 @@
         <a href="/tags/">Topics</a>
         <a href="/latex/">Documents</a>
         <a href="/about/">About</a>
+        <button type="button" class="search-toggle" data-open-search aria-haspopup="dialog" aria-controls="site-search">Search</button>
       </nav>
     </header>
-    <main id="main"><section class="page-heading"><p class="eyebrow">THE INDEX</p><h1>research</h1><p>A collection of practical ideas, references, and useful tools.</p></section>
+    <dialog id="site-search" class="search-dialog" aria-labelledby="search-title" data-index="/content.json" data-root="/">
+  <div class="search-panel">
+    <div class="search-heading"><h2 id="search-title">Search notes</h2><button type="button" data-close-search aria-label="Close search">Close <span aria-hidden="true">×</span></button></div>
+    <form role="search">
+      <label for="search-query">Find a skill, tool, or topic</label>
+      <input id="search-query" type="search" placeholder="Try MATLAB, Modbus, calibration…" autocomplete="off" enterkeyhint="search" aria-controls="search-results">
+    </form>
+    <p class="search-status" role="status" aria-live="polite">Search titles and full post content.</p>
+    <ul id="search-results" class="search-results"></ul>
+  </div>
+</dialog>
+<script type="module" src="/js/search.js"></script>
+
+    <main id="main"><section class="page-heading"><p class="eyebrow">THE INDEX</p><h1>Research</h1><p>A collection of practical ideas, references, and useful tools.</p></section>
 <section aria-label="Blog posts"><article class="note-row">
-  <div class="note-meta"><time datetime="2026-05-04T10:00:00.000Z">04 May 2026</time><span class="meta-dot" aria-hidden="true">·</span><span>research</span></div>
-  <h2><a href="/2026/05/04/EMC_note/">Hardware Design &amp; EMC Reference Notes</a></h2>
-  <p class="note-excerpt">1. The Non-Ideal Component Model Components in the real world are never perfect; they always possess parasitic properties that dominate at high frequencies.</p>
+  <div class="note-meta"><time datetime="2024-04-19T14:00:00.000Z">20 Apr 2024</time><span class="meta-dot" aria-hidden="true">·</span><span>Research</span></div>
+  <h2><a href="/2024/04/20/pdfAchive/">Guideline &amp; Technical Document</a></h2>
+  <p class="note-excerpt">Stepper Motor and Encoder Wiring Kalman Filter 有限元机翼动力学分析</p>
 </article>
-<article class="note-row">
-  <div class="note-meta"><time datetime="2026-04-18T10:00:00.000Z">18 Apr 2026</time><span class="meta-dot" aria-hidden="true">·</span><span>research</span></div>
+</section>
+
+
+</main>
+    <footer class="site-footer"><span>© 2026 X.</span><a href="/atom.xml">RSS feed <span aria-hidden="true">↗</span></a></footer>
+  </div>
+</body>
+</html>
+18 Apr 2026</time><span class="meta-dot" aria-hidden="true">·</span><span>research</span></div>
   <h2><a href="/2026/04/18/thermocoupleCalibration/">Comprehensive Guide to System-Level Thermocouple Calibration</a></h2>
   <p class="note-excerpt">1. Principle of Thermocouple Measurement Thermocouples operate on the Seebeck Effect: when two dissimilar metals are joined at two points and subjected to a temperature gradient, a proportional…</p>
 </article>

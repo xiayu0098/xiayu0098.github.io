@@ -23,8 +23,22 @@
         <a href="/tags/">Topics</a>
         <a href="/latex/">Documents</a>
         <a href="/about/">About</a>
+        <button type="button" class="search-toggle" data-open-search aria-haspopup="dialog" aria-controls="site-search">Search</button>
       </nav>
     </header>
+    <dialog id="site-search" class="search-dialog" aria-labelledby="search-title" data-index="/content.json" data-root="/">
+  <div class="search-panel">
+    <div class="search-heading"><h2 id="search-title">Search notes</h2><button type="button" data-close-search aria-label="Close search">Close <span aria-hidden="true">×</span></button></div>
+    <form role="search">
+      <label for="search-query">Find a skill, tool, or topic</label>
+      <input id="search-query" type="search" placeholder="Try MATLAB, Modbus, calibration…" autocomplete="off" enterkeyhint="search" aria-controls="search-results">
+    </form>
+    <p class="search-status" role="status" aria-live="polite">Search titles and full post content.</p>
+    <ul id="search-results" class="search-results"></ul>
+  </div>
+</dialog>
+<script type="module" src="/js/search.js"></script>
+
     <main id="main"><section class="page-heading"><p class="eyebrow">REFERENCE LIBRARY</p><h1>Technical documents</h1><p>Reports and technical references, collected in one place.</p></section>
 <ul class="topic-list"><li><a href="/latex/thermocoupleDriftReport/server_mpc/"><span>Server Mpc</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/rtd_ratiometric_report/"><span>Ratiometric Resistance Measurement of PT100 and PT1000 Sensors: Two-, Three- and Four-Wire Connections</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/nu_st_cf_report/"><span>Nusselt Number, Stanton Number and Skin-Friction Coefficient: Physical Meaning and Engineering Use</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/ReynoldsAnalogyLaminar/"><span>The Reynolds Analogy Factor: Laminar Boundary Layer, and What Changes When It Is Turbulent</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/cold-junction-compensation-thermocouple-modules/"><span>Cold-Junction Compensation and Calibration\ Thermocouple Modules</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/optics_for_high_speed_piv/"><span>Optics For High Speed Piv</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/mechanicalSeal/"><span>Mechanical Seal</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/cp_mean_momentum_derivation/"><span>充分发展湍流平面 Couette--Poiseuille 流的平均动量方程：完整推导</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/bridge_report/"><span>Technical Report: Resistive Bridge Measurements</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/thermocouple_note/"><span>Why a Thermocouple Reads Stably in Air but ``Jumps&#39;&#39; in Water</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/laser_power_schematic/"><span>Laser Power Schematic</span><span class="topic-count">PDF ↗</span></a></li><li><a href="/latex/thermocoupleDriftReport/thycon_wiring/"><span>Thycon Wiring</span><span class="topic-count">PDF ↗</span></a></li></ul>
 </main>
